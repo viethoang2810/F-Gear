@@ -27,7 +27,8 @@ a {
 .header-logo {
     width: 30%;
     margin: 30px 0 0 120px;
-    transform: translateY(-10px);
+    /* transform: translateY(-10px); */
+    cursor: pointer;
 }
 
 .header-link {
