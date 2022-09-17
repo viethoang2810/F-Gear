@@ -16,17 +16,17 @@ This is a small website for SWP391 subject . The main purpose of F-Gear is used 
 ##### *Admin------------------------------------------------------------------*
 
 -Dashbroad Page------------------------
-![Admin_Dashbroad](../Wireframes/Screenshot%202022-09-17%20072640.png)
+![Admin_Dashbroad](./Wireframes/Screenshot%202022-09-17%20072640.png)
 
 -Product_Management_Page -----------------------------------------------------
-![Admin_Product_Management](../Wireframes/Screenshot%202022-09-17%20072857.png)
+![Admin_Product_Management](./Wireframes/Screenshot%202022-09-17%20072857.png)
 
 ##### *User------------------------------------------------------------------*
 
 ###### Login_Form----------------------
 -- Login Form
-![Login_Form](../Wireframes/Screenshot%202022-09-17%20073152.png)
+![Login_Form](./Wireframes/Screenshot%202022-09-17%20073152.png)
 
 -Register_Form
-![Register_Form](../Wireframes/Screenshot%202022-09-17%20073315.png)
+![Register_Form](./Wireframes/Screenshot%202022-09-17%20073315.png)
 
