@@ -1,0 +1,98 @@
+@media screen and (max-width:990px) {
+    .navigator-wrapper {
+        display: none;
+    }
+
+    .btn-menu {
+        display: flex !important;
+        align-items: center;
+        justify-content: flex-end;
+        font-size: 1.7rem;
+        margin-right: 40px;
+    }
+
+    .navigator-wrapper {
+        position: absolute;
+        height: 300px;
+        width: 350px;
+        border: 2px solid #fff;
+        background-color: rgb(0, 191, 255);
+        top: 80px;
+        right: 40px;
+        box-shadow: 1px 2px 10px 3px rgba(205, 197, 197, 0.7);
+        border-radius: 10px;
+        animation:dropdownMenu 0.6s linear ;
+    }
+
+    /* @keyframes dropdownMenu{
+        from {
+            transform:translateY(0px);
+            transition:transform 0.6s linear ;
+        }to{
+            transform:translateY(40px);
+            transition:transform 0.6s linear ;
+        }
+    } */
+    
+
+    .navigator-wrapper * {
+        cursor: pointer;
+    }
+
+    .navigator-list {
+        display: block;
+        padding-left: 0;
+    }
+
+    .navigator-item {
+        padding: 10px 20px;
+        width: 100%;
+
+    }
+
+    .navigatior-user {
+        display: block;
+    }
+
+    .navigator-page {
+        height: 150px;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 10px;
+
+    }
+
+    .navigator-wrapper-inner {
+        display: block;
+        text-align: center;
+    }
+
+    .user {
+        padding: 10px 20px;
+        width: 100%;
+    }
+
+    .navigator-user-cart::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 70px;
+        left: 0;
+        background-color: #333;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+    }
+
+    .navigator-user-cart:hover:after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+
+    .navigator-user-account {
+        margin: 10px 0 0 50px !important;
+        text-align: center;
+        width: 100%;
+    }
+}
