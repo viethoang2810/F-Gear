@@ -181,4 +181,11 @@
     .contact-info{
         margin-bottom: 30px;
     }
+    .body-wrapper{
+        display: block !important;
+        margin-bottom: 50px;
+    }
+    .user-avatar{
+        margin-bottom: 50px;
+    }
 }
