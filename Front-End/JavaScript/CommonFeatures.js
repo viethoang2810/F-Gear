@@ -41,3 +41,9 @@ var paymentRedirectPage = document.querySelector('.payment');
 paymentRedirectPage.onclick = (e) =>{
   window.location.replace("http://127.0.0.1:5500/Front-End/Payment_Guildine.html");
 }
+// Handle redirect user page 
+var userRedirect = document.querySelector('.navigator-user-account');
+
+userRedirect.onclick = () =>{
+  window.location.replace('http://127.0.0.1:5500/Front-End/User_Profile.html');
+}
