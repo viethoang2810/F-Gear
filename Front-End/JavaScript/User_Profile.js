@@ -10,10 +10,10 @@ userAvatarImage.addEventListener("change", (e) => {
     var fr = new FileReader();
     fr.onload = function () {
       document.querySelector(".user-avatar-image").src = fr.result;
+      inputAvatar.value = document.querySelector(".user-avatar-image").src;
     };
-    console.log(fr.result);
+
     fr.readAsDataURL(files[0]);
-    inputAvatar.value = fr.result;
   }
   // Not supported
   else {
