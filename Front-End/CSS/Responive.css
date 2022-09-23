@@ -21,19 +21,17 @@
         right: 40px;
         box-shadow: 1px 2px 10px 3px rgba(205, 197, 197, 0.7);
         border-radius: 10px;
-        animation: dropdownMenu 0.6s linear;
-        transition: transform 0.6s linear;
+        animation: dropdownMenu 0.2s linear;
+        transform: translateY(20px);
     }
 
     @keyframes dropdownMenu {
         from {
             transform: translateY(0px);
-            transition: transform 0.6s linear;
         }
 
         to {
-            transform: translateY(40px);
-            transition: transform 0.6s linear;
+            transform: translateY(20px);
         }
     }
 
@@ -185,7 +183,11 @@
         display: block !important;
         margin-bottom: 50px;
     }
+    .body{
+        margin-bottom: 100px;
+    }
     .user-avatar{
         margin-bottom: 50px;
     }
+   
 }
