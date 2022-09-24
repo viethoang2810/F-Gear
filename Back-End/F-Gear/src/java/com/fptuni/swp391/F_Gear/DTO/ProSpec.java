@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.fptuni.swp391.F_Gear.Utils;
+package com.fptuni.swp391.F_Gear.DTO;
 
 /**
  *
- * @author Admin
+ * @author duyng
  */
-public class DBUtil {
+public class ProSpec {
     
 }
