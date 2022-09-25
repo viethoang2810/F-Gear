@@ -101,7 +101,17 @@ a {
     position: relative;
 }
 
-.body-category:hover .body-category-list{
+.body-category-list::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    background-color: transparent;
+    bottom: 100%;
+    left: 0;
+}
+
+.body-category:hover .body-category-list {
     display: block;
 }
 
@@ -117,9 +127,22 @@ a {
     background-color: #fff;
     box-shadow: 0 4px 10px 5px black;
     width: 100%;
-    top: 50px;
+    top: 115%;
     left: 0;
+    font-size: 21px;
 }
+
+.body-category-list::after {
+    content: '';
+    position: absolute;
+    width: 10%;
+    height: 100%;
+    background-color: transparent;
+    top: 0;
+    left: 100%;
+}
+
+
 
 .body-category-list-active {
     display: block;
@@ -130,10 +153,11 @@ a {
     list-style: none;
     padding: 20px 10px;
     width: 100%;
+    font-size: 22px;
 }
 
 .body-category-list-item li {
-    width: 80%;
+    width: 100%;
     /* border-bottom: 1px solid #000; */
     clip-path: polygon(11% 0, 100% 0%, 90% 100%, 0% 100%);
     margin: 5px 0;
@@ -145,7 +169,7 @@ a {
 
 .body-category-list-item li:hover {
     background-color: red;
-    transform: translateX(20%);
+    transform: translateX(5%);
     transition: ease-in-out .3s;
 }
 
@@ -159,9 +183,10 @@ a {
     background-color: #fff;
     position: absolute;
     top: 0;
-    left: 250px;
+    left: 260px;
     display: none;
 }
+
 .body-category-sub-list-active {
     display: block;
 }
@@ -173,11 +198,12 @@ a {
     padding: 20px 10px;
     width: 100%;
     border-radius: 20px;
-    box-shadow: 0 4px 10px 5px black;
+    /* box-shadow: 0 4px 10px 5px black; */
+    border: 1px solid #000;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 
@@ -201,18 +227,23 @@ a {
 .body-category-list-sub2-each-item {
     margin: 5px 10px;
 }
+
 .body-category-list-sub2-each-item ul {
     list-style: none;
 }
+
 .body-category-list-sub2-each-item ul li {
     margin: 5px 0;
 }
+
 .body-category-list-sub2-each-item ul li:hover a {
     color: red;
 }
+
 .body-category-list-sub2-each-item h4 {
     color: red;
 }
+
 .body-category-list-sub2-each-item ul li a {
     color: #000;
 }
