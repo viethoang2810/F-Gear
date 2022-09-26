@@ -73,6 +73,14 @@
     .dashboard-container-box {
         width: 40%;
     }
+
+    .sale-title {
+        width: 50%;
+    }
+
+    .sale-brand {
+        width: 25%;
+    }
 }
 
 
@@ -180,4 +188,15 @@
         height: 100%;
     }
 
+    .sale-title {
+        width: 80%;
+    }
+    .sale-brand {
+        width: 50%;
+    }
+
+    .body-list-product a {
+        width: 45%;
+        margin: 10px 0;
+    }
 }
