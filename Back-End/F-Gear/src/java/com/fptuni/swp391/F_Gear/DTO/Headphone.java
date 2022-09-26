@@ -11,41 +11,24 @@ package com.fptuni.swp391.F_Gear.DTO;
  */
 public class Headphone extends Product{
 
-    private String Weight;
     private String connection;
     private String compatible;
-    private String frequencyResponse;
+    private String frequency;
     private String soundproofingAbility;
+    private String headphoneStyle;
     private String color;
 
     public Headphone() {
     }
 
-    public Headphone(String Weight, String connection, String compatible, String frequencyResponse, String soundproofingAbility, String color) {
-        this.Weight = Weight;
-        this.connection = connection;
-        this.compatible = compatible;
-        this.frequencyResponse = frequencyResponse;
-        this.soundproofingAbility = soundproofingAbility;
-        this.color = color;
-    }
-
-    public Headphone(int ProID, String proName, int Prie, int brandID, String Weight, String connection, String compatible, String frequencyResponse, String soundproofingAbility, String color) {
+    public Headphone(int ProID, String proName, int Prie, int brandID, String connection, String compatible, String frequency, String soundproofingAbility, String headphoneStyle, String color) {
         super(ProID, proName, Prie, brandID);
-        this.Weight = Weight;
         this.connection = connection;
         this.compatible = compatible;
-        this.frequencyResponse = frequencyResponse;
+        this.frequency = frequency;
         this.soundproofingAbility = soundproofingAbility;
+        this.headphoneStyle = headphoneStyle;
         this.color = color;
-    }
-
-    public String getWeight() {
-        return Weight;
-    }
-
-    public void setWeight(String Weight) {
-        this.Weight = Weight;
     }
 
     public String getConnection() {
@@ -64,12 +47,12 @@ public class Headphone extends Product{
         this.compatible = compatible;
     }
 
-    public String getFrequencyResponse() {
-        return frequencyResponse;
+    public String getFrequency() {
+        return frequency;
     }
 
-    public void setFrequencyResponse(String frequencyResponse) {
-        this.frequencyResponse = frequencyResponse;
+    public void setFrequency(String frequency) {
+        this.frequency = frequency;
     }
 
     public String getSoundproofingAbility() {
@@ -80,6 +63,14 @@ public class Headphone extends Product{
         this.soundproofingAbility = soundproofingAbility;
     }
 
+    public String getHeadphoneStyle() {
+        return headphoneStyle;
+    }
+
+    public void setHeadphoneStyle(String headphoneStyle) {
+        this.headphoneStyle = headphoneStyle;
+    }
+
     public String getColor() {
         return color;
     }
@@ -87,6 +78,5 @@ public class Headphone extends Product{
     public void setColor(String color) {
         this.color = color;
     }
-
     
 }

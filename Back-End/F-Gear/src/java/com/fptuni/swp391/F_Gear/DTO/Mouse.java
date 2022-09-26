@@ -10,60 +10,34 @@ package com.fptuni.swp391.F_Gear.DTO;
  * @author duyng
  */
 public class Mouse extends Product{
-    private String IPS;
-    private String responseFrequency;
-    private String shellMaterial;
+    private String DPI;
     private String numberOfButtons;
     private String longevity;
     private String connection;
+    private String shellMaterial;
+    private String Ccmpatible;
     private String color;
 
     public Mouse() {
     }
 
-    public Mouse(String IPS, String responseFrequency, String shellMaterial, String numberOfButtons, String longevity, String connection, String color) {
-        this.IPS = IPS;
-        this.responseFrequency = responseFrequency;
-        this.shellMaterial = shellMaterial;
-        this.numberOfButtons = numberOfButtons;
-        this.longevity = longevity;
-        this.connection = connection;
-        this.color = color;
-    }
-
-    public Mouse(int ProID, String proName, int Prie, int brandID, String IPS, String responseFrequency, String shellMaterial, String numberOfButtons, String longevity, String connection, String color) {
+    public Mouse(int ProID, String proName, int Prie, int brandID, String DPI, String numberOfButtons, String longevity, String connection, String shellMaterial, String Ccmpatible, String color) {
         super(ProID, proName, Prie, brandID);
-        this.IPS = IPS;
-        this.responseFrequency = responseFrequency;
-        this.shellMaterial = shellMaterial;
+        this.DPI = DPI;
         this.numberOfButtons = numberOfButtons;
         this.longevity = longevity;
         this.connection = connection;
+        this.shellMaterial = shellMaterial;
+        this.Ccmpatible = Ccmpatible;
         this.color = color;
     }
 
-    public String getIPS() {
-        return IPS;
+    public String getDPI() {
+        return DPI;
     }
 
-    public void setIPS(String IPS) {
-        this.IPS = IPS;
-    }
-
-    public String getResponseFrequency() {
-        return responseFrequency;
-    }
-
-    public void setResponseFrequency(String responseFrequency) {
-        this.responseFrequency = responseFrequency;
-    }
-
-    public String getShellMaterial() {
-        return shellMaterial;
-    }
-
-    public void setShellMaterial(String shellMaterial) {
-        this.shellMaterial = shellMaterial;
+    public void setDPI(String DPI) {
+        this.DPI = DPI;
     }
 
     public String getNumberOfButtons() {
@@ -90,6 +64,22 @@ public class Mouse extends Product{
         this.connection = connection;
     }
 
+    public String getShellMaterial() {
+        return shellMaterial;
+    }
+
+    public void setShellMaterial(String shellMaterial) {
+        this.shellMaterial = shellMaterial;
+    }
+
+    public String getCcmpatible() {
+        return Ccmpatible;
+    }
+
+    public void setCcmpatible(String Ccmpatible) {
+        this.Ccmpatible = Ccmpatible;
+    }
+
     public String getColor() {
         return color;
     }
@@ -97,6 +87,8 @@ public class Mouse extends Product{
     public void setColor(String color) {
         this.color = color;
     }
+
+    
 
     
 }
