@@ -1,5 +1,3 @@
-
-
 // Handle change images of product 
 
 var listOfImage = document.querySelectorAll('.image-invole-item');
@@ -8,8 +6,9 @@ console.log(listOfImage);
 listOfImage.forEach((image, index) => {
     image.addEventListener('click', () => {
       let linkClicked = image.querySelector('.involve-item').src;
+        console.log(linkClicked);
       handleRemoveClass(getIndexOfElement());
-      displayImage.src = linkClicked.split('http://127.0.0.1:5500/Front-End/')[1];
+      displayImage.src = linkClicked.split('http://localhost:8080/F-Gear/')[1];
       image.classList.add('active-picture');
     })
 })

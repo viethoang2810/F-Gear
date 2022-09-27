@@ -189,5 +189,42 @@
     .user-avatar{
         margin-bottom: 50px;
     }
-   
+    .sidebar-wrapper{
+        display: block !important;
+        height:200px;
+    }
+    .sidebar-nav{
+        width: 100% !important;
+        display: flex;
+        justify-content:flex-start;
+    }
+    .navigation-list{
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        
+    }
+    .navigation-wrapper{
+        display: flex;
+        width: 100% ;
+        background-color:transparent;
+
+    }
+    .product-mgt_list{
+        margin-right: 0 ;
+    }
+    .navigation-item{
+        width: 250px ;
+        background-color:var(--background-color);
+        margin-right: 50px;
+    }
+    .active::after{
+        display: none !important;
+    }
+    .navigation-item::after{
+        display: none !important;
+    }
+    .sidebar-row{
+        height:800px;
+    }
 }
