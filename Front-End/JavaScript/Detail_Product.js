@@ -8,25 +8,24 @@ console.log(listOfImage);
 listOfImage.forEach((image, index) => {
     image.addEventListener('click', () => {
       let linkClicked = image.querySelector('.involve-item').src;
-      handleRemoveClass(getIndexOfElement());
+      handleRemoveClass(listOfImage,getIndexOfElement(listOfImage,'active-picture'),'active-picture');
       displayImage.src = linkClicked.split('http://127.0.0.1:5500/Front-End/')[1];
       image.classList.add('active-picture');
     })
 })
 // The method will be returned index of element which has a className contains active class
-const getIndexOfElement = () => {
+ const getIndexOfElement = (listOfImage,className) => {
   for(var i = 0 ; i < listOfImage.length ; i++) {
-    if(listOfImage[i].className.includes('active-picture')){
+    if(listOfImage[i].className.includes(className)){
       return i;
     }
   }
 }
 //The method will be remove the className based on index provided
-const handleRemoveClass = (index) =>{
+ const handleRemoveClass = (listOfImage,index,className) =>{
     for(var i = 0 ; i < listOfImage.length ; i++) {
         if(i == index){
-          listOfImage[i].classList.remove('active-picture');
+          listOfImage[i].classList.remove(className);
         }
     }
 }
-
