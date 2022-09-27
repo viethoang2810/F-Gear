@@ -50,5 +50,5 @@ var userRedirect = document.querySelector('.navigator-user-account');
 
 userRedirect.onclick = () =>{
   console.log(123);
-  window.location.replace('http://127.0.0.1:5500/Front-End/User_Profile.html');
+  window.location.replace('http://localhost:8080/F-Gear/views/User_Profile.jsp');
 }
