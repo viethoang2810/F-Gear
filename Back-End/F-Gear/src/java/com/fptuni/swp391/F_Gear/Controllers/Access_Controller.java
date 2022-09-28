@@ -48,14 +48,14 @@ public class Access_Controller extends HttpServlet {
                         url = "/Homepage.jsp";
                         session.setAttribute("user", user);
                     } else {
-                        url = "/login.jsp";
+                        url = "./views/login.jsp";
                         request.setAttribute("message", "Incorrect Username or Password");
                     }
                 }
                 break;
                 case "logout": {
                     session.invalidate();
-                    url = "/Homepage.jsp";
+                    url = "./views/Homepage.jsp";
                 }
                 break;
 
