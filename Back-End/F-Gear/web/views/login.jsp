@@ -1,4 +1,3 @@
-﻿<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,9 +36,10 @@
     <div class="login">
         <img class="login-logo"
             src="https://th.bing.com/th/id/R.af2b82154a39f7ddd7e1cbcddf32540c?rik=VNWwpCivVSf%2f0g&pid=ImgRaw&r=0">
-        <form class="login-form">
-            <input class="login-form-text" type="text" placeholder="Username" />
-            <input class="login-form-text" type="password" placeholder="Password" />
+        <form class="login-form" action="accesscontroller">
+            <input class="login-form-text" type="text" placeholder="Username" name="userName" value="${user.userName}" />
+            <input class="login-form-text" type="password" placeholder="Password" name="password" value="${user.password}" />
+            <i>${message}</i>
             <div class="logo-form-user-action">
                 <div>
                     <input type="checkbox" class="login-form-radio" />
@@ -47,7 +47,7 @@
                 </div>
                 <a href="./index.html">Forgot password ?</a>
             </div>
-            <button class="login-form-submit">Go to store</button>
+            <button class="login-form-submit" name="op" value="login" >Go to store</button>
         </form>
         <button class="login-google">
             <img src="./Assets/Images/" />
@@ -65,7 +65,7 @@
                 alt="logo-here" />
             <div>
                 <h1>F-Gear Store</h1>
-                <p>Address: 210/10 LÃª VÄn Sá»¹, PhÆ°á»ng 10, Quáº­n PhÃº Nhuáº­n</p>
+                <p>Address: 210/10 Lê Văn Sỹ, Phường 10, Quận Phú Nhuận</p>
                 <p>Contact: 0903333333</p>
                 <div class="footer-link">
                     <i class="fa-brands fa-facebook"></i>
