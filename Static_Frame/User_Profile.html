@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User_Profile</title>
+    <link rel="stylesheet" href="CSS/UserProfile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <div class="header-logo">
+                    <img src="Assets/Images/Logo_After_Login.png" alt="F-Gear" class="logo-image">
+                </div>
+                <div class="navigation">
+                    <nav class="navigation-bar">
+                        <ul class="navigation-list">
+                            <li class="navigation-item">
+                                <a href="HomePage.html" class="navigation-link active">Home</a>
+                            </li>
+                            <li class="navigation-item">
+                                <a href="User_Profile.html" class="navigation-link">Profile</a>
+                            </li>
+                            <li class="navigation-item">
+                                <a href="PurchaseHistory.html" class="navigation-link">History</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="header-right">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                <div class="header_user">
+                    <div class="user_avatar">
+                        <img src="Assets/Images/280013939_368144518688847_7624068726298628073_n.jpg" alt="avatar-image"
+                            class="avatar_image">
+                    </div>
+                    <div class="user_welcome">
+                        <span class="welcome-content">Welcome user</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </header>
+    <div class="white-space">
+
+    </div>
+    <section class="body-wrapper">
+        <div class="container">
+            <div class="avatar-wrapper">
+                <img src="Assets/Images/280013939_368144518688847_7624068726298628073_n.jpg" alt="" class="avatar">
+                <p class="user-name">viet hoang</p>
+                <form>
+                    <label for="file-upload" class="custom-file-upload">
+                        <i class="fa fa-cloud-upload"></i> Choose from your device
+                    </label>
+                    <input id="file-upload" type="file"/>
+                </form>
+            </div>
+            <div class="user-infor-wrapper">
+                <h3 class="heading-title">User Information</h3>
+                <form action="" class="form-user-infor">
+                    <div class="user-infor">
+                        <label for="usernamee" class="label-infor">Name of user :</label>
+                        <input type="text" id="username" value="viet hoang" class="info-input"/>
+                    </div>
+                    <div class="user-infor">
+                        <label for="email" class="label-infor">Email</label>
+                        <input type="text" id="email" value="anhdung19022001@gmail.com" class="disable info-input" disabled/>
+                    </div>
+                    <div class="user-infor">
+                        <label for="phoneNumber" class="label-infor">Phone number</label>
+                        <input type="text" id="phoneNumber" value="0335349368" class="disable info-input" disabled/>
+                    </div>
+                    <div class="user-infor">
+                        <label for="gender" class="label-infor">Gender : </label>
+                        <div class="gender-input info-input" id="gender" style="text-align: left">
+                            <label for="Male" class="label-radio" style="font-size: 1.3rem;">Male</label>
+                            <input type="radio" id="Male" value="Male"/>
+                            <label for="Female" class="label-radio" style="font-size: 1.3rem;">Female</label>
+                            <input type="radio" id="Female" value="Female"/>
+                        </div>
+                    </div>
+                    <div class="user-infor">
+                        <label for="phoneNumber" class="label-infor">Date of birth :</label>
+                        <input type="text" id="phoneNumber" value="28/10/2001" class="disable info-input" disabled/>
+                    </div>
+                    <button type="submit" class="btn-submit">Save</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="store-informations">
+                <div class="footer-logo">
+                    <img src="Assets/Images/logo_transparent.png" alt="" class="footer-image">
+                </div>
+                <div class="store-description">
+                    <ul class="description-list">
+                        <li class="description-item">
+                            <h3 class="description-title">F-Gear store</h3>
+                        </li>
+                        <li class="description-item">
+                            <p class="description-address">Address : 210/10 Lê Văn Sỹ ,Phường 10,Quận Phú Nhuận</p>
+                        </li>
+                        <li class="description-item">
+                            <p class="description-contact">Contact us: 0335349368</p>
+                        </li>
+                        <li class="description-item">
+                            <ul class="social-media-list">
+                                <li class="social-media-item">
+                                    <a href="" class="social-media-link">
+                                        <i class="fa fa-facebook-official" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li class="social-media-item">
+                                    <a href="" class="social-media-link">
+                                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li class="social-media-item">
+                                    <a href="" class="social-media-link">
+                                        <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
