@@ -10,5 +10,4 @@ package com.fptuni.swp391.F_Gear.DAO;
  * @author Admin
  */
 public class Access_Management {
-    
 }
