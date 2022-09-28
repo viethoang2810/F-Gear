@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -78,3 +79,5 @@
     </body>
     <script src="JavaScript/FormValidate.js"></script>
 </html>
+=======
+>>>>>>> 8720a6b061c7dedb60799aa05d81c30ce896b7d8
