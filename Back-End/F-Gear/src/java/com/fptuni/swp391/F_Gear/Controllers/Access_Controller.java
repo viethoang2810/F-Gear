@@ -45,17 +45,17 @@ public class Access_Controller extends HttpServlet {
                     int password = Integer.parseInt(request.getParameter("password"));
                     Users user = Access_Management.check(userName, password);
                     if (user != null) {
-                        url = "/Homepage.jsp";
+                        url = "/views/Homepage.jsp";
                         session.setAttribute("user", user);
                     } else {
-                        url = "./views/login.jsp";
+                        url = "/views/login.jsp";
                         request.setAttribute("message", "Incorrect Username or Password");
                     }
                 }
                 break;
                 case "logout": {
                     session.invalidate();
-                    url = "./views/Homepage.jsp";
+                    url = "/views/Homepage.jsp";
                 }
                 break;
 
