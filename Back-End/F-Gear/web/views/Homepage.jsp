@@ -1,4 +1,4 @@
-﻿<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,13 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../assets/CSS/Homepage.css">
-    <link rel="stylesheet" href="../assets/CSS/responsive.css">
+
     <title>F-Gear</title>
 </head>
 
 <body>
-        <%@include file="./Header.jsp" %>
 
     <div class="body">
         <div class="body-interactive">
@@ -377,7 +375,6 @@
         </div>
     </div>
 
-        <%@include file="./Footer.jsp" %>
 
 </body>
 <script src="./JavaScript/Homepage.js">
