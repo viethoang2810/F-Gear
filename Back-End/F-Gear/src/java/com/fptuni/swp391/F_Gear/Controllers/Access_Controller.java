@@ -5,18 +5,23 @@
  */
 package com.fptuni.swp391.F_Gear.Controllers;
 
+import com.fptuni.swp391.F_Gear.DAO.Access_Management;
+import com.fptuni.swp391.F_Gear.DTO.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author ADMIN
  */
-public class Acces_Controller extends HttpServlet {
+@WebServlet(name = "Access_Controller", urlPatterns = {"/accesscontroller"})
+public class Access_Controller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,21 +35,39 @@ public class Acces_Controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Acces_Controller</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Acces_Controller at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String url = "";
+        HttpSession session = request.getSession();
+        String op = request.getParameter("op").toLowerCase();
+        try {
+            switch (op) {
+                case "login": {
+                    String userName = request.getParameter("userName");
+                    int password = Integer.parseInt(request.getParameter("password"));
+                    Users user = Access_Management.check(userName, password);
+                    if (user != null) {
+                        url = "/views/Homepage.jsp";
+                        session.setAttribute("user", user);
+                    } else {
+                        url = "/views/login.jsp";
+                        request.setAttribute("message", "Incorrect Username or Password");
+                    }
+                }
+                break;
+                case "logout": {
+                    session.invalidate();
+                    url = "/views/Homepage.jsp";
+                }
+                break;
+
+            }
+        } catch (Exception e) {
+            log("Error at MainController: " + e.toString());
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
