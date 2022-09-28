@@ -41,13 +41,13 @@
                                 <nav class="navigator">
                                     <ul class="navigator-list">
                                         <li class="navigator-item">
-                                            <a href="../views/Homepage.jsp" class="navigator-item_link active">Home</a>
+                                            <span class="navigator-item_link active home">Home</span>
                                         </li>
                                         <li class="navigator-item">
-                                            <a href="../views/Product_Page.jsp" class="navigator-item_link">Store</a>
+                                            <span class="navigator-item_link store">Store</span>
                                         </li>
                                         <li class="navigator-item">
-                                            <a href="" class="navigator-item_link">Sale</a>
+                                            <span class="navigator-item_link sale">Sale</span>
                                         </li>
                                     </ul>
                                 </nav>
@@ -169,5 +169,5 @@
 </body>
 
 
-<script src="./assets/JavaScript/CommonFeatures.js"></script>
+<script src="../assets/JavaScript/CommonFeatures.js"></script>
 </html>

@@ -12,7 +12,9 @@
     width: 100%;
 
 }
-
+.navigator-item_link{
+    cursor: pointer;
+}
 .header-navigator {
     height: 100%;
     position: relative;

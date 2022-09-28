@@ -18,7 +18,6 @@ const handleDropdownMenu = (checkClick) => {
 
 handleDropdownMenu(checkClick);
 // Handle menu of categories on sidebar 
-
 const handleDropdownSidebar = (checkClick) =>{
     let menuBtn = document.querySelector(".navigator-btn_menu");
     let menuDropDown = document.querySelector('.btn-navigator-list');
@@ -45,9 +44,50 @@ if(paymentRedirectPage){
     window.location.replace("http://127.0.0.1:5500/Front-End/Payment_Guildine.html");
   }
 }
-// Handle redirect user page 
-var userRedirect = document.querySelector('.navigator-user-account');
 
+
+const listOfLink = document.querySelectorAll('.navigator-item_link');
+
+listOfLink.forEach(linkItem => {
+    linkItem.addEventListener('click', () =>{
+      handleRemoveClassName(listOfLink,getIndexElement(listOfLink,'active'),'active')
+      linkItem.classList.add('active')
+    })
+})
+const getIndexElement = (listOfLink,className) => {
+  for(var i = 0 ; i < listOfLink.length ; i++) {
+    if(listOfLink[i].className.includes(className)){
+      return i;
+    }
+  }
+}
+//The method will be remove the className based on index provided
+const handleRemoveClassName = (listOfLink,index,className) =>{
+  for(var i = 0 ; i < listOfLink.length ; i++) {
+      if(i == index){
+        listOfLink[i].classList.remove(className);
+      }
+  }
+}
+// Handle redirect   page 
+var userRedirect = document.querySelector('.navigator-user-account');
+var  homePage = document.querySelector('.home');
+var  storePage = document.querySelector('.store');
+var  salePage = document.querySelector('.sale');
+
+
+homePage.onclick = () =>{
+  console.log(123);
+  window.location.replace('http://127.0.0.1:5500/Front-End/User_Profile.html');
+}
+storePage.onclick = () =>{
+  console.log(123);
+  window.location.replace('http://127.0.0.1:5500/Front-End/User_Profile.html');
+}
+userRedirect.onclick = () =>{
+  console.log(123);
+  window.location.replace('http://127.0.0.1:5500/Front-End/User_Profile.html');
+}
 userRedirect.onclick = () =>{
   console.log(123);
   window.location.replace('http://127.0.0.1:5500/Front-End/User_Profile.html');
