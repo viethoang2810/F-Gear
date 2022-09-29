@@ -26,8 +26,8 @@ public class Product {
     public Product() {
     }
 
-//    cai constructor n�y de lay top 8 san pham show o Homepage nha -DungHQ
-    public Product(String brandName, int proID, String proName, double proOriginalPrice, ArrayList<Images> listImage) {
+//    cái constructor này để lấy top 8 sản phẩm show ở Homepage nha -DungHQ
+    public Product(String brandName, int proID, String proName, int proOriginalPrice, ArrayList<Images> listImage) {
         this.brandName = brandName;
         this.proID = proID;
         this.proName = proName;
@@ -47,8 +47,6 @@ public class Product {
         this.proType = proType;
     }
 
-   
-
     public int getProID() {
         return proID;
     }
@@ -65,7 +63,7 @@ public class Product {
         this.proName = proName;
     }
 
-    public int getProOriginalPrice() {
+    public double getProOriginalPrice() {
         return proOriginalPrice;
     }
 
@@ -105,7 +103,7 @@ public class Product {
         this.proType = proType;
     }
 
-    public int getDiscount() {
+    public double getDiscount() {
         return discount;
     }
 
@@ -113,12 +111,12 @@ public class Product {
         this.discount = discount;
     }
 
-    public int getProCurrentPrice() {
+    public double getProCurrentPrice() {
         return proCurrentPrice;
     }
 
     public void setProCurrentPrice(int proCurrentPrice) {
         this.proCurrentPrice = proCurrentPrice;
     }
-    
+
 }
