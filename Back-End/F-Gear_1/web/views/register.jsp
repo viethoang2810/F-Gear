@@ -1,3 +1,4 @@
+﻿<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,13 +6,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/login.css">
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../assets/CSS/register.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="CSS/responsive.css">
-    <title>Login</title>
+      <link rel="stylesheet" href="../assets/CSS/responsive.css"/>
+    <title>Register</title>
 </head>
 
 <body>
@@ -35,7 +35,7 @@
     </header> -->
     <div class="login">
         <img class="login-logo"
-            src="./assests/Logo.png">
+             src="../assets/Images/Logo_After_Login.png">
         <form class="login-form">
             <input class="login-form-text" type="text" placeholder="Username" />
             <input class="login-form-text" type="password" placeholder="Password" />
@@ -55,7 +55,7 @@
                 alt="logo-here" />
             <div>
                 <h1>F-Gear Store</h1>
-                <p>Address: 210/10 Lê Văn Sỹ, Phường 10, Quận Phú Nhuận</p>
+                <p>Address: 210/10 LÃª VÄn Sá»¹, PhÆ°á»ng 10, Quáº­n PhÃº Nhuáº­n</p>
                 <p>Contact: 0903333333</p>
                 <div class="footer-link">
                     <i class="fa-brands fa-facebook"></i>
