@@ -38,6 +38,7 @@ public class Product_Controller extends HttpServlet {
         Product_Management pm = new Product_Management();
         
         listOfProduct = pm.getAllOfProduct();
+        request.setAttribute("listOfProduct", listOfProduct);
         request.getRequestDispatcher("/views/Product_Page.jsp").forward(request,response);
     }
 

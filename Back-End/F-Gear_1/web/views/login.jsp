@@ -43,7 +43,7 @@
                     alt="logo-here" />
                 <div>
                     <h1>F-Gear Store</h1>
-                    <p>Address: 210/10 Lê Văn Sỹ, Phường 10, Quận Phú Nhuận</p>
+                    <p>Address: 210/10 L� V?n S?, Ph??ng 10, Qu?n Ph� Nhu?n</p>
                     <p>Contact: 0903333333</p>
                     <div class="footer-link">
                         <i class="fa-brands fa-facebook"></i>

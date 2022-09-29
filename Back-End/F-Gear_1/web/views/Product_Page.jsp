@@ -1,4 +1,6 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 ﻿<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,10 +9,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>F-GEAR</title>
-        <link rel="icon" href="Assets/Images/pinterest_board_photo.png">
-        <link rel="stylesheet" href="../assets/CSS/Product_Page.css">
-        <link rel="stylesheet" href="../assets/CSS/GlobalStyles.css"> <!-- This file contains all of common styles of pages-->
-        <link rel="stylesheet" href="../assets/CSS/Responive.css">
+        <link rel="icon" href="./assets/Images/pinterest_board_photo.png">
+        <link rel="stylesheet" href="./assets/CSS/Product_Page.css">
+        <link rel="stylesheet" href="./assets/CSS/GlobalStyles.css"> <!-- This file contains all of common styles of pages-->
+        <link rel="stylesheet" href="./assets/CSS/Responive.css">
         <!-- Font Awesome link-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
               integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
@@ -21,8 +23,9 @@
     </head>
 
     <body>
+        <%@include file="./Header.jsp" %>
+
         <div class="container-fluid">
-            <%@include file="./Header.jsp" %>
 
             <!-- Header -->
             <!--        <div class="row header">
@@ -169,7 +172,7 @@
             <div class="row text-center" style="z-index:10;">
                 <div class="image-wrapper col-xl-12 col-md-12 col-lg-12 col-sm-12 col-12 "
                      style="width:100% ; min-height: 200px;">
-                    <img src="../assets/Images/676vn_1890_cls_18aa655da8844630bd62a071e80d5ace.webp" alt=""
+                    <img src="./assets/Images/676vn_1890_cls_18aa655da8844630bd62a071e80d5ace.webp" alt=""
                          class="image-represent" style="width:100% ; height:100%;">
                 </div>
             </div>
@@ -193,99 +196,15 @@
             <div class="row">
                 <div class="product-wrapper " style="display: none;">
                     <div class="products">
-
-                        <div class="product-item col-lg-2 col-xl-2 col-md-4 col-sm-6 col-12">
-                            <img src="../assets/Images/p-acer-aspire-3-a315-42-r8px-2_437eed7003ca40a2a05a60d2356089c6_grande_ec84095863e94a38a2aa943d27b28e49.webp"
-                                 alt="" class="product-item_image">
-                            <div class="image-redirect">
-                                <a href="" class="image-redirect_link">View detail</a>
+                        <c:forEach var="product" items="${listOfProduct}" >
+                            <div class="product-item col-lg-2 col-xl-2 col-md-4 col-sm-6 col-12">
+                                <img src="${product.listImage.get(0).url}"
+                                     alt="" class="product-item_image">
+                                <div class="image-redirect">
+                                    <a href="?proID=${product.proID}" class="image-redirect_link">View detail</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="product-item col-lg-2 col-xl-2 col-md-4 col-sm-6 col-12">
-                            <img src="../assets/Images/laptop-acer-aspire-3-a315-56-37dv-1_14c2a4369f244da3a18a6a9884da2f0a_2d6425a24d4e40bea850a55c2ff54d59.webp"
-                                 alt="" class="product-item_image">
-                            <div class="image-redirect">
-                                <a href="" class="image-redirect_link">View detail</a>
-                            </div>
-                        </div>
-                        <div class="product-item col-lg-2 col-xl-2 col-md-4 col-sm-6 col-12">
-                            <img src="../assets/Images/laptop-acer-aspire-3-a315-56-37dv-1_14c2a4369f244da3a18a6a9884da2f0a_2d6425a24d4e40bea850a55c2ff54d59.webp"
-                                 alt="" class="product-item_image">
-                            <div class="image-redirect">
-                                <a href="" class="image-redirect_link">View detail</a>
-                            </div>
-                        </div>
-                        <div class="product-item col-lg-2 col-xl-2 col-md-4 col-sm-6 col-12">
-                            <img src="../assets/Images/laptop-acer-aspire-3-a315-56-37dv-1_14c2a4369f244da3a18a6a9884da2f0a_2d6425a24d4e40bea850a55c2ff54d59.webp"
-                                 alt="" class="product-item_image">
-                            <div class="image-redirect">
-                                <a href="" class="image-redirect_link">View detail</a>
-                            </div>
-                        </div>
-                        <div class="product-item col-lg-2 col-xl-2 col-md-4 col-sm-6 col-12">
-                            <img src="../assets/Images/laptop-acer-aspire-3-a315-56-37dv-1_14c2a4369f244da3a18a6a9884da2f0a_2d6425a24d4e40bea850a55c2ff54d59.webp"
-                                 alt="" class="product-item_image">
-                            <div class="image-redirect">
-                                <a href="" class="image-redirect_link">View detail</a>
-                            </div>
-                        </div>
-                        <div class="product-item col-lg-2 col-xl-2 col-md-4 col-sm-6 col-12">
-                            <img src="../assets/Images/laptop-acer-aspire-3-a315-56-37dv-1_14c2a4369f244da3a18a6a9884da2f0a_2d6425a24d4e40bea850a55c2ff54d59.webp"
-                                 alt="" class="product-item_image">
-                            <div class="image-redirect">
-                                <a href="" class="image-redirect_link">View detail</a>
-                            </div>
-                        </div>
-                        <div class="product-item col-lg-2 col-xl-2 col-md-4 col-sm-6 col-12">
-                            <img src="../assets/Images/laptop-acer-aspire-3-a315-56-37dv-1_14c2a4369f244da3a18a6a9884da2f0a_2d6425a24d4e40bea850a55c2ff54d59.webp"
-                                 alt="" class="product-item_image">
-                            <div class="image-redirect">
-                                <a href="" class="image-redirect_link">View detail</a>
-                            </div>
-                        </div>
-                        <div class="product-item col-lg-2 col-xl-2 col-md-4 col-sm-6 col-12">
-                            <img src="../assets/Images/laptop-acer-aspire-3-a315-56-37dv-1_14c2a4369f244da3a18a6a9884da2f0a_2d6425a24d4e40bea850a55c2ff54d59.webp"
-                                 alt="" class="product-item_image">
-                            <div class="image-redirect">
-                                <a href="" class="image-redirect_link">View detail</a>
-                            </div>
-                        </div>
-                        <div class="product-item col-lg-2 col-xl-2 col-md-4 col-sm-6 col-12">
-                            <img src="../assets/Images/laptop-acer-aspire-3-a315-56-37dv-1_14c2a4369f244da3a18a6a9884da2f0a_2d6425a24d4e40bea850a55c2ff54d59.webp"
-                                 alt="" class="product-item_image">
-                            <div class="image-redirect">
-                                <a href="" class="image-redirect_link">View detail</a>
-                            </div>
-                        </div>
-                        <div class="product-item col-lg-2 col-xl-2 col-md-4 col-sm-6 col-12">
-                            <img src="../assets/Images/laptop-acer-aspire-3-a315-56-37dv-1_14c2a4369f244da3a18a6a9884da2f0a_2d6425a24d4e40bea850a55c2ff54d59.webp"
-                                 alt="" class="product-item_image">
-                            <div class="image-redirect">
-                                <a href="" class="image-redirect_link">View detail</a>
-                            </div>
-                        </div>
-                        <div class="product-item col-lg-2 col-xl-2 col-md-4 col-sm-6 col-12">
-                            <img src="../assets/Images/laptop-acer-aspire-3-a315-56-37dv-1_14c2a4369f244da3a18a6a9884da2f0a_2d6425a24d4e40bea850a55c2ff54d59.webp"
-                                 alt="" class="product-item_image">
-                            <div class="image-redirect">
-                                <a href="" class="image-redirect_link">View detail</a>
-                            </div>
-                        </div>
-                        <div class="product-item col-lg-2 col-xl-2 col-md-4 col-sm-6 col-12">
-                            <img src="../assets/Images/laptop-acer-aspire-3-a315-56-37dv-1_14c2a4369f244da3a18a6a9884da2f0a_2d6425a24d4e40bea850a55c2ff54d59.webp"
-                                 alt="" class="product-item_image">
-                            <div class="image-redirect">
-                                <a href="" class="image-redirect_link">View detail</a>
-                            </div>
-                        </div>
-                        <div class="product-item col-lg-2 col-xl-2 col-md-4 col-sm-6 col-12">
-                            <img src="../assets/Images/p-acer-aspire-3-a315-42-r8px-1_14c2a4369f244da3a18a6a9884da2f0a_grande_990d111a99f9421ab10e7a8a31b3dc12.webp"
-                                 alt="" class="product-item_image">
-                            <div class="image-redirect">
-                                <a href="" class="image-redirect_link">View detail</a>
-                            </div>
-                        </div>
-
+                        </c:forEach>
                     </div>
                 </div>
             </div>
@@ -315,7 +234,7 @@
 
         </div>
     </body>
-    <script src="../assets/JavaScript/CommonFeatures.js"></script>
-    <script src="../assets/JavaScript/Product_Page.js"></script>
+    <script src="./assets/JavaScript/CommonFeatures.js"></script>
+    <script src="./assets/JavaScript/Product_Page.js"></script>
 
 </html>

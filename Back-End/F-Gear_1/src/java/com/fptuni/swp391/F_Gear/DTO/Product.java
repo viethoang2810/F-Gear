@@ -15,9 +15,9 @@ public class Product {
 
     private int proID;
     private String proName;
-    private double proOriginalPrice;
-    private double discount;
-    private double proCurrentPrice;
+    private int proOriginalPrice;
+    private int discount;
+    private int proCurrentPrice;
     private String brandName;
     private ArrayList<Images> listImage;
     private ArrayList<Specification> listSpecification;
@@ -26,7 +26,7 @@ public class Product {
     public Product() {
     }
 
-//    cái constructor này để lấy top 8 sản phẩm show ở Homepage nha -DungHQ
+//    cai constructor n�y de lay top 8 san pham show o Homepage nha -DungHQ
     public Product(String brandName, int proID, String proName, double proOriginalPrice, ArrayList<Images> listImage) {
         this.brandName = brandName;
         this.proID = proID;
@@ -35,7 +35,7 @@ public class Product {
         this.listImage = listImage;
     }
 
-    public Product(int proID, String proName, double proOriginalPrice, double discount, double proCurrentPrice, String brandName, ArrayList<Images> listImage, ArrayList<Specification> listSpecification, String proType) {
+    public Product(int proID, String proName, int proOriginalPrice, int discount, int proCurrentPrice, String brandName, ArrayList<Images> listImage, ArrayList<Specification> listSpecification, String proType) {
         this.proID = proID;
         this.proName = proName;
         this.proOriginalPrice = proOriginalPrice;
@@ -46,6 +46,8 @@ public class Product {
         this.listSpecification = listSpecification;
         this.proType = proType;
     }
+
+   
 
     public int getProID() {
         return proID;
@@ -63,11 +65,11 @@ public class Product {
         this.proName = proName;
     }
 
-    public double getProOriginalPrice() {
+    public int getProOriginalPrice() {
         return proOriginalPrice;
     }
 
-    public void setProOriginalPrice(double proOriginalPrice) {
+    public void setProOriginalPrice(int proOriginalPrice) {
         this.proOriginalPrice = proOriginalPrice;
     }
 
@@ -103,20 +105,20 @@ public class Product {
         this.proType = proType;
     }
 
-    public double getDiscount() {
+    public int getDiscount() {
         return discount;
     }
 
-    public void setDiscount(double discount) {
+    public void setDiscount(int discount) {
         this.discount = discount;
     }
 
-    public double getProCurrentPrice() {
+    public int getProCurrentPrice() {
         return proCurrentPrice;
     }
 
-    public void setProCurrentPrice(double proCurrentPrice) {
+    public void setProCurrentPrice(int proCurrentPrice) {
         this.proCurrentPrice = proCurrentPrice;
     }
-
+    
 }

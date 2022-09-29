@@ -5,5 +5,13 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%--<jsp:forward page="/home/index.com"/>--%>
-<jsp:forward page="/Home_Controller?action=homepage"/>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <h1>Index Page !</h1>
+    </body>
+</html>
