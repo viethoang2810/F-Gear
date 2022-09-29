@@ -38,32 +38,35 @@ public class Access_Controller extends HttpServlet {
         String url = "";
         HttpSession session = request.getSession();
         String op = request.getParameter("op").toLowerCase();
-        try {
-            switch (op) {
-                case "login": {
-                    String userName = request.getParameter("userName");
-                    int password = Integer.parseInt(request.getParameter("password"));
-                    Users user = Access_Management.check(userName, password);
-                    if (user != null) {
-                        url = "/views/Homepage.jsp";
-                        session.setAttribute("user", user);
-                    } else {
-                        url = "/views/login.jsp";
-                        request.setAttribute("message", "Incorrect Username or Password");
-                    }
-                }
-                break;
-                case "logout": {
-                    session.invalidate();
-                    url = "/views/Homepage.jsp";
-                }
-                break;
+        if (op != null) {
+            try {
 
+                switch (op) {
+                    case "login": {
+                        String userName = request.getParameter("userName");
+                        int password = Integer.parseInt(request.getParameter("password"));
+                        Users user = Access_Management.check(userName, password);
+                        if (user != null) {
+                                url = "/views/Homepage.jsp";
+                            session.setAttribute("user", user);
+                        } else {
+                            url = "/views/login.jsp";
+                            request.setAttribute("message", "Incorrect Username or Password");
+                        }
+                    }
+                    break;
+                    case "logout": {
+                        session.invalidate();
+                        url = "/views/Homepage.jsp";
+                    }
+                    break;
+
+                }
+            } catch (Exception e) {
+                log("Error at MainController: " + e.toString());
+            } finally {
+                request.getRequestDispatcher(url).forward(request, response);
             }
-        } catch (Exception e) {
-            log("Error at MainController: " + e.toString());
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
         }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
