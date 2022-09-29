@@ -69,6 +69,7 @@ const handleRemoveClassName = (listOfLink,index,className) =>{
       }
   }
 }
+
 // Handle redirect   page 
 var userRedirect = document.querySelector('.navigator-user-account');
 var  homePage = document.querySelector('.home');
@@ -78,17 +79,29 @@ var  salePage = document.querySelector('.sale');
 
 homePage.onclick = () =>{
   console.log(123);
-  window.location.replace('http://127.0.0.1:5500/Front-End/User_Profile.html');
+   window.location.replace('http://localhost:8080/F-Gear/views/HomePage.jsp');
+   listOfLink.forEach(linkItem => {
+    linkItem.addEventListener('click', () =>{
+      handleRemoveClassName(listOfLink,getIndexElement(listOfLink,'active'),'active')
+      linkItem.classList.add('active')
+    })
+})
 }
 storePage.onclick = () =>{
   console.log(123);
-  window.location.replace('http://127.0.0.1:5500/Front-End/User_Profile.html');
+ window.location.replace('http://localhost:8080/F-Gear/views/Product_Page.jsp');
+ listOfLink.forEach(linkItem => {
+    linkItem.addEventListener('click', () =>{
+      handleRemoveClassName(listOfLink,getIndexElement(listOfLink,'active'),'active')
+      linkItem.classList.add('active')
+    })
+})
+}
+salePage.onclick = () =>{
+  console.log(123);
+ window.location.replace('http://localhost:8080/F-Gear/views/Sale.jsp');
 }
 userRedirect.onclick = () =>{
   console.log(123);
-  window.location.replace('http://127.0.0.1:5500/Front-End/User_Profile.html');
-}
-userRedirect.onclick = () =>{
-  console.log(123);
-  window.location.replace('http://127.0.0.1:5500/Front-End/User_Profile.html');
+  window.location.replace('http://localhost:8080/F-Gear/views/User_Profile.jsp');
 }

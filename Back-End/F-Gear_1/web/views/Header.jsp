@@ -1,3 +1,4 @@
+﻿<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header</title>
-    <link rel="stylesheet" href="CSS/GlobalStyles.css"> <!-- This file contains all of common styles of pages-->
-    <link rel="stylesheet" href="CSS/Responive.css">
-    <link rel="stylesheet" href="CSS/Detail_Product.css">
+    <link rel="stylesheet" href="../assets/CSS/GlobalStyles.css"> <!-- This file contains all of common styles of pages-->
+    <link rel="stylesheet" href="../assets/CSS/Responive.css">
+    <link rel="stylesheet" href="../assets/CSS/Detail_Product.css">
 
-    <link rel="icon" href="Assets/Images/pinterest_board_photo.png">
+    <link rel="icon" href="../assets/Assets/Images/pinterest_board_photo.png">
     <!-- Font Awesome link-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
@@ -27,7 +28,7 @@
             <header class="header-wrapper col-lg-11 col-sm-11 col-md-11 col-xl-11 col-11" style="height:100px;">
                 <div class="header-logo  col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2" style="height:100%;">
                     <a href="" class="header-logo_link">
-                        <img src="Assets/Images/Logo_After_Login.png" alt="F-Gear" class="header-logo_image center">
+                        <img src="../assets/Images/Logo_After_Login.png" alt="F-Gear" class="header-logo_image center">
                     </a>
                 </div>
                 <div class="header-navigator col-6 col-sm-6 col-md-7 col-lg-10 col-xl-10 " style="height:100%;">
@@ -40,26 +41,26 @@
                                 <nav class="navigator">
                                     <ul class="navigator-list">
                                         <li class="navigator-item">
-                                            <span class="navigator-item_link active">Home</span>
+                                            <span class="navigator-item_link active home">Home</span>
                                         </li>
                                         <li class="navigator-item">
-                                            <span class="navigator-item_link ">Store</span>
+                                            <span class="navigator-item_link store">Store</span>
                                         </li>
                                         <li class="navigator-item">
-                                            <span class="navigator-item_link ">Sale</span>
+                                            <span class="navigator-item_link sale">Sale</span>
                                         </li>
                                     </ul>
                                 </nav>
                             </div>
                             <div class="navigatior-user">
                                 <div class="user navigator-user-cart">
-                                    <a href="" class="user-cart_link" style="color: #333;font-size: 1.6rem;">
+                                    <a href="../views/Cart.jsp" class="user-cart_link" style="color: #333;font-size: 1.6rem;">
                                         <i class="fa-solid fa-cart-shopping"></i>
                                     </a>
                                 </div>
                                 <div class=" user navigator-user-account">
                                     <div class="user-account-avatar">
-                                        <img src="Assets/Images/280013939_368144518688847_7624068726298628073_n.jpg"
+                                        <img src="../assets/Images/280013939_368144518688847_7624068726298628073_n.jpg"
                                             alt="VietHoang" class="user-account-image">
                                     </div>
                                     <div class="user-welcome">
@@ -166,7 +167,7 @@
         </div>
     </div>
 </body>
-<script src="JavaScript/Detail_Product.js"></script>
 
-<script src="JavaScript/CommonFeatures.js"></script>
+
+<script src="../assets/JavaScript/CommonFeatures.js"></script>
 </html>
