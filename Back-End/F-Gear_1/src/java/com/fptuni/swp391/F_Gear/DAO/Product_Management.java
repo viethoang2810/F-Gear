@@ -69,9 +69,9 @@ public class Product_Management {
 
                     product.setProID(Integer.parseInt(rs.getString("ProID")));
                     product.setProName(rs.getString("ProName"));
-                    product.setProOriginalPrice(Double.parseDouble(rs.getString("OriginalPrice")));
-                    product.setDiscount(Double.parseDouble(rs.getString("Discount")));
-                    product.setProCurrentPrice(Double.parseDouble(rs.getString("CurrentPrice")));
+                    product.setProOriginalPrice((int) Double.parseDouble(rs.getString("OriginalPrice")));
+                    product.setDiscount((int) Double.parseDouble(rs.getString("Discount")));
+                    product.setProCurrentPrice((int) Double.parseDouble(rs.getString("CurrentPrice")));
                     product.setBrandName(rs.getString("BrandName"));
                     product.setProType(rs.getString("CateName"));
                     listOfImages.add(new Images(rs.getString("ImageID"), rs.getString("Url")));
