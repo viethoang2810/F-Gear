@@ -11,27 +11,9 @@
     </head>
 
     <body>
-        <!-- <header class="header">
-            <div class="header-logo-container">
-                <img class="header-logo"
-                    src="https://th.bing.com/th/id/R.af2b82154a39f7ddd7e1cbcddf32540c?rik=VNWwpCivVSf%2f0g&pid=ImgRaw&r=0"
-                    alt="logo-here" />
-            </div>
-            <div class="header-link">
-                <ul class="header-list-link">
-                    <li class="active"><a href="./index.html">Home</a></li>
-                    <li>Store</li>
-                    <li>Sales</li>
-                </ul>
-                <div class="header-list-btn">
-                    <button style="background-color: transparent;"><a href="./register.html">sign-up</a></button>
-                    <button><a href="./login.html">sign-in</a></button>
-                </div>
-            </div>
-        </header> -->
         <div class="login">
             <img class="login-logo"
-                 src="https://th.bing.com/th/id/R.af2b82154a39f7ddd7e1cbcddf32540c?rik=VNWwpCivVSf%2f0g&pid=ImgRaw&r=0">
+                 src="../assets/Images/Logo_After_Login.png">
             <form class="login-form" action="accesscontroller">
                 <input class="login-form-text" type="text" placeholder="Username" name="userName" value="${user.userName}" />
                 <input class="login-form-text" type="password" placeholder="Password" name="password" value="${user.password}" />
@@ -46,7 +28,7 @@
                 <button class="login-form-submit" name="op" value="login" >Go to store</button>
             </form>
             <button class="login-google">
-                <img src="./Assets/Images/" />
+                <img src="../assets/Images/R.png" />
                 <a href=""> Login with Google</a>
             </button>
             <div class="login-create">
