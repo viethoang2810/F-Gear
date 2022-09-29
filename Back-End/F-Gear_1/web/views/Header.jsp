@@ -64,7 +64,14 @@
                                             alt="VietHoang" class="user-account-image">
                                     </div>
                                     <div class="user-welcome">
+                                       <div class="user-welcome">
                                         <span class="welcome-content">Welcome viethoang</span>
+                                        <div class="logout-wrapper">
+                                            <i class="fa-solid fa-power-off"></i>
+                                            <a href="" class="logout_link">Logout</a>
+                                        </div>
+                                    </div>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
