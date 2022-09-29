@@ -7,6 +7,9 @@ package com.fptuni.swp391.F_Gear.DAO;
 
 import com.fptuni.swp391.F_Gear.DTO.Users;
 import com.fptuni.swp391.F_Gear.Utils.DBUtils;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,14 +33,14 @@ public class Access_Management {
         if (rs.next()) {
             user = new Users();
             user.setUserName(rs.getString("userName"));
-            user.setPassword(rs.getInt("password"));
+            user.setPassword(rs.getString("password"));
         }
         con.close();
         return user;
     }
     
     //check của register
-    public static Users check(String userName) throws SQLException, ClassNotFoundException {
+    public Users check(String userName) throws SQLException, ClassNotFoundException {
         Users user = null;
         Connection con = DBUtils.getConnection();
         String sql = "select UserName from Users where UserName=?";
@@ -52,12 +55,12 @@ public class Access_Management {
         return user;
     }
     
-    public static boolean signUp(Users u) throws SQLException {
+    public boolean signUp(Users u) throws SQLException {
         boolean result = true;
         Connection con = DBUtils.getConnection();
         PreparedStatement stm = con.prepareStatement("insert into Users (UserName, Password, PhoneNumber) values(?,?,?)");
         stm.setString(1, u.getUserName());
-        stm.setInt(2, u.getPassword());
+        stm.setString(2, u.getPassword());
         stm.setInt(3, u.getPhoneNumber());
         int count = stm.executeUpdate();
         if (count == 0) {
@@ -66,4 +69,26 @@ public class Access_Management {
         con.close();
         return result;
     }
+    
+    //hàm này dùng để mã hoá mật khẩu
+   public String getMD5(String input) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(input.getBytes());
+            return convertByteToHex1(messageDigest);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public String convertByteToHex1(byte[] data) {
+        BigInteger number = new BigInteger(1, data);
+        String hashtext = number.toString(16);
+        // Now we need to zero pad it if you actually want the full 32 chars.
+        while (hashtext.length() < 32) {
+            hashtext = "0" + hashtext;
+        }
+        return hashtext;
+    }
+    
 }

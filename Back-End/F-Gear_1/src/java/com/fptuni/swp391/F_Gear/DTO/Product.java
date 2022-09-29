@@ -15,9 +15,9 @@ public class Product {
 
     private int proID;
     private String proName;
-    private double proOriginalPrice;
-    private double discount;
-    private double proCurrentPrice;
+    private int proOriginalPrice;
+    private int discount;
+    private int proCurrentPrice;
     private String brandName;
     private ArrayList<Images> listImage;
     private ArrayList<Specification> listSpecification;
@@ -26,7 +26,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(int proID, String proName, double proOriginalPrice, double discount, double proCurrentPrice, String brandName, ArrayList<Images> listImage, ArrayList<Specification> listSpecification, String proType) {
+    public Product(int proID, String proName, int proOriginalPrice, int discount, int proCurrentPrice, String brandName, ArrayList<Images> listImage, ArrayList<Specification> listSpecification, String proType) {
         this.proID = proID;
         this.proName = proName;
         this.proOriginalPrice = proOriginalPrice;
@@ -60,7 +60,7 @@ public class Product {
         return proOriginalPrice;
     }
 
-    public void setProOriginalPrice(double proOriginalPrice) {
+    public void setProOriginalPrice(int proOriginalPrice) {
         this.proOriginalPrice = proOriginalPrice;
     }
 
@@ -100,7 +100,7 @@ public class Product {
         return discount;
     }
 
-    public void setDiscount(double discount) {
+    public void setDiscount(int discount) {
         this.discount = discount;
     }
 
@@ -108,7 +108,7 @@ public class Product {
         return proCurrentPrice;
     }
 
-    public void setProCurrentPrice(double proCurrentPrice) {
+    public void setProCurrentPrice(int proCurrentPrice) {
         this.proCurrentPrice = proCurrentPrice;
     }
     
