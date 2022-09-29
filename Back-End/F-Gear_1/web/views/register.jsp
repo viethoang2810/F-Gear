@@ -38,10 +38,10 @@
         <img class="login-logo"
             src="./assests/Logo.png">
         <form class="login-form" action="./accesscontroller">
-            <input class="login-form-text" type="text" name="userName" placeholder="Username" />
-            <input class="login-form-text" type="password" name="password" placeholder="Password" />
-            <input class="login-form-text" type="password" name="cofirm" placeholder="Confirm password" />
-            <input class="login-form-text" type="number" name="phone" placeholder="Phone number" />
+            <input required class="login-form-text" type="text" name="userName" placeholder="Username" value="${userName}"/>
+            <input required class="login-form-text" type="password" name="password" placeholder="Password" value="${password}"/>
+            <input required class="login-form-text" type="password" name="cofirm" placeholder="Confirm password" value="${cofirm}"/>
+            <input required class="login-form-text" type="number" name="phone" placeholder="Phone number" value="${phone}"/>
             <button class="login-form-submit" name="op" value="register">Join with us</button>
             <br/>
             <i style="color: red">${message}</i>

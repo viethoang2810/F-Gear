@@ -66,6 +66,9 @@ public class Access_Controller extends HttpServlet {
                     int phone = Integer.parseInt(request.getParameter("phone"));
                     if (password != cofirm) {
                         url = "/views/register.jsp";
+                        request.setAttribute("userName", userName);
+                        request.setAttribute("password", password);
+                        request.setAttribute("phone", phone);
                         request.setAttribute("message", "Passwords do not match!");
                     } else {
                         Users user = Access_Management.check(userName);
@@ -80,13 +83,13 @@ public class Access_Controller extends HttpServlet {
                                 url = "/views/login.jsp";
                             } else {
                                 url = "/views/register.jsp";
-                                request.setAttribute("message", "Username is already taken.");
+                                request.setAttribute("message", "Unable to register.");
                             }
                         } else {
                             url = "/views/register.jsp";
                             request.setAttribute("message", "Username is already taken.");
                         }
-                    }
+                    }                
                 }
                 break;
 
