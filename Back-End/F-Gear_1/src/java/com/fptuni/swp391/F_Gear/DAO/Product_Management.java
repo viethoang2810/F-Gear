@@ -119,4 +119,36 @@ public class Product_Management {
         }
         return false;
     }
+
+ public List<Product> selectTop8InHomepage() {
+        List<Product> list = new ArrayList<>();
+        String query = "SELECT top 8 b.BrandName, p.ProID, p.ProName, p.OriginalPrice, i.ImageID, i.Url  \n"
+                + "FROM Category c, Brand b, Product p, Images i \n"
+                + "  WHERE c.CateID = p.CateID AND b.BrandID = p.BrandID AND i.ProID = p.ProID AND i.ImageTypeID = 1 AND c.CateName LIKE '%Laptop%'";
+        try {
+            Connection con = DBUtils.getConnection();
+            PreparedStatement stm = con.prepareStatement(query);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+//                int pd = listOfProduct.get(listOfProduct.size() - 1).getProID();
+                Product p = new Product();
+//                Images i = new Images();
+//                listOfImages = new ArrayList<>();
+                p.setBrandName(rs.getString("BrandName"));
+                p.setProID(Integer.parseInt(rs.getString("ProID")));
+                p.setProName(rs.getString("ProName"));
+                p.setProOriginalPrice(Double.parseDouble(rs.getString("OriginalPrice")));
+//                i.setImageID(rs.getString("ImageID"));
+//                i.setUrl(rs.getString("Url"));
+                listOfImages.add(new Images(rs.getString("ImageID"), rs.getString("Url")));
+//                listOfImages.add(i);
+                p.setListImage(listOfImages);
+                list.add(p);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Product_Management.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
 }

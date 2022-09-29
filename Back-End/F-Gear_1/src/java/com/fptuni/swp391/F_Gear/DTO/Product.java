@@ -26,6 +26,15 @@ public class Product {
     public Product() {
     }
 
+//    cai constructor n�y de lay top 8 san pham show o Homepage nha -DungHQ
+    public Product(String brandName, int proID, String proName, double proOriginalPrice, ArrayList<Images> listImage) {
+        this.brandName = brandName;
+        this.proID = proID;
+        this.proName = proName;
+        this.proOriginalPrice = proOriginalPrice;
+        this.listImage = listImage;
+    }
+
     public Product(int proID, String proName, int proOriginalPrice, int discount, int proCurrentPrice, String brandName, ArrayList<Images> listImage, ArrayList<Specification> listSpecification, String proType) {
         this.proID = proID;
         this.proName = proName;
