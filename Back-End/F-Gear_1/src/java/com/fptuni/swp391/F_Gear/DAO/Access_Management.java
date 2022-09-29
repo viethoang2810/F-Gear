@@ -18,6 +18,7 @@ import java.sql.SQLException;
  */
 public class Access_Management {
 
+    //check của login
     public static Users check(String userName, int password) throws SQLException, ClassNotFoundException {
         Users user = null;
         Connection con = DBUtils.getConnection();
@@ -33,5 +34,36 @@ public class Access_Management {
         }
         con.close();
         return user;
+    }
+    
+    //check của register
+    public static Users check(String userName) throws SQLException, ClassNotFoundException {
+        Users user = null;
+        Connection con = DBUtils.getConnection();
+        String sql = "select UserName from Users where UserName=?";
+        PreparedStatement stm = con.prepareStatement(sql);
+        stm.setString(1, userName);
+        ResultSet rs = stm.executeQuery();
+        if (rs.next()) {
+            user = new Users();
+            user.setUserName(rs.getString("userName"));
+        }
+        con.close();
+        return user;
+    }
+    
+    public static boolean signUp(Users u) throws SQLException {
+        boolean result = true;
+        Connection con = DBUtils.getConnection();
+        PreparedStatement stm = con.prepareStatement("insert into Users (UserName, Password, PhoneNumber) values(?,?,?)");
+        stm.setString(1, u.getUserName());
+        stm.setInt(2, u.getPassword());
+        stm.setInt(3, u.getPhoneNumber());
+        int count = stm.executeUpdate();
+        if (count == 0) {
+            result = false;
+        }
+        con.close();
+        return result;
     }
 }

@@ -59,6 +59,37 @@ public class Access_Controller extends HttpServlet {
                 }
                 break;
 
+                case "register": {
+                    String userName = request.getParameter("userName");
+                    int password = Integer.parseInt(request.getParameter("password"));
+                    int cofirm = Integer.parseInt(request.getParameter("cofirm"));
+                    int phone = Integer.parseInt(request.getParameter("phone"));
+                    if (password != cofirm) {
+                        url = "/views/register.jsp";
+                        request.setAttribute("message", "Passwords do not match!");
+                    } else {
+                        Users user = Access_Management.check(userName);
+                        if (user == null) {
+                            user = new Users();
+                            user.setUserName(userName);
+                            user.setPassword(password);
+                            user.setPhoneNumber(phone);
+                            request.setAttribute("user", user);
+
+                            if (Access_Management.signUp(user)) {
+                                url = "/views/login.jsp";
+                            } else {
+                                url = "/views/register.jsp";
+                                request.setAttribute("message", "Username is already taken.");
+                            }
+                        } else {
+                            url = "/views/register.jsp";
+                            request.setAttribute("message", "Username is already taken.");
+                        }
+                    }
+                }
+                break;
+
             }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());
