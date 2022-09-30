@@ -5,23 +5,22 @@
  */
 package com.fptuni.swp391.F_Gear.Controllers;
 
-import com.fptuni.swp391.F_Gear.DAO.Access_Management;
-import com.fptuni.swp391.F_Gear.DTO.Users;
+import com.fptuni.swp391.F_Gear.DAO.Product_Management;
+import com.fptuni.swp391.F_Gear.DTO.Product;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ADMIN
+ * @author Admin
  */
-@WebServlet(name = "Access_Controller", urlPatterns = {"/Access/*"})
-public class Access_Controller extends HttpServlet {
+@WebServlet(name = "Detail_Controller", urlPatterns = {"/Detail"})
+public class Detail_Controller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,41 +34,18 @@ public class Access_Controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "";
-        HttpSession session = request.getSession();
-        String op = request.getParameter("op").toLowerCase();
-        if (op != null) {
-            try {
-                switch (op) {
-                    case "login": {
-                        String userName = request.getParameter("userName");
-                        int password = Integer.parseInt(request.getParameter("password"));
-                        Users user = Access_Management.check(userName, password);
-                        if (user != null) {
-                            session.setAttribute("user", user);
-                            response.sendRedirect("./Home/HomePage");
-                            return;
-                        } else {
-                            url = "/views/login.jsp";
-                            request.setAttribute("message", "Incorrect Username or Password");
-                        }
-                    }
-                    break;
-                    case "logout": {
-                        session.invalidate();
-                        url = "/views/Homepage.jsp";
-                    }
-                    break;
+        int proID = Integer.parseInt(request.getParameter("proID"));
+        Product_Management pm = new Product_Management();
+        ArrayList<Product> listOfProduct = new ArrayList<>();
+        listOfProduct = pm.getAllOfProduct();
 
-                }
-            } catch (Exception e) {
-                log("Error at MainController: " + e.toString());
-            }
-            request.getRequestDispatcher(url).forward(request, response);
-        }
+        Product productFound = pm.getProductById(listOfProduct,proID);
+        
+        request.setAttribute("productFound",productFound);
+        request.getRequestDispatcher("./views/Detail_Product.jsp").forward(request, response);
     }
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

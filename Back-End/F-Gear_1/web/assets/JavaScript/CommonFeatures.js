@@ -79,7 +79,7 @@ var  salePage = document.querySelector('.sale');
 
 homePage.onclick = () =>{
   console.log(123);
-   window.location.replace('http://localhost:8080/F-Gear/views/HomePage.jsp');
+   window.location.replace('http://localhost:8080/F-Gear/Home/Homepage');
    listOfLink.forEach(linkItem => {
     linkItem.addEventListener('click', () =>{
       handleRemoveClassName(listOfLink,getIndexElement(listOfLink,'active'),'active')
@@ -89,7 +89,7 @@ homePage.onclick = () =>{
 }
 storePage.onclick = () =>{
   console.log(123);
- window.location.replace('http://localhost:8080/F-Gear/views/Product_Page.jsp');
+ window.location.replace('http://localhost:8080/F-Gear/Product/Store');
  listOfLink.forEach(linkItem => {
     linkItem.addEventListener('click', () =>{
       handleRemoveClassName(listOfLink,getIndexElement(listOfLink,'active'),'active')
@@ -99,9 +99,9 @@ storePage.onclick = () =>{
 }
 salePage.onclick = () =>{
   console.log(123);
- window.location.replace('http://localhost:8080/F-Gear/views/Sale.jsp');
+ window.location.replace('http://localhost:8080/F-Gear/Sale/ProductSale');
 }
 userRedirect.onclick = () =>{
   console.log(123);
-  window.location.replace('http://localhost:8080/F-Gear/views/User_Profile.jsp');
+  window.location.replace('http://localhost:8080/F-Gear/Profile/User_Profile');
 }

@@ -33,28 +33,24 @@ public class Product_Management {
         PreparedStatement stm = null;
         ResultSet rs = null;
 
-        String sql = "SELECT P.ProID, \n"
-                + "	   P.ProName,\n"
-                + "	   P.OriginalPrice,\n"
-                + "	   P.CurrentPrice,\n"
-                + "	   I.ImageID,\n"
-                + "	   I.Url,\n"
-                + "	   B.BrandName,\n"
-                + "	   C.CateName,\n"
-                + "	   S.SpecName,\n"
-                + "	   PS.Detail\n"
-                + "FROM dbo.Product P ,\n"
-                + "	 dbo.Images I , \n"
-                + "	 dbo.Brand B ,\n"
-                + "	 dbo.Category C ,\n"
-                + "	 dbo.Specification S,\n"
-                + "	 dbo.ProSpec PS\n"
-                + "WHERE P.ProID =I.ImageID AND \n"
-                + "	  P.BrandID = B.BrandID AND \n"
-                + "	  P.CateID = C.CateID AND\n"
-                + "	  PS.ProID = P.ProID AND\n"
-                + "	  S.SpecID = PS.SpecID AND \n"
-                + "	  P.ProID = I.ProID";
+       String sql = "SELECT P.ProID, "
+                + "P.ProName,"
+                + "P.OriginalPrice,"
+                + "P.Discount,"
+                + "P.CurrentPrice,"
+                + "I.ImageID,"
+                + "I.Url,"
+                + "B.BrandName,"
+                + "C.CateName,"
+                + "S.SpecName,"
+                + "PS.Detail"
+                + " FROM dbo.Product P ,"
+                + "dbo.Images I , "
+                + "dbo.Brand B ,"
+                + "dbo.Category C ,"
+                + "dbo.Specification S,"
+                + "dbo.ProSpec PS "
+                + " WHERE P.BrandID = B.BrandID AND P.CateID = C.CateID AND I.ProID = P.ProID AND S.SpecID = PS.SpecID AND PS.ProID = P.ProID  ";
         try {
             con = DBUtils.getConnection();
             stm = con.prepareStatement(sql);
@@ -157,5 +153,14 @@ public class Product_Management {
             Logger.getLogger(Product_Management.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
+    }
+    
+    public Product getProductById(ArrayList<Product> listProduct , int id){
+        for (Product product : listProduct) {
+            if(product.getProID() == id){
+                return product ;
+            }
+        }
+        return null;
     }
 }

@@ -172,7 +172,7 @@
             <div class="row text-center" style="z-index:10;">
                 <div class="image-wrapper col-xl-12 col-md-12 col-lg-12 col-sm-12 col-12 "
                      style="width:100% ; min-height: 200px;">
-                    <img src="./assets/Images/676vn_1890_cls_18aa655da8844630bd62a071e80d5ace.webp" alt=""
+                    <img src="../assets/Images/676vn_1890_cls_18aa655da8844630bd62a071e80d5ace.webp" alt=""
                          class="image-represent" style="width:100% ; height:100%;">
                 </div>
             </div>
@@ -201,7 +201,7 @@
                                 <img src="${product.listImage.get(0).url}"
                                      alt="" class="product-item_image">
                                 <div class="image-redirect">
-                                    <a href="?proID=${product.proID}" class="image-redirect_link">View detail</a>
+                                    <a href="./Detail?proID=${product.proID}" class="image-redirect_link">View detail</a>
                                 </div>
                             </div>
                         </c:forEach>

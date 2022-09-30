@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author dell
  */
-@WebServlet(name = "Home_Controller", urlPatterns = {"/Home_Controller/*"})
+@WebServlet(name = "Home_Controller", urlPatterns = {"/Home/*"})
 public class Home_Controller extends HttpServlet {
 
     /**
@@ -34,21 +34,24 @@ public class Home_Controller extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getParameter("action");
-//        System.out.println(action);
-        switch (action) {
-            case "homepage":
-                Product_Management pm = new Product_Management();
-                List<Product> listTop8Pro = pm.selectTop8InHomepage();
-                System.out.println(pm.selectTop8InHomepage());
-                
-                request.setAttribute("listHomepage", listTop8Pro);
-                request.getRequestDispatcher("/views/Homepage.jsp").forward(request, response);
-                break;
-            default:
-                break;
-        }
-
+//        String action = request.getParameter("action");
+////        System.out.println(action);
+//        if (action != null) {
+//            switch (action) {
+//                case "homepage":
+//                   
+//
+//                    break;
+//                default:
+//                    break;
+//            }
+//        }
+        Product_Management pm = new Product_Management();
+        List<Product> listTop8Pro = pm.selectTop8InHomepage();
+        System.out.println(pm.selectTop8InHomepage());
+        
+        request.setAttribute("listHomepage", listTop8Pro);
+        request.getRequestDispatcher("/views/Homepage.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
