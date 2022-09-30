@@ -16,7 +16,7 @@
                  src="../assets/Images/Logo_After_Login.png">
             <form class="login-form" action="./Access" method="POST">
                 <input class="login-form-text" type="text" placeholder="Username" name="userName" value="${user.userName}" />
-                <input class="login-form-text" type="password" placeholder="Password" name="password" value="${user.password}" />
+                <input class="login-form-text" type="password" placeholder="Password" name="password"/>
                 <i>${message}</i>
                 <div class="logo-form-user-action">
                     <div>
