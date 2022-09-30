@@ -6,13 +6,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/login.css">
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="../assets/CSS/register.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
         integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="CSS/responsive.css">
-    <title>Login</title>
+      <link rel="stylesheet" href="../assets/CSS/responsive.css"/>
+    <title>Register</title>
 </head>
 
 <body>
@@ -36,6 +35,7 @@
     </header> -->
     <div class="login">
         <img class="login-logo"
+<<<<<<< HEAD
             src="./assests/Logo.png">
         <form class="login-form" action="./accesscontroller" method="post">
             <input required class="login-form-text" type="text" name="userName" placeholder="Username" value="${userName}"/>
@@ -45,6 +45,15 @@
             <button class="login-form-submit" name="op" value="register">Join with us</button>
             <br/>
             <i style="color: red">${message}</i>
+=======
+             src="../assets/Images/Logo_After_Login.png">
+        <form class="login-form">
+            <input class="login-form-text" type="text" placeholder="Username" />
+            <input class="login-form-text" type="password" placeholder="Password" />
+            <input class="login-form-text" type="password" placeholder="Confirm password" />
+            <input class="login-form-text" type="text" placeholder="Phone number" />
+            <button class="login-form-submit">Join with us</button>
+>>>>>>> main
         </form>
         <div class="login-create">
             <a href="./login.html">You already have account ?</a>

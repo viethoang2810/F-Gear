@@ -3,7 +3,49 @@
     display: flex;
     font-size: 1.4rem;
 }
+.logout-wrapper{
+    position: absolute;
+    background-color: rgb(19, 116, 235);
+    background-image: linear-gradient(rgb(19, 116, 235),rgba(12, 123, 227, 0.635));
+    top: 40px;
+    width: 100%;
+    border:2px solid #333;
+    border-radius: 5px;
+  
+    align-items: center;
+    justify-content: center;
+    transform:translateY(5px);
+    transition: all .4s linear;
+    color: #fff;
+    display: none;
+}
+.user-welcome:hover .logout-wrapper{
+    display: flex;
+}
 
+.logout-wrapper:hover a{
+    color: #fff;
+
+}
+.logout-wrapper a{
+    text-decoration: none;
+    margin-left: 20px;
+    color: #fff;
+}
+.user-welcome{
+    position: relative;
+    cursor: pointer;
+}
+.user-welcome::after{
+    position: absolute;
+    width: 100%;
+    height: 25px;
+    background-color: transparent;
+    top: 30px;
+    left: 0;
+    content: " ";
+    
+}
 .header {
     background-color: rgb(0, 191, 255);
     z-index: 4;

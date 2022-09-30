@@ -22,10 +22,22 @@ public class Product {
     private ArrayList<Images> listImage;
     private ArrayList<Specification> listSpecification;
     private String proType;
-
+    
     public Product() {
     }
 
+<<<<<<< HEAD
+=======
+//    cái constructor này để lấy top 8 sản phẩm show ở Homepage nha -DungHQ
+    public Product(String brandName, int proID, String proName, int proOriginalPrice, ArrayList<Images> listImage) {
+        this.brandName = brandName;
+        this.proID = proID;
+        this.proName = proName;
+        this.proOriginalPrice = proOriginalPrice;
+        this.listImage = listImage;
+    }
+
+>>>>>>> main
     public Product(int proID, String proName, int proOriginalPrice, int discount, int proCurrentPrice, String brandName, ArrayList<Images> listImage, ArrayList<Specification> listSpecification, String proType) {
         this.proID = proID;
         this.proName = proName;
@@ -37,8 +49,6 @@ public class Product {
         this.listSpecification = listSpecification;
         this.proType = proType;
     }
-
-   
 
     public int getProID() {
         return proID;
@@ -56,12 +66,28 @@ public class Product {
         this.proName = proName;
     }
 
-    public double getProOriginalPrice() {
+    public int getProOriginalPrice() {
         return proOriginalPrice;
     }
 
     public void setProOriginalPrice(int proOriginalPrice) {
         this.proOriginalPrice = proOriginalPrice;
+    }
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
+    public int getProCurrentPrice() {
+        return proCurrentPrice;
+    }
+
+    public void setProCurrentPrice(int proCurrentPrice) {
+        this.proCurrentPrice = proCurrentPrice;
     }
 
     public String getBrandName() {
@@ -96,6 +122,7 @@ public class Product {
         this.proType = proType;
     }
 
+<<<<<<< HEAD
     public double getDiscount() {
         return discount;
     }
@@ -111,5 +138,8 @@ public class Product {
     public void setProCurrentPrice(int proCurrentPrice) {
         this.proCurrentPrice = proCurrentPrice;
     }
+=======
+>>>>>>> main
     
+
 }

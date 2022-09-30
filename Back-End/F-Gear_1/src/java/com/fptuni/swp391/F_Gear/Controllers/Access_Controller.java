@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author ADMIN
  */
-@WebServlet(name = "Access_Controller", urlPatterns = {"/accesscontroller"})
+@WebServlet(name = "Access_Controller", urlPatterns = {"/Access/*"})
 public class Access_Controller extends HttpServlet {
 
     /**
@@ -38,6 +38,7 @@ public class Access_Controller extends HttpServlet {
         String url = "";
         HttpSession session = request.getSession();
         String op = request.getParameter("op").toLowerCase();
+<<<<<<< HEAD
         Access_Management a = new Access_Management();
         try {
             switch (op) {
@@ -51,15 +52,32 @@ public class Access_Controller extends HttpServlet {
                     } else {
                         url = "/views/login.jsp";
                         request.setAttribute("message", "Incorrect Username or Password");
+=======
+        if (op != null) {
+            try {
+                switch (op) {
+                    case "login": {
+                        String userName = request.getParameter("userName");
+                        int password = Integer.parseInt(request.getParameter("password"));
+                        Users user = Access_Management.check(userName, password);
+                        if (user != null) {
+                            session.setAttribute("user", user);
+                            response.sendRedirect("./Home/HomePage");
+                            return;
+                        } else {
+                            url = "/views/login.jsp";
+                            request.setAttribute("message", "Incorrect Username or Password");
+                        }
+>>>>>>> main
                     }
-                }
-                break;
-                case "logout": {
-                    session.invalidate();
-                    url = "/views/Homepage.jsp";
-                }
-                break;
+                    break;
+                    case "logout": {
+                        session.invalidate();
+                        url = "/views/Homepage.jsp";
+                    }
+                    break;
 
+<<<<<<< HEAD
                 case "register":
                     
                     String userName = request.getParameter("userName");
@@ -96,10 +114,12 @@ public class Access_Controller extends HttpServlet {
                     }                               
                 break;
 
+=======
+                }
+            } catch (Exception e) {
+                log("Error at MainController: " + e.toString());
+>>>>>>> main
             }
-        } catch (Exception e) {
-            log("Error at MainController: " + e.toString());
-        } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
     }

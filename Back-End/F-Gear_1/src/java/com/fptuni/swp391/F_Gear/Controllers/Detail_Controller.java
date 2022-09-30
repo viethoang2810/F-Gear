@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "Product_Controller", urlPatterns = {"/Product/*"})
-public class Product_Controller extends HttpServlet {
+@WebServlet(name = "Detail_Controller", urlPatterns = {"/Detail"})
+public class Detail_Controller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,12 +34,15 @@ public class Product_Controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        ArrayList<Product> listOfProduct = new ArrayList<>();
+        int proID = Integer.parseInt(request.getParameter("proID"));
         Product_Management pm = new Product_Management();
-        
+        ArrayList<Product> listOfProduct = new ArrayList<>();
         listOfProduct = pm.getAllOfProduct();
-        request.setAttribute("listOfProduct", listOfProduct);
-        request.getRequestDispatcher("/views/Product_Page.jsp").forward(request,response);
+
+        Product productFound = pm.getProductById(listOfProduct,proID);
+        
+        request.setAttribute("productFound",productFound);
+        request.getRequestDispatcher("./views/Detail_Product.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

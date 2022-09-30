@@ -21,62 +21,62 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     </head>
-    
+
     <body>
         <div class="container-fluid">
             <!-- Header -->
             <%@include file="./Header.jsp" %>
 
-<!--            <div class="row header">
-                <header class="header-wrapper col-lg-11 col-sm-11 col-md-11 col-xl-11 col-11" style="height:100px;">
-                    <div class="header-logo  col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2" style="height:100%;">
-                        <a href="" class="header-logo_link">
-                            <img src="./assets/Images/Logo_After_Login.png" alt="F-Gear" class="header-logo_image center">
-                        </a>
-                    </div>
-                    <div class="header-navigator col-6 col-sm-6 col-md-7 col-lg-10 col-xl-10 " style="height:100%;">
-                        <div class="btn-menu" style="display:none; height:100%;cursor: pointer;">
-                            <i class="fa-solid fa-bars"></i>
-                        </div>
-                        <div class="navigator-wrapper">
-                            <div class="navigator-wrapper-inner">
-                                <div class="navigator-page col-lg-6 col-xl-7">
-                                    <nav class="navigator">
-                                        <ul class="navigator-list">
-                                            <li class="navigator-item">
-                                                <a href="" class="navigator-item_link active">Home</a>
-                                            </li>
-                                            <li class="navigator-item">
-                                                <a href="" class="navigator-item_link">Store</a>
-                                            </li>
-                                            <li class="navigator-item">
-                                                <a href="" class="navigator-item_link">Sale</a>
-                                            </li>
-                                        </ul>
-                                    </nav>
+            <!--            <div class="row header">
+                            <header class="header-wrapper col-lg-11 col-sm-11 col-md-11 col-xl-11 col-11" style="height:100px;">
+                                <div class="header-logo  col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2" style="height:100%;">
+                                    <a href="" class="header-logo_link">
+                                        <img src="./assets/Images/Logo_After_Login.png" alt="F-Gear" class="header-logo_image center">
+                                    </a>
                                 </div>
-                                <div class="navigatior-user">
-                                    <div class="user navigator-user-cart">
-                                        <a href="" class="user-cart_link" style="color: #333;font-size: 1.6rem;">
-                                            <i class="fa-solid fa-cart-shopping"></i>
-                                        </a>
+                                <div class="header-navigator col-6 col-sm-6 col-md-7 col-lg-10 col-xl-10 " style="height:100%;">
+                                    <div class="btn-menu" style="display:none; height:100%;cursor: pointer;">
+                                        <i class="fa-solid fa-bars"></i>
                                     </div>
-                                    <div class=" user navigator-user-account">
-                                        <div class="user-account-avatar">
-                                            <img src="./assets/Images/280013939_368144518688847_7624068726298628073_n.jpg"
-                                                 alt="VietHoang" class="user-account-image">
-                                        </div>
-                                        <div class="user-welcome">
-                                            <span class="welcome-content">Welcome viethoang</span>
+                                    <div class="navigator-wrapper">
+                                        <div class="navigator-wrapper-inner">
+                                            <div class="navigator-page col-lg-6 col-xl-7">
+                                                <nav class="navigator">
+                                                    <ul class="navigator-list">
+                                                        <li class="navigator-item">
+                                                            <a href="" class="navigator-item_link active">Home</a>
+                                                        </li>
+                                                        <li class="navigator-item">
+                                                            <a href="" class="navigator-item_link">Store</a>
+                                                        </li>
+                                                        <li class="navigator-item">
+                                                            <a href="" class="navigator-item_link">Sale</a>
+                                                        </li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                            <div class="navigatior-user">
+                                                <div class="user navigator-user-cart">
+                                                    <a href="" class="user-cart_link" style="color: #333;font-size: 1.6rem;">
+                                                        <i class="fa-solid fa-cart-shopping"></i>
+                                                    </a>
+                                                </div>
+                                                <div class=" user navigator-user-account">
+                                                    <div class="user-account-avatar">
+                                                        <img src="./assets/Images/280013939_368144518688847_7624068726298628073_n.jpg"
+                                                             alt="VietHoang" class="user-account-image">
+                                                    </div>
+                                                    <div class="user-welcome">
+                                                        <span class="welcome-content">Welcome viethoang</span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </header>
-            </div>-->
+            
+                            </header>
+                        </div>-->
             <!-- Make a white space which is buffered for height because header has position is fixed -->
             <div class="row " >
                 <div class="white-space">
@@ -84,122 +84,122 @@
                 </div>
             </div>
             <!-- Categories sidebar -->
-<!--            <div class="row sidebar-wrapper " style="background-color:#fff;">
-                <div class=" btn-nav">
-                    <div class="navigator-btn_menu"><i class="fa-solid fa-bars"></i></div>
-                    <div class="btn-navigator-list col-lg-5  col-md-5 col-xl-5">
-                        <div class="btn-navigator-item col-lg-1 col-md-1 col-xl-1 ">
-                            <button class="item-btn categories-btn">
-                                <i class="fa-sharp fa-solid fa-list"></i>
-                                <span class="btn-content">Categories</span>
-                            </button>
-                            <div class="kinds-product-wrapper">
-                                <div class="kinds-product">
-                                    <ul class="kinds-product-list">
-                                        <li class="kind-prodict-item">
-                                            <i class="fa-solid fa-laptop"></i>
-                                            <a href="" class="kind-product-link">Laptop Gaming</a>
-                                        </li>
-                                        <li class="kind-prodict-item">
-                                            <i class="fa-solid fa-laptop"></i>
-                                            <a href="" class="kind-product-link">Laptop Gaming</a>
-                                        </li>
-                                        <li class="kind-prodict-item">
-                                            <i class="fa-solid fa-laptop"></i>
-                                            <a href="" class="kind-product-link">Laptop Gaming</a>
-                                        </li>
-                                        <li class="kind-prodict-item">
-                                            <i class="fa-solid fa-laptop"></i>
-                                            <a href="" class="kind-product-link">Laptop Gaming</a>
-                                        </li>
-                                        <li class="kind-prodict-item">
-                                            <i class="fa-solid fa-laptop"></i>
-                                            <a href="" class="kind-product-link">Laptop Gaming</a>
-                                        </li>
-                                        <li class="kind-prodict-item">
-                                            <i class="fa-solid fa-laptop"></i>
-                                            <a href="" class="kind-product-link">Laptop Gaming</a>
-                                        </li>
-                                        <li class="kind-prodict-item">
-                                            <i class="fa-solid fa-laptop"></i>
-                                            <a href="" class="kind-product-link">Laptop Gaming</a>
-                                        </li>
-                                        <li class="kind-prodict-item">
-                                            <i class="fa-solid fa-laptop"></i>
-                                            <a href="" class="kind-product-link">Laptop Gaming</a>
-                                        </li>
-                                        <li class="kind-prodict-item">
-                                            <i class="fa-solid fa-laptop"></i>
-                                            <a href="" class="kind-product-link">Laptop Gaming</a>
-                                        </li>
-                                        <li class="kind-prodict-item">
-                                            <i class="fa-solid fa-laptop"></i>
-                                            <a href="" class="kind-product-link">Laptop Gaming</a>
-                                        </li>
-                                        <li class="kind-prodict-item">
-                                            <i class="fa-solid fa-laptop"></i>
-                                            <a href="" class="kind-product-link">Laptop Gaming</a>
-                                        </li>
-                                        <li class="kind-prodict-item">
-                                            <i class="fa-solid fa-laptop"></i>
-                                            <a href="" class="kind-product-link">Laptop Gaming</a>
-                                        </li>
-                                        <li class="kind-prodict-item">
-                                            <i class="fa-solid fa-laptop"></i>
-                                            <a href="" class="kind-product-link">Laptop Gaming</a>
-                                        </li>
-
-                                    </ul>
+            <!--            <div class="row sidebar-wrapper " style="background-color:#fff;">
+                            <div class=" btn-nav">
+                                <div class="navigator-btn_menu"><i class="fa-solid fa-bars"></i></div>
+                                <div class="btn-navigator-list col-lg-5  col-md-5 col-xl-5">
+                                    <div class="btn-navigator-item col-lg-1 col-md-1 col-xl-1 ">
+                                        <button class="item-btn categories-btn">
+                                            <i class="fa-sharp fa-solid fa-list"></i>
+                                            <span class="btn-content">Categories</span>
+                                        </button>
+                                        <div class="kinds-product-wrapper">
+                                            <div class="kinds-product">
+                                                <ul class="kinds-product-list">
+                                                    <li class="kind-prodict-item">
+                                                        <i class="fa-solid fa-laptop"></i>
+                                                        <a href="" class="kind-product-link">Laptop Gaming</a>
+                                                    </li>
+                                                    <li class="kind-prodict-item">
+                                                        <i class="fa-solid fa-laptop"></i>
+                                                        <a href="" class="kind-product-link">Laptop Gaming</a>
+                                                    </li>
+                                                    <li class="kind-prodict-item">
+                                                        <i class="fa-solid fa-laptop"></i>
+                                                        <a href="" class="kind-product-link">Laptop Gaming</a>
+                                                    </li>
+                                                    <li class="kind-prodict-item">
+                                                        <i class="fa-solid fa-laptop"></i>
+                                                        <a href="" class="kind-product-link">Laptop Gaming</a>
+                                                    </li>
+                                                    <li class="kind-prodict-item">
+                                                        <i class="fa-solid fa-laptop"></i>
+                                                        <a href="" class="kind-product-link">Laptop Gaming</a>
+                                                    </li>
+                                                    <li class="kind-prodict-item">
+                                                        <i class="fa-solid fa-laptop"></i>
+                                                        <a href="" class="kind-product-link">Laptop Gaming</a>
+                                                    </li>
+                                                    <li class="kind-prodict-item">
+                                                        <i class="fa-solid fa-laptop"></i>
+                                                        <a href="" class="kind-product-link">Laptop Gaming</a>
+                                                    </li>
+                                                    <li class="kind-prodict-item">
+                                                        <i class="fa-solid fa-laptop"></i>
+                                                        <a href="" class="kind-product-link">Laptop Gaming</a>
+                                                    </li>
+                                                    <li class="kind-prodict-item">
+                                                        <i class="fa-solid fa-laptop"></i>
+                                                        <a href="" class="kind-product-link">Laptop Gaming</a>
+                                                    </li>
+                                                    <li class="kind-prodict-item">
+                                                        <i class="fa-solid fa-laptop"></i>
+                                                        <a href="" class="kind-product-link">Laptop Gaming</a>
+                                                    </li>
+                                                    <li class="kind-prodict-item">
+                                                        <i class="fa-solid fa-laptop"></i>
+                                                        <a href="" class="kind-product-link">Laptop Gaming</a>
+                                                    </li>
+                                                    <li class="kind-prodict-item">
+                                                        <i class="fa-solid fa-laptop"></i>
+                                                        <a href="" class="kind-product-link">Laptop Gaming</a>
+                                                    </li>
+                                                    <li class="kind-prodict-item">
+                                                        <i class="fa-solid fa-laptop"></i>
+                                                        <a href="" class="kind-product-link">Laptop Gaming</a>
+                                                    </li>
+            
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btn-navigator-item col-lg-1 col-md-1 col-xl-1 ">
+                                        <button class="item-btn">
+                                            <i class="fa-solid fa-credit-card"></i>
+                                            <span class="btn-content payment">Payment guidlines</span>
+                                        </button>
+                                    </div>
+                                    <div class="btn-navigator-item col-lg-1 col-md-1 col-xl-1 ">
+                                        <button class="item-btn">
+                                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                                            <span class="btn-content ">Maintenance policy</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="btn-navigator-item col-lg-1 col-md-1 col-xl-1 ">
-                            <button class="item-btn">
-                                <i class="fa-solid fa-credit-card"></i>
-                                <span class="btn-content payment">Payment guidlines</span>
-                            </button>
-                        </div>
-                        <div class="btn-navigator-item col-lg-1 col-md-1 col-xl-1 ">
-                            <button class="item-btn">
-                                <i class="fa-solid fa-screwdriver-wrench"></i>
-                                <span class="btn-content ">Maintenance policy</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row ">
-                <div class="white-space">
-
-                </div>
-            </div>-->
+                        <div class="row ">
+                            <div class="white-space">
+            
+                            </div>
+                        </div>-->
             <div class="row product-description">
                 <div class="description-wrapper">
                     <div class="product-images-description col-lg-5 col-md-6 col-sm-12 col-12 col-xs-12 col-12">
                         <div class="product-image-main">
-                            <img src="./assets/Images/laptop-acer-aspire-3-a315-56-37dv-1_14c2a4369f244da3a18a6a9884da2f0a_2d6425a24d4e40bea850a55c2ff54d59.webp"
+                            <img src="${productFound.listImage.get(0).url}"
                                  alt="Laptop Acer" class="product-image">
                         </div>
                         <div class="product-image-involve">
                             <ul class="image-invole-list">
                                 <li class="image-invole-item active-picture">
-                                    <img src="./assets/Images/laptop-acer-aspire-3-a315-56-37dv-1_14c2a4369f244da3a18a6a9884da2f0a_2d6425a24d4e40bea850a55c2ff54d59.webp"
+                                    <img src="${productFound.listImage.get(0).url}"
                                          alt="" class="involve-item">
                                 </li>
                                 <li class="image-invole-item ">
-                                    <img src="./assets/Images/751_8c7bdc9120554e21bcf7ff7defe5eb99_large.webp" alt=""
+                                    <img src="${productFound.listImage.get(0).url}" alt=""
                                          class="involve-item">
                                 </li>
                                 <li class="image-invole-item">
-                                    <img src="./assets/Images/laptop-acer-aspire-3-a315-56-37dv-1_14c2a4369f244da3a18a6a9884da2f0a_2d6425a24d4e40bea850a55c2ff54d59.webp"
-                                         alt="" class="involve-item">
+                                    <img src="${productFound.listImage.get(0).url}"
+                                         alt="${productFound.proName}" class="involve-item">
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="product-text-description col-lg-5 col-md-6 col-sm-12 col-12 col-xs-12">
                         <div class="product-description-heading">
-                            <h3 class="product-description-name" style="font-weight: 700;">Laptop Acer Aspire 3</h3>
+                            <h3 class="product-description-name" style="font-weight: 700;">${productFound.proName}</h3>
                         </div>
                         <div class="policy-insurance">
                             <ul class="insurance-list">
@@ -238,12 +238,12 @@
                             <div class="price-description" style="display: flex; ">
                                 <h5 class="price-description-title" style="margin-right: 10px;">Original Price : </h5>
                                 <span class="price-number"
-                                      style="font-weight: 500; font-size:1.2rem ; color: rgb(116, 112, 112);text-decoration:line-through;">10,000,000Ä</span>
+                                      style="font-weight: 500; font-size:1.2rem ; color: rgb(116, 112, 112);text-decoration:line-through;">${productFound.proOriginalPrice}</span>
                             </div>
                             <div class="price-description" style="display: flex; ">
                                 <h5 class="price-description-title" style="margin-right: 10px;">Current Price : </h5>
                                 <span class="price-number"
-                                      style="font-weight: 500; font-size:1.2rem ; color: rgb(237, 17, 17);">9,000,000Ä</span>
+                                      style="font-weight: 500; font-size:1.2rem ; color: rgb(237, 17, 17);">${productFound.proCurrentPrice}</span>
                             </div>
                         </div>
                         <div class="btn-user-actions">
@@ -262,27 +262,14 @@
                         <th></th>
                         </thead>
                         <tbody class="table-body">
-                            <tr class="table-row">
-                                <td class="specification-name">CPU</td>
-                                <td class="specification">Intel Core i3-1115G4 1.7GHz up to 4.1GHz 6MB</td>
-                            </tr>
-                            <tr class="table-row">
-                                <td class="specification-name">RAM</td>
-                                <td class="specification">8GB DDR4 2666MHz Onboard</td>
-                            </tr>
-                            <tr class="table-row">
-                                <td class="specification-name">Storage drive</td>
-                                <td class="specification">256GB SSD M.2 PCIE G3X4</td>
-                            </tr>
-                            <tr class="table-row">
-                                <td class="specification-name">Graphic card</td>
-                                <td class="specification">Intel UHD Graphics </td>
-                            </tr>
-                            <tr class="table-row">
-                                <td class="specification-name">Screen</td>
-                                <td class="specification">14" FHD (1920 x 1080), IPS, Anti-Glare with 45% NTSC, NanoEdge
-                                </td>
-                            </tr>
+                            <c:forEach var="specItem" items="${productFound.listSpecification}">
+                                <tr class="table-row">
+                                    <td class="specification-name">${specItem.specName}</td>
+                                    <td class="specification">${specItem.specDetail}</td>
+                                </tr>
+                            </c:forEach>
+
+
                         </tbody>
                     </table>
                 </div>

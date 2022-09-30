@@ -126,7 +126,7 @@
         </div>
 
     </body>
-    <script src="JavaScript/CommonFeatures.js"></script>
-    <script src="JavaScript/User_Profile.js"></script>
+    <script src="../assets/JavaScript/CommonFeatures.js"></script>
+    <script src="../assets/JavaScript/User_Profile.js"></script>
 
 </html>

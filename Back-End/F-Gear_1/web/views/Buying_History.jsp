@@ -303,5 +303,5 @@
 
         </div>
     </body>
-    <script type="text/javascript" src="JavaScript/CommonFeatures.js"></script>
+    <script type="text/javascript" src="../assets/JavaScript/CommonFeatures.js"></script>
 </html>
