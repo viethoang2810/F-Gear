@@ -38,21 +38,6 @@ public class Access_Controller extends HttpServlet {
         String url = "";
         HttpSession session = request.getSession();
         String op = request.getParameter("op").toLowerCase();
-<<<<<<< HEAD
-        Access_Management a = new Access_Management();
-        try {
-            switch (op) {
-                case "login": {
-                    String userName = request.getParameter("userName");
-                    String password = a.getMD5(request.getParameter("password"));
-                    Users user = Access_Management.check(userName, password);
-                    if (user != null) {
-                        url = "/views/Homepage.jsp";
-                        session.setAttribute("user", user);
-                    } else {
-                        url = "/views/login.jsp";
-                        request.setAttribute("message", "Incorrect Username or Password");
-=======
         if (op != null) {
             try {
                 switch (op) {
@@ -68,7 +53,6 @@ public class Access_Controller extends HttpServlet {
                             url = "/views/login.jsp";
                             request.setAttribute("message", "Incorrect Username or Password");
                         }
->>>>>>> main
                     }
                     break;
                     case "logout": {
@@ -77,48 +61,9 @@ public class Access_Controller extends HttpServlet {
                     }
                     break;
 
-<<<<<<< HEAD
-                case "register":
-                    
-                    String userName = request.getParameter("userName");
-                    String password = request.getParameter("password");
-                    String cofirm = request.getParameter("cofirm");
-                    int phone = Integer.parseInt(request.getParameter("phone"));
-                    if (password.equals(cofirm)) {
-                        Users user = a.check(userName);
-                        if (user == null) {
-                            user = new Users();
-                            user.setUserName(userName);
-                            user.setPassword(a.getMD5(password));
-                            user.setPhoneNumber(phone);
-                            request.setAttribute("user", user);
-
-                            if (a.signUp(user))
-                                url = "/views/login.jsp";
-                            else {
-                                url = "/views/register.jsp";
-                                request.setAttribute("message", "Unable to register.");
-                            }
-                            
-                        } else {
-                            url = "/views/register.jsp";
-                            request.setAttribute("message", "Username is already taken.");
-                        }
-                        
-                    } else {
-                        url = "/views/register.jsp";
-                        request.setAttribute("userName", userName);
-                        request.setAttribute("password", password);
-                        request.setAttribute("phone", phone);
-                        request.setAttribute("message", "Passwords do not match!");
-                    }                               
-                break;
-
-=======
                 }
             } catch (Exception e) {
                 log("Error at MainController: " + e.toString());
->>>>>>> main
             }
             request.getRequestDispatcher(url).forward(request, response);
         }

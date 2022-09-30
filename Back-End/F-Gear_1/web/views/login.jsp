@@ -16,7 +16,7 @@
                  src="../assets/Images/Logo_After_Login.png">
             <form class="login-form" action="./Access" method="POST">
                 <input class="login-form-text" type="text" placeholder="Username" name="userName" value="${user.userName}" />
-                <input class="login-form-text" type="password" placeholder="Password" name="password" />
+                <input class="login-form-text" type="password" placeholder="Password" name="password" value="${user.password}" />
                 <i>${message}</i>
                 <div class="logo-form-user-action">
                     <div>
@@ -43,7 +43,7 @@
                     alt="logo-here" />
                 <div>
                     <h1>F-Gear Store</h1>
-                    <p>Address: 210/10 Lï¿½ V?n S?, Ph??ng 10, Qu?n Phï¿½ Nhu?n</p>
+                    <p>Address: 210/10 Lê V?n S?, Ph??ng 10, Qu?n Phú Nhu?n</p>
                     <p>Contact: 0903333333</p>
                     <div class="footer-link">
                         <i class="fa-brands fa-facebook"></i>

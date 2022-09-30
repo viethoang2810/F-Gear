@@ -35,17 +35,6 @@
     </header> -->
     <div class="login">
         <img class="login-logo"
-<<<<<<< HEAD
-            src="./assests/Logo.png">
-        <form class="login-form" action="./accesscontroller" method="post">
-            <input required class="login-form-text" type="text" name="userName" placeholder="Username" value="${userName}"/>
-            <input required class="login-form-text" type="password" name="password" placeholder="Password" value="${password}"/>
-            <input required class="login-form-text" type="password" name="cofirm" placeholder="Confirm password" value="${cofirm}"/>
-            <input required class="login-form-text" type="number" name="phone" placeholder="Phone number" value="${phone}"/>
-            <button class="login-form-submit" name="op" value="register">Join with us</button>
-            <br/>
-            <i style="color: red">${message}</i>
-=======
              src="../assets/Images/Logo_After_Login.png">
         <form class="login-form">
             <input class="login-form-text" type="text" placeholder="Username" />
@@ -53,7 +42,6 @@
             <input class="login-form-text" type="password" placeholder="Confirm password" />
             <input class="login-form-text" type="text" placeholder="Phone number" />
             <button class="login-form-submit">Join with us</button>
->>>>>>> main
         </form>
         <div class="login-create">
             <a href="./login.html">You already have account ?</a>

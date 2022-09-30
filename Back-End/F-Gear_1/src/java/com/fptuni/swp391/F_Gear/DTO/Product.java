@@ -26,8 +26,6 @@ public class Product {
     public Product() {
     }
 
-<<<<<<< HEAD
-=======
 //    cái constructor này để lấy top 8 sản phẩm show ở Homepage nha -DungHQ
     public Product(String brandName, int proID, String proName, int proOriginalPrice, ArrayList<Images> listImage) {
         this.brandName = brandName;
@@ -37,7 +35,6 @@ public class Product {
         this.listImage = listImage;
     }
 
->>>>>>> main
     public Product(int proID, String proName, int proOriginalPrice, int discount, int proCurrentPrice, String brandName, ArrayList<Images> listImage, ArrayList<Specification> listSpecification, String proType) {
         this.proID = proID;
         this.proName = proName;
@@ -122,24 +119,6 @@ public class Product {
         this.proType = proType;
     }
 
-<<<<<<< HEAD
-    public double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(int discount) {
-        this.discount = discount;
-    }
-
-    public double getProCurrentPrice() {
-        return proCurrentPrice;
-    }
-
-    public void setProCurrentPrice(int proCurrentPrice) {
-        this.proCurrentPrice = proCurrentPrice;
-    }
-=======
->>>>>>> main
     
 
 }
