@@ -34,7 +34,7 @@
                  src="https://th.bing.com/th/id/R.af2b82154a39f7ddd7e1cbcddf32540c?rik=VNWwpCivVSf%2f0g&pid=ImgRaw&r=0">
             <form class="login-form" action="./accesscontroller">
                 <input class="login-form-text" type="text" placeholder="Username" name="userName" value="${user.userName}" />
-                <input class="login-form-text" type="password" placeholder="Password" name="password" value="${user.password}" />
+                <input class="login-form-text" type="password" placeholder="Password" name="password" />
                 <i>${message}</i>
                 <div class="logo-form-user-action">
                     <div>

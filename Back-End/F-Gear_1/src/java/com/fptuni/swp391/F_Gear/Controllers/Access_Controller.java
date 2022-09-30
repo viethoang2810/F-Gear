@@ -38,11 +38,12 @@ public class Access_Controller extends HttpServlet {
         String url = "";
         HttpSession session = request.getSession();
         String op = request.getParameter("op").toLowerCase();
+        Access_Management a = new Access_Management();
         try {
             switch (op) {
                 case "login": {
                     String userName = request.getParameter("userName");
-                    int password = Integer.parseInt(request.getParameter("password"));
+                    String password = a.getMD5(request.getParameter("password"));
                     Users user = Access_Management.check(userName, password);
                     if (user != null) {
                         url = "/views/Homepage.jsp";
@@ -60,7 +61,7 @@ public class Access_Controller extends HttpServlet {
                 break;
 
                 case "register":
-                    Access_Management a = new Access_Management();
+                    
                     String userName = request.getParameter("userName");
                     String password = request.getParameter("password");
                     String cofirm = request.getParameter("cofirm");

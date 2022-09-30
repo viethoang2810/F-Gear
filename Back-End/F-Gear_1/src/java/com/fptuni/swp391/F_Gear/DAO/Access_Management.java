@@ -22,13 +22,13 @@ import java.sql.SQLException;
 public class Access_Management {
 
     //check của login
-    public static Users check(String userName, int password) throws SQLException, ClassNotFoundException {
+    public static Users check(String userName, String password) throws SQLException, ClassNotFoundException {
         Users user = null;
         Connection con = DBUtils.getConnection();
         String sql = "select UserName, Password from Users where UserName=? and password=?";
         PreparedStatement stm = con.prepareStatement(sql);
         stm.setString(1, userName);
-        stm.setInt(2, password);
+        stm.setString(2, password);
         ResultSet rs = stm.executeQuery();
         if (rs.next()) {
             user = new Users();

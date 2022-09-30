@@ -37,7 +37,7 @@
     <div class="login">
         <img class="login-logo"
             src="./assests/Logo.png">
-        <form class="login-form" action="./accesscontroller">
+        <form class="login-form" action="./accesscontroller" method="post">
             <input required class="login-form-text" type="text" name="userName" placeholder="Username" value="${userName}"/>
             <input required class="login-form-text" type="password" name="password" placeholder="Password" value="${password}"/>
             <input required class="login-form-text" type="password" name="cofirm" placeholder="Confirm password" value="${cofirm}"/>
