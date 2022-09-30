@@ -56,37 +56,75 @@ public class Product_Management {
                 + "	  S.SpecID = PS.SpecID AND \n"
                 + "	  P.ProID = I.ProID";
         try {
+            con = DBUtils.getConnection();
             stm = con.prepareStatement(sql);
             rs = stm.executeQuery();
             while (rs.next()) {
-                int pd = listOfProduct.get(listOfProduct.size() - 1).getProID();
-                if (Integer.parseInt(rs.getString("ProID")) == pd) {
-                    listOfImages.add(new Images(rs.getString("ImageID"), rs.getString("Url")));
-                    listOfProduct.get(listOfProduct.size() - 1).setListImage(listOfImages);
+                if (listOfProduct.size() != 0) {
+                    int pd = listOfProduct.get(listOfProduct.size() - 1).getProID(); //Check id of product is exist or not in arraylist
+                    if (pd != 0) {
+                        if (Integer.parseInt(rs.getString("ProID")) == pd) {
+                            if (!listOfImages.get(listOfImages.size() - 1).getImageID().equals(rs.getString("ImageID"))) {
+                                listOfImages.add(new Images(rs.getString("ImageID"), rs.getString("Url")));
+                                listOfProduct.get(listOfProduct.size() - 1).setListImage(listOfImages);
+                            }
 
-                    listOfSpecification.add(new Specification(rs.getString("SpecName"), rs.getString("Detail")));
-                    listOfProduct.get(listOfProduct.size() - 1).setListSpecification(listOfSpecification);
+                            if (!findKeyExistInArray(listOfSpecification, rs.getString("SpecName"))){
+                                listOfSpecification.add(new Specification(rs.getString("SpecName"), rs.getString("Detail")));
+                                listOfProduct.get(listOfProduct.size() - 1).setListSpecification(listOfSpecification);
+                            }
+                        } else {
+                            Product product = new Product();
+                            listOfSpecification = new ArrayList<>();
+                            listOfImages = new ArrayList<>();
+
+                            product.setProID(rs.getInt("ProID"));
+                            product.setProName(rs.getString("ProName"));
+                            product.setProOriginalPrice(rs.getInt("OriginalPrice"));
+                            product.setDiscount(rs.getInt("Discount"));
+                            product.setProCurrentPrice(rs.getInt("CurrentPrice"));
+                            product.setBrandName(rs.getString("BrandName"));
+                            product.setProType(rs.getString("CateName"));
+                            listOfImages.add(new Images(rs.getString("ImageID"), rs.getString("Url")));
+                            product.setListImage(listOfImages);
+                            listOfSpecification.add(new Specification(rs.getString("SpecName"), rs.getString("Detail")));
+                            product.setListSpecification(listOfSpecification);
+
+                            listOfProduct.add(product);
+
+                        }
+                    }
                 } else {
                     Product product = new Product();
-                    listOfSpecification = new ArrayList<>();
-                    listOfImages = new ArrayList<>();
 
-                    product.setProID(Integer.parseInt(rs.getString("ProID")));
+                    product.setProID(rs.getInt("ProID"));
                     product.setProName(rs.getString("ProName"));
-                    product.setProOriginalPrice(Integer.parseInt(rs.getString("OriginalPrice")));
-                    product.setDiscount(Integer.parseInt(rs.getString("Discount")));
-                    product.setProCurrentPrice(Integer.parseInt(rs.getString("CurrentPrice")));
+                    product.setProOriginalPrice(rs.getInt("OriginalPrice"));
+                    product.setDiscount(rs.getInt("Discount"));
+                    product.setProCurrentPrice(rs.getInt("CurrentPrice"));
                     product.setBrandName(rs.getString("BrandName"));
                     product.setProType(rs.getString("CateName"));
                     listOfImages.add(new Images(rs.getString("ImageID"), rs.getString("Url")));
                     product.setListImage(listOfImages);
                     listOfSpecification.add(new Specification(rs.getString("SpecName"), rs.getString("Detail")));
                     product.setListSpecification(listOfSpecification);
+
+                    listOfProduct.add(product);
                 }
+
             }
         } catch (Exception e) {
         }
         return listOfProduct;
+    }
+
+    public boolean findKeyExistInArray(ArrayList<Specification> specifications , String specName){
+        for (Specification specification : specifications) {
+            if(specification.getSpecName().equals(specName)){
+                return true ;
+            }
+        }
+        return false;
     }
 
     public List<Product> selectTop8InHomepage() {
