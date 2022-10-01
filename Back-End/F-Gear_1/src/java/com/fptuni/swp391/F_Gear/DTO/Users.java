@@ -12,7 +12,7 @@ package com.fptuni.swp391.F_Gear.DTO;
 public class Users {
 
     private String userName;
-    private int password;
+    private String password;
     private String fullName;
     private int phoneNumber;
     private String roleID;
@@ -20,7 +20,7 @@ public class Users {
     public Users() {
     }
 
-    public Users(String userName, int password, int phoneNumber, String fullName, String roleID) {
+    public Users(String userName, String password, int phoneNumber, String fullName, String roleID) {
         this.userName = userName;
         this.password = password;
         this.phoneNumber = phoneNumber;
@@ -36,11 +36,11 @@ public class Users {
         this.userName = userName;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 

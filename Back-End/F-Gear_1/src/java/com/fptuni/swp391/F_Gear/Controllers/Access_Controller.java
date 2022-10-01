@@ -38,12 +38,13 @@ public class Access_Controller extends HttpServlet {
         String url = "";
         HttpSession session = request.getSession();
         String op = request.getParameter("op").toLowerCase();
+        Access_Management a = new Access_Management();
         if (op != null) {
             try {
                 switch (op) {
                     case "login": {
                         String userName = request.getParameter("userName");
-                        int password = Integer.parseInt(request.getParameter("password"));
+                        String password = a.getMD5(request.getParameter("password"));
                         Users user = Access_Management.check(userName, password);
                         if (user != null) {
                             session.setAttribute("user", user);
@@ -60,6 +61,42 @@ public class Access_Controller extends HttpServlet {
                         url = "/views/Homepage.jsp";
                     }
                     break;
+
+                    case "register":                
+                        String userName = request.getParameter("userName");
+                        String password = request.getParameter("password");
+                        String cofirm = request.getParameter("cofirm");
+                        int phone = Integer.parseInt(request.getParameter("phone"));
+                        if (password.equals(cofirm)) {
+                            //biến tmp này dùng để lưu trữ tạm userName
+                            String tmp = a.check(userName);
+                            if ("".equals(tmp)) {
+                                Users user = new Users();
+                                user.setUserName(userName);
+                                user.setPassword(a.getMD5(password));
+                                user.setPhoneNumber(phone);
+                                request.setAttribute("user", user);
+
+                                if (a.signUp(user)) {
+                                    url = "/views/login.jsp";
+                                } else {
+                                    url = "/views/register.jsp";
+                                    request.setAttribute("message", "Unable to register.");
+                                }
+
+                            } else {
+                                url = "/views/register.jsp";
+                                request.setAttribute("message", "Username is already taken.");
+                            }
+
+                        } else {
+                            url = "/views/register.jsp";
+                            request.setAttribute("userName", userName);
+                            request.setAttribute("password", password);
+                            request.setAttribute("phone", phone);
+                            request.setAttribute("message", "Passwords do not match!");
+                        }
+                        break;
 
                 }
             } catch (Exception e) {
