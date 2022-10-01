@@ -185,10 +185,11 @@
                 <div class="filter-wrapper">
                     <form action="" class="filter-form">
                         <select name="sort_by" id="filter-list" class="filter-list">
+                            <option value="None" class="filter-item">Filter product</option>
                             <option value="price_ASC" class="filter-item">Price Ascending</option>
                             <option value="price_DESC" class="filter-item">Price Descending</option>
-                            <option value="Letter A-Z" class="filter-item">Letter A-Z</option>
-                            <option value="Letter Z-A" class="filter-item">Letter Z-A</option>
+                            <option value="Letter_A-Z" class="filter-item">Letter A-Z</option>
+                            <option value="Letter_Z-A" class="filter-item">Letter Z-A</option>
                         </select>
                     </form>
                 </div>
