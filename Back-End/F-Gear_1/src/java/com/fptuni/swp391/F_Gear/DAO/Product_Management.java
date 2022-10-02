@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -27,13 +28,13 @@ public class Product_Management {
     public ArrayList<Product> listOfProduct = new ArrayList<>();
     public ArrayList<Specification> listOfSpecification = new ArrayList<>();
     public ArrayList<Images> listOfImages = new ArrayList<>();
+    public DecimalFormat formatter = new DecimalFormat("###,###,###");
 
     public ArrayList<Product> getAllOfProduct() {
         Connection con = DBUtils.getConnection();
         PreparedStatement stm = null;
         ResultSet rs = null;
-
-       String sql = "SELECT P.ProID, "
+        String sql = "SELECT P.ProID, "
                 + "P.ProName,"
                 + "P.OriginalPrice,"
                 + "P.Discount,"
@@ -65,7 +66,7 @@ public class Product_Management {
                                 listOfProduct.get(listOfProduct.size() - 1).setListImage(listOfImages);
                             }
 
-                            if (!findKeyExistInArray(listOfSpecification, rs.getString("SpecName"))){
+                            if (!findKeyExistInArray(listOfSpecification, rs.getString("SpecName"))) {
                                 listOfSpecification.add(new Specification(rs.getString("SpecName"), rs.getString("Detail")));
                                 listOfProduct.get(listOfProduct.size() - 1).setListSpecification(listOfSpecification);
                             }
@@ -76,9 +77,10 @@ public class Product_Management {
 
                             product.setProID(rs.getInt("ProID"));
                             product.setProName(rs.getString("ProName"));
-                            product.setProOriginalPrice(rs.getInt("OriginalPrice"));
+
+                            product.setProOriginalPrice(formatter.format(rs.getInt("OriginalPrice")));
+                            product.setProCurrentPrice(formatter.format(calculateDiscount(rs.getInt("Discount"), rs.getInt("OriginalPrice"))));
                             product.setDiscount(rs.getInt("Discount"));
-                            product.setProCurrentPrice(rs.getInt("CurrentPrice"));
                             product.setBrandName(rs.getString("BrandName"));
                             product.setProType(rs.getString("CateName"));
                             listOfImages.add(new Images(rs.getString("ImageID"), rs.getString("Url")));
@@ -95,9 +97,10 @@ public class Product_Management {
 
                     product.setProID(rs.getInt("ProID"));
                     product.setProName(rs.getString("ProName"));
-                    product.setProOriginalPrice(rs.getInt("OriginalPrice"));
+                    product.setProOriginalPrice(formatter.format(rs.getInt("OriginalPrice")));
+
                     product.setDiscount(rs.getInt("Discount"));
-                    product.setProCurrentPrice(rs.getInt("CurrentPrice"));
+                    product.setProCurrentPrice(formatter.format(calculateDiscount(rs.getInt("Discount"), rs.getInt("OriginalPrice"))));
                     product.setBrandName(rs.getString("BrandName"));
                     product.setProType(rs.getString("CateName"));
                     listOfImages.add(new Images(rs.getString("ImageID"), rs.getString("Url")));
@@ -114,10 +117,10 @@ public class Product_Management {
         return listOfProduct;
     }
 
-    public boolean findKeyExistInArray(ArrayList<Specification> specifications , String specName){
+    public boolean findKeyExistInArray(ArrayList<Specification> specifications, String specName) {
         for (Specification specification : specifications) {
-            if(specification.getSpecName().equals(specName)){
-                return true ;
+            if (specification.getSpecName().equals(specName)) {
+                return true;
             }
         }
         return false;
@@ -140,7 +143,8 @@ public class Product_Management {
                 p.setBrandName(rs.getString("BrandName"));
                 p.setProID(Integer.parseInt(rs.getString("ProID")));
                 p.setProName(rs.getString("ProName"));
-                p.setProOriginalPrice(Integer.parseInt(rs.getString("OriginalPrice")));
+                p.setProOriginalPrice(formatter.format(rs.getInt("OriginalPrice")));
+
 //                i.setImageID(rs.getString("ImageID"));
 //                i.setUrl(rs.getString("Url"));
                 listOfImages.add(new Images(rs.getString("ImageID"), rs.getString("Url")));
@@ -154,33 +158,37 @@ public class Product_Management {
         }
         return list;
     }
-    
-    public Product getProductById(ArrayList<Product> listProduct , int id){
+
+    public Product getProductById(ArrayList<Product> listProduct, int id) {
         for (Product product : listProduct) {
-            if(product.getProID() == id){
-                return product ;
+            if (product.getProID() == id) {
+                return product;
             }
         }
         return null;
     }
-    
+
     public ArrayList<Product> getAllOfProductAfterSort(String typeSort) {
         Connection con = DBUtils.getConnection();
         PreparedStatement stm = null;
         ResultSet rs = null;
         String orderBy = "";
-        switch(typeSort){
-            case "price_ASC" :  orderBy = "ORDER BY P.OriginalPrice ASC" ;
-                               break;
-            case "price_DESC" : orderBy = "ORDER BY P.OriginalPrice DESC" ;
-                               break;
-            case "Letter_A-Z" : orderBy = "ORDER BY P.ProName ASC" ;
-                               break;
-            case "Letter_Z-A" : orderBy = "ORDER BY P.ProName DESC" ;
-                               break;
-          
+        switch (typeSort) {
+            case "price_ASC":
+                orderBy = "ORDER BY P.OriginalPrice ASC";
+                break;
+            case "price_DESC":
+                orderBy = "ORDER BY P.OriginalPrice DESC";
+                break;
+            case "Letter_A-Z":
+                orderBy = "ORDER BY P.ProName ASC";
+                break;
+            case "Letter_Z-A":
+                orderBy = "ORDER BY P.ProName DESC";
+                break;
+
         }
-       String sql = "SELECT P.ProID, "
+        String sql = "SELECT P.ProID, "
                 + "P.ProName,"
                 + "P.OriginalPrice,"
                 + "P.Discount,"
@@ -208,12 +216,13 @@ public class Product_Management {
                     int pd = listOfProduct.get(listOfProduct.size() - 1).getProID(); //Check id of product is exist or not in arraylist
                     if (pd != 0) {
                         if (Integer.parseInt(rs.getString("ProID")) == pd) {
-                            if (!listOfImages.get(listOfImages.size() - 1).getImageID().equals(rs.getString("ImageID"))) {
+                            if (!listOfImages.get(listOfImages.size() - 1).getImageID().equals(rs.getString("ImageID"))
+                                    && !listOfImages.get(listOfImages.size() - 1).getUrl().equals(rs.getString("Url"))) {
                                 listOfImages.add(new Images(rs.getString("ImageID"), rs.getString("Url")));
                                 listOfProduct.get(listOfProduct.size() - 1).setListImage(listOfImages);
                             }
 
-                            if (!findKeyExistInArray(listOfSpecification, rs.getString("SpecName"))){
+                            if (!findKeyExistInArray(listOfSpecification, rs.getString("SpecName"))) {
                                 listOfSpecification.add(new Specification(rs.getString("SpecName"), rs.getString("Detail")));
                                 listOfProduct.get(listOfProduct.size() - 1).setListSpecification(listOfSpecification);
                             }
@@ -224,9 +233,11 @@ public class Product_Management {
 
                             product.setProID(rs.getInt("ProID"));
                             product.setProName(rs.getString("ProName"));
-                            product.setProOriginalPrice(rs.getInt("OriginalPrice"));
+                            product.setProOriginalPrice(formatter.format(rs.getInt("OriginalPrice")));
+
                             product.setDiscount(rs.getInt("Discount"));
-                            product.setProCurrentPrice(rs.getInt("CurrentPrice"));
+                            product.setProCurrentPrice(formatter.format(calculateDiscount(rs.getInt("Discount"), rs.getInt("OriginalPrice"))));
+
                             product.setBrandName(rs.getString("BrandName"));
                             product.setProType(rs.getString("CateName"));
                             listOfImages.add(new Images(rs.getString("ImageID"), rs.getString("Url")));
@@ -243,9 +254,11 @@ public class Product_Management {
 
                     product.setProID(rs.getInt("ProID"));
                     product.setProName(rs.getString("ProName"));
-                    product.setProOriginalPrice(rs.getInt("OriginalPrice"));
+                    product.setProOriginalPrice(formatter.format(rs.getInt("OriginalPrice")));
+
                     product.setDiscount(rs.getInt("Discount"));
-                    product.setProCurrentPrice(rs.getInt("CurrentPrice"));
+                    product.setProCurrentPrice(formatter.format(calculateDiscount( rs.getInt("Discount"),  rs.getInt("OriginalPrice"))));
+
                     product.setBrandName(rs.getString("BrandName"));
                     product.setProType(rs.getString("CateName"));
                     listOfImages.add(new Images(rs.getString("ImageID"), rs.getString("Url")));
@@ -260,5 +273,10 @@ public class Product_Management {
         } catch (Exception e) {
         }
         return listOfProduct;
+    }
+
+    //Calculate price after discount
+    public double calculateDiscount(double discount, double originalPrice) {
+        return originalPrice - (originalPrice * discount/100)  ;
     }
 }
