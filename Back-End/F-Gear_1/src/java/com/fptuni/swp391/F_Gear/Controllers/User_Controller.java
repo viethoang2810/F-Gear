@@ -5,10 +5,8 @@
  */
 package com.fptuni.swp391.F_Gear.Controllers;
 
-import com.fptuni.swp391.F_Gear.DAO.Product_Management;
-import com.fptuni.swp391.F_Gear.DTO.Product;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "Product_Controller", urlPatterns = {"/Product/*"})
-public class Product_Controller extends HttpServlet {
+@WebServlet(name = "User_Controller", urlPatterns = {"/Profile/*"})
+public class User_Controller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,17 +32,7 @@ public class Product_Controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        ArrayList<Product> listOfProduct = new ArrayList<>();
-        Product_Management pm = new Product_Management();
-        String sortProduct = request.getParameter("sort_by");
-        if(sortProduct == null){
-                    listOfProduct = pm.getAllOfProduct();
-        }
-        if (sortProduct != null) {
-            listOfProduct  = pm.getAllOfProductAfterSort(sortProduct);
-        }
-        request.setAttribute("listOfProduct", listOfProduct);
-        request.getRequestDispatcher("/views/Product_Page.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/User_Profile.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
