@@ -32,7 +32,7 @@
                 <a href=""> Login with Google</a>
             </button>
             <div class="login-create">
-                <a href="./register.html">Create account ?</a>
+                <a href="./">Create account ?</a>
             </div>
 
         </div>
