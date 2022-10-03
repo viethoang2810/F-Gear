@@ -7,9 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>F-Gear</title>
         <link rel="icon" href="Assets/Images/pinterest_board_photo.png">
-        <link rel="stylesheet" href="../assets/CSS/User_Profile.css">
-        <link rel="stylesheet" href="../assets/CSS/GlobalStyles.css"> <!-- This file contains all of common styles of pages-->
-        <link rel="stylesheet" href="../assets/CSS/Responive.css">
+        <link rel="stylesheet" href="./assets/CSS/User_Profile.css">
+        <link rel="stylesheet" href="./assets/CSS/GlobalStyles.css"> <!-- This file contains all of common styles of pages-->
+        <link rel="stylesheet" href="./assets/CSS/Responive.css">
 
 
         <!-- Font Awesome link-->
@@ -27,7 +27,7 @@
                 <header class="header-wrapper">
                     <div class="header-logo  col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2" style="height:100%;">
                         <a href="" class="header-logo_link">
-                            <img src="../assets/Images/Logo_After_Login.png" alt="F-Gear" class="header-logo_image center">
+                            <img src="./assets/Images/Logo_After_Login.png" alt="F-Gear" class="header-logo_image center">
                         </a>
                     </div>
                     <div class="header-navigator col-6 col-sm-6 col-md-7 col-lg-10 col-xl-10 " style="height:100%;">
@@ -40,13 +40,13 @@
                                     <nav class="navigator">
                                         <ul class="navigator-list">
                                             <li class="navigator-item">
-                                                <a href="../views/Homepage.jsp" class="navigator-item_link ">Home</a>
+                                                <a href="./views/Homepage.jsp" class="navigator-item_link ">Home</a>
                                             </li>
                                             <li class="navigator-item">
-                                                <a href="../views/User_Profile.jsp" class="navigator-item_link active">Profile</a>
+                                                <a href="./views/User_Profile.jsp" class="navigator-item_link active">Profile</a>
                                             </li>
                                             <li class="navigator-item">
-                                                <a href="../views/Buying_History.jsp" class="navigator-item_link">History</a>
+                                                <a href="./views/Buying_History.jsp" class="navigator-item_link">History</a>
                                             </li>
                                         </ul>
                                     </nav>
@@ -59,7 +59,7 @@
                                     </div>
                                     <div class=" user navigator-user-account">
                                         <div class="user-account-avatar">
-                                            <img src="../assets/Images/280013939_368144518688847_7624068726298628073_n.jpg"
+                                            <img src="./assets/Images/280013939_368144518688847_7624068726298628073_n.jpg"
                                                  alt="VietHoang" class="user-account-image">
                                         </div>
                                         <div class="user-welcome">
@@ -82,7 +82,7 @@
                 <div class="body-wrapper">
                     <div class="user-avatar col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12" >
                         <div class="avatar-image">
-                            <img src="../assets/Images/280013939_368144518688847_7624068726298628073_n.jpg" alt="" class="user-avatar-image">
+                            <img src="./assets/Images/280013939_368144518688847_7624068726298628073_n.jpg" alt="" class="user-avatar-image">
                         </div>
                         <div class="change-image">
                             <label for="file-upload" class="custom-file-upload">
@@ -93,19 +93,19 @@
                     </div>
                     <div class="user-infors col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12">
                         <h3 class="user-infor-title" style="text-align:center;">User Information</h3>
-                        <form action="" class="user-infor-form">
+                        <form action="" class="user-infor-form" method="POST">
                             <input type="hidden" name="avatar" id="avatar" class="avatar-link">
                             <div class="user-input">
-                                <label class="user-label"  for="username">Username :</label>
-                                <input class="user-input-info" type="text" value="viethoang"  id="username"/>
+                                <label class="user-label"  for="username">Full name :</label>
+                                <input class="user-input-info" type="text" value="viethoang"  id="username" name="fullname"/>
                             </div>
                             <div class="user-input">
                                 <label class="user-label" for="email">Email :</label>
-                                <input class="user-input-info " type="text" value="anhdung19022001@gmail.com"  id="email" disabled/>
+                                <input class="user-input-info " type="text" value="anhdung19022001@gmail.com"  id="email" disabled name="email"/>
                             </div>
                             <div class="user-input">
                                 <label class="user-label" for="phone-number">Phone number :</label>
-                                <input class="user-input-info" type="text" value="0335349368"  id="phone-number"disabled />
+                                <input class="user-input-info" type="text" value="0335349368"  id="phone-number"disabled name="phonenumber"/>
                             </div>
                             <div class="user-input" style="display: flex;">
                                 <span class="user-label user-input-title">Gender : </span>
@@ -127,6 +127,6 @@
 
     </body>
     <script src="../assets/JavaScript/CommonFeatures.js"></script>
-    <script src="../assets/JavaScript/User_Profile.js"></script>
+    <script src="./assets/JavaScript/User_Profile.js"></script>
 
 </html>
