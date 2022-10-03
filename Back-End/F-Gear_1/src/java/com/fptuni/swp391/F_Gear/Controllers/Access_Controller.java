@@ -68,9 +68,7 @@ public class Access_Controller extends HttpServlet {
                         String cofirm = request.getParameter("cofirm");
                         int phone = Integer.parseInt(request.getParameter("phone"));
                         if (password.equals(cofirm)) {
-                            //biến tmp này dùng để lưu trữ tạm userName
-                            String tmp = a.check(userName);
-                            if ("".equals(tmp)) {
+                            if (a.checkUserName(userName)) {
                                 Users user = new Users();
                                 user.setUserName(userName);
                                 user.setPassword(a.getMD5(password));
