@@ -172,23 +172,24 @@
             <div class="row text-center" style="z-index:10;">
                 <div class="image-wrapper col-xl-12 col-md-12 col-lg-12 col-sm-12 col-12 "
                      style="width:100% ; min-height: 200px;">
-                    <img src="../assets/Images/676vn_1890_cls_18aa655da8844630bd62a071e80d5ace.webp" alt=""
+                    <img src="./assets/Images/676vn_1890_cls_18aa655da8844630bd62a071e80d5ace.webp" alt=""
                          class="image-represent" style="width:100% ; height:100%;">
                 </div>
             </div>
             <div class="row" style="margin-top:40px;">
                 <div class="product-title-wrapper">
-                    <h2 class="product-title">Laptop MSI Gaming</h2>
+                    <h2 class="product-title">Your world in here</h2>
                 </div>
             </div>
             <div class="row">
                 <div class="filter-wrapper">
                     <form action="" class="filter-form">
                         <select name="sort_by" id="filter-list" class="filter-list">
+                            <option value="None" class="filter-item">Filter product</option>
                             <option value="price_ASC" class="filter-item">Price Ascending</option>
                             <option value="price_DESC" class="filter-item">Price Descending</option>
-                            <option value="Letter A-Z" class="filter-item">Letter A-Z</option>
-                            <option value="Letter Z-A" class="filter-item">Letter Z-A</option>
+                            <option value="Letter_A-Z" class="filter-item">Letter A-Z</option>
+                            <option value="Letter_Z-A" class="filter-item">Letter Z-A</option>
                         </select>
                     </form>
                 </div>
@@ -200,7 +201,9 @@
                             <div class="product-item col-lg-2 col-xl-2 col-md-4 col-sm-6 col-12">
                                 <img src="${product.listImage.get(0).url}"
                                      alt="" class="product-item_image">
+                                
                                 <div class="image-redirect">
+                                    <span class="product-name text-center" style="color:#0033ff;">${product.proName}</span>
                                     <a href="./Detail?proID=${product.proID}" class="image-redirect_link">View detail</a>
                                 </div>
                             </div>

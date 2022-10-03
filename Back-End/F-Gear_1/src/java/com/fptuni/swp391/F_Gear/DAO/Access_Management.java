@@ -24,20 +24,25 @@ public class Access_Management {
     public static Users check(String userName, String password) throws SQLException, ClassNotFoundException {
         Users user = null;
         Connection con = DBUtils.getConnection();
-        String sql = "select UserName, Password from Users where UserName=? and password=?";
+        String sql = "select  UserName, Password , FullName,PhoneNumber , Avartar ,Gender , R.RoleName  from dbo.Users U , dbo.Roles R where UserName=? and password=? ";
         PreparedStatement stm = con.prepareStatement(sql);
         stm.setString(1, userName);
         stm.setString(2, password);
         ResultSet rs = stm.executeQuery();
         if (rs.next()) {
             user = new Users();
-            user.setUserName(rs.getString("userName"));
-            user.setPassword(rs.getString("password"));
+            user.setUserName(rs.getString("UserName"));
+            user.setPassword(rs.getString("Password"));
+            user.setFullName(rs.getString("FullName"));
+            user.setPhoneNumber(rs.getInt("PhoneNumber"));
+            user.setAvatar(rs.getString("Avartar"));
+            user.setGender(rs.getString("Gender"));
+            user.setRoleName(rs.getString("RoleName"));
         }
         con.close();
         return user;
     }
-    
+
     //check của register
     public boolean checkUserName(String userName) throws SQLException, ClassNotFoundException {
         Connection con = DBUtils.getConnection();
@@ -52,7 +57,7 @@ public class Access_Management {
         con.close();
         return true;
     }
-    
+
     public boolean signUp(Users u) throws SQLException {
         boolean result = true;
         Connection con = DBUtils.getConnection();
@@ -67,9 +72,9 @@ public class Access_Management {
         con.close();
         return result;
     }
-    
+
     //hàm này dùng để mã hoá mật khẩu
-   public String getMD5(String input) {
+    public String getMD5(String input) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] messageDigest = md.digest(input.getBytes());
@@ -88,6 +93,5 @@ public class Access_Management {
         }
         return hashtext;
     }
-    
-    
+
 }
