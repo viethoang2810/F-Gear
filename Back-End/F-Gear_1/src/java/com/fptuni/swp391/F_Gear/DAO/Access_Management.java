@@ -44,21 +44,18 @@ public class Access_Management {
     }
 
     //check của register
-    public String check(String userName) throws SQLException, ClassNotFoundException {
-        //Users user = null;
+    public boolean checkUserName(String userName) throws SQLException, ClassNotFoundException {
         Connection con = DBUtils.getConnection();
         String sql = "select UserName from Users where UserName=?";
         PreparedStatement stm = con.prepareStatement(sql);
         stm.setString(1, userName);
         ResultSet rs = stm.executeQuery();
-        String user_Name = "";
         if (rs.next()) {
-            // user = new Users();
-            //user.setUserName(rs.getString("userName"));
-            user_Name = rs.getString("userName");
+            rs.getString("userName");
+            return false;
         }
         con.close();
-        return user_Name;
+        return true;
     }
 
     public boolean signUp(Users u) throws SQLException {
