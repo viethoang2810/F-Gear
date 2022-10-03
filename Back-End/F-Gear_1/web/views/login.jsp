@@ -14,7 +14,7 @@
         <div class="login">
             <img class="login-logo"
                  src="../assets/Images/Logo_After_Login.png">
-            <form class="login-form" action="./Access" method="POST">
+            <form class="login-form" action="./Access">
                 <input class="login-form-text" type="text" placeholder="Username" name="userName" value="${user.userName}" />
                 <input class="login-form-text" type="password" placeholder="Password" name="password"/>
                 <i>${message}</i>
@@ -32,7 +32,7 @@
                 <a href=""> Login with Google</a>
             </button>
             <div class="login-create">
-                <a href="./views/register.jsp">Create account ?</a>
+                <a href="./Access?op=signup">Create account ?</a>
             </div>
 
         </div>
