@@ -37,11 +37,19 @@ public class Access_Controller extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = "";
         HttpSession session = request.getSession();
-        String op = request.getParameter("op").toLowerCase();
+        String op = request.getParameter("op");
+        String access = request.getParameter("access");
+        if(access != null){
+            switch(access){
+                case "register":
+                    request.getRequestDispatcher("/view/register.jsp").forward(request, response);
+                    break;
+            }
+        }
         Access_Management a = new Access_Management();
         if (op != null) {
             try {
-                switch (op) {
+                switch (op.toLowerCase()) {
                     case "login": {
                         String userName = request.getParameter("userName");
                         String password = a.getMD5(request.getParameter("password"));

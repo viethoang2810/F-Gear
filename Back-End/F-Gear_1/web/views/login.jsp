@@ -32,7 +32,7 @@
                 <a href=""> Login with Google</a>
             </button>
             <div class="login-create">
-                <a href="./views/register.jsp">Create account ?</a>
+                <a href="./Access?access=register">Create account ?</a>
             </div>
 
         </div>
