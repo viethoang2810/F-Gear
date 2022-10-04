@@ -68,7 +68,7 @@
                                         <span class="welcome-content">Welcome viethoang</span>
                                         <div class="logout-wrapper">
                                             <i class="fa-solid fa-power-off"></i>
-                                            <a href="" class="logout_link">Logout</a>
+                                            <a href="Access?op=logout" class="logout_link">Logout</a>
                                         </div>
                                     </div>
                                     </div>

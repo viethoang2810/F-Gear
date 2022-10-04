@@ -19,7 +19,8 @@
    
 
     <body>
-      
+
+        <%@include file="Header.jsp" %>
 
         <div class="body">
             <div class="body-interactive">
