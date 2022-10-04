@@ -10,6 +10,7 @@ listOfRow.forEach((row, index) => {
   
   if (!localStorage.getItem(`amountDefault-${index + 1}`)) {
     localStorage.setItem(`amountDefault-${index + 1}`, 1);
+    
   }
   if (!localStorage.getItem(`priceDefault-${index + 1}`)) {
     localStorage.setItem(`priceDefault-${index + 1}`, price);

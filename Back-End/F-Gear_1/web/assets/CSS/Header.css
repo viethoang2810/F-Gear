@@ -1,0 +1,237 @@
+/* Header styles */
+.header-wrapper {
+    display: flex;
+    font-size: 1.4rem;
+}
+
+.header {
+    background-color: rgb(0, 191, 255);
+    z-index: 4;
+    height: 100px;
+    position: fixed;
+    width: 100%;
+
+}
+
+.header-navigator {
+    height: 100%;
+    position: relative;
+}
+
+.header-logo_image {
+    width: 120px;
+    height: 120px;
+    display: block;
+}
+
+.header-logo_link {
+    display: flex;
+    justify-content: center;
+}
+
+.navigator-list {
+    list-style: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.navigator-page {
+    height: 100%;
+    /* width: 100%; */
+    margin-right: 80px;
+}
+
+.navigator {
+    height: 100%;
+}
+
+.navigator-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.navigator-wrapper-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+}
+
+.navigator-item {
+    margin-right: 60px;
+    position: relative;
+    font-weight: 600;
+}
+
+/* Animation for underline */
+.navigator-item::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #333;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.navigator-item:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.navigator-item:hover a {
+    color: #fff;
+}
+
+.navigatior-user {
+    width: 100%;
+    display: flex;
+}
+
+.user-account-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+    margin-right: 5px;
+}
+
+.navigator-user-account {
+    display: flex;
+    align-items: center;
+    width: 250px;
+    margin-left: 100px;
+}
+
+.white-space {
+    width: 100%;
+    height: 100px;
+}
+.btn-nav {
+    display: flex;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.btn-navigator-list {
+    display: flex;
+    width: 80%;
+    margin-left: 150px;
+    padding: 30px 0;
+
+}
+
+.btn-navigator-item {
+    margin-right: 163px;
+    position: relative;
+}
+.btn-navigator-item::after{
+    content: " ";
+    width: 180px;
+    height: 20px;
+    position: absolute;
+    top:34px;
+}
+.item-btn {
+    width: 180px;
+    display: flex;
+    padding: 5px 20px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: space-around;
+    font-weight: 600;
+
+}
+
+.navigator-btn_menu {
+    display: none;
+    margin-left: 30px;
+    text-align: center;
+    width: 60px !important;
+    padding: 5px;
+    border-radius: 10px;
+}
+.kinds-product{
+    height: 100%;
+    background-color:rgb(211, 211, 211);
+   
+    overflow-y: scroll;
+    border-radius: 10px;
+
+}
+.kind-prodict-item{
+    padding: 5px 20px ;
+    font-weight: 600;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    font-size: 1rem;
+    margin-right: 10px;
+    width: 210px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    position: relative;
+    
+}
+.kinds-product-list{
+    list-style: none;
+    padding:5px ;
+}
+.kind-prodict-item:hover{
+    background-color: #fff;
+    color: var(--background-color);
+}
+.kind-prodict-item:hover a{
+    color: var(--background-color);
+
+}
+.kind-prodict-item::after{
+    content: " ";
+    width:40px;
+    height:100%;
+    border-width: 16px ;
+    border-style: solid;
+    border-color: transparent transparent transparent #fff;
+    position: absolute;
+    right: -40px;
+    display:none;
+    z-index: 7;
+}
+.kind-prodict-item:hover::after{
+    display: block;
+} 
+.kinds-product-wrapper{
+    margin-top: 10px;
+    width: 230px;
+    height: 500px;
+    display: none;
+
+}
+.btn-navigator-item:hover .kinds-product-wrapper{
+    display: block;
+}
+/* Scroll-bar custome */
+
+  /* scrollbar width */
+  .kinds-product::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* scrollbar track */
+  .kinds-product::-webkit-scrollbar-track {
+    background: #eee;
+  }
+  .sidebar-wrapper{
+    position:fixed;
+    margin-bottom: 30px;
+    background-color:#fff;
+    height:80px;
+    z-index: 3;
+}
