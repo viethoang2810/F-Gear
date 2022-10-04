@@ -1,3 +1,5 @@
+<%@page import="java.text.NumberFormat"%>
+<%@page import="java.util.Locale"%>
 ﻿<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -237,13 +239,14 @@
                         <div class="product-price-description">
                             <div class="price-description" style="display: flex; ">
                                 <h5 class="price-description-title" style="margin-right: 10px;">Original Price : </h5>
+                        
                                 <span class="price-number"
-                                      style="font-weight: 500; font-size:1.2rem ; color: rgb(116, 112, 112);text-decoration:line-through;">${productFound.proOriginalPrice}</span>
+                                      style="font-weight: 500; font-size:1.2rem ; color: rgb(116, 112, 112);text-decoration:line-through;">${productFound.proOriginalPrice}đ</span>
                             </div>
                             <div class="price-description" style="display: flex; ">
                                 <h5 class="price-description-title" style="margin-right: 10px;">Current Price : </h5>
                                 <span class="price-number"
-                                      style="font-weight: 500; font-size:1.2rem ; color: rgb(237, 17, 17);">${productFound.proCurrentPrice}</span>
+                                      style="font-weight: 500; font-size:1.2rem ; color: rgb(237, 17, 17);">${productFound.proCurrentPrice}đ</span>
                             </div>
                         </div>
                         <div class="btn-user-actions">

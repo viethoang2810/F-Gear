@@ -23,16 +23,17 @@
                         <input type="checkbox" class="login-form-radio" />
                         <label>Remember password</label>
                     </div>
-                    <a href="./index.html">Forgot password ?</a>
+                    <a href="./index.jsp">Forgot password ?</a>
                 </div>
                 <button class="login-form-submit" name="op" value="login" >Go to store</button>
             </form>
             <button class="login-google">
                 <img src="../assets/Images/R.png" />
-                <a href=""> Login with Google</a>
+                <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/F-Gear_1/./Access?op=loginwithgoogle&response_type=code
+		   &client_id=981197715312-butc49a1aut585l2hhqsf1s4it4etihq.apps.googleusercontent.com&approval_prompt=force"> Login with Google</a>
             </button>
             <div class="login-create">
-                <a href="./views/register.jsp">Create account ?</a>
+                <a href="Access?op=signup">Create account ?</a>
             </div>
 
         </div>
@@ -43,7 +44,7 @@
                     alt="logo-here" />
                 <div>
                     <h1>F-Gear Store</h1>
-                    <p>Address: 210/10 Lê V?n S?, Ph??ng 10, Qu?n Phú Nhu?n</p>
+                    <p>Address: 210/10 LÃª V?n S?, Ph??ng 10, Qu?n PhÃº Nhu?n</p>
                     <p>Contact: 0903333333</p>
                     <div class="footer-link">
                         <i class="fa-brands fa-facebook"></i>
