@@ -34,7 +34,7 @@ public class Access_Management {
             user.setUserName(rs.getString("UserName"));
             user.setPassword(rs.getString("Password"));
             user.setFullName(rs.getString("FullName"));
-            user.setPhoneNumber(rs.getInt("PhoneNumber"));
+            user.setPhoneNumber(rs.getString("PhoneNumber"));
             user.setAvatar(rs.getString("Avartar"));
             user.setGender(rs.getString("Gender"));
             user.setRoleName(rs.getString("RoleName"));
@@ -64,7 +64,7 @@ public class Access_Management {
         PreparedStatement stm = con.prepareStatement("insert into Users (UserName, Password, PhoneNumber) values(?,?,?)");
         stm.setString(1, u.getUserName());
         stm.setString(2, u.getPassword());
-        stm.setInt(3, u.getPhoneNumber());
+        stm.setString(3, u.getPhoneNumber());
         int count = stm.executeUpdate();
         if (count == 0) {
             result = false;
