@@ -37,11 +37,19 @@ public class Access_Controller extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = "";
         HttpSession session = request.getSession();
-        String op = request.getParameter("op").toLowerCase();
+        String op = request.getParameter("op");
+        String access = request.getParameter("access");
+        if(access != null){
+            switch(access){
+                case "register":
+                    request.getRequestDispatcher("/view/register.jsp").forward(request, response);
+                    break;
+            }
+        }
         Access_Management a = new Access_Management();
         if (op != null) {
             try {
-                switch (op) {
+                switch (op.toLowerCase()) {
                     case "login": {
                         String userName = request.getParameter("userName");
                         String password = a.getMD5(request.getParameter("password"));
@@ -62,15 +70,13 @@ public class Access_Controller extends HttpServlet {
                     }
                     break;
 
-                    case "register":                
+                    case "register":
                         String userName = request.getParameter("userName");
                         String password = request.getParameter("password");
                         String cofirm = request.getParameter("cofirm");
                         int phone = Integer.parseInt(request.getParameter("phone"));
                         if (password.equals(cofirm)) {
-                            //biến tmp này dùng để lưu trữ tạm userName
-                            String tmp = a.check(userName);
-                            if ("".equals(tmp)) {
+                            if (a.checkUserName(userName)) {
                                 Users user = new Users();
                                 user.setUserName(userName);
                                 user.setPassword(a.getMD5(password));
@@ -97,6 +103,10 @@ public class Access_Controller extends HttpServlet {
                             request.setAttribute("message", "Passwords do not match!");
                         }
                         break;
+                    case "signup": {
+                        url = "/views/register.jsp";
+                    }
+                    break;
 
                 }
             } catch (Exception e) {

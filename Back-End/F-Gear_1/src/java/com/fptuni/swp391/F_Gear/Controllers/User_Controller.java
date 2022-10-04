@@ -22,7 +22,7 @@ import javax.servlet.http.Part;
  *
  * @author Admin
  */
-@WebServlet(name = "User_Controller", urlPatterns = {"/Profile/*"})
+
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
         maxFileSize = 1024 * 1024 * 10, // 10 MB
