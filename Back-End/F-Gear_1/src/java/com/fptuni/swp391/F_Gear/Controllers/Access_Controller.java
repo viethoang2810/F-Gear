@@ -40,14 +40,14 @@ public class Access_Controller extends HttpServlet {
         String url = "";
         HttpSession session = request.getSession();
         String op = request.getParameter("op");
-        String access = request.getParameter("access");
-        if(access != null){
-            switch(access){
-                case "register":
-                    request.getRequestDispatcher("/view/register.jsp").forward(request, response);
-                    break;
-            }
-        }
+//        String access = request.getParameter("access");
+//        if(access != null){
+//            switch(access){
+//                case "register":
+//                    request.getRequestDispatcher("/view/register.jsp").forward(request, response);
+//                    break;
+//            }
+//        }
         Access_Management a = new Access_Management();
         if (op != null) {
             try {
