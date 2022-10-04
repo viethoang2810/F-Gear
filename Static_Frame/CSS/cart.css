@@ -1,0 +1,92 @@
+.cart-body {
+    width: 100%;
+}
+
+.cart-body-back {
+    border: none;
+    margin: 30px 0 0 60px;
+    font-size: 20px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: rgb(209, 208, 208);
+}
+
+.cart-logo {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.cart-logo img {
+    display: block;
+    margin: 0 auto;
+    width: 10%;
+    background-color: #2f3c40;
+    border-radius: 50%;
+}
+
+.cart-table {
+    width: 80%;
+    margin: 40px auto 120px auto;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.cart-table button {
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 0 10px;
+    
+}
+
+.cart-table th {
+    border: 1px solid #000;
+    padding: 10px;
+}
+
+.cart-table td {
+    width: 16%;
+    border: 1px solid #000;
+    padding: 5px;
+
+}
+
+.cart-table img {
+    width: 50%;
+}
+
+.cart-btn {
+    width: 100%;
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 -2px 10px 5px #000;
+}
+
+.cart-btn span {
+    font-size: 30px;
+    margin-left: 180px;
+}
+
+.cart-btn button {
+    border: none;
+    background-color: #6bbdec;
+    font-size: 30px;
+    width: 180px;
+    padding: 15px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.cart-btn button:hover {
+    background-color: #98cfee;
+}
+
+.cart-btn button:nth-child(2) {
+    margin-right: 180px;
+}
