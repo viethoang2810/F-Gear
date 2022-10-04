@@ -22,6 +22,9 @@ public class Product {
     private ArrayList<Images> listImage;
     private ArrayList<Specification> listSpecification;
     private String proType;
+    private int status;
+    private int cateID;
+    private int brandID;
     
     public Product() {
     }
@@ -46,6 +49,20 @@ public class Product {
         this.listSpecification = listSpecification;
         this.proType = proType;
     }
+
+    //constructor list product -vanndh
+    public Product(int proID, String proName, String proOriginalPrice, int discount, String proCurrentPrice, int status, int cateID, int brandID) {
+        this.proID = proID;
+        this.proName = proName;
+        this.proOriginalPrice = proOriginalPrice;
+        this.discount = discount;
+        this.proCurrentPrice = proCurrentPrice;
+        this.status = status;
+        this.cateID = cateID;
+        this.brandID = brandID;
+    }
+    
+    
 
     public int getProID() {
         return proID;
@@ -119,6 +136,30 @@ public class Product {
         this.proType = proType;
     }
 
-    
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public int getCateID() {
+        return cateID;
+    }
+
+    public void setCateID(int cateID) {
+        this.cateID = cateID;
+    }
+
+    public int getBrandID() {
+        return brandID;
+    }
+
+    public void setBrandID(int brandID) {
+        this.brandID = brandID;
+    }
+
+  
 
 }
