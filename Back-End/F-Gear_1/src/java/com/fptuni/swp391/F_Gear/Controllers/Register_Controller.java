@@ -18,10 +18,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ADMIN
+ * @author duyng
  */
-@WebServlet(name = "Access_Controller", urlPatterns = {"/Access/*"})
-public class Access_Controller extends HttpServlet {
+@WebServlet(name = "Register_Controller", urlPatterns = {"/Register/*"})
+public class Register_Controller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,26 +42,6 @@ public class Access_Controller extends HttpServlet {
         if (op != null) {
             try {
                 switch (op) {
-                    case "login": {
-                        String userName = request.getParameter("userName");
-                        String password = a.getMD5(request.getParameter("password"));
-                        Users user = Access_Management.check(userName, password);
-                        if (user != null) {
-                            session.setAttribute("user", user);
-                            response.sendRedirect("./Home/HomePage");
-                            return;
-                        } else {
-                            url = "/views/login.jsp";
-                            request.setAttribute("message", "Incorrect Username or Password");
-                        }
-                    }
-                    break;
-                    case "logout": {
-                        session.invalidate();
-                        url = "/views/Homepage.jsp";
-                    }
-                    break;
-
                     case "register":
                         String userName = request.getParameter("userName");
                         String password = request.getParameter("password");
@@ -95,11 +75,6 @@ public class Access_Controller extends HttpServlet {
                             request.setAttribute("message", "Passwords do not match!");
                         }
                         break;
-                    case "signup": {
-                        url = "/views/register.jsp";
-                    }
-                    break;
-
                 }
             } catch (Exception e) {
                 log("Error at MainController: " + e.toString());
@@ -107,8 +82,8 @@ public class Access_Controller extends HttpServlet {
             request.getRequestDispatcher(url).forward(request, response);
         }
     }
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

@@ -46,7 +46,7 @@
             <i style="color: red">${message}</i>
         </form>
         <div class="login-create">
-            <a href="./login.jsp">You already have account ?</a>
+            <a href="Access?op=login">You already have account ?</a>
         </div>
 
     </div>
