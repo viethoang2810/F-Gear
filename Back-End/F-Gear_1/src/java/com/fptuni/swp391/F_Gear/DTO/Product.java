@@ -15,9 +15,9 @@ public class Product {
 
     private int proID;
     private String proName;
-    private String proOriginalPrice;
+    private int proOriginalPrice;
     private int discount;
-    private String proCurrentPrice;
+    private int proCurrentPrice;
     private String brandName;
     private ArrayList<Images> listImage;
     private ArrayList<Specification> listSpecification;
@@ -27,7 +27,7 @@ public class Product {
     }
 
 //    cái constructor này để lấy top 8 sản phẩm show ở Homepage nha -DungHQ
-    public Product(String brandName, int proID, String proName, String proOriginalPrice, ArrayList<Images> listImage) {
+    public Product(String brandName, int proID, String proName, int proOriginalPrice, ArrayList<Images> listImage) {
         this.brandName = brandName;
         this.proID = proID;
         this.proName = proName;
@@ -35,7 +35,7 @@ public class Product {
         this.listImage = listImage;
     }
 
-    public Product(int proID, String proName, String proOriginalPrice, int discount, String proCurrentPrice, String brandName, ArrayList<Images> listImage, ArrayList<Specification> listSpecification, String proType) {
+    public Product(int proID, String proName, int proOriginalPrice, int discount, int proCurrentPrice, String brandName, ArrayList<Images> listImage, ArrayList<Specification> listSpecification, String proType) {
         this.proID = proID;
         this.proName = proName;
         this.proOriginalPrice = proOriginalPrice;
@@ -63,11 +63,11 @@ public class Product {
         this.proName = proName;
     }
 
-    public String getProOriginalPrice() {
+    public int getProOriginalPrice() {
         return proOriginalPrice;
     }
 
-    public void setProOriginalPrice(String proOriginalPrice) {
+    public void setProOriginalPrice(int proOriginalPrice) {
         this.proOriginalPrice = proOriginalPrice;
     }
 
@@ -79,11 +79,11 @@ public class Product {
         this.discount = discount;
     }
 
-    public String getProCurrentPrice() {
+    public int getProCurrentPrice() {
         return proCurrentPrice;
     }
 
-    public void setProCurrentPrice(String proCurrentPrice) {
+    public void setProCurrentPrice(int proCurrentPrice) {
         this.proCurrentPrice = proCurrentPrice;
     }
 

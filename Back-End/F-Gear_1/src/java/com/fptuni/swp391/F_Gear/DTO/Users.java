@@ -15,21 +15,17 @@ public class Users {
     private String password;
     private String fullName;
     private int phoneNumber;
-    private String roleName;
-    private String avatar ;
-    private String gender;
+    private String roleID;
 
     public Users() {
     }
 
-    public Users(String userName, String password, String fullName, int phoneNumber, String roleName, String avatar, String gender) {
+    public Users(String userName, String password, int phoneNumber, String fullName, String roleID) {
         this.userName = userName;
         this.password = password;
-        this.fullName = fullName;
         this.phoneNumber = phoneNumber;
-        this.roleName = roleName;
-        this.avatar = avatar;
-        this.gender = gender;
+        this.fullName = fullName;
+        this.roleID = roleID;
     }
 
     public String getUserName() {
@@ -48,14 +44,6 @@ public class Users {
         this.password = password;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
     public int getPhoneNumber() {
         return phoneNumber;
     }
@@ -64,33 +52,20 @@ public class Users {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getRoleName() {
-        return roleName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setRoleName(String RoleName) {
-        this.roleName = RoleName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public String getRoleID() {
+        return roleID;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void setRoleID(String roleID) {
+        this.roleID = roleID;
     }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-    
-    
-    
-    
-   
 
 }

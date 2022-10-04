@@ -9,8 +9,6 @@ import com.fptuni.swp391.F_Gear.DAO.Access_Management;
 import com.fptuni.swp391.F_Gear.DTO.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.StringTokenizer;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -44,6 +42,9 @@ public class Access_Controller extends HttpServlet {
         if (op != null) {
             try {
                 switch (op) {
+                    case "loginpage": {
+                        response.sendRedirect("/login.jsp");
+                    }
                     case "login": {
                         String userName = request.getParameter("userName");
                         String password = a.getMD5(request.getParameter("password"));
@@ -64,8 +65,7 @@ public class Access_Controller extends HttpServlet {
                     }
                     break;
 
-                    case "register": {
-
+                    case "register":                
                         String userName = request.getParameter("userName");
                         String password = request.getParameter("password");
                         String cofirm = request.getParameter("cofirm");
@@ -97,48 +97,7 @@ public class Access_Controller extends HttpServlet {
                             request.setAttribute("phone", phone);
                             request.setAttribute("message", "Passwords do not match!");
                         }
-
-                    }
-                    break;
-
-                    case "signup": {
-                        url = "/views/register.jsp";
-                    }
-                    break;
-
-                    case "loginwithgoogle": {
-                        String code = request.getParameter("code");
-                        String accessToken = Access_Management.getToken(code);
-                        System.out.println(code);
-                        System.out.println(Access_Management.getUserInfo(accessToken));
-
-                        StringTokenizer st = new StringTokenizer(Access_Management.getUserInfo(accessToken), "{ ,\"\n}");
-                        ArrayList<String> list = new ArrayList<>();
-                        while (st.hasMoreTokens()) {
-                            list.add(st.nextToken());
-                        }
-//                        System.out.println("id: " + list.get(2));
-//                        System.out.println("email: " + list.get(5));
-//                        System.out.println("avatar: " + list.get(11));
-                        Users user = new Users();
-                        user.setUserName(list.get(5));
-                        user.setAvatar(list.get(11));
-                        user.setFullName(list.get(5));
-                        System.out.println(user.getUserName());
-                        System.out.println("user: " + user.toString());
-                        
-                        if (a.checkUserName(user.getUserName())) {
-                            if (a.signUpWithGoogle(user)) {
-                                System.out.println("login dc, va dk dc do chua co tk");
-                            }
-                        } else {
-                            System.out.println("login dc, nhung k dk dc vi da co tk");
-                        }
-
-                        session.setAttribute("user", user);
-//                        response.sendRedirect("./Home/HomePage");
-                        url = "/views/Homepage.jsp";
-                    }
+                        break;
 
                 }
             } catch (Exception e) {
