@@ -70,7 +70,7 @@ public class Access_Controller extends HttpServlet {
                     }
                     break;
 
-                    case "register":                
+                    case "register":
                         String userName = request.getParameter("userName");
                         String password = request.getParameter("password");
                         String cofirm = request.getParameter("cofirm");
@@ -103,6 +103,10 @@ public class Access_Controller extends HttpServlet {
                             request.setAttribute("message", "Passwords do not match!");
                         }
                         break;
+                    case "signup": {
+                        url = "/views/register.jsp";
+                    }
+                    break;
 
                 }
             } catch (Exception e) {
