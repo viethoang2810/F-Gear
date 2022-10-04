@@ -44,7 +44,7 @@
                     alt="logo-here" />
                 <div>
                     <h1>F-Gear Store</h1>
-                    <p>Address: 210/10 Lê V?n S?, Ph??ng 10, Qu?n Phú Nhu?n</p>
+                    <p>Address: 210/10 LÃª V?n S?, Ph??ng 10, Qu?n PhÃº Nhu?n</p>
                     <p>Contact: 0903333333</p>
                     <div class="footer-link">
                         <i class="fa-brands fa-facebook"></i>

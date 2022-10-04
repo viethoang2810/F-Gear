@@ -65,6 +65,7 @@ public class Access_Controller extends HttpServlet {
                     break;
 
                     case "register": {
+
                         String userName = request.getParameter("userName");
                         String password = request.getParameter("password");
                         String cofirm = request.getParameter("cofirm");
@@ -96,12 +97,15 @@ public class Access_Controller extends HttpServlet {
                             request.setAttribute("phone", phone);
                             request.setAttribute("message", "Passwords do not match!");
                         }
+
                     }
                     break;
+
                     case "signup": {
                         url = "/views/register.jsp";
                     }
                     break;
+
                     case "loginwithgoogle": {
                         String code = request.getParameter("code");
                         String accessToken = Access_Management.getToken(code);
@@ -135,6 +139,7 @@ public class Access_Controller extends HttpServlet {
 //                        response.sendRedirect("./Home/HomePage");
                         url = "/views/Homepage.jsp";
                     }
+
                 }
             } catch (Exception e) {
                 log("Error at MainController: " + e.toString());
