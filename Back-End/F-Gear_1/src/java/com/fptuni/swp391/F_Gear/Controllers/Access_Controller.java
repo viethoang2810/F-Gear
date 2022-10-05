@@ -9,6 +9,8 @@ import com.fptuni.swp391.F_Gear.DAO.Access_Management;
 import com.fptuni.swp391.F_Gear.DTO.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,18 +38,19 @@ public class Access_Controller extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = "";
-        HttpSession session = request.getSession();
         String op = request.getParameter("op");
-        String access = request.getParameter("access");
-        if(access != null){
-            switch(access){
-                case "register":
-                    request.getRequestDispatcher("/view/register.jsp").forward(request, response);
-                    break;
-            }
-        }
+//        String access = request.getParameter("access");
+//        if(access != null){
+//            switch(access){
+//                case "register":
+//                    request.getRequestDispatcher("/view/register.jsp").forward(request, response);
+//                    break;
+//            }
+//        }
         Access_Management a = new Access_Management();
         if (op != null) {
+            HttpSession session = request.getSession(true);
+
             try {
                 switch (op.toLowerCase()) {
                     case "login": {
@@ -56,6 +59,7 @@ public class Access_Controller extends HttpServlet {
                         Users user = Access_Management.check(userName, password);
                         if (user != null) {
                             session.setAttribute("user", user);
+
                             response.sendRedirect("./Home/HomePage");
                             return;
                         } else {
@@ -66,11 +70,12 @@ public class Access_Controller extends HttpServlet {
                     break;
                     case "logout": {
                         session.invalidate();
-                        url = "/views/Homepage.jsp";
+                        response.sendRedirect("./");
                     }
                     break;
 
-                    case "register":
+                    case "register": {
+
                         String userName = request.getParameter("userName");
                         String password = request.getParameter("password");
                         String cofirm = request.getParameter("cofirm");
@@ -102,11 +107,48 @@ public class Access_Controller extends HttpServlet {
                             request.setAttribute("phone", phone);
                             request.setAttribute("message", "Passwords do not match!");
                         }
-                        break;
+
+                    }
+                    break;
+
                     case "signup": {
                         url = "/views/register.jsp";
                     }
                     break;
+
+                    case "loginwithgoogle": {
+                        String code = request.getParameter("code");
+                        String accessToken = Access_Management.getToken(code);
+                        System.out.println(code);
+                        System.out.println(Access_Management.getUserInfo(accessToken));
+
+                        StringTokenizer st = new StringTokenizer(Access_Management.getUserInfo(accessToken), "{ ,\"\n}");
+                        ArrayList<String> list = new ArrayList<>();
+                        while (st.hasMoreTokens()) {
+                            list.add(st.nextToken());
+                        }
+//                        System.out.println("id: " + list.get(2));
+//                        System.out.println("email: " + list.get(5));
+//                        System.out.println("avatar: " + list.get(11));
+                        Users user = new Users();
+                        user.setUserName(list.get(5));
+                        user.setAvatar(list.get(11));
+                        user.setFullName(list.get(5));
+                        System.out.println(user.getUserName());
+                        System.out.println("user: " + user.toString());
+
+                        if (a.checkUserName(user.getUserName())) {
+                            if (a.signUpWithGoogle(user)) {
+                                System.out.println("login dc, va dk dc do chua co tk");
+                            }
+                        } else {
+                            System.out.println("login dc, nhung k dk dc vi da co tk");
+                        }
+
+                        session.setAttribute("user", user);
+//                        response.sendRedirect("./Home/HomePage");
+                        url = "/views/Homepage.jsp";
+                    }
 
                 }
             } catch (Exception e) {

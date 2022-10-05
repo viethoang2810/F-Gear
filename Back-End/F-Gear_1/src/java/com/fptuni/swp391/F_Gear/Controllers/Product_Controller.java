@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "Product_Controller", urlPatterns = {"/Product/*"})
+
 public class Product_Controller extends HttpServlet {
 
     /**
