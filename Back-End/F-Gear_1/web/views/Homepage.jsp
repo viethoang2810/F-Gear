@@ -19,7 +19,8 @@
    
 
     <body>
-      
+
+        <%@include file="Header.jsp" %>
 
         <div class="body">
             <div class="body-interactive">
@@ -339,7 +340,7 @@
             </h1>
             <div class="body-list-product">
                 <c:forEach var="list" items="${listHomepage}" varStatus="status">
-                    <a href="<c:url value="/views/Detail_Product.jsp?id=${list.proID}"/>">
+                    <a href="<c:url value="../Detail?proID=${list.proID}"/>">
                         <img
                             src="${list.listImage[status.index].url}" />
                     </a>
@@ -353,10 +354,5 @@
 </body>
 <script src="./assets/JavaScript/Homepage.js">
 
-    </body>
-   
-
-
-    </script>
 
 </html>

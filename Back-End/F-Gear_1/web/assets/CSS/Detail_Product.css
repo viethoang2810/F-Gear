@@ -8,7 +8,7 @@
     background-color: rgb(19, 116, 235);
     background-image: linear-gradient(rgb(19, 116, 235),rgba(12, 123, 227, 0.635));
     top: 40px;
-    width: 100%;
+    width: 200px;
     border:2px solid #333;
     border-radius: 5px;
     display: none;
@@ -35,6 +35,7 @@
 .user-welcome{
     position: relative;
     cursor: pointer;
+    width: 300px;
 }
 .user-welcome::after{
     position: absolute;

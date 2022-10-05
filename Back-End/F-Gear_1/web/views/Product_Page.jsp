@@ -10,9 +10,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>F-GEAR</title>
         <link rel="icon" href="./assets/Images/pinterest_board_photo.png">
-        <link rel="stylesheet" href="./assets/CSS/Product_Page.css">
-        <link rel="stylesheet" href="./assets/CSS/GlobalStyles.css"> <!-- This file contains all of common styles of pages-->
-        <link rel="stylesheet" href="./assets/CSS/Responive.css">
+        <link rel="stylesheet" href="../assets/CSS/Product_Page.css">
+        <link rel="stylesheet" href="../assets/CSS/GlobalStyles.css"> <!-- This file contains all of common styles of pages-->
+        <link rel="stylesheet" href="../assets/CSS/Responive.css">
         <!-- Font Awesome link-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
               integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
@@ -23,7 +23,7 @@
     </head>
 
     <body>
-        <%@include file="./Header.jsp" %>
+        <%@include file="Header.jsp" %>
 
         <div class="container-fluid">
 
@@ -172,7 +172,7 @@
             <div class="row text-center" style="z-index:10;">
                 <div class="image-wrapper col-xl-12 col-md-12 col-lg-12 col-sm-12 col-12 "
                      style="width:100% ; min-height: 200px;">
-                    <img src="./assets/Images/676vn_1890_cls_18aa655da8844630bd62a071e80d5ace.webp" alt=""
+                    <img src="../assets/Images/676vn_1890_cls_18aa655da8844630bd62a071e80d5ace.webp" alt=""
                          class="image-represent" style="width:100% ; height:100%;">
                 </div>
             </div>
@@ -204,7 +204,7 @@
                                 
                                 <div class="image-redirect">
                                     <span class="product-name text-center" style="color:#0033ff;">${product.proName}</span>
-                                    <a href="./Detail?proID=${product.proID}" class="image-redirect_link">View detail</a>
+                                    <a href="../Detail?proID=${product.proID}" class="image-redirect_link">View detail</a>
                                 </div>
                             </div>
                         </c:forEach>
@@ -238,6 +238,6 @@
         </div>
     </body>
     <script src="./assets/JavaScript/CommonFeatures.js"></script>
-    <script src="./assets/JavaScript/Product_Page.js"></script>
+    <script src="../assets/JavaScript/Product_Page.js"></script>
 
 </html>
