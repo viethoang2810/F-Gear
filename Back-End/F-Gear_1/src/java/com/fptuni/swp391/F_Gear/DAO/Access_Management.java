@@ -43,7 +43,7 @@ public class Access_Management {
             user.setUserName(rs.getString("UserName"));
             user.setPassword(rs.getString("Password"));
             user.setFullName(rs.getString("FullName"));
-            user.setPhoneNumber(rs.getInt("PhoneNumber"));
+            user.setPhoneNumber(rs.getString("PhoneNumber"));
             user.setAvatar(rs.getString("Avatar"));
             user.setGender(rs.getString("Gender"));
             user.setRoleName(rs.getString("RoleName"));
