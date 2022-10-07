@@ -36,7 +36,7 @@ public class Admin_Controller extends HttpServlet {
         Product_Management pm = new Product_Management();
         Admin_Management am = new Admin_Management();
         ArrayList<Product> listOfProduct = new ArrayList<>();
-        String adminAction = request.getParameter("adminOp");
+            String adminAction = request.getParameter("adminOp");
         
         if(adminAction != null){
             switch(adminAction){
