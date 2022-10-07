@@ -34,6 +34,11 @@
                 <div class="white-space">
 
                 </div>
+                <form action="./Admin" style="width: 70%; margin-left: 20%;">
+                    <input type="text" placeholder="Search . . ."
+                           style="width: 60%; height: 40px; padding: 5px 0 5px 10px;" name="name" />
+                    <button style="padding: 8px 15px; border: none; background-color: gray; color: white; border-radius: 10px;" name="adminOp" value="search">Search</button>
+                </form>
             </div>
             <div class="row sidebar-row" >
                 <div class="sidebar-wrapper">
@@ -148,7 +153,7 @@
                                     <th scope="col">Original Price</th>
                                     <th scope="col">Discount</th>
                                     <th scope="col">Final Price</th>
-                                    <th scope="col"></th>
+                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -158,13 +163,13 @@
                                         <td class="table-product_name">${product.proName}</td>
                                         <td class="table-product_original">${product.proOriginalPrice}</td>
                                         <td class="table-product_discount">${product.discount}</td>
-                                        <td >${product.proCurrentPrice}</td>
+                                        <td class="table-product_current">${product.proCurrentPrice}</td>
                                         <td class="table-btns">
                                             <button class="btn-action btn-edit">
                                                 <i class="fa-solid fa-pen-to-square"></i>
                                             </button>
 
-                                            <button class="btn-action btn-remove">
+                                            <button class="btn-action btn-remove" name="adminOp" value="remove&proID=${product.proID}">
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>
                                             <div class="edit-modal-wrapper" style="padding-bottom:20px;">
@@ -174,19 +179,19 @@
                                                             <span class="modal-title" style="margin-bottom:30px;">Update product </span>
                                                             <span> <i class="fa-solid fa-xmark exit-icon" style="font-size:2rem;margin-left: 70px; margin-bottom:30px;cursor: pointer;"></i></span>
                                                         </div>
-                                                        <form action="./Admin" class="edit-modal-form"  method="POST">
+                                                        <form action="./Admin" class="edit-modal-form">
                                                             <input type="hidden" name="product_id" class="product-id" value="${product.proID}">
                                                             <div class="edit-input-wrapper">
                                                                 <label for="proName" class="input-label">Name product</label>
-                                                                <input type="text" name="proName" id="proName" class="input-text productName" >
+                                                                <input type="text" name="proName" id="proName" class="input-text productName" required="" >
                                                             </div>
                                                             <div class="edit-input-wrapper">
                                                                 <label for="originPrice" class="input-label">Original price</label>
-                                                                <input type="text" name="originPrice" id="originPrice" class="input-text productOriginal" >
+                                                                <input type="text" min="0" max="2100000000" name="originPrice" id="originPrice" class="input-text productOriginal" required="">
                                                             </div>
                                                             <div class="edit-input-wrapper">
                                                                 <label for="discountPrice" class="input-label">Discount</label>
-                                                                <input type="text" name="discount" id="discountPrice" class="input-text productDiscount" >
+                                                                <input type="number" min="0" max="100" name="discount" id="discountPrice" class="input-text productDiscount" required="" >
                                                             </div>
                                                             <!-- Put id of product here-->
                                                             <button type="submit" class="edit-modal-btn-action" name="adminOp"
