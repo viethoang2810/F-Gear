@@ -6,10 +6,12 @@
 package com.fptuni.swp391.F_Gear.Controllers;
 
 import com.fptuni.swp391.F_Gear.DAO.Access_Management;
+import com.fptuni.swp391.F_Gear.DTO.Chart;
 import com.fptuni.swp391.F_Gear.DTO.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -60,7 +62,7 @@ public class Access_Controller extends HttpServlet {
                         if (user != null) {
                             session.setAttribute("user", user);
 
-                            response.sendRedirect("./Home/HomePage");
+                            response.sendRedirect("./Home?action=homepage");
                             return;
                         } else {
                             url = "/views/login.jsp";
@@ -79,9 +81,8 @@ public class Access_Controller extends HttpServlet {
                         String userName = request.getParameter("userName");
                         String password = request.getParameter("password");
                         String cofirm = request.getParameter("cofirm");
-                        String phone = request.getParameter("phone");
-                        String regex = "(84|0[3|5|7|8|9])+([0-9]{8})\\b";
-                        if (password.equals(cofirm) && phone.matches(regex)) {
+                        int phone = Integer.parseInt(request.getParameter("phone"));
+                        if (password.equals(cofirm)) {
                             if (a.checkUserName(userName)) {
                                 Users user = new Users();
                                 user.setUserName(userName);
@@ -102,20 +103,11 @@ public class Access_Controller extends HttpServlet {
                             }
 
                         } else {
-                            if (!password.equals(cofirm)) {
-                                url = "/views/register.jsp";
-                                request.setAttribute("userName", userName);
-                                request.setAttribute("password", password);
-                                request.setAttribute("phone", phone);
-                                request.setAttribute("message", "Passwords do not match!");
-                            }
-                            if (!phone.matches(regex)) {
-                                url = "/views/register.jsp";
-                                request.setAttribute("userName", userName);
-                                request.setAttribute("password", password);
-                                request.setAttribute("cofirm", cofirm);
-                                request.setAttribute("message", "Phone number is not correct!");
-                            }
+                            url = "/views/register.jsp";
+                            request.setAttribute("userName", userName);
+                            request.setAttribute("password", password);
+                            request.setAttribute("phone", phone);
+                            request.setAttribute("message", "Passwords do not match!");
                         }
 
                     }
@@ -158,6 +150,59 @@ public class Access_Controller extends HttpServlet {
                         session.setAttribute("user", user);
 //                        response.sendRedirect("./Home/HomePage");
                         url = "/views/Homepage.jsp";
+                        break;
+                    }
+                    case "chartadminpage": {
+                        Access_Management am = new Access_Management();
+                        List<Chart> listTotal = am.selectAllTotalEachMonth();
+                        List<Chart> listQuantity = am.selectAllQuantityEachMonth();
+                        List<Chart> listSellingAllTime = am.selectTop12SellingProductAllTime();
+                        List<Chart> listSellingMonth1 = am.selectTopSellingProductMonth1();
+                        List<Chart> listSellingMonth2 = am.selectTopSellingProductMonth2();
+                        List<Chart> listSellingMonth3 = am.selectTopSellingProductMonth3();
+                        List<Chart> listSellingMonth4 = am.selectTopSellingProductMonth4();
+                        List<Chart> listSellingMonth5 = am.selectTopSellingProductMonth5();
+                        List<Chart> listSellingMonth6 = am.selectTopSellingProductMonth6();
+                        List<Chart> listSellingMonth7 = am.selectTopSellingProductMonth7();
+                        List<Chart> listSellingMonth8 = am.selectTopSellingProductMonth8();
+                        List<Chart> listSellingMonth9 = am.selectTopSellingProductMonth9();
+                        List<Chart> listSellingMonth10 = am.selectTopSellingProductMonth10();
+                        List<Chart> listSellingMonth11 = am.selectTopSellingProductMonth11();
+                        List<Chart> listSellingMonth12 = am.selectTopSellingProductMonth12();
+
+                        long total = 0;
+                        long quantity = 0;
+                        String strTmp = "";
+                        for (int i = 0; i < listTotal.size(); i++) {
+                            total = total + listTotal.get(i).getTotal();
+                        }
+                        for (int i = 0; i < listQuantity.size(); i++) {
+                            quantity = quantity + listQuantity.get(i).getQuantity();
+                        }
+//                        for (int i = 0; i < am.selectTop12SellingProductAllTime().size(); i++) {
+//                            strTmp = am.selectTop12SellingProductAllTime().get(i).getProName().substring(0, 10);
+//                            listSellingAllTime.get(i).setProName(strTmp);
+//                        }
+//                        System.out.println(listSellingAllTime);
+                        request.setAttribute("total", total);
+                        request.setAttribute("quantity", quantity);
+                        request.setAttribute("listEachMonth", listTotal);
+                        request.setAttribute("listQuantityEachMonth", listQuantity);
+                        request.setAttribute("listSellingAllTime", listSellingAllTime);
+                        request.setAttribute("listSellingMonth1", listSellingMonth1);
+                        request.setAttribute("listSellingMonth2", listSellingMonth2);
+                        request.setAttribute("listSellingMonth3", listSellingMonth3);
+                        request.setAttribute("listSellingMonth4", listSellingMonth4);
+                        request.setAttribute("listSellingMonth5", listSellingMonth5);
+                        request.setAttribute("listSellingMonth6", listSellingMonth6);
+                        request.setAttribute("listSellingMonth7", listSellingMonth7);
+                        request.setAttribute("listSellingMonth8", listSellingMonth8);
+                        request.setAttribute("listSellingMonth9", listSellingMonth9);
+                        request.setAttribute("listSellingMonth10", listSellingMonth10);
+                        request.setAttribute("listSellingMonth11", listSellingMonth11);
+                        request.setAttribute("listSellingMonth12", listSellingMonth12);
+                        url = "/views/Adminpage.jsp";
+                        break;
                     }
 
                 }

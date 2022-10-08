@@ -40,7 +40,7 @@
             <input required class="login-form-text" type="text" name="userName" placeholder="Username" value="${userName}"/>
             <input required class="login-form-text" type="password" name="password" placeholder="Password" value="${password}"/>
             <input required class="login-form-text" type="password" name="cofirm" placeholder="Confirm password" value="${cofirm}"/>
-            <input required class="login-form-text" type="text" name="phone" placeholder="Phone number" value="${phone}"/>
+            <input required class="login-form-text" type="number" name="phone" placeholder="Phone number" value="${phone}"/>
             <button class="login-form-submit" name="op" value="register">Join with us</button>
             <br/>
             <i style="color: red">${message}</i>
