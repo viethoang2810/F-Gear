@@ -8,7 +8,6 @@ listOfImage.forEach((image, index) => {
       let linkClicked = image.querySelector('.involve-item').src;
         console.log(linkClicked);
       handleRemoveClass(getIndexOfElement());
-      displayImage.src = linkClicked.split('http://localhost:8080/F-Gear/')[1];
       image.classList.add('active-picture');
     })
 })

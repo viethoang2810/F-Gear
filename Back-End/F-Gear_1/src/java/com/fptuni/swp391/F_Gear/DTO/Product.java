@@ -15,19 +15,22 @@ public class Product {
 
     private int proID;
     private String proName;
-    private int proOriginalPrice;
+    private String proOriginalPrice;
     private int discount;
-    private int proCurrentPrice;
+    private String proCurrentPrice;
     private String brandName;
     private ArrayList<Images> listImage;
     private ArrayList<Specification> listSpecification;
     private String proType;
-
+    private int status;
+    private int cateID;
+    private int brandID;
+    
     public Product() {
     }
 
 //    cái constructor này để lấy top 8 sản phẩm show ở Homepage nha -DungHQ
-    public Product(String brandName, int proID, String proName, int proOriginalPrice, ArrayList<Images> listImage) {
+    public Product(String brandName, int proID, String proName, String proOriginalPrice, ArrayList<Images> listImage) {
         this.brandName = brandName;
         this.proID = proID;
         this.proName = proName;
@@ -35,7 +38,7 @@ public class Product {
         this.listImage = listImage;
     }
 
-    public Product(int proID, String proName, int proOriginalPrice, int discount, int proCurrentPrice, String brandName, ArrayList<Images> listImage, ArrayList<Specification> listSpecification, String proType) {
+    public Product(int proID, String proName, String proOriginalPrice, int discount, String proCurrentPrice, String brandName, ArrayList<Images> listImage, ArrayList<Specification> listSpecification, String proType) {
         this.proID = proID;
         this.proName = proName;
         this.proOriginalPrice = proOriginalPrice;
@@ -46,6 +49,20 @@ public class Product {
         this.listSpecification = listSpecification;
         this.proType = proType;
     }
+
+    //constructor list product -vanndh
+    public Product(int proID, String proName, String proOriginalPrice, int discount, String proCurrentPrice, int status, int cateID, int brandID) {
+        this.proID = proID;
+        this.proName = proName;
+        this.proOriginalPrice = proOriginalPrice;
+        this.discount = discount;
+        this.proCurrentPrice = proCurrentPrice;
+        this.status = status;
+        this.cateID = cateID;
+        this.brandID = brandID;
+    }
+    
+    
 
     public int getProID() {
         return proID;
@@ -63,12 +80,28 @@ public class Product {
         this.proName = proName;
     }
 
-    public double getProOriginalPrice() {
+    public String getProOriginalPrice() {
         return proOriginalPrice;
     }
 
-    public void setProOriginalPrice(int proOriginalPrice) {
+    public void setProOriginalPrice(String proOriginalPrice) {
         this.proOriginalPrice = proOriginalPrice;
+    }
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
+    public String getProCurrentPrice() {
+        return proCurrentPrice;
+    }
+
+    public void setProCurrentPrice(String proCurrentPrice) {
+        this.proCurrentPrice = proCurrentPrice;
     }
 
     public String getBrandName() {
@@ -103,20 +136,30 @@ public class Product {
         this.proType = proType;
     }
 
-    public double getDiscount() {
-        return discount;
+    public int getStatus() {
+        return status;
     }
 
-    public void setDiscount(int discount) {
-        this.discount = discount;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public double getProCurrentPrice() {
-        return proCurrentPrice;
+    public int getCateID() {
+        return cateID;
     }
 
-    public void setProCurrentPrice(int proCurrentPrice) {
-        this.proCurrentPrice = proCurrentPrice;
+    public void setCateID(int cateID) {
+        this.cateID = cateID;
     }
+
+    public int getBrandID() {
+        return brandID;
+    }
+
+    public void setBrandID(int brandID) {
+        this.brandID = brandID;
+    }
+
+  
 
 }

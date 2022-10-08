@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -27,66 +28,102 @@ public class Product_Management {
     public ArrayList<Product> listOfProduct = new ArrayList<>();
     public ArrayList<Specification> listOfSpecification = new ArrayList<>();
     public ArrayList<Images> listOfImages = new ArrayList<>();
+    public DecimalFormat formatter = new DecimalFormat("###,###,###");
 
     public ArrayList<Product> getAllOfProduct() {
         Connection con = DBUtils.getConnection();
         PreparedStatement stm = null;
         ResultSet rs = null;
-
-        String sql = "SELECT P.ProID, \n"
-                + "	   P.ProName,\n"
-                + "	   P.OriginalPrice,\n"
-                + "	   P.CurrentPrice,\n"
-                + "	   I.ImageID,\n"
-                + "	   I.Url,\n"
-                + "	   B.BrandName,\n"
-                + "	   C.CateName,\n"
-                + "	   S.SpecName,\n"
-                + "	   PS.Detail\n"
-                + "FROM dbo.Product P ,\n"
-                + "	 dbo.Images I , \n"
-                + "	 dbo.Brand B ,\n"
-                + "	 dbo.Category C ,\n"
-                + "	 dbo.Specification S,\n"
-                + "	 dbo.ProSpec PS\n"
-                + "WHERE P.ProID =I.ImageID AND \n"
-                + "	  P.BrandID = B.BrandID AND \n"
-                + "	  P.CateID = C.CateID AND\n"
-                + "	  PS.ProID = P.ProID AND\n"
-                + "	  S.SpecID = PS.SpecID AND \n"
-                + "	  P.ProID = I.ProID";
+        String sql = "SELECT P.ProID, "
+                + "P.ProName,"
+                + "P.OriginalPrice,"
+                + "P.Discount,"
+                + "P.CurrentPrice,"
+                + "I.ImageID,"
+                + "I.Url,"
+                + "B.BrandName,"
+                + "C.CateName,"
+                + "S.SpecName,"
+                + "PS.Detail"
+                + " FROM dbo.Product P ,"
+                + "dbo.Images I , "
+                + "dbo.Brand B ,"
+                + "dbo.Category C ,"
+                + "dbo.Specification S,"
+                + "dbo.ProSpec PS "
+                + " WHERE P.BrandID = B.BrandID AND P.CateID = C.CateID AND I.ProID = P.ProID AND S.SpecID = PS.SpecID AND PS.ProID = P.ProID  ";
         try {
+            con = DBUtils.getConnection();
             stm = con.prepareStatement(sql);
             rs = stm.executeQuery();
             while (rs.next()) {
-                int pd = listOfProduct.get(listOfProduct.size() - 1).getProID();
-                if (Integer.parseInt(rs.getString("ProID")) == pd) {
-                    listOfImages.add(new Images(rs.getString("ImageID"), rs.getString("Url")));
-                    listOfProduct.get(listOfProduct.size() - 1).setListImage(listOfImages);
+                if (listOfProduct.size() != 0) {
+                    int pd = listOfProduct.get(listOfProduct.size() - 1).getProID(); //Check id of product is exist or not in arraylist
+                    if (pd != 0) {
+                        if (Integer.parseInt(rs.getString("ProID")) == pd) {
+                            if (!listOfImages.get(listOfImages.size() - 1).getImageID().equals(rs.getString("ImageID"))) {
+                                listOfImages.add(new Images(rs.getString("ImageID"), rs.getString("Url")));
+                                listOfProduct.get(listOfProduct.size() - 1).setListImage(listOfImages);
+                            }
 
-                    listOfSpecification.add(new Specification(rs.getString("SpecName"), rs.getString("Detail")));
-                    listOfProduct.get(listOfProduct.size() - 1).setListSpecification(listOfSpecification);
+                            if (!findKeyExistInArray(listOfSpecification, rs.getString("SpecName"))) {
+                                listOfSpecification.add(new Specification(rs.getString("SpecName"), rs.getString("Detail")));
+                                listOfProduct.get(listOfProduct.size() - 1).setListSpecification(listOfSpecification);
+                            }
+                        } else {
+                            Product product = new Product();
+                            listOfSpecification = new ArrayList<>();
+                            listOfImages = new ArrayList<>();
+
+                            product.setProID(rs.getInt("ProID"));
+                            product.setProName(rs.getString("ProName"));
+
+                            product.setProOriginalPrice(formatter.format(rs.getInt("OriginalPrice")));
+                            product.setProCurrentPrice(formatter.format(calculateDiscount(rs.getInt("Discount"), rs.getInt("OriginalPrice"))));
+                            product.setDiscount(rs.getInt("Discount"));
+                            product.setBrandName(rs.getString("BrandName"));
+                            product.setProType(rs.getString("CateName"));
+                            listOfImages.add(new Images(rs.getString("ImageID"), rs.getString("Url")));
+                            product.setListImage(listOfImages);
+                            listOfSpecification.add(new Specification(rs.getString("SpecName"), rs.getString("Detail")));
+                            product.setListSpecification(listOfSpecification);
+
+                            listOfProduct.add(product);
+
+                        }
+                    }
                 } else {
                     Product product = new Product();
-                    listOfSpecification = new ArrayList<>();
-                    listOfImages = new ArrayList<>();
 
-                    product.setProID(Integer.parseInt(rs.getString("ProID")));
+                    product.setProID(rs.getInt("ProID"));
                     product.setProName(rs.getString("ProName"));
-                    product.setProOriginalPrice(Integer.parseInt(rs.getString("OriginalPrice")));
-                    product.setDiscount(Integer.parseInt(rs.getString("Discount")));
-                    product.setProCurrentPrice(Integer.parseInt(rs.getString("CurrentPrice")));
+                    product.setProOriginalPrice(formatter.format(rs.getInt("OriginalPrice")));
+
+                    product.setDiscount(rs.getInt("Discount"));
+                    product.setProCurrentPrice(formatter.format(calculateDiscount(rs.getInt("Discount"), rs.getInt("OriginalPrice"))));
                     product.setBrandName(rs.getString("BrandName"));
                     product.setProType(rs.getString("CateName"));
                     listOfImages.add(new Images(rs.getString("ImageID"), rs.getString("Url")));
                     product.setListImage(listOfImages);
                     listOfSpecification.add(new Specification(rs.getString("SpecName"), rs.getString("Detail")));
                     product.setListSpecification(listOfSpecification);
+
+                    listOfProduct.add(product);
                 }
+
             }
         } catch (Exception e) {
         }
         return listOfProduct;
+    }
+
+    public boolean findKeyExistInArray(ArrayList<Specification> specifications, String specName) {
+        for (Specification specification : specifications) {
+            if (specification.getSpecName().equals(specName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public List<Product> selectTop8InHomepage() {
@@ -106,7 +143,8 @@ public class Product_Management {
                 p.setBrandName(rs.getString("BrandName"));
                 p.setProID(Integer.parseInt(rs.getString("ProID")));
                 p.setProName(rs.getString("ProName"));
-                p.setProOriginalPrice(Integer.parseInt(rs.getString("OriginalPrice")));
+                p.setProOriginalPrice(formatter.format(rs.getInt("OriginalPrice")));
+
 //                i.setImageID(rs.getString("ImageID"));
 //                i.setUrl(rs.getString("Url"));
                 listOfImages.add(new Images(rs.getString("ImageID"), rs.getString("Url")));
@@ -119,5 +157,126 @@ public class Product_Management {
             Logger.getLogger(Product_Management.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
+    }
+
+    public Product getProductById(ArrayList<Product> listProduct, int id) {
+        for (Product product : listProduct) {
+            if (product.getProID() == id) {
+                return product;
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Product> getAllOfProductAfterSort(String typeSort) {
+        Connection con = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        String orderBy = "";
+        switch (typeSort) {
+            case "price_ASC":
+                orderBy = "ORDER BY P.OriginalPrice ASC";
+                break;
+            case "price_DESC":
+                orderBy = "ORDER BY P.OriginalPrice DESC";
+                break;
+            case "Letter_A-Z":
+                orderBy = "ORDER BY P.ProName ASC";
+                break;
+            case "Letter_Z-A":
+                orderBy = "ORDER BY P.ProName DESC";
+                break;
+
+        }
+        String sql = "SELECT P.ProID, "
+                + "P.ProName,"
+                + "P.OriginalPrice,"
+                + "P.Discount,"
+                + "P.CurrentPrice,"
+                + "I.ImageID,"
+                + "I.Url,"
+                + "B.BrandName,"
+                + "C.CateName,"
+                + "S.SpecName,"
+                + "PS.Detail"
+                + " FROM dbo.Product P ,"
+                + "dbo.Images I , "
+                + "dbo.Brand B ,"
+                + "dbo.Category C ,"
+                + "dbo.Specification S,"
+                + "dbo.ProSpec PS "
+                + " WHERE P.BrandID = B.BrandID AND P.CateID = C.CateID AND I.ProID = P.ProID AND S.SpecID = PS.SpecID AND PS.ProID = P.ProID  "
+                + orderBy;
+        try {
+            con = DBUtils.getConnection();
+            stm = con.prepareStatement(sql);
+            rs = stm.executeQuery();
+            while (rs.next()) {
+                if (listOfProduct.size() != 0) {
+                    int pd = listOfProduct.get(listOfProduct.size() - 1).getProID(); //Check id of product is exist or not in arraylist
+                    if (pd != 0) {
+                        if (Integer.parseInt(rs.getString("ProID")) == pd) {
+                            if (!listOfImages.get(listOfImages.size() - 1).getImageID().equals(rs.getString("ImageID"))
+                                    && !listOfImages.get(listOfImages.size() - 1).getUrl().equals(rs.getString("Url"))) {
+                                listOfImages.add(new Images(rs.getString("ImageID"), rs.getString("Url")));
+                                listOfProduct.get(listOfProduct.size() - 1).setListImage(listOfImages);
+                            }
+
+                            if (!findKeyExistInArray(listOfSpecification, rs.getString("SpecName"))) {
+                                listOfSpecification.add(new Specification(rs.getString("SpecName"), rs.getString("Detail")));
+                                listOfProduct.get(listOfProduct.size() - 1).setListSpecification(listOfSpecification);
+                            }
+                        } else {
+                            Product product = new Product();
+                            listOfSpecification = new ArrayList<>();
+                            listOfImages = new ArrayList<>();
+
+                            product.setProID(rs.getInt("ProID"));
+                            product.setProName(rs.getString("ProName"));
+                            product.setProOriginalPrice(formatter.format(rs.getInt("OriginalPrice")));
+
+                            product.setDiscount(rs.getInt("Discount"));
+                            product.setProCurrentPrice(formatter.format(calculateDiscount(rs.getInt("Discount"), rs.getInt("OriginalPrice"))));
+
+                            product.setBrandName(rs.getString("BrandName"));
+                            product.setProType(rs.getString("CateName"));
+                            listOfImages.add(new Images(rs.getString("ImageID"), rs.getString("Url")));
+                            product.setListImage(listOfImages);
+                            listOfSpecification.add(new Specification(rs.getString("SpecName"), rs.getString("Detail")));
+                            product.setListSpecification(listOfSpecification);
+
+                            listOfProduct.add(product);
+
+                        }
+                    }
+                } else {
+                    Product product = new Product();
+
+                    product.setProID(rs.getInt("ProID"));
+                    product.setProName(rs.getString("ProName"));
+                    product.setProOriginalPrice(formatter.format(rs.getInt("OriginalPrice")));
+
+                    product.setDiscount(rs.getInt("Discount"));
+                    product.setProCurrentPrice(formatter.format(calculateDiscount( rs.getInt("Discount"),  rs.getInt("OriginalPrice"))));
+
+                    product.setBrandName(rs.getString("BrandName"));
+                    product.setProType(rs.getString("CateName"));
+                    listOfImages.add(new Images(rs.getString("ImageID"), rs.getString("Url")));
+                    product.setListImage(listOfImages);
+                    listOfSpecification.add(new Specification(rs.getString("SpecName"), rs.getString("Detail")));
+                    product.setListSpecification(listOfSpecification);
+
+                    listOfProduct.add(product);
+                }
+
+            }
+        } catch (Exception e) {
+        }
+        return listOfProduct;
+    }
+
+    //Calculate price after discount
+    public double calculateDiscount(double discount, double originalPrice) {
+        return originalPrice - (originalPrice * discount/100)  ;
     }
 }

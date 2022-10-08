@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "Product_Controller", urlPatterns = {"/Product/*"})
+
 public class Product_Controller extends HttpServlet {
 
     /**
@@ -36,10 +36,15 @@ public class Product_Controller extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         ArrayList<Product> listOfProduct = new ArrayList<>();
         Product_Management pm = new Product_Management();
-        
-        listOfProduct = pm.getAllOfProduct();
+        String sortProduct = request.getParameter("sort_by");
+        if(sortProduct == null){
+                    listOfProduct = pm.getAllOfProduct();
+        }
+        if (sortProduct != null) {
+            listOfProduct  = pm.getAllOfProductAfterSort(sortProduct);
+        }
         request.setAttribute("listOfProduct", listOfProduct);
-        request.getRequestDispatcher("/views/Product_Page.jsp").forward(request,response);
+        request.getRequestDispatcher("/views/Product_Page.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
