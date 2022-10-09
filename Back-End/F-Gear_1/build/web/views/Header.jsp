@@ -7,9 +7,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Header</title>
-        <link rel="stylesheet" href="../assets/CSS/GlobalStyles.css"> <!-- This file contains all of common styles of pages-->
-        <link rel="stylesheet" href="../assets/CSS/Responive.css">
-        <link rel="stylesheet" href="../assets/CSS/Detail_Product.css">
+        <link rel="stylesheet" href="./assets/CSS/GlobalStyles.css"> <!-- This file contains all of common styles of pages-->
+        <link rel="stylesheet" href="./assets/CSS/Responive.css">
+        <link rel="stylesheet" href="./assets/CSS/Detail_Product.css">
+        <link rel="stylesheet" href="./assets/CSS/Homepage.css">
+        <link rel="stylesheet" href="./assets/CSS/responsive.css">
+
 
         <link rel="icon" href="../assets/Assets/Images/pinterest_board_photo.png">
         <!-- Font Awesome link-->
@@ -93,68 +96,300 @@
     <div class="row sidebar-wrapper " style="background-color:#fff;">
         <div class=" btn-nav">
             <div class="navigator-btn_menu"><i class="fa-solid fa-bars"></i></div>
-            <div class="btn-navigator-list col-lg-5  col-md-5 col-xl-5">
-                <div class="btn-navigator-item col-lg-1 col-md-1 col-xl-1 ">
-                    <button class="item-btn categories-btn">
-                        <i class="fa-sharp fa-solid fa-list"></i>
-                        <span class="btn-content">Categories</span>
-                    </button>
-                    <div class="kinds-product-wrapper">
-                        <div class="kinds-product">
-                            <ul class="kinds-product-list">
-                                <li class="kind-prodict-item">
-                                    <i class="fa-solid fa-laptop"></i>
-                                    <a href="" class="kind-product-link">Laptop Gaming</a>
+            <div class="btn-navigator-list col-lg-5  col-md-5 col-xl-8">
+                <div class="body-category">
+                    <i class="fa-solid fa-bars"></i>
+                    <span> Categories</span>
+                    <div class="body-category-list">
+                        <ul class="body-category-list-item">
+                            <hr />
+                            <li class="body-category-list-each-item">
+                                <a >Laptop Gaming</a>
+                            </li>
+                            <hr />
+                            <li class="body-category-list-each-item">
+                                <a>Office Laptop</a>
+                            </li>
+                            <hr />
+                            <li class="body-category-list-each-item">
+                                <a>Mouses</a>
+                            </li>
+                            <hr />
+                            <li class="body-category-list-each-item">
+                                <a>Head Phones</a>
+                            </li>
+                            <hr />
+                        </ul>
+                        <div class="body-category-sub-list body-category-sub-list-active">
+                            <ul class="body-category-list-sub-item">
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>Brands</h4>
+                                        <ul>
+                                            <li><a href="#">ACER</a></li>
+                                            <li><a href="#">ASUS</a></li>
+                                            <li><a href="#">MSI</a></li>
+                                            <li><a href="#">DELL</a></li>
+                                            <li><a href="#">LENOVO</a></li>
+                                            <li><a href="#">HP</a></li>
+                                        </ul>
+                                    </div>
                                 </li>
-                                <li class="kind-prodict-item">
-                                    <i class="fa-solid fa-laptop"></i>
-                                    <a href="" class="kind-product-link">Laptop Gaming</a>
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>Price</h4>
+                                        <ul>
+                                            <li><a href="#">Under 20 million</a></li>
+                                            <li><a href="#">From 20 to less than 25 million</a></li>
+                                            <li><a href="#">From 25 to less than 30 million</a></li>
+                                            <li><a href="#">Over 30 million</a></li>
+                                        </ul>
+                                    </div>
                                 </li>
-                                <li class="kind-prodict-item">
-                                    <i class="fa-solid fa-laptop"></i>
-                                    <a href="" class="kind-product-link">Laptop Gaming</a>
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>ASUS</h4>
+                                        <ul>
+                                            <li><a href="#">ROG Series</a></li>
+                                            <li><a href="#">TUF Series</a></li>
+                                            <li><a href="#">Zephyrus Series</a></li>
+                                            <li><a href="#">ROG Strix G</a></li>
+                                            <li><a href="#">ROG Flow Series</a></li>
+                                        </ul>
+                                    </div>
                                 </li>
-                                <li class="kind-prodict-item">
-                                    <i class="fa-solid fa-laptop"></i>
-                                    <a href="" class="kind-product-link">Laptop Gaming</a>
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>MSI Gaming</h4>
+                                        <ul>
+                                            <li><a href="#">GF Series</a></li>
+                                            <li><a href="#">GL Series</a></li>
+                                            <li><a href="#">GS Series</a></li>
+                                            <li><a href="#">MSI AMD Series</a></li>
+                                            <li><a href="#">Bravo Series</a></li>
+                                        </ul>
+                                    </div>
                                 </li>
-                                <li class="kind-prodict-item">
-                                    <i class="fa-solid fa-laptop"></i>
-                                    <a href="" class="kind-product-link">Laptop Gaming</a>
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>DELL Gaming</h4>
+                                        <ul>
+                                            <li><a href="#">DELL Gaming G Series</a></li>
+                                            <li><a href="#">Alienware Series</a></li>
+                                            <li><a href="#">Logitech</a></li>
+                                        </ul>
+                                    </div>
                                 </li>
-                                <li class="kind-prodict-item">
-                                    <i class="fa-solid fa-laptop"></i>
-                                    <a href="" class="kind-product-link">Laptop Gaming</a>
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>LENOVO Gaming</h4>
+                                        <ul>
+                                            <li><a href="#">LENOVO Gaming Series</a></li>
+                                            <li><a href="#">Ideapad Gaming Series</a></li>
+                                        </ul>
+                                    </div>
                                 </li>
-                                <li class="kind-prodict-item">
-                                    <i class="fa-solid fa-laptop"></i>
-                                    <a href="" class="kind-product-link">Laptop Gaming</a>
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>Graphics card</h4>
+                                        <ul>
+                                            <li><a href="#">GTX 1650</a></li>
+                                            <li><a href="#">GTX 3050/3050Ti</a></li>
+                                            <li><a href="#">GTX 3060</a></li>
+                                            <li><a href="#">GTX 3070/3080</a></li>
+                                            <li><a href="#">AMD Radeon RX</a></li>
+                                        </ul>
+                                    </div>
                                 </li>
-                                <li class="kind-prodict-item">
-                                    <i class="fa-solid fa-laptop"></i>
-                                    <a href="" class="kind-product-link">Laptop Gaming</a>
+                            </ul>
+                        </div>
+                        <div class="body-category-sub-list">
+                            <ul class="body-category-list-sub-item">
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>Brands</h4>
+                                        <ul>
+                                            <li><a href="#">MSI</a></li>
+                                            <li><a href="#">DELL</a></li>
+                                            <li><a href="#">ACER</a></li>
+                                            <li><a href="#">ASUS</a></li>
+                                            <li><a href="#">HP</a></li>
+                                            <li><a href="#">LG</a></li>
+                                            <li><a href="#">HUAWEI</a></li>
+                                        </ul>
+                                    </div>
                                 </li>
-                                <li class="kind-prodict-item">
-                                    <i class="fa-solid fa-laptop"></i>
-                                    <a href="" class="kind-product-link">Laptop Gaming</a>
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>Price</h4>
+                                        <ul>
+                                            <li><a href="#">Under 15 million</a></li>
+                                            <li><a href="#">From 15 million to under 20 million</a></li>
+                                            <li><a href="#">Over 20 million</a></li>
+                                        </ul>
+                                    </div>
                                 </li>
-                                <li class="kind-prodict-item">
-                                    <i class="fa-solid fa-laptop"></i>
-                                    <a href="" class="kind-product-link">Laptop Gaming</a>
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>Laptop by CPU</h4>
+                                        <ul>
+                                            <li><a href="#">Intel Core i3</a></li>
+                                            <li><a href="#">Intel Core i5</a></li>
+                                            <li><a href="#">Intel Core i7</a></li>
+                                            <li><a href="#">Intel Core i9</a></li>
+                                            <li><a href="#">AMD Ryzen</a></li>
+                                        </ul>
+                                    </div>
                                 </li>
-                                <li class="kind-prodict-item">
-                                    <i class="fa-solid fa-laptop"></i>
-                                    <a href="" class="kind-product-link">Laptop Gaming</a>
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>Laptop ASUS</h4>
+                                        <ul>
+                                            <li><a href="#">VivoBook Series</a></li>
+                                            <li><a href="#">VivoBook Pro Series</a></li>
+                                            <li><a href="#">Zenbook Series</a></li>
+                                            <li><a href="#">ASUS Oled Series</a></li>
+                                        </ul>
+                                    </div>
                                 </li>
-                                <li class="kind-prodict-item">
-                                    <i class="fa-solid fa-laptop"></i>
-                                    <a href="" class="kind-product-link">Laptop Gaming</a>
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>Laptop ACER</h4>
+                                        <ul>
+                                            <li><a href="#">Aspire Series</a></li>
+                                            <li><a href="#">Swift Series</a></li>
+                                        </ul>
+                                    </div>
                                 </li>
-                                <li class="kind-prodict-item">
-                                    <i class="fa-solid fa-laptop"></i>
-                                    <a href="" class="kind-product-link">Laptop Gaming</a>
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>Laptop DELL</h4>
+                                        <ul>
+                                            <li><a href="#">Vostro Series</a></li>
+                                            <li><a href="#">Inspiron Series</a></li>
+                                        </ul>
+                                    </div>
                                 </li>
-
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>Laptop HP</h4>
+                                        <ul>
+                                            <li><a href="#">Probook Series</a></li>
+                                            <li><a href="#">Envy Series</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>Laptop MSI</h4>
+                                        <ul>
+                                            <li><a href="#">Modern Series</a></li>
+                                            <li><a href="#">Prestige Series</a></li>
+                                            <li><a href="#">Summit Series</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body-category-sub-list">
+                            <ul class="body-category-list-sub-item">
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>Mouses by brands</h4>
+                                        <ul>
+                                            <li><a href="#">LOGITECH</a></li>
+                                            <li><a href="#">ASUS</a></li>
+                                            <li><a href="#">RAZER</a></li>
+                                            <li><a href="#">CORSAIR</a></li>
+                                            <li><a href="#">STEELSERIES</a></li>
+                                            <li><a href="#">HYPERX</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>Mouses by brands</h4>
+                                        <ul>
+                                            <li><a href="#">DARE - U</a></li>
+                                            <li><a href="#">Fuhlen</a></li>
+                                            <li><a href="#">Akko</a></li>
+                                            <li><a href="#">MSI</a></li>
+                                            <li><a href="#">EDRA</a></li>
+                                            <li><a href="#">LENOVO</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>Price</h4>
+                                        <ul>
+                                            <li><a href="#">Under 500 thousand</a></li>
+                                            <li><a href="#">From 500 thousand to under 1 million</a></li>
+                                            <li><a href="#">From 1 million to under 2 million</a></li>
+                                            <li><a href="#">From 2 million to under 3 million</a></li>
+                                            <li><a href="#">Over 3 million</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>Connect Type</h4>
+                                        <ul>
+                                            <li><a href="#">Bluetooth</a></li>
+                                            <li><a href="#">Wireless</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body-category-sub-list">
+                            <ul class="body-category-list-sub-item">
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>Headphones by brands</h4>
+                                        <ul>
+                                            <li><a href="#">LOGITECH</a></li>
+                                            <li><a href="#">ASUS</a></li>
+                                            <li><a href="#">RAZER</a></li>
+                                            <li><a href="#">CORSAIR</a></li>
+                                            <li><a href="#">STEELSERIES</a></li>
+                                            <li><a href="#">HYPERX</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>Headphones by brands</h4>
+                                        <ul>
+                                            <li><a href="#">DARE - U</a></li>
+                                            <li><a href="#">LENOVO</a></li>
+                                            <li><a href="#">EDRA</a></li>
+                                            <li><a href="#">MSI</a></li>
+                                            <li><a href="#">AKKO</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>Price</h4>
+                                        <ul>
+                                            <li><a href="#">Under 500 thousand</a></li>
+                                            <li><a href="#">From 500 thousand to under 1 million</a></li>
+                                            <li><a href="#">From 1 million to under 2 million</a></li>
+                                            <li><a href="#">From 2 million to under 3 million</a></li>
+                                            <li><a href="#">Over 3 million</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="body-category-list-sub-each-item">
+                                    <div class="body-category-list-sub2-each-item">
+                                        <h4>Connect Type</h4>
+                                        <ul>
+                                            <li><a href="#">Bluetooth</a></li>
+                                            <li><a href="">Wireless</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -178,5 +413,6 @@
 </body>
 
 
-<script src="../assets/JavaScript/CommonFeatures.js"></script>
+<script src="./assets/JavaScript/CommonFeatures.js"></script>
+<script src="./assets/JavaScript/Homepage.js"></script>
 </html>
