@@ -213,13 +213,6 @@ public class Access_Management {
         return list;
     }
 
-    public String truncateString(String str, int num) {
-        if (str.length() > num) {
-            str.substring(0, num);
-        }
-        return str;
-    }
-
     //    Top selling products month 1 -DUngHQ
     public List<Chart> selectTopSellingProductMonth1() {
         List<Chart> list = new ArrayList<>();
@@ -519,4 +512,101 @@ public class Access_Management {
         }
         return list;
     }
+
+    //select total product each month by laptop gaming types -DungHQ
+    public List<Chart> selectLaptopGamingQuantityEachMonth() {
+        List<Chart> list = new ArrayList<>();
+        String query = "select MONTH(o.OrderDate) as [month], sum(od.Quantity) as [total quantity]\n"
+                + "from dbo.Product p, dbo.OrderDetail od, dbo.Category c, Orders o\n"
+                + "where c.CateID = p.CateID and p.ProID = od.ProID and o.OrderID = od.OrderID\n"
+                + "and c.CateID = 1 group by MONTH(o.OrderDate) order by month(o.OrderDate)";
+        try {
+            Connection con = DBUtils.getConnection();
+            PreparedStatement stm = con.prepareStatement(query);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Chart c = new Chart();
+                c.setMonth(rs.getInt("month"));
+                c.setQuantity(rs.getInt("total quantity"));
+                list.add(c);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Access_Management.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
+    //select total product each month by office laptop types -DungHQ
+    public List<Chart> selectOfficeLaptopQuantityEachMonth() {
+        List<Chart> list = new ArrayList<>();
+        String query = "select MONTH(o.OrderDate) as [month], sum(od.Quantity) as [total quantity]\n"
+                + "from dbo.Product p, dbo.OrderDetail od, dbo.Category c, Orders o\n"
+                + "where c.CateID = p.CateID and p.ProID = od.ProID and o.OrderID = od.OrderID\n"
+                + "and c.CateID = 2 group by MONTH(o.OrderDate) order by month(o.OrderDate)";
+        try {
+            Connection con = DBUtils.getConnection();
+            PreparedStatement stm = con.prepareStatement(query);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Chart c = new Chart();
+                c.setMonth(rs.getInt("month"));
+                c.setQuantity(rs.getInt("total quantity"));
+                list.add(c);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Access_Management.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+    //select total product each month by mouses types -DungHQ
+
+    public List<Chart> selectMousesQuantityEachMonth() {
+        List<Chart> list = new ArrayList<>();
+        String query = "select MONTH(o.OrderDate) as [month], sum(od.Quantity) as [total quantity]\n"
+                + "from dbo.Product p, dbo.OrderDetail od, dbo.Category c, Orders o\n"
+                + "where c.CateID = p.CateID and p.ProID = od.ProID and o.OrderID = od.OrderID\n"
+                + "and c.CateID = 3 group by MONTH(o.OrderDate) order by month(o.OrderDate)";
+        try {
+            Connection con = DBUtils.getConnection();
+            PreparedStatement stm = con.prepareStatement(query);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Chart c = new Chart();
+                c.setMonth(rs.getInt("month"));
+                c.setQuantity(rs.getInt("total quantity"));
+                list.add(c);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Access_Management.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+    //select total product each month by headphones types -DungHQ
+
+    public List<Chart> selectHeadPhonesQuantityEachMonth() {
+        List<Chart> list = new ArrayList<>();
+        String query = "select MONTH(o.OrderDate) as [month], sum(od.Quantity) as [total quantity]\n"
+                + "from dbo.Product p, dbo.OrderDetail od, dbo.Category c, Orders o\n"
+                + "where c.CateID = p.CateID and p.ProID = od.ProID and o.OrderID = od.OrderID\n"
+                + "and c.CateID = 4 group by MONTH(o.OrderDate) order by month(o.OrderDate)";
+        try {
+            Connection con = DBUtils.getConnection();
+            PreparedStatement stm = con.prepareStatement(query);
+            ResultSet rs = stm.executeQuery();
+            while (rs.next()) {
+                Chart c = new Chart();
+                c.setMonth(rs.getInt("month"));
+                c.setQuantity(rs.getInt("total quantity"));
+                list.add(c);
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Access_Management.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+
 }

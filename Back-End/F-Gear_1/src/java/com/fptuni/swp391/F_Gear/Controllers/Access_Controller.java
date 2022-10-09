@@ -170,20 +170,70 @@ public class Access_Controller extends HttpServlet {
                         List<Chart> listSellingMonth11 = am.selectTopSellingProductMonth11();
                         List<Chart> listSellingMonth12 = am.selectTopSellingProductMonth12();
 
+                        List<Chart> listGamingQuanity = am.selectLaptopGamingQuantityEachMonth();
+                        List<Chart> listOfficeQuanity = am.selectOfficeLaptopQuantityEachMonth();
+                        List<Chart> listMouseQuanity = am.selectMousesQuantityEachMonth();
+                        List<Chart> listHeadphoneQuanity = am.selectHeadPhonesQuantityEachMonth();
+                        List<Chart> listTmp = new ArrayList<>();
+                        List<Chart> listTmp2 = new ArrayList<>();
+                        List<Chart> listTmp3 = new ArrayList<>();
+                        List<Chart> listTmp4 = new ArrayList<>();
                         long total = 0;
                         long quantity = 0;
-                        String strTmp = "";
                         for (int i = 0; i < listTotal.size(); i++) {
                             total = total + listTotal.get(i).getTotal();
                         }
                         for (int i = 0; i < listQuantity.size(); i++) {
                             quantity = quantity + listQuantity.get(i).getQuantity();
                         }
-//                        for (int i = 0; i < am.selectTop12SellingProductAllTime().size(); i++) {
-//                            strTmp = am.selectTop12SellingProductAllTime().get(i).getProName().substring(0, 10);
-//                            listSellingAllTime.get(i).setProName(strTmp);
-//                        }
-//                        System.out.println(listSellingAllTime);
+
+                        //cho laptop gaming
+                        for (int i = 1; i <= 12; i++) {
+                            listTmp.add(new Chart(i, 0));
+                        }
+                        for (int i = 0; i < listTmp.size(); i++) {
+                            for (int j = 0; j < listGamingQuanity.size(); j++) {
+                                if (listTmp.get(i).getMonth() == listGamingQuanity.get(j).getMonth()) {
+                                    listTmp.get(i).setQuantity(listGamingQuanity.get(j).getQuantity());
+                                }
+                            }
+                        }
+
+                        //cho laptop van phong
+                        for (int i = 1; i <= 12; i++) {
+                            listTmp2.add(new Chart(i, 0));
+                        }
+                        for (int i = 0; i < listTmp2.size(); i++) {
+                            for (int j = 0; j < listOfficeQuanity.size(); j++) {
+                                if (listTmp2.get(i).getMonth() == listOfficeQuanity.get(j).getMonth()) {
+                                    listTmp2.get(i).setQuantity(listOfficeQuanity.get(j).getQuantity());
+                                }
+                            }
+                        }
+
+                        //cho chuot
+                        for (int i = 1; i <= 12; i++) {
+                            listTmp3.add(new Chart(i, 0));
+                        }
+                        for (int i = 0; i < listTmp3.size(); i++) {
+                            for (int j = 0; j < listMouseQuanity.size(); j++) {
+                                if (listTmp3.get(i).getMonth() == listMouseQuanity.get(j).getMonth()) {
+                                    listTmp3.get(i).setQuantity(listMouseQuanity.get(j).getQuantity());
+                                }
+                            }
+                        }
+                        //cho laptop tai nghe
+                        for (int i = 1; i <= 12; i++) {
+                            listTmp4.add(new Chart(i, 0));
+                        }
+                        for (int i = 0; i < listTmp4.size(); i++) {
+                            for (int j = 0; j < listHeadphoneQuanity.size(); j++) {
+                                if (listTmp4.get(i).getMonth() == listHeadphoneQuanity.get(j).getMonth()) {
+                                    listTmp4.get(i).setQuantity(listHeadphoneQuanity.get(j).getQuantity());
+                                }
+                            }
+                        }
+
                         request.setAttribute("total", total);
                         request.setAttribute("quantity", quantity);
                         request.setAttribute("listEachMonth", listTotal);
@@ -201,6 +251,11 @@ public class Access_Controller extends HttpServlet {
                         request.setAttribute("listSellingMonth10", listSellingMonth10);
                         request.setAttribute("listSellingMonth11", listSellingMonth11);
                         request.setAttribute("listSellingMonth12", listSellingMonth12);
+                        request.setAttribute("listGamingQuanity", listTmp);
+                        request.setAttribute("listOfficeQuanity", listTmp2);
+                        request.setAttribute("listMouseQuanity", listTmp3);
+                        request.setAttribute("listHeadphoneQuanity", listTmp4);
+
                         url = "/views/Adminpage.jsp";
                         break;
                     }
@@ -212,7 +267,7 @@ public class Access_Controller extends HttpServlet {
             request.getRequestDispatcher(url).forward(request, response);
         }
     }
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 
     /**
      * Handles the HTTP <code>GET</code> method.
