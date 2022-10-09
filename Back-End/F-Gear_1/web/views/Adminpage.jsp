@@ -647,30 +647,72 @@
         })
         var chart4 = new Chart(ctx4, {
             // The type of chart we want to create
-            type: 'line', // hoặc là line/bar/radar
+
             data: {
-                labels: ["January", "February", "March", "April", "May", "June", "July", "August ", "September", "October", "November", "December"],
                 // Information about the dataset
-                datasets: [{
-                        label: "Rainfall",
-                        backgroundColor: 'lightblue',
-                        borderColor: 'royalblue',
-                        data: [20, 19, 49, 48, 11, 17, 58, 39, 27, 9, 81, 71],
-                    }],
-                backgroundColor: [
-                    '#303d22',
-                    '#4dc3dd',
-                    '#ce0eb8',
-                    '#92cc98',
-                    '#ea6152',
-                    '#f23064',
-                    '#515641',
-                    '#916751',
-                    '#19d64f',
-                    '#ce5eb2',
-                    '#cea510',
-                    '#5e2b07',
-                ]
+                datasets: [
+                    {
+                        type: 'line',
+                        label: "Laptops Gaming",
+//                        backgroundColor: 'lightblue',
+                        borderColor: 'blue',
+                        fill: false,
+                        data: [
+        ${listGamingQuanity[0].quantity},${listGamingQuanity[1].quantity},
+        ${listGamingQuanity[2].quantity},${listGamingQuanity[3].quantity},
+        ${listGamingQuanity[4].quantity},${listGamingQuanity[5].quantity},
+        ${listGamingQuanity[6].quantity},${listGamingQuanity[7].quantity},
+        ${listGamingQuanity[8].quantity},${listGamingQuanity[9].quantity},
+        ${listGamingQuanity[10].quantity},${listGamingQuanity[11].quantity},
+                        ],
+                    },
+                    {
+                        type: 'line',
+                        label: "Office Laptops",
+//                        backgroundColor: 'lightgreen',
+                        borderColor: 'red',
+                        fill: false,
+                        data: [
+        ${listOfficeQuanity[0].quantity},${listOfficeQuanity[1].quantity},
+        ${listOfficeQuanity[2].quantity},${listOfficeQuanity[3].quantity},
+        ${listOfficeQuanity[4].quantity},${listOfficeQuanity[5].quantity},
+        ${listOfficeQuanity[6].quantity},${listOfficeQuanity[7].quantity},
+        ${listOfficeQuanity[8].quantity},${listOfficeQuanity[9].quantity},
+        ${listOfficeQuanity[10].quantity},${listOfficeQuanity[11].quantity},
+                        ],
+                    },
+                    {
+                        type: 'line',
+                        label: "Mouses",
+//                        backgroundColor: 'green',
+                        borderColor: 'green',
+                        fill: false,
+                        data: [
+        ${listMouseQuanity[0].quantity},${listMouseQuanity[1].quantity},
+        ${listMouseQuanity[2].quantity},${listMouseQuanity[3].quantity},
+        ${listMouseQuanity[4].quantity},${listMouseQuanity[5].quantity},
+        ${listMouseQuanity[6].quantity},${listMouseQuanity[7].quantity},
+        ${listMouseQuanity[8].quantity},${listMouseQuanity[9].quantity},
+        ${listMouseQuanity[10].quantity},${listMouseQuanity[11].quantity},
+                        ],
+                    }, {
+                        type: 'line',
+                        label: "Headphones",
+//                        backgroundColor: 'black',
+                        borderColor: 'black',
+                        fill: false,
+                        data: [
+        ${listHeadphoneQuanity[0].quantity},${listHeadphoneQuanity[1].quantity},
+        ${listHeadphoneQuanity[2].quantity},${listHeadphoneQuanity[3].quantity},
+        ${listHeadphoneQuanity[4].quantity},${listHeadphoneQuanity[5].quantity},
+        ${listHeadphoneQuanity[6].quantity},${listHeadphoneQuanity[7].quantity},
+        ${listHeadphoneQuanity[8].quantity},${listHeadphoneQuanity[9].quantity},
+        ${listHeadphoneQuanity[10].quantity},${listHeadphoneQuanity[11].quantity},
+                        ],
+                    }
+
+                ], labels: ["January", "February", "March", "April", "May", "June", "July", "August ", "September", "October", "November", "December"],
+
             },
             // Configuration options, đừng đụng phần này nha các bro
             options: {
@@ -682,13 +724,13 @@
                 },
                 title: {
                     display: true,
-                    text: 'Chart 4'
+                    text: 'sales in 2022'
                 },
                 scales: {
                     yAxes: [{
                             scaleLabel: {
                                 display: true,
-                                labelString: 'Precipitation in mm'
+                                labelString: 'Number of products'
                             }
                         }],
                     xAxes: [{

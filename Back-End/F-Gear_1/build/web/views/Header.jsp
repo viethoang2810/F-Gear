@@ -7,11 +7,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Header</title>
-        <link rel="stylesheet" href="./assets/CSS/GlobalStyles.css"> <!-- This file contains all of common styles of pages-->
-        <link rel="stylesheet" href="./assets/CSS/Responive.css">
-        <link rel="stylesheet" href="./assets/CSS/Detail_Product.css">
-        <link rel="stylesheet" href="./assets/CSS/Homepage.css">
-        <link rel="stylesheet" href="./assets/CSS/responsive.css">
+        <link rel="stylesheet" href="../assets/CSS/GlobalStyles.css"> <!-- This file contains all of common styles of pages-->
+        <link rel="stylesheet" href="../assets/CSS/Responive.css">
+        <link rel="stylesheet" href="../assets/CSS/Detail_Product.css">
+        <link rel="stylesheet" href="../assets/CSS/Homepage.css">
+        <link rel="stylesheet" href="../assets/CSS/responsive.css">
 
 
         <link rel="icon" href="./assets/Assets/Images/pinterest_board_photo.png">
@@ -65,8 +65,8 @@
                                     </div>
                                     <div class=" user navigator-user-account">
                                         <div class="user-account-avatar">
-                                            <img src="../assets/Images/280013939_368144518688847_7624068726298628073_n.jpg"
-                                                 alt="VietHoang" class="user-account-image">
+                                            <img src="../avatar/${user.avatar}"
+                                                 alt="${user.fullName}" class="user-account-image">
                                         </div>
                                         <div class="user-welcome">
                                             <div class="user-welcome">
@@ -83,9 +83,8 @@
                         </div>
                     </div>
             </div>
-
-        </header>
-    </div>
+        </div>                                              
+    
     <!-- Make a white space which is buffered for height because header has position is fixed -->
     <div class="row ">
         <div class="white-space">
@@ -102,15 +101,15 @@
                     <span> Categories</span>
                     <div class="body-category-list">
                         <ul class="body-category-list-item">
-                            <hr />
+                            <hr>
                             <li class="body-category-list-each-item">
                                 <a >Laptop Gaming</a>
                             </li>
-                            <hr />
+                            <hr/>
                             <li class="body-category-list-each-item">
                                 <a>Office Laptop</a>
                             </li>
-                            <hr />
+                            <hr>
                             <li class="body-category-list-each-item">
                                 <a>Mouses</a>
                             </li>
@@ -413,6 +412,6 @@
 </body>
 
 
-<script src="./assets/JavaScript/CommonFeatures.js"></script>
-<script src="./assets/JavaScript/Homepage.js"></script>
+<script src="../assets/JavaScript/CommonFeatures.js"></script>
+<script src="../assets/JavaScript/Homepage.js"></script>
 </html>

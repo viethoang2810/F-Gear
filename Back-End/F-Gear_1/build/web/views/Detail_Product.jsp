@@ -11,10 +11,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>F-GEAR</title>
-        <link rel="icon" href="./assets/Images/pinterest_board_photo.png">
+        <link rel="icon" href="../assets/Images/pinterest_board_photo.png">
         <link rel="stylesheet" href="./assets/CSS/Detail_Product.css">
         <link rel="stylesheet" href="./assets/CSS/GlobalStyles.css"> <!-- This file contains all of common styles of pages-->
         <link rel="stylesheet" href="./assets/CSS/Responive.css">
+        <<link rel="stylesheet" href="./assets/CSS/Homepage.css"/>
         <!-- Font Awesome link-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
               integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
@@ -25,61 +26,10 @@
     </head>
 
     <body>
-          <%@include file="./Header.jsp" %>
+         <%@include file="Header.jsp" %>
 
         <div class="container-fluid">
-            <!-- Header -->
-          
-            <!--            <div class="row header">
-                            <header class="header-wrapper col-lg-11 col-sm-11 col-md-11 col-xl-11 col-11" style="height:100px;">
-                                <div class="header-logo  col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2" style="height:100%;">
-                                    <a href="" class="header-logo_link">
-                                        <img src="./assets/Images/Logo_After_Login.png" alt="F-Gear" class="header-logo_image center">
-                                    </a>
-                                </div>
-                                <div class="header-navigator col-6 col-sm-6 col-md-7 col-lg-10 col-xl-10 " style="height:100%;">
-                                    <div class="btn-menu" style="display:none; height:100%;cursor: pointer;">
-                                        <i class="fa-solid fa-bars"></i>
-                                    </div>
-                                    <div class="navigator-wrapper">
-                                        <div class="navigator-wrapper-inner">
-                                            <div class="navigator-page col-lg-6 col-xl-7">
-                                                <nav class="navigator">
-                                                    <ul class="navigator-list">
-                                                        <li class="navigator-item">
-                                                            <a href="" class="navigator-item_link active">Home</a>
-                                                        </li>
-                                                        <li class="navigator-item">
-                                                            <a href="" class="navigator-item_link">Store</a>
-                                                        </li>
-                                                        <li class="navigator-item">
-                                                            <a href="" class="navigator-item_link">Sale</a>
-                                                        </li>
-                                                    </ul>
-                                                </nav>
-                                            </div>
-                                            <div class="navigatior-user">
-                                                <div class="user navigator-user-cart">
-                                                    <a href="" class="user-cart_link" style="color: #333;font-size: 1.6rem;">
-                                                        <i class="fa-solid fa-cart-shopping"></i>
-                                                    </a>
-                                                </div>
-                                                <div class=" user navigator-user-account">
-                                                    <div class="user-account-avatar">
-                                                        <img src="./assets/Images/280013939_368144518688847_7624068726298628073_n.jpg"
-                                                             alt="VietHoang" class="user-account-image">
-                                                    </div>
-                                                    <div class="user-welcome">
-                                                        <span class="welcome-content">Welcome viethoang</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
             
-                            </header>
-                        </div>-->
             <!-- Make a white space which is buffered for height because header has position is fixed -->
             <div class="row " >
                 <div class="white-space">
@@ -222,17 +172,17 @@
                         </div>
                         <div class="product-gifts">
                             <div class="heading-gift">
-                                <img src="./assets/Images/giftbox.png" alt="Gift" class="gifts-icon"
+                                <img src="../assets/Images/giftbox.png" alt="Gift" class="gifts-icon"
                                      style="width:30px;margin-right: 10px; height:30px;">
                                 <h2 class="gift-heading-title">Your gifts</h2>
                             </div>
                             <ul class="gifts-list" style="list-style: none;">
                                 <li class="gift-item">
-                                    <img src="./assets/Images/gift.png" alt="" class="gift-icon" style="width:20px">
+                                    <img src="../assets/Images/gift.png" alt="" class="gift-icon" style="width:20px">
                                     <span class="gift-name">Balo Acer Office</span>
                                 </li>
                                 <li class="gift-item">
-                                    <img src="./assets/Images/gift.png" alt="" class="gift-icon" style="width:20px">
+                                    <img src="../assets/Images/gift.png" alt="" class="gift-icon" style="width:20px">
                                     <span class="gift-name">Balo Acer Office</span>
                                 </li>
                             </ul>
@@ -281,7 +231,7 @@
             <div class="row">
                 <footer class="footer-wrapper">
                     <div class="footer-logo col-lg-2">
-                        <img src="./assets/Images/logo_transparent.png" alt="F-Gear" class="footer-logo_image">
+                        <img src="../assets/Images/logo_transparent.png" alt="F-Gear" class="footer-logo_image">
                     </div>
                     <div class="contact-info">
                         <div class="company-description">

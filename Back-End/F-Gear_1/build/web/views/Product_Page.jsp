@@ -202,7 +202,7 @@
                                 
                                 <div class="image-redirect">
                                     <span class="product-name text-center" style="color:#0033ff;">${product.proName}</span>
-                                    <a href="../Detail?proID=${product.proID}" class="image-redirect_link">View detail</a>
+                                    <a href="../Detail/DetailPro?proID=${product.proID}" class="image-redirect_link">View detail</a>
                                 </div>
                             </div>
                         </c:forEach>
