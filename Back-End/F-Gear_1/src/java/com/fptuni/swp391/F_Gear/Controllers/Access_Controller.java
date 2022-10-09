@@ -79,9 +79,8 @@ public class Access_Controller extends HttpServlet {
                         String userName = request.getParameter("userName");
                         String password = request.getParameter("password");
                         String cofirm = request.getParameter("cofirm");
-                        String phone = request.getParameter("phone");
-                        String regex = "(84|0[3|5|7|8|9])+([0-9]{8})\\b";
-                        if (password.equals(cofirm) && phone.matches(regex)) {
+                        int phone = Integer.parseInt(request.getParameter("phone"));
+                        if (password.equals(cofirm)) {
                             if (a.checkUserName(userName)) {
                                 Users user = new Users();
                                 user.setUserName(userName);
@@ -102,20 +101,11 @@ public class Access_Controller extends HttpServlet {
                             }
 
                         } else {
-                            if (!password.equals(cofirm)) {
-                                url = "/views/register.jsp";
-                                request.setAttribute("userName", userName);
-                                request.setAttribute("password", password);
-                                request.setAttribute("phone", phone);
-                                request.setAttribute("message", "Passwords do not match!");
-                            }
-                            if (!phone.matches(regex)) {
-                                url = "/views/register.jsp";
-                                request.setAttribute("userName", userName);
-                                request.setAttribute("password", password);
-                                request.setAttribute("cofirm", cofirm);
-                                request.setAttribute("message", "Phone number is not correct!");
-                            }
+                            url = "/views/register.jsp";
+                            request.setAttribute("userName", userName);
+                            request.setAttribute("password", password);
+                            request.setAttribute("phone", phone);
+                            request.setAttribute("message", "Passwords do not match!");
                         }
 
                     }

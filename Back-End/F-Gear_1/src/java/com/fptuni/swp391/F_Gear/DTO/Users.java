@@ -14,7 +14,7 @@ public class Users {
     private String userName;
     private String password;
     private String fullName;
-    private String phoneNumber;
+    private int phoneNumber;
     private String roleName;
     private String avatar ;
     private String gender;
@@ -22,7 +22,7 @@ public class Users {
     public Users() {
     }
 
-    public Users(String userName, String password, String fullName, String phoneNumber, String roleName, String avatar, String gender) {
+    public Users(String userName, String password, String fullName, int phoneNumber, String roleName, String avatar, String gender) {
         this.userName = userName;
         this.password = password;
         this.fullName = fullName;
@@ -56,11 +56,11 @@ public class Users {
         this.fullName = fullName;
     }
 
-    public String getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
