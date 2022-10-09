@@ -59,7 +59,6 @@ public class Access_Controller extends HttpServlet {
                         Users user = Access_Management.check(userName, password);
                         if (user != null) {
                             session.setAttribute("user", user);
-
                             response.sendRedirect("./Home/HomePage");
                             return;
                         } else {
