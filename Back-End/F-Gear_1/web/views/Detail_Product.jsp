@@ -25,10 +25,11 @@
     </head>
 
     <body>
+          <%@include file="./Header.jsp" %>
+
         <div class="container-fluid">
             <!-- Header -->
-            <%@include file="./Header.jsp" %>
-
+          
             <!--            <div class="row header">
                             <header class="header-wrapper col-lg-11 col-sm-11 col-md-11 col-xl-11 col-11" style="height:100px;">
                                 <div class="header-logo  col-6 col-sm-6 col-md-4 col-lg-2 col-xl-2" style="height:100%;">
