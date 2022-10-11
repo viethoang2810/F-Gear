@@ -1,4 +1,5 @@
 ﻿<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +30,7 @@
                             <h4 class="company-title">F-GEAR</h4>
                             <div class="company-information">
                                 <span class="information-title"><b>Address :</b></span>
-                                <span class="information-specific">Lô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ, Thành Phố Thủ Đức, Thành phố Hồ Chí Minh</span>
+                                <span class="information-specific"> E2a-7, D1 Street, Long Thanh My Ward,  Thu Duc City, Ho Chi Minh City</span>
                             </div>
                             <div class="company-information">
                                 <span class="information-title"><b>Hotline :</b></span>
@@ -53,7 +54,7 @@
                             <div class="gmap_canvas"><iframe class="gmap_iframe"  frameborder="0" scrolling="no"
                                                              marginheight="0" marginwidth="0"
                                                              src="https://maps.google.com/maps?width=300&amp;height=200&amp;hl=en&amp;q=Lô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ, Thành Phố Thủ Đức, Thành phố Hồ Chí Minh&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a
-                                    href="https://mcpenation.com/">MCPE Nation</a>
+                                    href="https://mcpenation.com/"></a>
                             </div>
 
                         </div>

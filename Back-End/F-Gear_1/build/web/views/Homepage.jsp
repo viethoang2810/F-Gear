@@ -43,7 +43,7 @@
             </h1>
             <div class="body-list-product">
                 <c:forEach var="list" items="${listHomepage}" varStatus="status">
-                    <a href="<c:url value="../Detail?proID=${list.proID}"/>">
+                    <a href="<c:url value="../Detail/DetailPro?proID=${list.proID}"/>">
                         <img
                             src="${list.listImage[status.index].url}" />
                     </a>

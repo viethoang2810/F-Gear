@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+﻿<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <html lang="en">
 
     <head>
@@ -76,7 +78,7 @@
             <!-- Make a white space which is buffered for height because header has position is fixed -->
             <%@include file="./Header.jsp" %>
 
-            <div class="row" style="margin-top: 50px;margin-left:60px;">
+            <div class="row" style="margin-top: 100px;margin-left:100px;">
                 <div class="backward-button-wrapper">
                     <button class="backward_link">
                         <i class="fa-solid fa-chevron-left"></i>
@@ -110,7 +112,7 @@
                                     <th scope="row" class="cart-item_name">Laptop MSI Gaming</th>
                                     <td class="cart-item_image">
                                         <img src="../assets/Images/p-acer-aspire-3-a315-42-r8px-2_437eed7003ca40a2a05a60d2356089c6_grande_ec84095863e94a38a2aa943d27b28e49.webp"
-                                             alt="" class="product-image img-responsive">
+                                             alt="" class="product-image img-responsive" style="width:120px;">
                                     </td>
                                     <td class="cart-item_amount">
                                         <div class="item-wrapper">
@@ -129,7 +131,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="cart-item_price">16.000.000 ?</td>
+                                    <td class="cart-item_price">16.000.000 đ</td>
 
                                     <td class="cart-item_warranty">2 years</td>
                                     <td class="remove-cart" style="font-size: 1.6rem;cursor: pointer;">
@@ -143,7 +145,7 @@
                                     <th scope="row" class="cart-item_name">Laptop MSI Gaming</th>
                                     <td class="cart-item_image">
                                         <img src="../assets/Images/p-acer-aspire-3-a315-42-r8px-2_437eed7003ca40a2a05a60d2356089c6_grande_ec84095863e94a38a2aa943d27b28e49.webp"
-                                             alt="" class="product-image img-responsive">
+                                             alt="" class="product-image img-responsive" style="width:120px;">
                                     </td>
                                     <td class="cart-item_amount">
                                         <div class="item-wrapper">
@@ -162,7 +164,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="cart-item_price">16.000.000 ?</td>
+                                    <td class="cart-item_price">16.000.000 đ</td>
 
                                     <td class="cart-item_warranty">2 years</td>
                                     <td class="remove-cart" style="font-size: 1.6rem;cursor: pointer;">

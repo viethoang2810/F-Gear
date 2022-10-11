@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author dell
  */
-@WebServlet(name = "Home_Controller", urlPatterns = {"/Home/*"})
 public class Home_Controller extends HttpServlet {
 
     /**
@@ -44,15 +43,16 @@ public class Home_Controller extends HttpServlet {
                     System.out.println(pm.selectTop8InHomepage());
 
                     request.setAttribute("listHomepage", listTop8Pro);
-                    request.getRequestDispatcher("/views/Homepage.jsp").forward(request, response);
                     break;
                 case "search":
-                     request.getRequestDispatcher("/views/Product_Page.jsp").forward(request, response);
+                    request.getRequestDispatcher("/views/Product_Page.jsp").forward(request, response);
                     break;
                 default:
                     break;
             }
         }
+        request.getRequestDispatcher("/views/Homepage.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -61,8 +61,8 @@
                                     </div>
                                     <div class=" user navigator-user-account"  style="width: 300px;">
                                         <div class="user-account-avatar">
-                                            <img src="${user.avatar}"
-                                                 alt="VietHoang" class="user-account-image">
+                                            <img src="../avatar/${user.avatar}"
+                                                 alt="${user.fullName}" class="user-account-image">
                                         </div>
                                         <div class="user-welcome">
                                             <span class="welcome-content">Welcome ${user.fullName}</span>
@@ -84,10 +84,12 @@
                 <div class="body-wrapper">
                     <div class="user-avatar col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12" >
                         <div class="avatar-image">
-                            <img src="./avatar/${user.avatar}" alt="" class="user-avatar-image">
+                            
+                            <img src="../avatar/${user.avatar}" alt="" class="user-avatar-image">
                         </div>
                         <div class="change-image" >
                             <form class="form-file" action="./Profile" method="POST" enctype="multipart/form-data">
+                                <input type="hidden" name="username" value="${user.userName}"/>
                                 <label for="file-upload" class="custom-file-upload" >
                                     <i class="fa fa-cloud-upload"></i> Choose from your device
                                 </label>
@@ -98,7 +100,7 @@
                     <div class="user-infors col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12">
                         <h3 class="user-infor-title" style="text-align:center;">User Information</h3>
                         <form action="./Profile" class="user-infor-form" method="POST" enctype="multipart/form-data">
-                            <input type="hidden" name="avatar" id="avatar" class="avatar-link">
+                            <input type="hidden" name="username" value="${user.userName}"/>
                             <div class="user-input">
                                 <label class="user-label"  for="username">Full name :</label>
                                 <input class="user-input-info" type="text" value="${user.fullName}"  id="username" name="fullname"/>
@@ -117,7 +119,7 @@
                                     <input class="user-radio" type="radio" value="female" name="gender" id="gender-female"/>
                                 </div>
                             </div>
-                            <button class="submit-btn" style="display: block;text-align:center;">Save your informations</button>
+                            <button class="submit-btn" style="display: block;text-align:center;" name="action" value="updateInfor">Save your informations</button>
                         </form>
                     </div>
                 </div>
@@ -127,7 +129,7 @@
         </div>
 
     </body>
-    <script src="./assets/JavaScript/CommonFeatures.js"></script>
-    <script src="./assets/JavaScript/User_Profile.js"></script>
+    <script src="../assets/JavaScript/CommonFeatures.js"></script>
+    <script src="../assets/JavaScript/User_Profile.js"></script>
 
 </html>

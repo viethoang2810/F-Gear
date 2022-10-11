@@ -24,9 +24,7 @@
 
     <body>
         <%@include file="Header.jsp" %>
-
         <div class="container-fluid">
-
             <!-- Header -->
             <!--        <div class="row header">
                         <header class="header-wrapper col-lg-11 col-sm-11 col-md-11 col-xl-11 col-11" style="height:100px;">
@@ -204,7 +202,7 @@
                                 
                                 <div class="image-redirect">
                                     <span class="product-name text-center" style="color:#0033ff;">${product.proName}</span>
-                                    <a href="../Detail?proID=${product.proID}" class="image-redirect_link">View detail</a>
+                                    <a href="../Detail/DetailPro?proID=${product.proID}" class="image-redirect_link">View detail</a>
                                 </div>
                             </div>
                         </c:forEach>

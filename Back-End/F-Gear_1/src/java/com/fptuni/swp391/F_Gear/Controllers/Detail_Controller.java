@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "Detail_Controller", urlPatterns = {"/Detail"})
+
 public class Detail_Controller extends HttpServlet {
 
     /**
@@ -42,7 +42,7 @@ public class Detail_Controller extends HttpServlet {
         Product productFound = pm.getProductById(listOfProduct,proID);
         
         request.setAttribute("productFound",productFound);
-        request.getRequestDispatcher("./views/Detail_Product.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/Detail_Product.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
