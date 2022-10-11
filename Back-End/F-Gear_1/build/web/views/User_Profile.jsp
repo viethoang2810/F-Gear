@@ -84,7 +84,7 @@
                 <div class="body-wrapper">
                     <div class="user-avatar col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12" >
                         <div class="avatar-image">
-                            
+
                             <img src="../avatar/${user.avatar}" alt="" class="user-avatar-image">
                         </div>
                         <div class="change-image" >
@@ -113,10 +113,14 @@
                             <div class="user-input" style="display: flex;">
                                 <span class="user-label user-input-title">Gender : </span>
                                 <div class="user-input-wrapper">
+                                    <%
+                                        String gender = user.getGender();
+
+                                    %>
                                     <label  for="gender-male">Male</label>
-                                    <input class="user-radio" style="margin-right: 30px;" type="radio" value="male" name="gender" id="gender-male"/>
+                                    <input class="user-radio" style="margin-right: 30px;" type="radio" value="Male" name="gender" id="gender-male" <%if(gender.equals("Male")) out.print("checked");%>/>                                  
                                     <label for="gender-female">Female</label>
-                                    <input class="user-radio" type="radio" value="female" name="gender" id="gender-female"/>
+                                    <input class="user-radio" type="radio" value="Female" name="gender" id="gender-female"  <%if(gender.equals("Female")) out.print("checked");%>/>
                                 </div>
                             </div>
                             <button class="submit-btn" style="display: block;text-align:center;" name="action" value="updateInfor">Save your informations</button>

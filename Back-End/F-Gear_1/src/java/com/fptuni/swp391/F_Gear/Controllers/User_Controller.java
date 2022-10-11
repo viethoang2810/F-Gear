@@ -109,6 +109,7 @@ public class User_Controller extends HttpServlet {
         } catch (Exception e) {
             //Handle exception in here
         }
+        request.setAttribute("gender",us.getGender());
         request.getRequestDispatcher("/views/User_Profile.jsp").forward(request, response);
 
     }

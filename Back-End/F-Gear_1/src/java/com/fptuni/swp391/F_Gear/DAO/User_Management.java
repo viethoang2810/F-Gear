@@ -43,15 +43,12 @@ public class User_Management {
         Connection conn = DBUtils.getConnection();
         PreparedStatement stm = null;
         int checkUpdate = 0;
-        String sql = "UPDATE dbo.Users SET FullName = ? , PhoneNumber = ? , Gender = ? WHERE UserName = ?" ;
+        String sql = "UPDATE dbo.Users SET FullName = '"+fullName+"', PhoneNumber = "+phoneNumber+" , Gender = '"+gender+"' WHERE UserName = '"+username+"'" ;
         
         try {
             conn = DBUtils.getConnection();
             stm = conn.prepareStatement(sql);
-            stm.setString(0, fullName);
-            stm.setString(1,phoneNumber);
-            stm.setString(2, gender);
-            stm.setString(3, username);
+            
             
             checkUpdate = stm.executeUpdate();
             

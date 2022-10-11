@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -57,8 +58,19 @@ public class Access_Controller extends HttpServlet {
                     case "login": {
                         String userName = request.getParameter("userName");
                         String password = a.getMD5(request.getParameter("password"));
+                        String rememberPassword = request.getParameter("remember_password");
+
                         Users user = Access_Management.check(userName, password);
                         if (user != null) {
+                            if (rememberPassword != null) {
+                                Cookie cookieUsername = new Cookie("username", userName);
+                                Cookie cookiePassword = new Cookie("password", request.getParameter("password"));
+                                cookieUsername.setMaxAge(60 * 60 * 24 * 15);
+                                cookiePassword.setMaxAge(60 * 60 * 24 * 15);
+                                response.addCookie(cookieUsername);
+                                response.addCookie(cookiePassword);
+                            }
+
                             session.setAttribute("user", user);
                             response.sendRedirect("./Home/HomePage");
                             return;
