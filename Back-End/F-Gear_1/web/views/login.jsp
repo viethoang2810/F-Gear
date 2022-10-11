@@ -20,7 +20,7 @@
                 <i>${message}</i>
                 <div class="logo-form-user-action">
                     <div>
-                        <input type="checkbox" class="login-form-radio" />
+                        <input type="checkbox" class="login-form-radio" name="remember_password" />
                         <label>Remember password</label>
                     </div>
                     <a href="./index.jsp">Forgot password ?</a>
