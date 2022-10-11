@@ -38,7 +38,7 @@ public class Access_Management {
     public static Users check(String userName, String password) throws SQLException, ClassNotFoundException {
         Users user = null;
         Connection con = DBUtils.getConnection();
-        String sql = "select  UserName, Password, FullName, PhoneNumber, Avatar, Gender, R.RoleName from dbo.Users U , dbo.Roles R where UserName=? and password=? ";
+        String sql = "select  UserName, Password, FullName, PhoneNumber, Avatar, Gender, R.RoleName from dbo.Users U , dbo.Roles R where UserName=? and password=? and U.RoleID = R.RoleID";
         PreparedStatement stm = con.prepareStatement(sql);
         stm.setString(1, userName);
         stm.setString(2, password);
