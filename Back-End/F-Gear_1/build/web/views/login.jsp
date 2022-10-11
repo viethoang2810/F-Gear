@@ -35,10 +35,10 @@
             <div class="login-create">
 
 
-                <a href="./">Create account ?</a>
+          
 
 
-                <a href="./Access?access=register">Create account ?</a>
+               
 
                 <a href="Access?op=signup">Create account ?</a>
 

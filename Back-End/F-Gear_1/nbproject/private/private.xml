@@ -2,25 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group>
-            <file>file:/D:/SWP391-Team4/F-Gear/Back-End/F-Gear_1/nbproject/project.properties</file>
-            <file>file:/D:/SWP391-Team4/F-Gear/Back-End/F-Gear_1/src/java/com/fptuni/swp391/F_Gear/Controllers/User_Controller.java</file>
-            <file>file:/D:/SWP391-Team4/F-Gear/Back-End/F-Gear_1/src/java/com/fptuni/swp391/F_Gear/Utils/DBUtils.java</file>
-            <file>file:/D:/SWP391-Team4/F-Gear/Back-End/F-Gear_1/web/WEB-INF/web.xml</file>
-            <file>file:/D:/SWP391-Team4/F-Gear/Back-End/F-Gear_1/nbproject/private/private.properties</file>
-            <file>file:/D:/SWP391-Team4/F-Gear/Back-End/F-Gear_1/src/java/com/fptuni/swp391/F_Gear/Controllers/Admin_Controller.java</file>
-            <file>file:/D:/SWP391-Team4/F-Gear/Back-End/F-Gear_1/src/java/com/fptuni/swp391/F_Gear/DAO/Product_Management.java</file>
-            <file>file:/D:/SWP391-Team4/F-Gear/Back-End/F-Gear_1/web/views/Product_Page.jsp</file>
-            <file>file:/D:/SWP391-Team4/F-Gear/Back-End/F-Gear_1/nbproject/private/private.xml</file>
-            <file>file:/D:/SWP391-Team4/F-Gear/Back-End/F-Gear_1/web/views/admin_Page.jsp</file>
-            <file>file:/D:/SWP391-Team4/F-Gear/Back-End/F-Gear_1/src/java/com/fptuni/swp391/F_Gear/Controllers/Access_Controller.java</file>
-            <file>file:/D:/SWP391-Team4/F-Gear/Back-End/F-Gear_1/web/views/Homepage.jsp</file>
-            <file>file:/D:/SWP391-Team4/F-Gear/Back-End/F-Gear_1/src/java/com/fptuni/swp391/F_Gear/DAO/User_Management.java</file>
-            <file>file:/D:/SWP391-Team4/F-Gear/Back-End/F-Gear_1/web/views/User_Profile.jsp</file>
-        </group>
-=======
         <group/>
->>>>>>> 39293f7a3509cf4772eda5493b87e61d08d6c3c2
     </open-files>
 </project-private>
