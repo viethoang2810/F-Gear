@@ -85,18 +85,19 @@ a {
     display: flex;
     justify-content: space-between;
     margin: 10px 40px;
+    padding-top: 75px;
 }
 
 .body-category {
-    border: 1px solid #000;
+    border: 2px solid #000;
     border-radius: 5px;
-    padding: 8px;
-    margin-left: 40px;
-    /* cursor: pointer; */
-    width: 20%;
+    /*padding: 8px;*/
     text-align: center;
-    user-select: none;
     position: relative;
+    width: 180px;
+    background-color: #f0f0f0;
+    margin-right: 60px;
+    z-index: 100;
 }
 
 .body-category-list::before {
@@ -116,6 +117,7 @@ a {
 .body-category i,
 .body-category span {
     cursor: pointer;
+    line-height: 34px;
 }
 
 .body-category-list {
@@ -151,7 +153,7 @@ a {
     list-style: none;
     padding: 20px 10px;
     width: 100%;
-    font-size: 22px;
+    font-size: 18px;
 }
 
 .body-category-list-item li {
@@ -169,6 +171,8 @@ a {
     background-color: red;
     transform: translateX(5%);
     transition: ease-in-out .3s;
+    cursor: pointer;
+    color: #fff;
 }
 
 .body-category-list-item li:hover a {
@@ -181,8 +185,9 @@ a {
     background-color: #fff;
     position: absolute;
     top: 0;
-    left: 260px;
+    left: 185px;
     display: none;
+    font-size: 15px;
 }
 
 .body-category-sub-list-active {

@@ -1,3 +1,4 @@
+<%@page import="com.fptuni.swp391.F_Gear.DAO.Access_Management"%>
 <!DOCTYPE html>
 <html lang="en">
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -11,16 +12,31 @@
     </head>
 
     <body>
+        <%
+            Cookie[] cookies = request.getCookies();
+            String username = "", passwWord = "";
+            Access_Management am = new Access_Management();
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if (cookie.getName().equals("username")) {
+                        username = cookie.getValue();
+                    }
+                    if (cookie.getName().equals("password")) {
+                        passwWord = cookie.getValue();
+                    }
+                }
+            }
+        %>
         <div class="login">
             <img class="login-logo"
                  src="../assets/Images/Logo_After_Login.png">
             <form class="login-form" action="./Access" method="POST">
-                <input class="login-form-text" type="text" placeholder="Username" name="userName" value="${user.userName}" />
-                <input class="login-form-text" type="password" placeholder="Password" name="password"/>
+                <input class="login-form-text" type="text" placeholder="Username" name="userName" value="<%=username%>" />
+                <input class="login-form-text" type="password" placeholder="Password" name="password" value="<%=passwWord%>"/>
                 <i>${message}</i>
                 <div class="logo-form-user-action">
                     <div>
-                        <input type="checkbox" class="login-form-radio" />
+                        <input type="checkbox" class="login-form-radio" name="remember_password" <% if(cookies != null)out.print("checked") ; %>/>
                         <label>Remember password</label>
                     </div>
                     <a href="./index.jsp">Forgot password ?</a>
@@ -30,10 +46,19 @@
             <button class="login-google">
                 <img src="../assets/Images/R.png" />
                 <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/F-Gear_1/./Access?op=loginwithgoogle&response_type=code
-		   &client_id=981197715312-butc49a1aut585l2hhqsf1s4it4etihq.apps.googleusercontent.com&approval_prompt=force"> Login with Google</a>
+                   &client_id=981197715312-butc49a1aut585l2hhqsf1s4it4etihq.apps.googleusercontent.com&approval_prompt=force"> Login with Google</a>
             </button>
             <div class="login-create">
+
+
+
+
+
+
+
                 <a href="Access?op=signup">Create account ?</a>
+
+
             </div>
 
         </div>

@@ -5,19 +5,31 @@
  */
 package com.fptuni.swp391.F_Gear.Controllers;
 
+import com.fptuni.swp391.F_Gear.DAO.User_Management;
+import com.fptuni.swp391.F_Gear.DTO.Users;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
+import javax.servlet.annotation.*;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "User_Controller", urlPatterns = {"/Profile/*"})
+@MultipartConfig(
+        fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
+        maxFileSize = 1024 * 1024 * 10, // 10 MB
+        maxRequestSize = 1024 * 1024 * 100 // 100 MB
+)
 public class User_Controller extends HttpServlet {
 
     /**
@@ -32,6 +44,7 @@ public class User_Controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
         request.getRequestDispatcher("/views/User_Profile.jsp").forward(request, response);
     }
 
@@ -61,7 +74,44 @@ public class User_Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        User_Management um = new User_Management();
+        boolean flagCheckUpdate = false;
+        String usernameKey = request.getParameter("username");
+        HttpSession userSession = request.getSession();
+
+        Users us = (Users) userSession.getAttribute("user");
+        String submitForm = request.getParameter("action");
+        if (submitForm != null) {
+            String fullName = request.getParameter("fullname");
+            String phoneNumber = request.getParameter("phonenumber");
+            String gender = request.getParameter("gender");
+            um.updateUserInfor(fullName, phoneNumber, gender,us.getUserName());
+            us.setFullName(fullName);
+            us.setPhoneNumber(Integer.parseInt(phoneNumber));
+            us.setGender(gender);
+
+        }
+        try {
+
+            Part filepart = request.getPart("file-upload");
+            String realPath = request.getServletContext().getRealPath("/avatar");
+            String fileName = Paths.get(filepart.getSubmittedFileName()).getFileName().toString();
+            flagCheckUpdate = um.updateUserAvatar(fileName, us.getUserName());
+
+            if (!Files.exists(Paths.get(realPath))) {
+                Files.createDirectory(Paths.get(realPath));
+            }
+            filepart.write(realPath + "/" + fileName);
+            File sourceImage = new File(realPath + "/" + fileName);
+
+            us.setAvatar(fileName);
+
+        } catch (Exception e) {
+            //Handle exception in here
+        }
+        request.setAttribute("gender",us.getGender());
+        request.getRequestDispatcher("/views/User_Profile.jsp").forward(request, response);
+
     }
 
     /**

@@ -6,13 +6,15 @@
 package com.fptuni.swp391.F_Gear.Controllers;
 
 import com.fptuni.swp391.F_Gear.DAO.Access_Management;
+import com.fptuni.swp391.F_Gear.DTO.Chart;
 import com.fptuni.swp391.F_Gear.DTO.Users;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.StringTokenizer;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,17 +40,37 @@ public class Access_Controller extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = "";
-        HttpSession session = request.getSession();
-        String op = request.getParameter("op").toLowerCase();
+        String op = request.getParameter("op");
+//        String access = request.getParameter("access");
+//        if(access != null){
+//            switch(access){
+//                case "register":
+//                    request.getRequestDispatcher("/view/register.jsp").forward(request, response);
+//                    break;
+//            }
+//        }
         Access_Management a = new Access_Management();
         if (op != null) {
+            HttpSession session = request.getSession(true);
+
             try {
-                switch (op) {
+                switch (op.toLowerCase()) {
                     case "login": {
                         String userName = request.getParameter("userName");
                         String password = a.getMD5(request.getParameter("password"));
+                        String rememberPassword = request.getParameter("remember_password");
+
                         Users user = Access_Management.check(userName, password);
                         if (user != null) {
+                            if (rememberPassword != null) {
+                                Cookie cookieUsername = new Cookie("username", userName);
+                                Cookie cookiePassword = new Cookie("password", request.getParameter("password"));
+                                cookieUsername.setMaxAge(60 * 60 * 24 * 15);
+                                cookiePassword.setMaxAge(60 * 60 * 24 * 15);
+                                response.addCookie(cookieUsername);
+                                response.addCookie(cookiePassword);
+                            }
+
                             session.setAttribute("user", user);
                             response.sendRedirect("./Home/HomePage");
                             return;
@@ -60,7 +82,7 @@ public class Access_Controller extends HttpServlet {
                     break;
                     case "logout": {
                         session.invalidate();
-                        url = "/views/Homepage.jsp";
+                        response.sendRedirect("./");
                     }
                     break;
 
@@ -126,7 +148,7 @@ public class Access_Controller extends HttpServlet {
                         user.setFullName(list.get(5));
                         System.out.println(user.getUserName());
                         System.out.println("user: " + user.toString());
-                        
+
                         if (a.checkUserName(user.getUserName())) {
                             if (a.signUpWithGoogle(user)) {
                                 System.out.println("login dc, va dk dc do chua co tk");
@@ -138,6 +160,115 @@ public class Access_Controller extends HttpServlet {
                         session.setAttribute("user", user);
 //                        response.sendRedirect("./Home/HomePage");
                         url = "/views/Homepage.jsp";
+                        break;
+                    }
+                    case "chartadminpage": {
+                        Access_Management am = new Access_Management();
+                        List<Chart> listTotal = am.selectAllTotalEachMonth();
+                        List<Chart> listQuantity = am.selectAllQuantityEachMonth();
+                        List<Chart> listSellingAllTime = am.selectTop12SellingProductAllTime();
+                        List<Chart> listSellingMonth1 = am.selectTopSellingProductMonth1();
+                        List<Chart> listSellingMonth2 = am.selectTopSellingProductMonth2();
+                        List<Chart> listSellingMonth3 = am.selectTopSellingProductMonth3();
+                        List<Chart> listSellingMonth4 = am.selectTopSellingProductMonth4();
+                        List<Chart> listSellingMonth5 = am.selectTopSellingProductMonth5();
+                        List<Chart> listSellingMonth6 = am.selectTopSellingProductMonth6();
+                        List<Chart> listSellingMonth7 = am.selectTopSellingProductMonth7();
+                        List<Chart> listSellingMonth8 = am.selectTopSellingProductMonth8();
+                        List<Chart> listSellingMonth9 = am.selectTopSellingProductMonth9();
+                        List<Chart> listSellingMonth10 = am.selectTopSellingProductMonth10();
+                        List<Chart> listSellingMonth11 = am.selectTopSellingProductMonth11();
+                        List<Chart> listSellingMonth12 = am.selectTopSellingProductMonth12();
+
+                        List<Chart> listGamingQuanity = am.selectLaptopGamingQuantityEachMonth();
+                        List<Chart> listOfficeQuanity = am.selectOfficeLaptopQuantityEachMonth();
+                        List<Chart> listMouseQuanity = am.selectMousesQuantityEachMonth();
+                        List<Chart> listHeadphoneQuanity = am.selectHeadPhonesQuantityEachMonth();
+                        List<Chart> listTmp = new ArrayList<>();
+                        List<Chart> listTmp2 = new ArrayList<>();
+                        List<Chart> listTmp3 = new ArrayList<>();
+                        List<Chart> listTmp4 = new ArrayList<>();
+                        long total = 0;
+                        long quantity = 0;
+                        for (int i = 0; i < listTotal.size(); i++) {
+                            total = total + listTotal.get(i).getTotal();
+                        }
+                        for (int i = 0; i < listQuantity.size(); i++) {
+                            quantity = quantity + listQuantity.get(i).getQuantity();
+                        }
+
+                        //cho laptop gaming
+                        for (int i = 1; i <= 12; i++) {
+                            listTmp.add(new Chart(i, 0));
+                        }
+                        for (int i = 0; i < listTmp.size(); i++) {
+                            for (int j = 0; j < listGamingQuanity.size(); j++) {
+                                if (listTmp.get(i).getMonth() == listGamingQuanity.get(j).getMonth()) {
+                                    listTmp.get(i).setQuantity(listGamingQuanity.get(j).getQuantity());
+                                }
+                            }
+                        }
+
+                        //cho laptop van phong
+                        for (int i = 1; i <= 12; i++) {
+                            listTmp2.add(new Chart(i, 0));
+                        }
+                        for (int i = 0; i < listTmp2.size(); i++) {
+                            for (int j = 0; j < listOfficeQuanity.size(); j++) {
+                                if (listTmp2.get(i).getMonth() == listOfficeQuanity.get(j).getMonth()) {
+                                    listTmp2.get(i).setQuantity(listOfficeQuanity.get(j).getQuantity());
+                                }
+                            }
+                        }
+
+                        //cho chuot
+                        for (int i = 1; i <= 12; i++) {
+                            listTmp3.add(new Chart(i, 0));
+                        }
+                        for (int i = 0; i < listTmp3.size(); i++) {
+                            for (int j = 0; j < listMouseQuanity.size(); j++) {
+                                if (listTmp3.get(i).getMonth() == listMouseQuanity.get(j).getMonth()) {
+                                    listTmp3.get(i).setQuantity(listMouseQuanity.get(j).getQuantity());
+                                }
+                            }
+                        }
+                        //cho laptop tai nghe
+                        for (int i = 1; i <= 12; i++) {
+                            listTmp4.add(new Chart(i, 0));
+                        }
+                        for (int i = 0; i < listTmp4.size(); i++) {
+                            for (int j = 0; j < listHeadphoneQuanity.size(); j++) {
+                                if (listTmp4.get(i).getMonth() == listHeadphoneQuanity.get(j).getMonth()) {
+                                    listTmp4.get(i).setQuantity(listHeadphoneQuanity.get(j).getQuantity());
+                                }
+                            }
+                        }
+
+                        request.setAttribute("total", total);
+                        request.setAttribute("quantity", quantity);
+                        request.setAttribute("listEachMonth", listTotal);
+                        request.setAttribute("listQuantityEachMonth", listQuantity);
+                        request.setAttribute("listSellingAllTime", listSellingAllTime);
+                        request.setAttribute("listSellingMonth1", listSellingMonth1);
+                        request.setAttribute("listSellingMonth2", listSellingMonth2);
+                        request.setAttribute("listSellingMonth3", listSellingMonth3);
+                        request.setAttribute("listSellingMonth4", listSellingMonth4);
+                        request.setAttribute("listSellingMonth5", listSellingMonth5);
+                        request.setAttribute("listSellingMonth6", listSellingMonth6);
+                        request.setAttribute("listSellingMonth7", listSellingMonth7);
+                        request.setAttribute("listSellingMonth8", listSellingMonth8);
+                        request.setAttribute("listSellingMonth9", listSellingMonth9);
+                        request.setAttribute("listSellingMonth10", listSellingMonth10);
+                        request.setAttribute("listSellingMonth11", listSellingMonth11);
+                        request.setAttribute("listSellingMonth12", listSellingMonth12);
+                        request.setAttribute("listGamingQuanity", listTmp);
+                        request.setAttribute("listOfficeQuanity", listTmp2);
+                        request.setAttribute("listMouseQuanity", listTmp3);
+                        request.setAttribute("listHeadphoneQuanity", listTmp4);
+
+                        url = "/views/Adminpage.jsp";
+                        break;
+
                     }
 
                 }
@@ -147,7 +278,7 @@ public class Access_Controller extends HttpServlet {
             request.getRequestDispatcher(url).forward(request, response);
         }
     }
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 
     /**
      * Handles the HTTP <code>GET</code> method.
