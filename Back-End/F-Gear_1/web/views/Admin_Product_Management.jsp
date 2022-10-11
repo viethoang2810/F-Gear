@@ -62,6 +62,15 @@
                                             <input type="text" name="proName" id="proName" class="input-text">
                                         </div>
                                         <div class="add-input-wrapper">
+                                            <label for="proCategories" class="input-label">Category</label>
+                                            <select name="category" id="proCategories" class="brands-list input-text">
+                                                <option value="laptop" class="brand-item">Laptop</option>
+                                                <option value="mouse" class="brand-item">Mouse</option>
+                                                <option value="headphone" class="brand-item">Headphone</option>
+                                                <option value="Others" class="brand-item">Others</option>    
+                                            </select>
+                                        </div>
+                                        <div class="add-input-wrapper">
                                             <label for="proBrand" class="input-label">Brand</label>
                                             <select name="brand" id="proBrand" class="brands-list input-text">
                                                 <option value="1" class="brand-item">ASUS</option>
