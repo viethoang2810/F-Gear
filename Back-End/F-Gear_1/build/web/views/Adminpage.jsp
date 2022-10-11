@@ -1,6 +1,6 @@
 ﻿<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
     <head>
@@ -97,8 +97,8 @@
         <fmt:setLocale value="vi_VN"/>
         <div class="dashboard-container">
             <div class="dashboard-container-box">
-                <h1 class="dashboard-container-title"><a href="#">Dashboard</a></h1>
-                <h2 class="dashboard-container-name-item">Product Management</h2>
+                <h1 class="dashboard-container-title"><a href="../Admin/Dashboard">Dashboard</a></h1>
+                <h2 class="dashboard-container-name-item"><a href="../Admin/Management">Product Management</a></h2>
             </div>
             <div class="dashboard-container-statistics">
                 <h1>Statistics per month</h1>
@@ -783,4 +783,3 @@
 
     </script>
 
-</html>

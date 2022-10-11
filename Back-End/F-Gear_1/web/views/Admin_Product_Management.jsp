@@ -41,10 +41,10 @@
                         <div class="navigation-wrapper">
                             <ul class="navigation-list">
                                 <li class="navigation-item ">
-                                    <a href="" class="navigation-item_link">Dashbroad</a>
+                                    <a href="../Admin/Dashboard" class="navigation-item_link">Dashbroad</a>
                                 </li>
                                 <li class="navigation-item active">
-                                    <a href="" class="navigation-item_link ">Product Management</a>
+                                    <a href="../Admin/Management" class="navigation-item_link ">Product Management</a>
                                 </li>
                             </ul>
                         </div>
@@ -209,7 +209,7 @@
                                                     <div class="modal-form-wrapper">
                                                         <span class="confirm-annotation" style="margin-bottom:30px;">You really
                                                             want remove product ${product.proID}</span>
-                                                        <form action="./Admin" class="modal-form" method="POST">
+                                                        <form action="../Admin/Management" class="modal-form" method="POST">
                                                             <input type="hidden" name="product_id" class="product-id" value="${product.proID}">
                                                             <!-- Put id of product here-->
                                                             <button type="submit" class="modal-btn-action" name="adminOp"

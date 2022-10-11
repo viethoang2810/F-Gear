@@ -52,7 +52,6 @@ public class Access_Controller extends HttpServlet {
         Access_Management a = new Access_Management();
         if (op != null) {
             HttpSession session = request.getSession(true);
-
             try {
                 switch (op.toLowerCase()) {
                     case "login": {
@@ -70,9 +69,14 @@ public class Access_Controller extends HttpServlet {
                                 response.addCookie(cookieUsername);
                                 response.addCookie(cookiePassword);
                             }
+                            if (user.getRoleName().equals("user")) {
+                                session.setAttribute("user", user);
+                                response.sendRedirect("./Home/HomePage");
+                            } else if (user.getRoleName().equals("admin")) {
+                                response.sendRedirect("./Admin/Dashboard");
 
-                            session.setAttribute("user", user);
-                            response.sendRedirect("./Home/HomePage");
+                            }
+
                             return;
                         } else {
                             url = "/views/login.jsp";
