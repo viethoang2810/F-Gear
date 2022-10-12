@@ -1,14 +1,7 @@
-# Created by https://www.toptal.com/developers/gitignore/api/netbeans
-# Edit at https://www.toptal.com/developers/gitignore?templates=netbeans
+/Back-End/F-Gear/nbproject/private/
+/Back-End/F-Gear/build/
+/Back-End/F-Gear/dist/
+/Back-End/F-Gear_1/nbproject/private/
+/Back-End/F-Gear_1/build/
+/Back-End/F-Gear_1/dist/
 
-### NetBeans ###
-**/nbproject/private/
-**/nbproject/Makefile-*.mk
-**/nbproject/Package-*.bash
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
-
-# End of https://www.toptal.com/developers/gitignore/api/netbeans
