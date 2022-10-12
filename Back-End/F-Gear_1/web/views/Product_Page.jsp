@@ -10,9 +10,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>F-GEAR</title>
         <link rel="icon" href="./assets/Images/pinterest_board_photo.png">
-        <link rel="stylesheet" href="../assets/CSS/Product_Page.css">
-        <link rel="stylesheet" href="../assets/CSS/GlobalStyles.css"> <!-- This file contains all of common styles of pages-->
-        <link rel="stylesheet" href="../assets/CSS/Responive.css">
+        <link rel="stylesheet" href="./assets/CSS/Product_Page.css">
+        <link rel="stylesheet" href="./assets/CSS/GlobalStyles.css"> <!-- This file contains all of common styles of pages-->
+        <link rel="stylesheet" href="./assets/CSS/Responive.css">
+        <link rel="stylesheet" href="./assets/CSS/Responive.css">
+        <link rel="stylesheet" href="/assets/CSS/Header.css">
         <!-- Font Awesome link-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
               integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
@@ -237,5 +239,5 @@
     </body>
     <script src="./assets/JavaScript/CommonFeatures.js"></script>
     <script src="../assets/JavaScript/Product_Page.js"></script>
-
+    <script src="../assets/JavaScript/Homepage.js"></script>
 </html>
