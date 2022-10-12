@@ -34,6 +34,11 @@
                 <div class="white-space">
 
                 </div>
+                <form action="./Admin" style="width: 70%; margin-left: 20%;">
+                    <input type="text" placeholder="Search . . ."
+                           style="width: 60%; height: 40px; padding: 5px 0 5px 10px;" name="name" />
+                    <button style="padding: 8px 15px; border: none; background-color: gray; color: white; border-radius: 10px;" name="adminOp" value="search">Search</button>
+                </form>
             </div>
             <div class="row sidebar-row" >
                 <div class="sidebar-wrapper">
@@ -187,15 +192,15 @@
                                                             <input type="hidden" name="product_id" class="product-id" value="${product.proID}">
                                                             <div class="edit-input-wrapper">
                                                                 <label for="proName" class="input-label">Name product</label>
-                                                                <input type="text" name="proName" id="proName" class="input-text productName" >
+                                                                <input type="text" name="proName" id="proName" class="input-text productName" required="" >
                                                             </div>
                                                             <div class="edit-input-wrapper">
                                                                 <label for="originPrice" class="input-label">Original price</label>
-                                                                <input type="text" name="originPrice" id="originPrice" class="input-text productOriginal" >
+                                                                <input type="text" name="originPrice" id="originPrice" class="input-text productOriginal" required="" >
                                                             </div>
                                                             <div class="edit-input-wrapper">
                                                                 <label for="discountPrice" class="input-label">Discount</label>
-                                                                <input type="text" name="discount" id="discountPrice" class="input-text productDiscount" >
+                                                                <input type="number" max="100" min="0" name="discount" id="discountPrice" class="input-text productDiscount" required="" >
                                                             </div>
                                                             <!-- Put id of product here-->
                                                             <button type="submit" class="edit-modal-btn-action" name="adminOp"
