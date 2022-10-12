@@ -143,13 +143,19 @@ public class Access_Controller extends HttpServlet {
                         while (st.hasMoreTokens()) {
                             list.add(st.nextToken());
                         }
-//                        System.out.println("id: " + list.get(2));
-//                        System.out.println("email: " + list.get(5));
-//                        System.out.println("avatar: " + list.get(11));
+                        
+//                        for (String string : list) {
+//                            System.out.println(string);
+//                        }
+//                        System.out.println("id: " + list.get(3));
+//                        System.out.println("email: " + list.get(7));
+//                        System.out.println("fullname: " + list.get(14));
+//                        System.out.println("avatar: " + list.get(26));
+                        
                         Users user = new Users();
-                        user.setUserName(list.get(5));
-                        user.setAvatar(list.get(11));
-                        user.setFullName(list.get(5));
+                        user.setUserName(list.get(7));
+                        user.setAvatar(list.get(26));
+                        user.setFullName(list.get(14));
                         System.out.println(user.getUserName());
                         System.out.println("user: " + user.toString());
 

@@ -45,8 +45,8 @@
             </form>
             <button class="login-google">
                 <img src="../assets/Images/R.png" />
-                <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/F-Gear_1/./Access?op=loginwithgoogle&response_type=code
-                   &client_id=981197715312-butc49a1aut585l2hhqsf1s4it4etihq.apps.googleusercontent.com&approval_prompt=force"> Login with Google</a>
+                <a href="https://accounts.google.com/o/oauth2/auth?scope=openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email&redirect_uri=http://localhost:8080/F-Gear_1/./Access?op=loginwithgoogle&response_type=code
+		   &client_id=981197715312-butc49a1aut585l2hhqsf1s4it4etihq.apps.googleusercontent.com&approval_prompt=force"> Login with Google</a>
             </button>
             <div class="login-create">
 
