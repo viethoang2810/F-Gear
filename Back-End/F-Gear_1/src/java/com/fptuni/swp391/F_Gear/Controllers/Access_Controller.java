@@ -71,7 +71,7 @@ public class Access_Controller extends HttpServlet {
                             }
                             if (user.getRoleName().equals("user")) {
                                 session.setAttribute("user", user);
-                                response.sendRedirect("./Home/HomePage");
+                                response.sendRedirect("./Home?action=homepage");
                             } else if (user.getRoleName().equals("admin")) {
                                 response.sendRedirect("./Admin/Dashboard");
 
