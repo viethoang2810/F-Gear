@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    
     <servlet>
         <servlet-name>Admin_Controller</servlet-name>
         <servlet-class>com.fptuni.swp391.F_Gear.Controllers.Admin_Controller</servlet-class>
@@ -21,11 +20,14 @@
         <servlet-name>Detail_Controller</servlet-name>
         <servlet-class>com.fptuni.swp391.F_Gear.Controllers.Detail_Controller</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Cart_Controller</servlet-name>
+        <servlet-class>com.fptuni.swp391.F_Gear.Controllers.Cart_Controller</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>User_Controller</servlet-name>
         <url-pattern>/Profile/*</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
         <servlet-name>Product_Controller</servlet-name>
         <url-pattern>/Product/*</url-pattern>
@@ -46,6 +48,10 @@
         <welcome-file>views/login.jsp</welcome-file>
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
+    <servlet-mapping>
+        <servlet-name>Cart_Controller</servlet-name>
+        <url-pattern>/Cart/*</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             300
