@@ -23,13 +23,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 /**
  *
  * @author dell
  */
 @WebServlet(name = "MailController", urlPatterns = {"/MailController"})
-public class MailController extends HttpServlet {
+public class MailController extends HttpServlet  {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,6 +41,7 @@ public class MailController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+       
         String name, subject, email, msg;
         name = request.getParameter("name");
         email = request.getParameter("email");
@@ -55,9 +55,10 @@ public class MailController extends HttpServlet {
         props.put("mail.smtp.starttls.enable", true);
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
+        
         Session session = Session.getInstance(props,
                 new javax.mail.Authenticator() {
-            @Override
+             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, password);
             }
