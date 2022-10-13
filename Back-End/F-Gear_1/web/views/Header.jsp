@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 ﻿<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,10 +12,10 @@
         <link rel="stylesheet" href="../assets/CSS/Responive.css">
         <link rel="stylesheet" href="../assets/CSS/Detail_Product.css">
         <link rel="stylesheet" href="../assets/CSS/Homepage.css">
-        <link rel="stylesheet" href="../assets/CSS/responsive.css">
+        <link rel="stylesheet" href="../assets/CSS/Homepage.css"/>
 
 
-        <link rel="icon" href="./assets/Assets/Images/pinterest_board_photo.png">
+        <link rel="icon" href="../assets/Assets/Images/pinterest_board_photo.png">
         <!-- Font Awesome link-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
               integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
@@ -66,7 +67,7 @@
                                     <div class=" user navigator-user-account">
                                         <div class="user-account-avatar">
                                             <img src="../avatar/${user.avatar}"
-                                                 alt="${user.fullName}" class="user-account-image">
+                                                 alt="VietHoang" class="user-account-image">
                                         </div>
                                         <div class="user-welcome">
                                             <div class="user-welcome">
@@ -83,8 +84,9 @@
                         </div>
                     </div>
             </div>
-        </div>                                              
-    
+
+        </header>
+    </div>
     <!-- Make a white space which is buffered for height because header has position is fixed -->
     <div class="row ">
         <div class="white-space">
@@ -101,15 +103,15 @@
                     <span> Categories</span>
                     <div class="body-category-list">
                         <ul class="body-category-list-item">
-                            <hr>
+                            <hr />
                             <li class="body-category-list-each-item">
                                 <a >Laptop Gaming</a>
                             </li>
-                            <hr/>
+                            <hr />
                             <li class="body-category-list-each-item">
                                 <a>Office Laptop</a>
                             </li>
-                            <hr>
+                            <hr />
                             <li class="body-category-list-each-item">
                                 <a>Mouses</a>
                             </li>
@@ -125,12 +127,12 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Brands</h4>
                                         <ul>
-                                            <li><a href="#">ACER</a></li>
-                                            <li><a href="#">ASUS</a></li>
-                                            <li><a href="#">MSI</a></li>
-                                            <li><a href="#">DELL</a></li>
-                                            <li><a href="#">LENOVO</a></li>
-                                            <li><a href="#">HP</a></li>
+                                            <li><a href="<c:url value="./Homepage?action=Brand&brand=ACER&cate=1"/>">ACER</a></li>
+                                            <li><a href="<c:url value="./Homepage?action=Brand&brand=ASUS&cate=1"/>">ASUS</a></li>
+                                            <li><a href="<c:url value="./Homepage?action=Brand&brand=MSI&cate=1"/>">MSI</a></li>
+                                            <li><a href="<c:url value="./Homepage?action=Brand&brand=DELL&cate=1"/>">DELL</a></li>
+                                            <li><a href="<c:url value="./Homepage?action=Brand&brand=LENOVO&cate=1"/>">LENOVO</a></li>
+                                            <li><a href="<c:url value="./Homepage?action=Brand&brand=HP&cate=1"/>">HP</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -138,10 +140,10 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Price</h4>
                                         <ul>
-                                            <li><a href="#">Under 20 million</a></li>
-                                            <li><a href="#">From 20 to less than 25 million</a></li>
-                                            <li><a href="#">From 25 to less than 30 million</a></li>
-                                            <li><a href="#">Over 30 million</a></li>
+                                            <li><a href="<c:url value="./Homepage?action=Price&price=1"/>">Under 20 million</a></li>
+                                            <li><a href="<c:url value="./Homepage?action=Price&price=2"/>">From 20 to less than 25 million</a></li>
+                                            <li><a href="<c:url value="./Homepage?action=Price&price=3"/>">From 25 to less than 30 million</a></li>
+                                            <li><a href="<c:url value="./Homepage?action=Price&price=4"/>">Over 30 million</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -149,11 +151,10 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>ASUS</h4>
                                         <ul>
-                                            <li><a href="#">ROG Series</a></li>
-                                            <li><a href="#">TUF Series</a></li>
-                                            <li><a href="#">Zephyrus Series</a></li>
-                                            <li><a href="#">ROG Strix G</a></li>
-                                            <li><a href="#">ROG Flow Series</a></li>
+                                            <li><a href="<c:url value="./Homepage?action=Series&series=ROG&cate=1"/>">ROG Series</a></li>
+                                            <li><a href="<c:url value="./Homepage?action=Series&series=TUF&cate=1"/>">TUF Series</a></li>
+                                            <li><a href="<c:url value="./Homepage?action=Series&series=Zephyrus&cate=1"/>">Zephyrus Series</a></li>
+                                            <li><a href="<c:url value="./Homepage?action=Series&series=ROG Strix G&cate=1"/>">ROG Strix G</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -173,9 +174,8 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>DELL Gaming</h4>
                                         <ul>
-                                            <li><a href="#">DELL Gaming G Series</a></li>
-                                            <li><a href="#">Alienware Series</a></li>
-                                            <li><a href="#">Logitech</a></li>
+                                            <li><a href="<c:url value="./Home?action=Series&series=DELL G&cate=1"/>">DELL Gaming G Series</a></li>
+                                            <li><a href="<c:url value="./Home?action=Series&series=Alienware&cate=1"/>">Alienware Series</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -183,20 +183,8 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>LENOVO Gaming</h4>
                                         <ul>
-                                            <li><a href="#">LENOVO Gaming Series</a></li>
-                                            <li><a href="#">Ideapad Gaming Series</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li class="body-category-list-sub-each-item">
-                                    <div class="body-category-list-sub2-each-item">
-                                        <h4>Graphics card</h4>
-                                        <ul>
-                                            <li><a href="#">GTX 1650</a></li>
-                                            <li><a href="#">GTX 3050/3050Ti</a></li>
-                                            <li><a href="#">GTX 3060</a></li>
-                                            <li><a href="#">GTX 3070/3080</a></li>
-                                            <li><a href="#">AMD Radeon RX</a></li>
+                                            <li><a href="<c:url value="./Home?action=Series&series=LENOVO&cate=1"/>">Legion Gaming</a></li>
+                                            <li><a href="<c:url value="./Home?action=Series&series=Ideapad&cate=1"/>">Ideapad Gaming</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -208,13 +196,13 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Brands</h4>
                                         <ul>
-                                            <li><a href="#">MSI</a></li>
-                                            <li><a href="#">DELL</a></li>
-                                            <li><a href="#">ACER</a></li>
-                                            <li><a href="#">ASUS</a></li>
-                                            <li><a href="#">HP</a></li>
-                                            <li><a href="#">LG</a></li>
-                                            <li><a href="#">HUAWEI</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=MSI&cate=2"/>">MSI</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=DELL&cate=2"/>">DELL</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=ACER&cate=2"/>">ACER</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=ASUS&cate=2"/>">ASUS</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=HP&cate=2"/>">HP</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=LG&cate=2"/>">LG</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=HUAWEI&cate=2"/>">HUAWEI</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -222,9 +210,9 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Price</h4>
                                         <ul>
-                                            <li><a href="#">Under 15 million</a></li>
-                                            <li><a href="#">From 15 million to under 20 million</a></li>
-                                            <li><a href="#">Over 20 million</a></li>
+                                            <li><a href="<c:url value="./Home?action=Price&price=5"/>">Under 15 million</a></li>
+                                            <li><a href="<c:url value="./Home?action=Price&price=6"/>">From 15 million to under 20 million</a></li>
+                                            <li><a href="<c:url value="./Home?action=Price&price=7"/>">Over 20 million</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -232,11 +220,10 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Laptop by CPU</h4>
                                         <ul>
-                                            <li><a href="#">Intel Core i3</a></li>
-                                            <li><a href="#">Intel Core i5</a></li>
-                                            <li><a href="#">Intel Core i7</a></li>
-                                            <li><a href="#">Intel Core i9</a></li>
-                                            <li><a href="#">AMD Ryzen</a></li>
+                                            <li><a href="<c:url value="./Home?action=TypeCore&type=Intel Core i3&cate=2"/>">Intel Core i3</a></li>
+                                            <li><a href="<c:url value="./Home?action=TypeCore&type=Intel Core i5&cate=2"/>">Intel Core i5</a></li>
+                                            <li><a href="<c:url value="./Home?action=TypeCore&type=Intel Core i7&cate=2"/>">Intel Core i7</a></li>
+                                            <li><a href="<c:url value="./Home?action=TypeCore&type=AMD Ryzen&cate=2"/>">AMD Ryzen</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -244,10 +231,10 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Laptop ASUS</h4>
                                         <ul>
-                                            <li><a href="#">VivoBook Series</a></li>
-                                            <li><a href="#">VivoBook Pro Series</a></li>
-                                            <li><a href="#">Zenbook Series</a></li>
-                                            <li><a href="#">ASUS Oled Series</a></li>
+                                            <li><a href="<c:url value="./Home?action=Series&series=VivoBook&cate=2"/>">VivoBook Series</a></li>
+                                            <li><a href="<c:url value="./Home?action=Series&series=VivoBook Pro&cate=2"/>">VivoBook Pro Series</a></li>
+                                            <li><a href="<c:url value="./Home?action=Series&series=ZenBook&cate=2"/>">ZenBook Series</a></li>
+                                            <li><a href="<c:url value="./Home?action=Series&series=Oled&cate=2"/>">ASUS Oled Series</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -255,8 +242,8 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Laptop ACER</h4>
                                         <ul>
-                                            <li><a href="#">Aspire Series</a></li>
-                                            <li><a href="#">Swift Series</a></li>
+                                            <li><a href="<c:url value="./Home?action=Series&series=Aspire&cate=2"/>">Aspire Series</a></li>
+                                            <li><a href="<c:url value="./Home?action=Series&series=Swift&cate=2"/>">Swift Series</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -264,8 +251,8 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Laptop DELL</h4>
                                         <ul>
-                                            <li><a href="#">Vostro Series</a></li>
-                                            <li><a href="#">Inspiron Series</a></li>
+                                            <li><a href="<c:url value="./Home?action=Series&series=Vostro&cate=2"/>">Vostro Series</a></li>
+                                            <li><a href="<c:url value="./Home?action=Series&series=Latitude&cate=2"/>">Latitude Series</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -273,8 +260,9 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Laptop HP</h4>
                                         <ul>
-                                            <li><a href="#">Probook Series</a></li>
-                                            <li><a href="#">Envy Series</a></li>
+                                            <li><a href="<c:url value="./Home?action=Series&series=Pavilion&cate=2"/>">Pavilion Series</a></li>
+                                            <li><a href="<c:url value="./Home?action=Series&series=Probook&cate=2"/>">Probook Series</a></li>
+                                            <li><a href="<c:url value="./Home?action=Series&series=Envy&cate=2"/>">Envy Series</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -282,9 +270,9 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Laptop MSI</h4>
                                         <ul>
-                                            <li><a href="#">Modern Series</a></li>
-                                            <li><a href="#">Prestige Series</a></li>
-                                            <li><a href="#">Summit Series</a></li>
+                                            <li><a href="<c:url value="./Home?action=Series&series=Modern&cate=2"/>">Modern Series</a></li>
+                                            <li><a href="<c:url value="./Home?action=Series&series=Prestige&cate=2"/>">Prestige Series</a></li>
+                                            <li><a href="<c:url value="./Home?action=Series&series=Summit&cate=2"/>">Summit Series</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -296,12 +284,12 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Mouses by brands</h4>
                                         <ul>
-                                            <li><a href="#">LOGITECH</a></li>
-                                            <li><a href="#">ASUS</a></li>
-                                            <li><a href="#">RAZER</a></li>
-                                            <li><a href="#">CORSAIR</a></li>
-                                            <li><a href="#">STEELSERIES</a></li>
-                                            <li><a href="#">HYPERX</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=LOGITECH&cate=3"/>">LOGITECH</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=ASUS&cate=3"/>">ASUS</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=RAZER&cate=3"/>">RAZER</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=CORSAIR&cate=3"/>">CORSAIR</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=STEELSERIES&cate=3"/>">STEELSERIES</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=HYPERX&cate=3"/>">HYPERX</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -309,12 +297,12 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Mouses by brands</h4>
                                         <ul>
-                                            <li><a href="#">DARE - U</a></li>
-                                            <li><a href="#">Fuhlen</a></li>
-                                            <li><a href="#">Akko</a></li>
-                                            <li><a href="#">MSI</a></li>
-                                            <li><a href="#">EDRA</a></li>
-                                            <li><a href="#">LENOVO</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=DARE - U&cate=3"/>">DARE - U</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=Fuhlen&cate=3"/>">Fuhlen</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=Akko&cate=3"/>">Akko</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=MSI&cate=3"/>">MSI</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=EDRA&cate=3"/>">EDRA</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=LENOVO&cate=3"/>">LENOVO</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -322,11 +310,11 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Price</h4>
                                         <ul>
-                                            <li><a href="#">Under 500 thousand</a></li>
-                                            <li><a href="#">From 500 thousand to under 1 million</a></li>
-                                            <li><a href="#">From 1 million to under 2 million</a></li>
-                                            <li><a href="#">From 2 million to under 3 million</a></li>
-                                            <li><a href="#">Over 3 million</a></li>
+                                            <li><a href="<c:url value="./Home?action=Price&price=8&cate=3"/>">Under 500 thousand</a></li>
+                                            <li><a href="<c:url value="./Home?action=Price&price=9&cate=3"/>">From 500 thousand to under 1 million</a></li>
+                                            <li><a href="<c:url value="./Home?action=Price&price=10&cate=3"/>">From 1 million to under 2 million</a></li>
+                                            <li><a href="<c:url value="./Home?action=Price&price=11&cate=3"/>">From 2 million to under 3 million</a></li>
+                                            <li><a href="<c:url value="./Home?action=Price&price=12&cate=3"/>">Over 3 million</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -334,8 +322,8 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Connect Type</h4>
                                         <ul>
-                                            <li><a href="#">Bluetooth</a></li>
-                                            <li><a href="#">Wireless</a></li>
+                                            <li><a href="<c:url value="./Home?action=Type&type=USB 2.0, Bluetooth&cate=3"/>">Bluetooth</a></li>
+                                            <li><a href="<c:url value="./Home?action=Type&type=Wired&cate=3"/>">Wired</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -347,12 +335,12 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Headphones by brands</h4>
                                         <ul>
-                                            <li><a href="#">LOGITECH</a></li>
-                                            <li><a href="#">ASUS</a></li>
-                                            <li><a href="#">RAZER</a></li>
-                                            <li><a href="#">CORSAIR</a></li>
-                                            <li><a href="#">STEELSERIES</a></li>
-                                            <li><a href="#">HYPERX</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=LOGITECH&cate=4"/>">LOGITECH</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=ASUS&cate=4"/>">ASUS</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=RAZER&cate=4"/>">RAZER</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=CORSAIR&cate=4"/>">CORSAIR</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=STEELSERIES&cate=4"/>">STEELSERIES</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=HYPERX&cate=4"/>">HYPERX</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -360,11 +348,11 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Headphones by brands</h4>
                                         <ul>
-                                            <li><a href="#">DARE - U</a></li>
-                                            <li><a href="#">LENOVO</a></li>
-                                            <li><a href="#">EDRA</a></li>
-                                            <li><a href="#">MSI</a></li>
-                                            <li><a href="#">AKKO</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=DARE - U&cate=4"/>">DARE - U</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=LENOVO&cate=4"/>">LENOVO</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=EDRA&cate=4"/>">EDRA</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=MSI&cate=4"/>">MSI</a></li>
+                                            <li><a href="<c:url value="./Home?action=Brand&brand=AKKO&cate=4"/>">AKKO</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -372,11 +360,11 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Price</h4>
                                         <ul>
-                                            <li><a href="#">Under 500 thousand</a></li>
-                                            <li><a href="#">From 500 thousand to under 1 million</a></li>
-                                            <li><a href="#">From 1 million to under 2 million</a></li>
-                                            <li><a href="#">From 2 million to under 3 million</a></li>
-                                            <li><a href="#">Over 3 million</a></li>
+                                            <li><a href="<c:url value="./Home?action=Price&price=8&cate=4"/>">Under 500 thousand</a></li>
+                                            <li><a href="<c:url value="./Home?action=Price&price=9&cate=4"/>">From 500 thousand to under 1 million</a></li>
+                                            <li><a href="<c:url value="./Home?action=Price&price=10&cate=4"/>">From 1 million to under 2 million</a></li>
+                                            <li><a href="<c:url value="./Home?action=Price&price=11&cate=4"/>">From 2 million to under 3 million</a></li>
+                                            <li><a href="<c:url value="./Home?action=Price&price=12&cate=4"/>">Over 3 million</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -384,8 +372,8 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Connect Type</h4>
                                         <ul>
-                                            <li><a href="#">Bluetooth</a></li>
-                                            <li><a href="">Wireless</a></li>
+                                            <li><a href="<c:url value="./Home?action=Type&type=USB 2.0, Bluetooth&cate=4"/>">Bluetooth</a></li>
+                                            <li><a href="<c:url value="./Home?action=Type&type=Wired&cate=4"/>">Wired</a></li>
                                         </ul>
                                     </div>
                                 </li>

@@ -10,6 +10,7 @@ import com.fptuni.swp391.F_Gear.DAO.Product_Management;
 import com.fptuni.swp391.F_Gear.DTO.Product;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,30 +34,50 @@ public class Admin_Controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String pathInfor = request.getPathInfo();
         Product_Management pm = new Product_Management();
         Admin_Management am = new Admin_Management();
         ArrayList<Product> listOfProduct = new ArrayList<>();
-        if (pathInfor.equals("/Management")) {
-            String adminAction = request.getParameter("adminOp");
-            if (adminAction != null) {
-                switch (adminAction) {
-                    case "updated":
-                        int proId = Integer.parseInt(request.getParameter("product_id"));
-                        String name = request.getParameter("proName");
-                        int proPrice = Integer.parseInt(request.getParameter("originPrice"));
-                        int discount = Integer.parseInt(request.getParameter("discount"));
-                        boolean updateProduct = am.updateProduct(proId, name, proPrice, discount);
-                        break;
+        String adminAction = request.getParameter("adminOp");
+        if (adminAction != null) {
+            switch (adminAction) {
+                case "updated": {
+                    int proId = Integer.parseInt(request.getParameter("product_id"));
+                    String name = request.getParameter("proName");
+                    int proPrice = Integer.parseInt(request.getParameter("originPrice"));
+                    int discount = Integer.parseInt(request.getParameter("discount"));
+                    int finalPrice = proPrice - (proPrice / 100 * discount);
+                    Product product = new Product();
+                    product.setProID(proId);
+                    product.setProName(name);
+                    product.setProOriginalPrice(Integer.toString(proPrice));
+                    product.setDiscount(discount);
+                    product.setProCurrentPrice(Integer.toString(finalPrice));
+                    am.updateProduct(product);
                 }
+                break;
+                case "remove": {
+                    int id = Integer.parseInt(request.getParameter("product_id"));
+                    am = new Admin_Management();
+                    am.remove(id);
+                }
+                break;
+                case "cancel":
+                    break;
+                case "search": {
+                    String name = request.getParameter("name").toLowerCase();
+                    am = new Admin_Management();
+                    if (name != null) {
+                        List<Product> list = am.searchProduct(name);
+                        request.setAttribute("listOfProduct", list);
+                        request.getRequestDispatcher("/views/Admin_Product_Management.jsp").forward(request, response);
+                    }
+                }
+                break;
             }
-            listOfProduct = pm.getAllOfProduct();
-            request.setAttribute("listOfProduct", listOfProduct);
-            request.getRequestDispatcher("/views/Admin_Product_Management.jsp").forward(request, response);
-        }else if(pathInfor.equals("/Dashboard")){
-            request.getRequestDispatcher("/views/Adminpage.jsp").forward(request, response);
         }
-
+        listOfProduct = pm.getAllOfProduct();
+        request.setAttribute("listOfProduct", listOfProduct);
+        request.getRequestDispatcher("/views/Admin_Product_Management.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -71,7 +71,7 @@ public class Access_Controller extends HttpServlet {
                             }
                             if (user.getRoleName().equals("user")) {
                                 session.setAttribute("user", user);
-                                response.sendRedirect("./Home/HomePage");
+                                response.sendRedirect("./Home/Homepage");
                             } else if (user.getRoleName().equals("admin")) {
                                 response.sendRedirect("./Admin/Dashboard");
 
@@ -91,12 +91,12 @@ public class Access_Controller extends HttpServlet {
                     break;
 
                     case "register": {
-
                         String userName = request.getParameter("userName");
                         String password = request.getParameter("password");
                         String cofirm = request.getParameter("cofirm");
-                        int phone = Integer.parseInt(request.getParameter("phone"));
-                        if (password.equals(cofirm)) {
+                        String phone = request.getParameter("phone");
+                        String regex = "(84|0[3|5|7|8|9])+([0-9]{8})\\b";
+                        if (password.equals(cofirm) && phone.matches(regex)) {
                             if (a.checkUserName(userName)) {
                                 Users user = new Users();
                                 user.setUserName(userName);
@@ -117,11 +117,20 @@ public class Access_Controller extends HttpServlet {
                             }
 
                         } else {
-                            url = "/views/register.jsp";
-                            request.setAttribute("userName", userName);
-                            request.setAttribute("password", password);
-                            request.setAttribute("phone", phone);
-                            request.setAttribute("message", "Passwords do not match!");
+                            if (!password.equals(cofirm)) {
+                                url = "/views/register.jsp";
+                                request.setAttribute("userName", userName);
+                                request.setAttribute("password", password);
+                                request.setAttribute("phone", phone);
+                                request.setAttribute("message", "Passwords do not match!");
+                            }
+                            if (!phone.matches(regex)) {
+                                url = "/views/register.jsp";
+                                request.setAttribute("userName", userName);
+                                request.setAttribute("password", password);
+                                request.setAttribute("cofirm", cofirm);
+                                request.setAttribute("message", "Phone number is not correct!");
+                            }
                         }
 
                     }
@@ -143,13 +152,19 @@ public class Access_Controller extends HttpServlet {
                         while (st.hasMoreTokens()) {
                             list.add(st.nextToken());
                         }
-//                        System.out.println("id: " + list.get(2));
-//                        System.out.println("email: " + list.get(5));
-//                        System.out.println("avatar: " + list.get(11));
+                        
+//                        for (String string : list) {
+//                            System.out.println(string);
+//                        }
+//                        System.out.println("id: " + list.get(3));
+//                        System.out.println("email: " + list.get(7));
+//                        System.out.println("fullname: " + list.get(14));
+//                        System.out.println("avatar: " + list.get(26));
+                        
                         Users user = new Users();
-                        user.setUserName(list.get(5));
-                        user.setAvatar(list.get(11));
-                        user.setFullName(list.get(5));
+                        user.setUserName(list.get(7));
+                        user.setAvatar(list.get(26));
+                        user.setFullName(list.get(14));
                         System.out.println(user.getUserName());
                         System.out.println("user: " + user.toString());
 

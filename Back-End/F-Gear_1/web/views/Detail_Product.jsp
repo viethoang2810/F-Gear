@@ -12,10 +12,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>F-GEAR</title>
         <link rel="icon" href="../assets/Images/pinterest_board_photo.png">
-        <link rel="stylesheet" href="./assets/CSS/Detail_Product.css">
-        <link rel="stylesheet" href="./assets/CSS/GlobalStyles.css"> <!-- This file contains all of common styles of pages-->
-        <link rel="stylesheet" href="./assets/CSS/Responive.css">
-        <<link rel="stylesheet" href="./assets/CSS/Homepage.css"/>
+        <link rel="stylesheet" href="../assets/CSS/Detail_Product.css">
+        <link rel="stylesheet" href="../assets/CSS/GlobalStyles.css"> <!-- This file contains all of common styles of pages-->
+        <link rel="stylesheet" href="../assets/CSS/Responive.css">
+        <<link rel="stylesheet" href="../assets/CSS/Homepage.css"/>
         <!-- Font Awesome link-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
               integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
@@ -26,10 +26,10 @@
     </head>
 
     <body>
-         <%@include file="Header.jsp" %>
+        <%@include file="Header.jsp" %>
 
         <div class="container-fluid">
-            
+
             <!-- Make a white space which is buffered for height because header has position is fixed -->
             <div class="row " >
                 <div class="white-space">
@@ -190,7 +190,7 @@
                         <div class="product-price-description">
                             <div class="price-description" style="display: flex; ">
                                 <h5 class="price-description-title" style="margin-right: 10px;">Original Price : </h5>
-                        
+
                                 <span class="price-number"
                                       style="font-weight: 500; font-size:1.2rem ; color: rgb(116, 112, 112);text-decoration:line-through;">${productFound.proOriginalPrice}đ</span>
                             </div>
@@ -228,47 +228,8 @@
                     </table>
                 </div>
             </div>
-            <div class="row">
-                <footer class="footer-wrapper">
-                    <div class="footer-logo col-lg-2">
-                        <img src="../assets/Images/logo_transparent.png" alt="F-Gear" class="footer-logo_image">
-                    </div>
-                    <div class="contact-info">
-                        <div class="company-description">
-                            <h4 class="company-title">F-GEAR</h4>
-                            <div class="company-information">
-                                <span class="information-title"><b>Address :</b></span>
-                                <span class="information-specific">Lô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ, Thành Phố Thủ Đức, Thành phố Hồ Chí Minh</span>
-                            </div>
-                            <div class="company-information">
-                                <span class="information-title"><b>Hotline :</b></span>
-                                <span class="information-specific">0335349368</span>
-                            </div>
-                            <div class="social-medias-contact">
-                                <a href="" class="social-media-contact_link">
-                                    <img src="Assets/Images/facebook.png" alt="" class="link-image">
-                                </a>
-                                <a href="" class="social-media-contact_link">
-                                    <img src="Assets/Images/instagram.png" alt="" class="link-image">
-                                </a>
-                                <a href="" class="social-media-contact_link">
-                                    <img src="Assets/Images/youtube.png" alt="" class="link-image">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="footer-google-map">
-                        <div class="mapouter">
-                            <div class="gmap_canvas"><iframe class="gmap_iframe"  frameborder="0" scrolling="no"
-                                                             marginheight="0" marginwidth="0"
-                                                             src="https://maps.google.com/maps?width=300&amp;height=200&amp;hl=en&amp;q=Lô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ, Thành Phố Thủ Đức, Thành phố Hồ Chí Minh&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a
-                                    href="https://mcpenation.com/">MCPE Nation</a>
-                            </div>
+            <%@include file="Footer.jsp" %>
 
-                        </div>
-                    </div>
-                </footer>
-            </div>
         </div>
     </body>
     <script src="./assets/JavaScript/Detail_Product.js"></script>
