@@ -5,14 +5,10 @@
  */
 package com.fptuni.swp391.F_Gear.Controllers;
 
-import com.fptuni.swp391.F_Gear.DAO.Order_Management;
 import com.fptuni.swp391.F_Gear.DAO.Product_Management;
-import com.fptuni.swp391.F_Gear.DTO.Cart;
 import com.fptuni.swp391.F_Gear.DTO.Item;
 import com.fptuni.swp391.F_Gear.DTO.Product;
-import com.fptuni.swp391.F_Gear.DTO.Users;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -42,7 +38,6 @@ public class Cart_Controller extends HttpServlet {
         Product_Management pm = new Product_Management();
         HttpSession session = request.getSession();
         String orderAction = request.getParameter("orderOp");
-        System.out.println(orderAction);
         if (orderAction != null) {
             switch (orderAction) {
                 case "addToCart": {
@@ -50,7 +45,6 @@ public class Cart_Controller extends HttpServlet {
                     int quantity = Integer.parseInt(request.getParameter("quantity"));
                     ArrayList<Product> listProduct = pm.getAllOfProduct();
                     Product product = pm.getProductById(listProduct, proID);
-                    System.out.println(product.getProName());
                     int quantityTmp = 0;
                     boolean confirm = false;
                     if (session.getAttribute("cart") == null) {
@@ -71,15 +65,14 @@ public class Cart_Controller extends HttpServlet {
                             cart.add(new Item(product, quantity));
                         }
                     }
-                    request.getRequestDispatcher("/views/Homepage.jsp").forward(request, response);
+                    response.sendRedirect("./Product/Store");
                 }
                 break;
                 case "buyNow": {
                     int proID = Integer.parseInt(request.getParameter("proID"));
                     int quantity = Integer.parseInt(request.getParameter("quantity"));
                     ArrayList<Product> listProduct = pm.getAllOfProduct();
-                    Product product = pm.getProductById(listProduct, proID);
-                    System.out.println(product.getListImage().get(0).getUrl());
+                    Product product = pm.getProductById(listProduct, proID);                 
                     int quantityTmp = 0;
                     boolean confirm = false;
                     if (session.getAttribute("cart") == null) {
@@ -99,27 +92,27 @@ public class Cart_Controller extends HttpServlet {
                         if (confirm == false) {
                             cart.add(new Item(product, quantity));
                         }
+                        session.setAttribute("cart", cart);
                     }
-                    request.getRequestDispatcher("/views/Cart.jsp").forward(request, response);
+                    response.sendRedirect("./views/Cart.jsp");
                 }
                 break;
                 case "remove": {
-                    Cart cart = null;
-                    Object o = session.getAttribute("cart");
-                    if (o != null) {
-                        cart = (Cart) o;
-                    } else {
-                        cart = new Cart();
-                    }
+                    List<Item> cart = (List<Item>) session.getAttribute("cart");
                     int proID = Integer.parseInt(request.getParameter("proID"));
-                    cart.removeItem(proID);
+                    
+                    for (int i = 0; i < cart.size(); i++) {
+                        if (proID == (cart.get(i).getProduct().getProID())) {
+                            cart.remove(i);
+                        }
+                    }
                     session.setAttribute("cart", cart);
-                    request.getRequestDispatcher("/views/Cart.jsp").forward(request, response);
+                    response.sendRedirect("./views/Cart.jsp");
                 }
                 break;
                 case "clearAll": {
                     session.removeAttribute("cart");
-                    request.getRequestDispatcher("/views/Cart.jsp").forward(request, response);
+                    response.sendRedirect("./views/Cart.jsp");
                 }
                 break;
             }
