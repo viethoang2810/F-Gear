@@ -608,5 +608,23 @@ public class Access_Management {
         }
         return list;
     }
+    
+    public Users findByUsernameAndGmail(String userName, String gmail) throws SQLException {
+        Users user = null;
+        Connection con = DBUtils.getConnection();
+        String sql = "select UserName, Password, Gmail from dbo.Users where UserName=? and Gmail=?";
+        PreparedStatement stm = con.prepareStatement(sql);
+        stm.setString(1, userName);
+        stm.setString(2, gmail);
+        ResultSet rs = stm.executeQuery();
+        if (rs.next()) {
+            user = new Users();
+            user.setUserName(rs.getString("UserName"));
+            user.setPassword(rs.getString("Password"));
+            user.setGmail(rs.getString("Gmail"));
+        }
+        con.close();
+        return user;
+    }
 
 }
