@@ -140,10 +140,10 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Price</h4>
                                         <ul>
-                                            <li><a href="<c:url value="./Homepage?action=Price&price=1"/>">Under 20 million</a></li>
-                                            <li><a href="<c:url value="./Homepage?action=Price&price=2"/>">From 20 to less than 25 million</a></li>
-                                            <li><a href="<c:url value="./Homepage?action=Price&price=3"/>">From 25 to less than 30 million</a></li>
-                                            <li><a href="<c:url value="./Homepage?action=Price&price=4"/>">Over 30 million</a></li>
+                                            <li><a href="<c:url value="./Homepage?action=Price&price=1&cate=1"/>">Under 20 million</a></li>
+                                            <li><a href="<c:url value="./Homepage?action=Price&price=2&cate=1"/>">From 20 to less than 25 million</a></li>
+                                            <li><a href="<c:url value="./Homepage?action=Price&price=3&cate=1"/>">From 25 to less than 30 million</a></li>
+                                            <li><a href="<c:url value="./Homepage?action=Price&price=4&cate=1"/>">Over 30 million</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -210,9 +210,9 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Price</h4>
                                         <ul>
-                                            <li><a href="<c:url value="./Home?action=Price&price=5"/>">Under 15 million</a></li>
-                                            <li><a href="<c:url value="./Home?action=Price&price=6"/>">From 15 million to under 20 million</a></li>
-                                            <li><a href="<c:url value="./Home?action=Price&price=7"/>">Over 20 million</a></li>
+                                            <li><a href="<c:url value="./Home?action=Price&price=5&cate=2"/>">Under 15 million</a></li>
+                                            <li><a href="<c:url value="./Home?action=Price&price=6&cate=2"/>">From 15 million to under 20 million</a></li>
+                                            <li><a href="<c:url value="./Home?action=Price&price=7&cate=2"/>">Over 20 million</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -322,7 +322,7 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Connect Type</h4>
                                         <ul>
-                                            <li><a href="<c:url value="./Home?action=Type&type=USB 2.0, Bluetooth&cate=3"/>">Bluetooth</a></li>
+                                            <li><a href="<c:url value="./Home?action=Type&type=Bluetooth&cate=3"/>">Bluetooth</a></li>
                                             <li><a href="<c:url value="./Home?action=Type&type=Wired&cate=3"/>">Wired</a></li>
                                         </ul>
                                     </div>
@@ -372,7 +372,7 @@
                                     <div class="body-category-list-sub2-each-item">
                                         <h4>Connect Type</h4>
                                         <ul>
-                                            <li><a href="<c:url value="./Home?action=Type&type=USB 2.0, Bluetooth&cate=4"/>">Bluetooth</a></li>
+                                            <li><a href="<c:url value="./Home?action=Type&type=Bluetooth&cate=4"/>">Bluetooth</a></li>
                                             <li><a href="<c:url value="./Home?action=Type&type=Wired&cate=4"/>">Wired</a></li>
                                         </ul>
                                     </div>

@@ -322,37 +322,28 @@ public class Product_Management {
 
     //filter blutooth, wired
     public List<Product> filterType(String type, String cate) {
-        String query = "";
         switch (cate) {
-            case "2":
-                query = "SELECT b.BrandName, p.ProID, p.ProName, p.OriginalPrice, i.ImageID, i.Url, ps.Detail\n" +
-                    "FROM Category c, Brand b, Product p, Images i, dbo.ProSpec ps\n" +
-                    "WHERE c.CateID = p.CateID AND b.BrandID = p.BrandID AND i.ProID = p.ProID AND i.ImageTypeID = 1\n" +
-                    "AND ps.Detail LIKE 'Intel Core i7%' AND c.CateID = 2";
-                break;
             case "3":
-                query = "SELECT b.BrandName, p.ProID, p.ProName, p.OriginalPrice, i.ImageID, i.Url from Product p , ProSpec ps, Images i, Brand b\n"
-                        + "where b.BrandID = p.BrandID AND p.ProID = ps.ProID AND p.ProID = i.ProID AND i.ProID = p.ProID \n"
-                        + "AND p.ProName LIKE N'Chuột%' AND i.ImageTypeID = 1 AND ps.Detail LIKE '" + type + "%'";
+                type = "p.ProName LIKE N'Chuột%' AND i.ImageTypeID = 1 AND ps.Detail LIKE '%" + type + "%'";
                 break;
             case "4":
-                query = "SELECT b.BrandName, p.ProID, p.ProName, p.OriginalPrice, i.ImageID, i.Url from Product p , ProSpec ps, Images i, Brand b\n"
-                        + "where b.BrandID = p.BrandID AND p.ProID = ps.ProID AND p.ProID = i.ProID AND i.ProID = p.ProID \n"
-                        + "AND p.ProName LIKE N'Tai nghe%' AND i.ImageTypeID = 1 AND ps.Detail LIKE '" + type + "%'";
+                type = "p.ProName LIKE N'Tai nghe%' AND i.ImageTypeID = 1 AND ps.Detail LIKE '%" + type + "%'";
                 break;
         }
+        String query = "SELECT b.BrandName, p.ProID, p.ProName, p.OriginalPrice, i.ImageID, i.Url from Product p , ProSpec ps, Images i, Brand b\n"
+                        + "where b.BrandID = p.BrandID AND p.ProID = ps.ProID AND p.ProID = i.ProID AND i.ProID = p.ProID AND " + type;
         return selectProduct(query);
     }
-    
-    //dành riêng de073 filter core i
+
+    //dành riêng để filter core I
     public List<Product> filterTypeCore(String type, String cate) {
         Connection con = DBUtils.getConnection();
         PreparedStatement stm = null;
         ResultSet rs = null;
-        String sql = "SELECT P.ProID, P.ProName, P.OriginalPrice, P.Discount, P.CurrentPrice, I.ImageID, I.Url, B.BrandName, C.CateName, S.SpecName, PS.Detail\n" +
-                    "FROM dbo.Product P, dbo.Images I , dbo.Brand B , dbo.Category C , dbo.Specification S, dbo.ProSpec PS\n" +
-                    "WHERE P.BrandID = B.BrandID AND P.CateID = C.CateID AND I.ProID = P.ProID AND S.SpecID = PS.SpecID AND \n" +
-                    "PS.ProID = P.ProID AND S.SpecID = PS.SpecID AND PS.ProID = P.ProID AND c.CateID =" + cate + "AND ps.Detail LIKE N'%" + type + "%'";
+        String sql = "SELECT P.ProID, P.ProName, P.OriginalPrice, P.Discount, P.CurrentPrice, I.ImageID, I.Url, B.BrandName, C.CateName, S.SpecName, PS.Detail\n"
+                + "FROM dbo.Product P, dbo.Images I , dbo.Brand B , dbo.Category C , dbo.Specification S, dbo.ProSpec PS\n"
+                + "WHERE P.BrandID = B.BrandID AND P.CateID = C.CateID AND I.ProID = P.ProID AND S.SpecID = PS.SpecID AND \n"
+                + "PS.ProID = P.ProID AND S.SpecID = PS.SpecID AND PS.ProID = P.ProID AND c.CateID =" + cate + "AND ps.Detail LIKE N'%" + type + "%'";
         try {
             con = DBUtils.getConnection();
             stm = con.prepareStatement(sql);
@@ -402,12 +393,12 @@ public class Product_Management {
                     product.setDiscount(rs.getInt("Discount"));
                     product.setProCurrentPrice(formatter.format(calculateDiscount(rs.getInt("Discount"), rs.getInt("OriginalPrice"))));
                     product.setBrandName(rs.getString("BrandName"));
-                   product.setProType(rs.getString("CateName"));
+                    product.setProType(rs.getString("CateName"));
                     listOfImages.add(new Images(rs.getString("ImageID"), rs.getString("Url")));
                     product.setListImage(listOfImages);
                     listOfSpecification.add(new Specification(rs.getString("SpecName"), rs.getString("Detail")));
                     product.setListSpecification(listOfSpecification);
-                   listOfProduct.add(product);
+                    listOfProduct.add(product);
                 }
 
             }
@@ -418,81 +409,48 @@ public class Product_Management {
 
     //filter theo giá
     public List<Product> filterByPrice(String price, String cate) {
-        String query = "";
         switch (price) {
             case "1":
-                query = "SELECT b.BrandName, p.ProID, p.ProName, p.OriginalPrice, i.ImageID, i.Url\n"
-                        + "FROM Category c, Brand b, Product p, Images i\n"
-                        + "WHERE c.CateID = p.CateID AND b.BrandID = p.BrandID AND i.ProID = p.ProID AND i.ImageTypeID = 1\n"
-                        + "AND P.OriginalPrice <= 20000000 AND c.CateID = 1 ORDER BY P.OriginalPrice ASC";
+                price = "<= 20000000";
                 break;
             case "2":
-                query = "SELECT b.BrandName, p.ProID, p.ProName, p.OriginalPrice, i.ImageID, i.Url\n"
-                        + "FROM Category c, Brand b, Product p, Images i\n"
-                        + "WHERE c.CateID = p.CateID AND b.BrandID = p.BrandID AND i.ProID = p.ProID AND i.ImageTypeID = 1\n"
-                        + "AND P.OriginalPrice BETWEEN 20000000 AND 25000000 AND c.CateID = 1 ORDER BY P.OriginalPrice ASC";
+                price = "BETWEEN 20000000 AND 25000000";
                 break;
             case "3":
-                query = "SELECT b.BrandName, p.ProID, p.ProName, p.OriginalPrice, i.ImageID, i.Url\n"
-                        + "FROM Category c, Brand b, Product p, Images i\n"
-                        + "WHERE c.CateID = p.CateID AND b.BrandID = p.BrandID AND i.ProID = p.ProID AND i.ImageTypeID = 1\n"
-                        + "AND P.OriginalPrice BETWEEN 25000000 AND 30000000 AND c.CateID = 1 ORDER BY P.OriginalPrice ASC";
+                price = "BETWEEN 25000000 AND 30000000";
                 break;
             case "4":
-                query = "SELECT b.BrandName, p.ProID, p.ProName, p.OriginalPrice, i.ImageID, i.Url\n"
-                        + "FROM Category c, Brand b, Product p, Images i\n"
-                        + "WHERE c.CateID = p.CateID AND b.BrandID = p.BrandID AND i.ProID = p.ProID AND i.ImageTypeID = 1\n"
-                        + "AND P.OriginalPrice >= 30000000 AND c.CateID = 1 ORDER BY P.OriginalPrice ASC";
+                price = ">= 30000000";
                 break;
             case "5":
-                query = "SELECT b.BrandName, p.ProID, p.ProName, p.OriginalPrice, i.ImageID, i.Url\n"
-                        + "FROM Category c, Brand b, Product p, Images i\n"
-                        + "WHERE c.CateID = p.CateID AND b.BrandID = p.BrandID AND i.ProID = p.ProID AND i.ImageTypeID = 1\n"
-                        + "AND P.OriginalPrice <= 15000000 AND c.CateID = 2 ORDER BY P.OriginalPrice ASC";
+                price = "<= 15000000";
                 break;
             case "6":
-                query = "SELECT b.BrandName, p.ProID, p.ProName, p.OriginalPrice, i.ImageID, i.Url\n"
-                        + "FROM Category c, Brand b, Product p, Images i\n"
-                        + "WHERE c.CateID = p.CateID AND b.BrandID = p.BrandID AND i.ProID = p.ProID AND i.ImageTypeID = 1\n"
-                        + "AND P.OriginalPrice BETWEEN 15000000 AND 25000000 AND c.CateID = 2 ORDER BY P.OriginalPrice ASC";
+                price = "BETWEEN 15000000 AND 25000000";
                 break;
             case "7":
-                query = "SELECT b.BrandName, p.ProID, p.ProName, p.OriginalPrice, i.ImageID, i.Url\n"
-                        + "FROM Category c, Brand b, Product p, Images i\n"
-                        + "WHERE c.CateID = p.CateID AND b.BrandID = p.BrandID AND i.ProID = p.ProID AND i.ImageTypeID = 1\n"
-                        + "AND P.OriginalPrice >= 20000000 AND c.CateID = 2 ORDER BY P.OriginalPrice ASC";
+                price = ">= 20000000";
                 break;
             case "8":
-                query = "SELECT b.BrandName, p.ProID, p.ProName, p.OriginalPrice, i.ImageID, i.Url\n"
-                        + "FROM Category c, Brand b, Product p, Images i\n"
-                        + "WHERE c.CateID = p.CateID AND b.BrandID = p.BrandID AND i.ProID = p.ProID AND i.ImageTypeID = 1\n"
-                        + "AND P.OriginalPrice <= 500000 AND c.CateID = " + cate + "ORDER BY P.OriginalPrice ASC";
+                price = "<= 500000";
                 break;
             case "9":
-                query = "SELECT b.BrandName, p.ProID, p.ProName, p.OriginalPrice, i.ImageID, i.Url\n"
-                        + "FROM Category c, Brand b, Product p, Images i\n"
-                        + "WHERE c.CateID = p.CateID AND b.BrandID = p.BrandID AND i.ProID = p.ProID AND i.ImageTypeID = 1\n"
-                        + "AND P.OriginalPrice BETWEEN 500000 AND 1000000 AND c.CateID = " + cate + "ORDER BY P.OriginalPrice ASC";
+                price = "BETWEEN 500000 AND 1000000";
                 break;
             case "10":
-                query = "SELECT b.BrandName, p.ProID, p.ProName, p.OriginalPrice, i.ImageID, i.Url\n"
-                        + "FROM Category c, Brand b, Product p, Images i\n"
-                        + "WHERE c.CateID = p.CateID AND b.BrandID = p.BrandID AND i.ProID = p.ProID AND i.ImageTypeID = 1\n"
-                        + "AND P.OriginalPrice BETWEEN 1000000 AND 2000000 AND c.CateID = " + cate + "ORDER BY P.OriginalPrice ASC";
+                price = "BETWEEN 1000000 AND 2000000";
                 break;
             case "11":
-                query = "SELECT b.BrandName, p.ProID, p.ProName, p.OriginalPrice, i.ImageID, i.Url\n"
-                        + "FROM Category c, Brand b, Product p, Images i\n"
-                        + "WHERE c.CateID = p.CateID AND b.BrandID = p.BrandID AND i.ProID = p.ProID AND i.ImageTypeID = 1\n"
-                        + "AND P.OriginalPrice BETWEEN 2000000 AND 3000000 AND c.CateID = " + cate + "ORDER BY P.OriginalPrice ASC";
+                price = "BETWEEN 2000000 AND 3000000";
                 break;
             case "12":
-                query = "SELECT b.BrandName, p.ProID, p.ProName, p.OriginalPrice, i.ImageID, i.Url\n"
-                        + "FROM Category c, Brand b, Product p, Images i\n"
-                        + "WHERE c.CateID = p.CateID AND b.BrandID = p.BrandID AND i.ProID = p.ProID AND i.ImageTypeID = 1\n"
-                        + "AND P.OriginalPrice >= 3000000 AND c.CateID = " + cate + "ORDER BY P.OriginalPrice ASC";
+                price = ">= 3000000";
                 break;
         }
+        String query = "SELECT b.BrandName, p.ProID, p.ProName, p.OriginalPrice, i.ImageID, i.Url\n"
+                + "FROM Category c, Brand b, Product p, Images i\n"
+                + "WHERE c.CateID = p.CateID AND b.BrandID = p.BrandID AND i.ProID = p.ProID AND i.ImageTypeID = 1\n"
+                + "AND P.OriginalPrice " + price + "AND c.CateID = " + cate + "ORDER BY P.OriginalPrice ASC";
         return selectProduct(query);
     }
 }
