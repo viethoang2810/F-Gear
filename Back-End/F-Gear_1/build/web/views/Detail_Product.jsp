@@ -200,11 +200,14 @@
                                       style="font-weight: 500; font-size:1.2rem ; color: rgb(237, 17, 17);">${productFound.proCurrentPrice}đ</span>
                             </div>
                         </div>
-                        <div class="btn-user-actions">
-                            <button class="btn-action">Add to your cart</button>
-                            <button class="btn-action">Buying Now</button>
-                        </div>
-
+                        <form action="../Cart">
+                            <input type="hidden" name="proID" value="${productFound.proID}">
+                            <input type="hidden" name="quantity" value="1">
+                            <div class="btn-user-actions">
+                                <button class="btn-action" name="orderOp" value="addToCart">Add to your cart</button>
+                                <button class="btn-action" name="orderOp" value="buyNow">Buying Now</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
