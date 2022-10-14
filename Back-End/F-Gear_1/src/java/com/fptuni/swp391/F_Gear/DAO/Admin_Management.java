@@ -6,6 +6,8 @@
 package com.fptuni.swp391.F_Gear.DAO;
 
 import com.fptuni.swp391.F_Gear.DTO.Brand;
+import com.fptuni.swp391.F_Gear.DTO.Images;
+import com.fptuni.swp391.F_Gear.DTO.ProSpec;
 import com.fptuni.swp391.F_Gear.DTO.Product;
 import com.fptuni.swp391.F_Gear.Utils.DBUtils;
 import java.sql.Connection;
@@ -94,5 +96,85 @@ public class Admin_Management {
             System.out.println(e);
         }
         return list;
+    }
+
+    //search product để insert product - duynv
+    public boolean searchProductI(String ProName) {
+        try {
+            Connection con = DBUtils.getConnection();
+            String query = "Select ProID, ProName, OriginalPrice, Discount, CurrentPrice from Product Where ProName like N'" + ProName + "'";
+            PreparedStatement stm = con.prepareStatement(query);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                //rs.getString("userName");
+                return false;
+            }
+            con.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return true;
+    }
+
+    // Create duynv
+    public boolean createProduct(Product p, ArrayList<Images> listImages, ArrayList<ProSpec> listSpec) {
+        boolean result = true;
+
+        try {
+            //insert product
+            Connection con = DBUtils.getConnection();
+            PreparedStatement stm = con.prepareStatement("INSERT INTO [dbo].[Product]([ProName],[OriginalPrice],[BrandID],[CateID]) VALUES (?, ?, ?, ?)");
+            stm.setString(1, p.getProName());
+            stm.setInt(2, Integer.parseInt(p.getProOriginalPrice()));
+            stm.setInt(3, p.getBrandID());
+            stm.setInt(4, p.getCateID());
+            int count = stm.executeUpdate();
+            if (count == 0) {
+                result = false;
+            }
+            //lấy ProID
+            List<Product> products = searchProduct(p.getProName());
+            Product product = products.get(products.size() - 1);
+
+            //insert image
+            PreparedStatement stmI = con.prepareStatement("INSERT INTO [dbo].[Images]([ProID],[ImageTypeID],[Url]) VALUES(?, ?, ?)");
+            for (int i = 0; i < listImages.size(); i++) {
+                if (i == 0) {
+                    stmI.setInt(1, product.getProID());
+                    stmI.setInt(2, 1);
+                    stmI.setString(3, listImages.get(i).getUrl());
+                    int count1 = stmI.executeUpdate();
+                    if (count1 == 0) {
+                        result = false;
+                    }
+                } else {
+                    stmI.setInt(1, product.getProID());
+                    stmI.setInt(2, 2);
+                    stmI.setString(3, listImages.get(i).getUrl());
+                    int count1 = stmI.executeUpdate();
+                    if (count1 == 0) {
+                        result = false;
+                    }
+                }
+            }
+
+            //insert spec
+            PreparedStatement stmS = con.prepareStatement("INSERT INTO [dbo].[ProSpec]([ProID],[SpecID],[Detail]) VALUES (?, ?, ?)");
+            for (int i = 0; i < listSpec.size(); i++) {
+                stmS.setInt(1, product.getProID());
+                stmS.setInt(2, listSpec.get(i).getSpecID());
+                stmS.setString(3, listSpec.get(i).getDetail());
+                int count2 = stmS.executeUpdate();
+                if (count2 == 0) {
+                    result = false;
+                }
+            }
+
+            con.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            result = false;
+        }
+        return result;
     }
 }

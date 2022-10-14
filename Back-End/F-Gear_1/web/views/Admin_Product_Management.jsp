@@ -54,6 +54,7 @@
                             </ul>
                         </div>
                         <button class="modal-btn">Add new</button>
+                        <p style="color: red">${result}<p>
                         <div class="add-modal-wrapper">
                             <div class="add-modal-content">
                                 <div class="add-modal-form-wrapper">
@@ -61,33 +62,39 @@
                                         <span class="modal-title" style="margin-bottom:30px;">Add new product</span>
                                         <span> <i class="fa-solid fa-xmark close-icon" style="font-size:2rem;margin-left: 70px; margin-bottom:30px;cursor: pointer;"></i></span>
                                     </div>
-                                    <form action="./Admin" class="add-form" method="POST">
+                                    <form action="./Admin" class="add-form">
                                         <div class="add-input-wrapper">
                                             <label for="proName" class="input-label">Name product</label>
-                                            <input type="text" name="proName" id="proName" class="input-text">
+                                            <input required type="text" name="proName" id="proName" class="input-text">
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="proCategories" class="input-label">Category</label>
                                             <select name="category" id="proCategories" class="brands-list input-text">
-                                                <option value="laptop" class="brand-item">Laptop</option>
-                                                <option value="mouse" class="brand-item">Mouse</option>
-                                                <option value="headphone" class="brand-item">Headphone</option>
-                                                <option value="Others" class="brand-item">Others</option>    
+                                                <option value="1" class="brand-item">Laptop Gaming</option>
+                                                <option value="2" class="brand-item">Laptop Văn Phòng</option>
+                                                <option value="3" class="brand-item">Mouse</option>
+                                                <option value="4" class="brand-item">Headphone</option>
+                                                <option value="5" class="brand-item">Others</option>    
                                             </select>
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="proBrand" class="input-label">Brand</label>
                                             <select name="brand" id="proBrand" class="brands-list input-text">
-                                                <option value="1" class="brand-item">ASUS</option>
-                                                <option value="2" class="brand-item">ACER</option>
+                                                <option value="1" class="brand-item">ACER</option>
+                                                <option value="2" class="brand-item">ASUS</option>
                                                 <option value="3" class="brand-item">MSI</option>
+                                                <option value="4" class="brand-item">LENOVO</option>
                                                 <option value="4" class="brand-item">DELL</option>
-                                                <option value="5" class="brand-item">ASUS</option>
+                                                <option value="6" class="brand-item">HP</option>
+                                                <option value="7" class="brand-item">Logitech</option>
+                                                <option value="8" class="brand-item">Razer</option>
+                                                <option value="9" class="brand-item">Sony</option>
+                                                <option value="10" class="brand-item">Orther</option>
                                             </select>
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="originPrice" class="input-label">Original price</label>
-                                            <input type="text" name="originPrice" id="originPrice" class="input-text">
+                                            <input required type="text" name="originPrice" id="originPrice" class="input-text">
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="proImage_1" class="input-label">Image 1</label>
@@ -96,56 +103,109 @@
                                                 <label for="file-upload" class="custom-file-upload">
                                                     <i class="fa fa-cloud-upload"></i> Choose from your device
                                                 </label>
-                                                <input id="file-upload" type="file" name="file-upload" />
+                                                <input id="file-upload" type="file" name="file-upload1" />
                                             </div>
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="proImage_2" class="input-label">Image 2</label>
                                             <input type="hidden" name="image_2" class="image-pro_2">
                                             <div class="change-image" id="proImage_2">
-                                                <label for="file-upload" class="custom-file-upload">
+                                                <label for="file-upload2" class="custom-file-upload">
                                                     <i class="fa fa-cloud-upload"></i> Choose from your device
                                                 </label>
-                                                <input id="file-upload" type="file" name="file-upload" />
+                                                <input id="file-upload2" type="file" name="file-upload2" />
                                             </div>
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="proImage_3" class="input-label">Image 3</label>
                                             <input type="hidden" name="image_3" class="image-pro_3">
                                             <div class="change-image" id="proImage_3">
-                                                <label for="file-upload" class="custom-file-upload">
+                                                <label for="file-upload3" class="custom-file-upload">
                                                     <i class="fa fa-cloud-upload"></i> Choose from your device
                                                 </label>
-                                                <input id="file-upload" type="file" name="file-upload" />
+                                                <input id="file-upload3" type="file" name="file-upload3" />
                                             </div>
                                         </div>
-                                        <!-- Specification for latop -->
+                                        <!-- Specification for laptop -->
                                         <div class="add-input-wrapper">
                                             <label for="CPU-spec" class="input-label">CPU</label>
                                             <input type="text" name="cpu" id="CPU-spec" class="input-text">
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="ram-spec" class="input-label">RAM</label>
-                                            <input type="text" name="RAM-spec" id="ram-spec" class="input-text">
+                                            <input type="text" name="ram" id="ram-spec" class="input-text">
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="disk" class="input-label">Hard disk</label>
                                             <input type="text" name="disk" id="disk" class="input-text">
                                         </div>
                                         <div class="add-input-wrapper">
-                                            <label for="graphic_card" class="input-label">Graphic Card </label>
-                                            <input type="text" name="graphic_card" id="graphic_card" class="input-text">
+                                            <label for="graphic_card" class="input-label">Graphic Card</label>
+                                            <input type="text" name="card" id="graphic_card" class="input-text">
                                         </div>
+                                        <div class="add-input-wrapper">
+                                            <label for="monitor" class="input-label">Monitor</label>
+                                            <input type="text" name="monitor" id="graphic_card" class="input-text">
+                                        </div>
+                                        <div class="add-input-wrapper">
+                                            <label for="webcam" class="input-label">Webcam</label>
+                                            <input type="text" name="webcam" id="graphic_card" class="input-text">
+                                        </div>
+                                        <div class="add-input-wrapper">
+                                            <label for="battery" class="input-label">Battery</label>
+                                            <input type="text" name="battery" id="graphic_card" class="input-text">
+                                        </div>
+                                        <div class="add-input-wrapper">
+                                            <label for="weight" class="input-label">Weight</label>
+                                            <input type="text" name="weight" id="graphic_card" class="input-text">
+                                        </div>
+
                                         <!-- Specification for mouse -->
+                                        <div class="add-input-wrapper">
+                                            <label for="Connect-spec" class="input-label">DPI</label>
+                                            <input type="text" name="dpi" id="Connect-spec" class="input-text">
+                                        </div>
+                                        <div class="add-input-wrapper">
+                                            <label for="Connect-spec" class="input-label">Number Of Buttons</label>
+                                            <input type="text" name="number" id="Connect-spec" class="input-text">
+                                        </div>
+                                        <div class="add-input-wrapper">
+                                            <label for="Connect-spec" class="input-label">Longevity</label>
+                                            <input type="text" name="longevity" id="Connect-spec" class="input-text">
+                                        </div>
+                                        <div class="add-input-wrapper">
+                                            <label for="Connect-spec" class="input-label">Shell Material</label>
+                                            <input type="text" name="shell" id="Connect-spec" class="input-text">
+                                        </div>
+                                        
+                                        <!-- Specification for head phone -->                                        
+                                        
+                                        <div class="add-input-wrapper">
+                                            <label for="Connect-spec" class="input-label">Frequency</label>
+                                            <input type="text" name="frequency" id="Connect-spec" class="input-text">
+                                        </div>
+                                        <div class="add-input-wrapper">
+                                            <label for="Connect-spec" class="input-label">Soundproofing Ability</label>
+                                            <input type="text" name="soundproofing" id="Connect-spec" class="input-text">
+                                        </div>
+                                        <div class="add-input-wrapper">
+                                            <label for="Connect-spec" class="input-label">Headphone Style</label>
+                                            <input type="text" name="style" id="Connect-spec" class="input-text">
+                                        </div>
+                                        
+                                        <!-- 3 thuoc tinh nay tai thoi diem hien tai dang dung chung cho 4 cate -->
+                                        <div class="add-input-wrapper">
+                                            <label for="Connect-spec" class="input-label">Compatible</label>
+                                            <input type="text" name="compatible" id="Connect-spec" class="input-text">
+                                        </div>
                                         <div class="add-input-wrapper">
                                             <label for="Connect-spec" class="input-label">Connect</label>
                                             <input type="text" name="connect" id="Connect-spec" class="input-text">
                                         </div>
                                         <div class="add-input-wrapper">
-                                            <label for="Sensor-spec" class="input-label">Sensor</label>
-                                            <input type="text" name="sensorr-spec" id="Sensor-spec" class="input-text">
-                                        </div>
-                                        <!-- Another types of product -->
+                                            <label for="Connect-spec" class="input-label">Color</label>
+                                            <input type="text" name="color" id="Connect-spec" class="input-text">
+                                        </div> 
                                         <div class="submit-wrapper"> <button type="submit" class="submit-btn" name="adminOp" value="add_product">Add to
                                                 store</button></div>
                                     </form>
