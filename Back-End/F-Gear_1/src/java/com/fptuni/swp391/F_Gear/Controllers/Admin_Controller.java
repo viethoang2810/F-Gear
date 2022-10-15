@@ -109,63 +109,96 @@ public class Admin_Controller extends HttpServlet {
                             if (!request.getParameter("cpu").isEmpty()) {
                                 listSpec.add(new ProSpec(1, request.getParameter("cpu")));
                             }
+                            request.setAttribute("cpu", request.getParameter("cpu"));
+                            
                             if (!request.getParameter("ram").isEmpty()) {
                                 listSpec.add(new ProSpec(2, request.getParameter("ram")));
                             }
+                            request.setAttribute("ram", request.getParameter("ram"));
+                            
                             if (!request.getParameter("disk").isEmpty()) {
                                 listSpec.add(new ProSpec(3, request.getParameter("disk")));
                             }
+                            request.setAttribute("disk", request.getParameter("disk"));
+                            
                             if (!request.getParameter("card").isEmpty()) {
                                 listSpec.add(new ProSpec(4, request.getParameter("card")));
                             }
+                            request.setAttribute("card", request.getParameter("card"));
+                            
                             if (!request.getParameter("monitor").isEmpty()) {
                                 listSpec.add(new ProSpec(5, request.getParameter("monitor")));
                             }
+                            request.setAttribute("monitor", request.getParameter("monitor"));
+                            
                             if (!request.getParameter("webcam").isEmpty()) {
                                 listSpec.add(new ProSpec(6, request.getParameter("webcam")));
                             }
+                            request.setAttribute("webcam", request.getParameter("webcam"));
+                            
                             if (!request.getParameter("battery").isEmpty()) {
                                 listSpec.add(new ProSpec(7, request.getParameter("battery")));
                             }
+                            request.setAttribute("battery", request.getParameter("battery"));
+                            
                             if (!request.getParameter("weight").isEmpty()) {
                                 listSpec.add(new ProSpec(17, request.getParameter("weight")));
                             }
+                            request.setAttribute("weight", request.getParameter("weight"));
+                            
 
                             //insert mouse
                             if (!request.getParameter("dpi").isEmpty()) {
                                 listSpec.add(new ProSpec(8, request.getParameter("dpi")));
                             }
+                            request.setAttribute("dpi", request.getParameter("dpi"));
+                            
                             if (!request.getParameter("number").isEmpty()) {
                                 listSpec.add(new ProSpec(9, request.getParameter("number")));
                             }
+                            request.setAttribute("number", request.getParameter("number"));
+                            
                             if (!request.getParameter("longevity").isEmpty()) {
                                 listSpec.add(new ProSpec(10, request.getParameter("longevity")));
                             }
+                            request.setAttribute("longevity", request.getParameter("longevity"));
+                            
                             if (!request.getParameter("shell").isEmpty()) {
                                 listSpec.add(new ProSpec(12, request.getParameter("shell")));
                             }
+                            request.setAttribute("shell", request.getParameter("shell"));
+                            
                             if (!request.getParameter("frequency").isEmpty()) {
                                 listSpec.add(new ProSpec(14, request.getParameter("frequency")));
                             }
+                            request.setAttribute("frequency", request.getParameter("frequency"));
 
                             //insert headphone
                             if (!request.getParameter("soundproofing").isEmpty()) {
                                 listSpec.add(new ProSpec(15, request.getParameter("soundproofing")));
                             }
+                            request.setAttribute("soundproofing", request.getParameter("soundproofing"));
+                            
                             if (!request.getParameter("style").isEmpty()) {
                                 listSpec.add(new ProSpec(16, request.getParameter("style")));
                             }
+                            request.setAttribute("style", request.getParameter("style"));
 
                             //insert chung của 4 cate
                             if (!request.getParameter("compatible").isEmpty()) {
                                 listSpec.add(new ProSpec(13, request.getParameter("compatible")));
                             }
+                            request.setAttribute("compatible", request.getParameter("compatible"));
+                            
                             if (!request.getParameter("connect").isEmpty()) {
                                 listSpec.add(new ProSpec(11, request.getParameter("connect")));
                             }
+                            request.setAttribute("connect", request.getParameter("connect"));
+                            
                             if (!request.getParameter("color").isEmpty()) {
                                 listSpec.add(new ProSpec(18, request.getParameter("color")));
                             }
+                            request.setAttribute("color", request.getParameter("color"));
 
                             if (!am.createProduct(p, listImage, listSpec)) {
                                 request.setAttribute("result", "Insert failed.");
