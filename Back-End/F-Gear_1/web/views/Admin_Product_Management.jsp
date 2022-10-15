@@ -65,36 +65,36 @@
                                     <form action="./Admin" class="add-form">
                                         <div class="add-input-wrapper">
                                             <label for="proName" class="input-label">Name product</label>
-                                            <input required type="text" name="proName" id="proName" class="input-text">
+                                            <input required type="text" name="proName" id="proName"  class="input-text" value="${product.proName}">
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="proCategories" class="input-label">Category</label>
                                             <select name="category" id="proCategories" class="brands-list input-text">
-                                                <option value="1" class="brand-item">Laptop Gaming</option>
-                                                <option value="2" class="brand-item">Laptop Văn Phòng</option>
-                                                <option value="3" class="brand-item">Mouse</option>
-                                                <option value="4" class="brand-item">Headphone</option>
-                                                <option value="5" class="brand-item">Others</option>    
+                                                <option value="1" ${"1" == product.cateID?"selected":""} class="brand-item">Laptop Gaming</option>
+                                                <option value="2" ${"2" == product.cateID?"selected":""} class="brand-item">Laptop Văn Phòng</option>
+                                                <option value="3" ${"3" == product.cateID?"selected":""} class="brand-item">Mouse</option>
+                                                <option value="4" ${"4" == product.cateID?"selected":""} class="brand-item">Headphone</option>
+                                                <option value="5" ${"5" == product.cateID?"selected":""} class="brand-item">Others</option>    
                                             </select>
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="proBrand" class="input-label">Brand</label>
                                             <select name="brand" id="proBrand" class="brands-list input-text">
-                                                <option value="1" class="brand-item">ACER</option>
-                                                <option value="2" class="brand-item">ASUS</option>
-                                                <option value="3" class="brand-item">MSI</option>
-                                                <option value="4" class="brand-item">LENOVO</option>
-                                                <option value="4" class="brand-item">DELL</option>
-                                                <option value="6" class="brand-item">HP</option>
-                                                <option value="7" class="brand-item">Logitech</option>
-                                                <option value="8" class="brand-item">Razer</option>
-                                                <option value="9" class="brand-item">Sony</option>
-                                                <option value="10" class="brand-item">Orther</option>
+                                                <option value="1" ${"1" == product.brandID?"selected":""} class="brand-item">ACER</option>
+                                                <option value="2" ${"2" == product.brandID?"selected":""} class="brand-item">ASUS</option>
+                                                <option value="3" ${"3" == product.brandID?"selected":""} class="brand-item">MSI</option>
+                                                <option value="4" ${"4" == product.brandID?"selected":""} class="brand-item">LENOVO</option>
+                                                <option value="4" ${"5" == product.brandID?"selected":""} class="brand-item">DELL</option>
+                                                <option value="6" ${"6" == product.brandID?"selected":""} class="brand-item">HP</option>
+                                                <option value="7" ${"7" == product.brandID?"selected":""} class="brand-item">Logitech</option>
+                                                <option value="8" ${"8" == product.brandID?"selected":""} class="brand-item">Razer</option>
+                                                <option value="9" ${"9" == product.brandID?"selected":""} class="brand-item">Sony</option>
+                                                <option value="10" ${"10" == product.brandID?"selected":""} class="brand-item">Orther</option>
                                             </select>
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="originPrice" class="input-label">Original price</label>
-                                            <input required type="text" name="originPrice" id="originPrice" class="input-text">
+                                            <input required type="text" name="originPrice" id="originPrice" class="input-text" value="${product.proOriginalPrice}">
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="proImage_1" class="input-label">Image 1</label>
@@ -129,82 +129,82 @@
                                         <!-- Specification for laptop -->
                                         <div class="add-input-wrapper">
                                             <label for="CPU-spec" class="input-label">CPU</label>
-                                            <input type="text" name="cpu" id="CPU-spec" class="input-text">
+                                            <input type="text" name="cpu" id="CPU-spec" class="input-text" value="${cpu}">
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="ram-spec" class="input-label">RAM</label>
-                                            <input type="text" name="ram" id="ram-spec" class="input-text">
+                                            <input type="text" name="ram" id="ram-spec" class="input-text" value="${ram}">
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="disk" class="input-label">Hard disk</label>
-                                            <input type="text" name="disk" id="disk" class="input-text">
+                                            <input type="text" name="disk" id="disk" class="input-text" value="${disk}">
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="graphic_card" class="input-label">Graphic Card</label>
-                                            <input type="text" name="card" id="graphic_card" class="input-text">
+                                            <input type="text" name="card" id="graphic_card" class="input-text" value="${card}">
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="monitor" class="input-label">Monitor</label>
-                                            <input type="text" name="monitor" id="graphic_card" class="input-text">
+                                            <input type="text" name="monitor" id="graphic_card" class="input-text" value="${monitor}">
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="webcam" class="input-label">Webcam</label>
-                                            <input type="text" name="webcam" id="graphic_card" class="input-text">
+                                            <input type="text" name="webcam" id="graphic_card" class="input-text" value="${webcam}">
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="battery" class="input-label">Battery</label>
-                                            <input type="text" name="battery" id="graphic_card" class="input-text">
+                                            <input type="text" name="battery" id="graphic_card" class="input-text" value="${battery}">
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="weight" class="input-label">Weight</label>
-                                            <input type="text" name="weight" id="graphic_card" class="input-text">
+                                            <input type="text" name="weight" id="graphic_card" class="input-text" value="${weight}">
                                         </div>
 
                                         <!-- Specification for mouse -->
                                         <div class="add-input-wrapper">
                                             <label for="Connect-spec" class="input-label">DPI</label>
-                                            <input type="text" name="dpi" id="Connect-spec" class="input-text">
+                                            <input type="text" name="dpi" id="Connect-spec" class="input-text" value="${dpi}">
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="Connect-spec" class="input-label">Number Of Buttons</label>
-                                            <input type="text" name="number" id="Connect-spec" class="input-text">
+                                            <input type="text" name="number" id="Connect-spec" class="input-text" value="${number}">
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="Connect-spec" class="input-label">Longevity</label>
-                                            <input type="text" name="longevity" id="Connect-spec" class="input-text">
+                                            <input type="text" name="longevity" id="Connect-spec" class="input-text" value="${longevity}">
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="Connect-spec" class="input-label">Shell Material</label>
-                                            <input type="text" name="shell" id="Connect-spec" class="input-text">
+                                            <input type="text" name="shell" id="Connect-spec" class="input-text" value="${shell}">
                                         </div>
                                         
                                         <!-- Specification for head phone -->                                        
                                         
                                         <div class="add-input-wrapper">
                                             <label for="Connect-spec" class="input-label">Frequency</label>
-                                            <input type="text" name="frequency" id="Connect-spec" class="input-text">
+                                            <input type="text" name="frequency" id="Connect-spec" class="input-text" value="${frequency}">
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="Connect-spec" class="input-label">Soundproofing Ability</label>
-                                            <input type="text" name="soundproofing" id="Connect-spec" class="input-text">
+                                            <input type="text" name="soundproofing" id="Connect-spec" class="input-text" value="${soundproofing}">
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="Connect-spec" class="input-label">Headphone Style</label>
-                                            <input type="text" name="style" id="Connect-spec" class="input-text">
+                                            <input type="text" name="style" id="Connect-spec" class="input-text" value="${style}">
                                         </div>
                                         
                                         <!-- 3 thuoc tinh nay tai thoi diem hien tai dang dung chung cho 4 cate -->
                                         <div class="add-input-wrapper">
                                             <label for="Connect-spec" class="input-label">Compatible</label>
-                                            <input type="text" name="compatible" id="Connect-spec" class="input-text">
+                                            <input type="text" name="compatible" id="Connect-spec" class="input-text" value="${compatible}">
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="Connect-spec" class="input-label">Connect</label>
-                                            <input type="text" name="connect" id="Connect-spec" class="input-text">
+                                            <input type="text" name="connect" id="Connect-spec" class="input-text" value="${connect}">
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="Connect-spec" class="input-label">Color</label>
-                                            <input type="text" name="color" id="Connect-spec" class="input-text">
+                                            <input type="text" name="color" id="Connect-spec" class="input-text" value="${color}">
                                         </div> 
                                         <div class="submit-wrapper"> <button type="submit" class="submit-btn" name="adminOp" value="add_product">Add to
                                                 store</button></div>
