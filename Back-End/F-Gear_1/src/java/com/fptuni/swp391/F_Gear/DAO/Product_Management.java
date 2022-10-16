@@ -186,6 +186,9 @@ public class Product_Management {
             case "Letter_Z-A":
                 orderBy = "ORDER BY P.ProName DESC";
                 break;
+            case "ProID_DESC":
+                orderBy = "ORDER BY P.ProID DESC";
+                break;
 
         }
         String sql = "SELECT P.ProID, "
