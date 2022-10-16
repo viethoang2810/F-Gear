@@ -22,6 +22,24 @@
               integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     </head>
 
+    <style>
+        .priceInput {
+            border: 1px solid #000;
+        }
+        .hideSmall {
+            visibility: hidden;
+        }
+
+        .priceInputError {
+            border: 1px solid red;
+        }
+
+        .priceError {
+            visibility: visible;
+            color: red;
+        }
+    </style>
+
     <body>
         <div class="container-fluid">
             <div class="row header">
@@ -94,11 +112,14 @@
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="originPrice" class="input-label">Original price</label>
-                                            <input required type="text" name="originPrice" id="originPrice" class="input-text" value="${product.proOriginalPrice}">
+                                            <div style="display: flex; flex-direction: column; width: 100%">
+                                                <input class="priceInput"  required type="text" name="originPrice" id="originPrice" class="input-text" value="${product.proOriginalPrice}">
+                                                <small id="error" class="hideSmall">Invalid price</small>
+                                            </div>
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="proImage_1" class="input-label">Image 1</label>
-                                            <input type="hidden" name="image_1" class="image-pro_1">
+                                            <input type="text" name="image_1" id ="img1" class="image-pro_1">
                                             <div class="change-image" id="proImage_1">
                                                 <label for="file-upload" class="custom-file-upload">
                                                     <i class="fa fa-cloud-upload"></i> Choose from your device
@@ -108,7 +129,7 @@
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="proImage_2" class="input-label">Image 2</label>
-                                            <input type="hidden" name="image_2" class="image-pro_2">
+                                            <input type="text" name="image_2" id="img2" class="image-pro_2">
                                             <div class="change-image" id="proImage_2">
                                                 <label for="file-upload2" class="custom-file-upload">
                                                     <i class="fa fa-cloud-upload"></i> Choose from your device
@@ -118,7 +139,7 @@
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="proImage_3" class="input-label">Image 3</label>
-                                            <input type="hidden" name="image_3" class="image-pro_3">
+                                            <input type="text" name="image_3" id="img3" class="image-pro_3">
                                             <div class="change-image" id="proImage_3">
                                                 <label for="file-upload3" class="custom-file-upload">
                                                     <i class="fa fa-cloud-upload"></i> Choose from your device
@@ -177,9 +198,9 @@
                                             <label for="Connect-spec" class="input-label">Shell Material</label>
                                             <input type="text" name="shell" id="Connect-spec" class="input-text" value="${shell}">
                                         </div>
-                                        
+
                                         <!-- Specification for head phone -->                                        
-                                        
+
                                         <div class="add-input-wrapper">
                                             <label for="Connect-spec" class="input-label">Frequency</label>
                                             <input type="text" name="frequency" id="Connect-spec" class="input-text" value="${frequency}">
@@ -192,7 +213,7 @@
                                             <label for="Connect-spec" class="input-label">Headphone Style</label>
                                             <input type="text" name="style" id="Connect-spec" class="input-text" value="${style}">
                                         </div>
-                                        
+
                                         <!-- 3 thuoc tinh nay tai thoi diem hien tai dang dung chung cho 4 cate -->
                                         <div class="add-input-wrapper">
                                             <label for="Connect-spec" class="input-label">Compatible</label>
@@ -206,7 +227,7 @@
                                             <label for="Connect-spec" class="input-label">Color</label>
                                             <input type="text" name="color" id="Connect-spec" class="input-text" value="${color}">
                                         </div> 
-                                        <div class="submit-wrapper"> <button type="submit" class="submit-btn" name="adminOp" value="add_product">Add to
+                                        <div class="submit-wrapper"> <button id="addBtn" class="addBtn" type="submit" class="submit-btn" name="adminOp" value="add_product">Add to
                                                 store</button></div>
                                     </form>
                                 </div>
@@ -299,5 +320,39 @@
         </div>
     </body>
     <script type="module" src="../assets/JavaScript/Product_Management.js"></script>
+    <script>
+        const priceInput = document.querySelector('.priceInput')
+        const addBtn = document.querySelector('.addBtn')
+        const error = document.querySelector('#error')
+        priceInput.oninput = function () {
+            validatePrice(priceInput)
+        }
 
+        function validatePrice(textBoxId) {
+            let textVal = textBoxId.value
+            let regex = /^[0-9]*$/
+            let passed = textVal.match(regex)
+            addBtn.disabled = false
+            error.classList.remove('priceError')
+            priceInput.classList.remove('priceInputError')
+            if (passed == null || priceInput.value < 100 || priceInput.value > 1000000000) {
+                addBtn.disabled = true
+                error.classList.add('priceError')
+                priceInput.classList.add('priceInputError')
+            }
+        }
+        //show image name
+        const file1 = document.querySelector('#file-upload')
+        const file2 = document.querySelector('#file-upload2')
+        const file3 = document.querySelector('#file-upload3')
+        file1.onchange = function () {
+            document.querySelector('#img1').value = file1.value.replace(/^.*[\\\/]/, '')
+        }
+        file2.onchange = function () {
+            document.querySelector('#img2').value = file2.value.replace(/^.*[\\\/]/, '')
+        }
+        file3.onchange = function () {
+            document.querySelector('#img3').value = file3.value.replace(/^.*[\\\/]/, '')
+        }
+    </script>
 </html>
