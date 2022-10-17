@@ -45,24 +45,32 @@ public class Cart_Controller extends HttpServlet {
                     int quantity = Integer.parseInt(request.getParameter("quantity"));
                     ArrayList<Product> listProduct = pm.getAllOfProduct();
                     Product product = pm.getProductById(listProduct, proID);
+                    String proCurrentPrice = product.getProCurrentPrice().replaceAll(",", "").trim();
+                    long price = Long.parseLong(proCurrentPrice);
                     int quantityTmp = 0;
                     boolean confirm = false;
                     if (session.getAttribute("cart") == null) {
                         List<Item> cart = new ArrayList<Item>();
-                        cart.add(new Item(product, quantity));
+                        cart.add(new Item(product, quantity, price));
                         session.setAttribute("cart", cart);
+                        totalPrice(request, response);
+                        totalQuantity(request, response);
                     } else {
                         List<Item> cart = (List<Item>) session.getAttribute("cart");
                         for (int l = 0; l < cart.size(); l++) {
                             if (proID == (cart.get(l).getProduct().getProID())) {
                                 quantityTmp = cart.get(l).getQuantity() + quantity;
                                 cart.remove(l);
-                                cart.add(new Item(product, quantityTmp));
+                                cart.add(new Item(product, quantityTmp, price));
                                 confirm = true;
+                                totalPrice(request, response);
+                                totalQuantity(request, response);
                             }
                         }
                         if (confirm == false) {
-                            cart.add(new Item(product, quantity));
+                            cart.add(new Item(product, quantity, price));
+                            totalPrice(request, response);
+                            totalQuantity(request, response);
                         }
                     }
                     response.sendRedirect("./Product/Store");
@@ -72,27 +80,36 @@ public class Cart_Controller extends HttpServlet {
                     int proID = Integer.parseInt(request.getParameter("proID"));
                     int quantity = Integer.parseInt(request.getParameter("quantity"));
                     ArrayList<Product> listProduct = pm.getAllOfProduct();
-                    Product product = pm.getProductById(listProduct, proID);                 
+                    Product product = pm.getProductById(listProduct, proID);
+                    String proCurrentPrice = product.getProCurrentPrice().replaceAll(",", "").trim();
+                    long price = Long.parseLong(proCurrentPrice);
                     int quantityTmp = 0;
                     boolean confirm = false;
                     if (session.getAttribute("cart") == null) {
                         List<Item> cart = new ArrayList<Item>();
-                        cart.add(new Item(product, quantity));
+                        cart.add(new Item(product, quantity, price));
                         session.setAttribute("cart", cart);
+                        totalPrice(request, response);
+                        totalQuantity(request, response);
                     } else {
                         List<Item> cart = (List<Item>) session.getAttribute("cart");
                         for (int l = 0; l < cart.size(); l++) {
                             if (proID == (cart.get(l).getProduct().getProID())) {
                                 quantityTmp = cart.get(l).getQuantity() + quantity;
                                 cart.remove(l);
-                                cart.add(new Item(product, quantityTmp));
+                                cart.add(new Item(product, quantityTmp, price));
                                 confirm = true;
+                                session.setAttribute("cart", cart);
+                                totalPrice(request, response);
+                                totalQuantity(request, response);
                             }
                         }
                         if (confirm == false) {
-                            cart.add(new Item(product, quantity));
+                            cart.add(new Item(product, quantity, price));
+                            session.setAttribute("cart", cart);
+                            totalPrice(request, response);
+                            totalQuantity(request, response);
                         }
-                        session.setAttribute("cart", cart);
                     }
                     response.sendRedirect("./views/Cart.jsp");
                 }
@@ -100,23 +117,105 @@ public class Cart_Controller extends HttpServlet {
                 case "remove": {
                     List<Item> cart = (List<Item>) session.getAttribute("cart");
                     int proID = Integer.parseInt(request.getParameter("proID"));
-                    
                     for (int i = 0; i < cart.size(); i++) {
                         if (proID == (cart.get(i).getProduct().getProID())) {
                             cart.remove(i);
                         }
                     }
                     session.setAttribute("cart", cart);
+                    totalPrice(request, response);
+                    totalQuantity(request, response);
                     response.sendRedirect("./views/Cart.jsp");
                 }
                 break;
                 case "clearAll": {
                     session.removeAttribute("cart");
+                    session.removeAttribute("total");
+                    session.removeAttribute("quantity");
+                    response.sendRedirect("./views/Cart.jsp");
+                }
+                break;
+                case "decreasing": {
+                    int proID = Integer.parseInt(request.getParameter("proID"));
+                    int quantity = Integer.parseInt(request.getParameter("quantity"));
+                    ArrayList<Product> listProduct = pm.getAllOfProduct();
+                    Product product = pm.getProductById(listProduct, proID);
+                    String proCurrentPrice = product.getProCurrentPrice().replaceAll(",", "").trim();
+                    long price = Long.parseLong(proCurrentPrice);
+                    int quantityTmp = 0;
+                    List<Item> cart = (List<Item>) session.getAttribute("cart");
+                    for (int l = 0; l < cart.size(); l++) {
+                        if (proID == (cart.get(l).getProduct().getProID())) {
+                            if (quantity > 1) {
+                                quantityTmp = quantity - 1;
+                                cart.remove(l);
+                                cart.add(new Item(product, quantityTmp, price));
+                                session.setAttribute("cart", cart);
+                                totalPrice(request, response);
+                                totalQuantity(request, response);
+                            } else {
+                                cart.remove(l);
+                                session.setAttribute("cart", cart);
+                                totalPrice(request, response);
+                                totalQuantity(request, response);
+                            }
+                        }
+                    }
+                    response.sendRedirect("./views/Cart.jsp");
+                }
+                break;
+                case "increasing": {
+                    int proID = Integer.parseInt(request.getParameter("proID"));
+                    int quantity = Integer.parseInt(request.getParameter("quantity"));
+                    ArrayList<Product> listProduct = pm.getAllOfProduct();
+                    Product product = pm.getProductById(listProduct, proID);
+                    String proCurrentPrice = product.getProCurrentPrice().replaceAll(",", "").trim();
+                    long price = Long.parseLong(proCurrentPrice);
+                    int quantityTmp = 0;
+                    List<Item> cart = (List<Item>) session.getAttribute("cart");
+                    for (int l = 0; l < cart.size(); l++) {
+                        if (proID == (cart.get(l).getProduct().getProID())) {
+                            quantityTmp = quantity + 1;
+                            cart.remove(l);
+                            cart.add(new Item(product, quantityTmp, price));
+                            session.setAttribute("cart", cart);
+                            totalPrice(request, response);
+                            totalQuantity(request, response);
+                        }
+                    }
                     response.sendRedirect("./views/Cart.jsp");
                 }
                 break;
             }
         }
+    }
+
+    protected void totalPrice(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        List<Item> cart = (List<Item>) session.getAttribute("cart");
+        long subTotal;
+        long total = 0;
+        for (int i = 0; i < cart.size(); i++) {
+            subTotal = cart.get(i).getPrice() * cart.get(i).getQuantity();
+            total = total + subTotal;
+        }
+        session.setAttribute("total", total);
+    }
+
+    protected void totalQuantity(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        List<Item> cart = (List<Item>) session.getAttribute("cart");
+        int subQuantity;
+        int quantity = 0;
+        for (int i = 0; i < cart.size(); i++) {
+            subQuantity = cart.get(i).getQuantity();
+            quantity = quantity + subQuantity;
+        }
+        session.setAttribute("quantity", quantity);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

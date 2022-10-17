@@ -13,28 +13,17 @@ public class Item {
     
     private Product product;
     private int quantity;
-    private double price;
+    private long price;
 
     public Item() {
     }
 
-    public Item(Product product, int quantity, double price) {
+    public Item(Product product, int quantity, long price) {
         this.product = product;
         this.quantity = quantity;
         this.price = price;
     }
 
-    public Item(Product product, int quantity) {
-        this.product = product;
-        this.quantity = quantity;
-    }
-    
-    
-
-    public Item(Product product) {
-        this.product = product;
-    }
-    
     public Product getProduct() {
         return product;
     }
@@ -51,13 +40,11 @@ public class Item {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
+    public long getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(long price) {
         this.price = price;
     }
-    
-    
 }

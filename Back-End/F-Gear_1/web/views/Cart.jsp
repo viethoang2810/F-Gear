@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 ﻿<%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="en">
 
     <head>
@@ -88,9 +88,19 @@
             </div>
             <div>
                 <form action="../Cart">
-                    <button class="backward_link" name="orderOp" value="clearAll" style="margin-top: 25px;margin-left:125px">Clear All Item</button>
+                    <button class="backward_link" name="orderOp" value="clearAll" style="margin-top: 25px;margin-left:110px">Clear All Item</button>
                 </form>
             </div>
+            <div style="margin-left: 110px">
+            <br/>
+            <span>
+                <h5 style="color: red;">Total Price: <fmt:formatNumber type = "number" maxFractionDigits = "3" value="${sessionScope.total}"/> vnd</h5>                
+            </span>
+            <br/>
+            <span>
+                <h5 style="color: red;">Total Quantity: <fmt:formatNumber type = "number" maxFractionDigits = "3" value="${sessionScope.quantity}"/></h5>                
+            </span> 
+            </div>        
             <div class="row">
                 <div class="logo-wrapper">
                     <img src="" alt="" class="logo-image">
@@ -121,34 +131,44 @@
                                             <img src="${i.product.listImage.get(0).url}"
                                                  alt="" class="product-image img-responsive" style="width:120px;">
                                         </td>
+                                        <form action="../Cart">
                                         <td class="cart-item_amount">
                                             <div class="item-wrapper">
-                                                <div class="btn btn-decreasing">
-                                                    <button class="descring_amount">
+                                                <div >
+                                                    <form action="../Cart">
+                                                    <button type="submit" name="orderOp" value="decreasing">
+                                                        <input type="hidden" name="proID" value="${i.product.proID}">
+                                                        <input type="hidden" name="quantity" value="${i.quantity}">
                                                         <i class="fa-solid fa-minus"></i>
                                                     </button>
+                                                    </form>
                                                 </div>
-                                                <div class="amount-wrapper">
-                                                    <span class="amount-content" style="font-size:1.5rem;"></span>
+                                                <div>
+                                                    <span style="font-size:1.5rem;">${i.quantity}</span>
                                                 </div>
-                                                <div class="btn btn-increasing">
-                                                    <button class="descring_amount">
+                                                <div >
+                                                    <form action="../Cart">
+                                                    <button type="submit" name="orderOp" value="increasing" >
+                                                        <input type="hidden" name="proID" value="${i.product.proID}">
+                                                        <input type="hidden" name="quantity" value="${i.quantity}">
                                                         <i class="fa-solid fa-plus"></i>
                                                     </button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="cart-item_price">${i.product.proOriginalPrice} Đ</td>
+                                        </form>
+                                        <td class="cart-item_price"><fmt:formatNumber type = "number" maxFractionDigits = "3" value="${i.quantity*i.price}" /> vnd</td>
 
                                         <td class="cart-item_warranty">2 years</td>
                                 <form action="../Cart">
                                     <td class="remove-cart" style="font-size: 1.6rem;cursor: pointer;">
-                                        <button name="orderOp" value="remove" class="fa-solid fa-trash">
+                                        <button name="orderOp" value="remove" class="fa-solid fa-trash" style="border: none">
                                         <!-- Put id of item in here,it will send to servlet-->
                                         <input type="hidden" name="proID" value="${i.product.proID}">
                                     </td>
                                 </form>
-                                </tr>                                                                                                                                
+                                </tr>                                                                
                             </c:forEach>                              
                             </tbody>
                         </table>
