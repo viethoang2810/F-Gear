@@ -11,47 +11,101 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Contact</title>
-        <!--        <link rel="stylesheet" href="./assets/CSS/GlobalStyles.css">  This file contains all of common styles of pages
-                <link rel="stylesheet" href="./assets/CSS/Responive.css">
-                <link rel="stylesheet" href="./assets/CSS/Detail_Product.css">
-                <link rel="stylesheet" href="./assets/CSS/Homepage.css">
-                <link rel="stylesheet" href="./assets/CSS/responsive.css">-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="./assets/CSS/GlobalStyles.css">
+        <link rel="stylesheet" href="./assets/CSS/Responive.css">
+        <link rel="stylesheet" href="./assets/CSS/Homepage.css">
+        <link rel="stylesheet" href="./assets/CSS/responsive.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+        <!--        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
     </head>
-    <%--<%@include file="Header.jsp" %>--%>
+
+
+
     <body>
-        <div class="container">
-            <div class="jumbotron text-center">
-                <h1>Listen all your request</h1>
+        <%--<%@include file="./Header.jsp" %>--%>
+        <a href="" style="font-size: 40px; padding: 20px 0 0 0px;"> ⬅ Back to home</a>
 
+
+        <div class="container-fluid px-5 my-5">
+            <div class="row justify-content-center">
+                <div class="col-xl-10">
+                    <div class="card border-0 rounded-3 shadow-lg overflow-hidden">
+                        <div class="card-body p-0">
+                            <div class="row g-0">
+                                <div class="col-sm-6 d-none d-sm-block bg-image">
+                                    <img style="width: 200%; max-height: 600px;" src="https://genk.mediacdn.vn/2015/img-20120704-140805-1435311038302.jpg"/>
+                                </div>
+                                <div class="col-sm-6 p-4" style="background-color: white;">
+                                    <div class="text-center">
+                                        <div class="h3 fw-light">Contact Form</div>
+                                        <p class="mb-4 text-muted">Split layout contact form</p>
+                                    </div>
+
+
+
+                                    <form id="contactForm" action="MailController" method="post">
+
+                                        <!-- Name Input -->
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="name" name="name" type="text" placeholder="Name" data-sb-validations="required" />
+                                            <label for="name">Name</label>
+                                            <div class="invalid-feedback" data-sb-feedback="name:required">Name is required.</div>
+                                        </div>
+
+                                        <!-- Email Input -->
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="emailAddress" name="email" type="email" placeholder="Email Address" data-sb-validations="required,email" />
+                                            <label for="emailAddress">Email Address</label>
+                                            <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email Address is required.</div>
+                                            <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
+                                        </div>
+
+                                        <!--Subject Input-->
+                                        <div class="form-floating mb-3">
+                                            <input class="form-control" id="subject" name="subject" type="text" placeholder="Subject" data-sb-validations="required,subject" />
+                                            <label for="subject">Subject</label>
+                                            <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email Address is required.</div>
+                                            <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
+                                        </div>
+
+                                        <!-- Message Input -->
+                                        <div class="form-floating mb-3">
+                                            <textarea class="form-control" id="message" name="message" type="text" placeholder="Message" style="height: 10rem;" data-sb-validations="required"></textarea>
+                                            <label for="message">Message</label>
+                                            <div class="invalid-feedback" data-sb-feedback="message:required">Message is required.</div>
+                                        </div>
+
+                                        <!-- Submit success message -->
+                                        <!--                                        <div class="d-none" id="submitSuccessMessage">
+                                                                                    <div class="text-center mb-3">
+                                                                                        <div class="fw-bolder">Form submission successful!</div>
+                                                                                        <p>To activate this form, sign up at</p>
+                                                                                        <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                                                                                    </div>
+                                                                                </div>-->
+
+                                        <!-- Submit error message -->
+                                        <div class="d-none" id="submitErrorMessage">
+                                            <div class="text-center text-danger mb-3">Error sending message!</div>
+                                        </div>
+
+                                        <!-- Submit button -->
+                                        <div class="d-grid">
+                                            <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button>
+                                        </div>
+                                    </form>
+                                    <!-- End of contact form -->
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
-            <br>
-            <form action="MailController" method="post">
-                <table class="table table-hover">
-                    <tr>
-                        <td>Name</td>
-                        <td><input type="text" required="" placeholder="Name" name="name" class="form-control"></td>
-                    </tr>
-
-                    <tr>
-                        <td>Email</td>
-                        <td><input type="email" required="" placeholder="Email" name="email" class="form-control"></td>
-                    </tr>
-                    <tr>
-                        <td>Subject</td>
-                        <td><input type="text" required="" placeholder="Subject" name="subject" class="form-control"></td>
-                    </tr>
-                    <tr>
-                        <td>Message</td>
-                        <td><textarea name="message" required="" rows="5" cols="100" placeholder="Your Message"></textarea></td>
-                    </tr>
-                    <tr>
-                        <td><input type="submit" id="submit" class="btn btn-primary" value="Submit"></td>
-                    </tr>
-                </table>
-            </form>
         </div>
     </body>
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
 </html>
