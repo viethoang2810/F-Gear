@@ -5,6 +5,8 @@
  */
 package com.fptuni.swp391.F_Gear.DTO;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author duyng
@@ -12,8 +14,13 @@ package com.fptuni.swp391.F_Gear.DTO;
 public class Images {
     private String imageID ;
     private String url ;
+   private ArrayList<Images> listImage;
 
     public Images() {
+    }
+
+    public Images(String url) {
+        this.url = url;
     }
 
     public Images(String imageID, String url) {

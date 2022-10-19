@@ -6,8 +6,11 @@
 package com.fptuni.swp391.F_Gear.Controllers;
 
 import com.fptuni.swp391.F_Gear.DAO.Access_Management;
+import com.fptuni.swp391.F_Gear.DAO.User_Management;
 import com.fptuni.swp391.F_Gear.DTO.Chart;
+import com.fptuni.swp391.F_Gear.DTO.Email;
 import com.fptuni.swp391.F_Gear.DTO.Users;
+import com.fptuni.swp391.F_Gear.Utils.EmailUtils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -287,7 +290,42 @@ public class Access_Controller extends HttpServlet {
 
                         url = "/views/Adminpage.jsp";
                         break;
+                    }
+                    case "forgotpassword": {
+                        String userName = request.getParameter("userName");
+                        String emailAddress = request.getParameter("gmail");
 
+                        Users user = a.findByUsernameAndGmail(userName, emailAddress);
+                        
+                        if (user == null) {
+                            request.setAttribute("message", "Username or gmail are incorrect");
+                        } else {
+                            String newPass = EmailUtils.randomAlphaNumeric(8);
+                            if (User_Management.updateUserPassword(a.getMD5(newPass), userName)) {
+                               
+                                Email email = new Email();
+                                email.setFrom("dien gmail fpt vo day");
+                                email.setFromPassword("dien pass vo day");
+                                email.setTo(emailAddress);
+                                email.setSubject("Forgot Password Function");
+                                StringBuilder sb = new StringBuilder();
+                                sb.append("Dear").append(userName).append("<br/>");
+                                sb.append("You are used the forgot password function. <br> ");
+                                sb.append("Your password is: <br>").append(newPass).append("<br/>");
+                                sb.append("Regard<br/>");
+                                sb.append("Administrator");
+
+                                email.setContent(sb.toString());
+                             
+                                EmailUtils.sendEmail(email);
+                                
+                                request.setAttribute("message", "Email sent to the email Address."
+                                        + " Please check and get your password");
+                                url = "/views/ForgotPassword_Page.jsp";
+                            } else {
+                                System.out.println("k update dc");
+                            }
+                        }
                     }
 
                 }

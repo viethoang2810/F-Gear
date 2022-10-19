@@ -7,6 +7,8 @@ package com.fptuni.swp391.F_Gear.Controllers;
 
 import com.fptuni.swp391.F_Gear.DAO.Admin_Management;
 import com.fptuni.swp391.F_Gear.DAO.Product_Management;
+import com.fptuni.swp391.F_Gear.DTO.Images;
+import com.fptuni.swp391.F_Gear.DTO.ProSpec;
 import com.fptuni.swp391.F_Gear.DTO.Product;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -73,9 +75,167 @@ public class Admin_Controller extends HttpServlet {
                     }
                 }
                 break;
+                case "add_product":
+                    if (am.searchProductI(request.getParameter("proName"))) {
+                        try {
+                            ArrayList<Images> listImage = new ArrayList<>();
+                            ArrayList<ProSpec> listSpec = new ArrayList<>();
+
+                            String nameProduct = request.getParameter("proName");
+                            String price = request.getParameter("originPrice");
+                            String brandID = request.getParameter("brand");
+                            String categoryID = request.getParameter("category");
+
+                            //insert product
+                            Product p = new Product();
+                            p.setProName(nameProduct);
+                            p.setProOriginalPrice(price);
+                            p.setBrandID(Integer.parseInt(brandID));
+                            p.setCateID(Integer.parseInt(categoryID));
+                            request.setAttribute("product", p);
+
+                            //insert image
+                            if (!request.getParameter("file-upload1").isEmpty()) {
+                                listImage.add(new Images(request.getParameter("file-upload1")));
+                            }
+                            if (!request.getParameter("file-upload2").isEmpty()) {
+                                listImage.add(new Images(request.getParameter("file-upload2")));
+                            }
+                            if (!request.getParameter("file-upload3").isEmpty()) {
+                                listImage.add(new Images(request.getParameter("file-upload3")));
+                            }
+
+                            //insert spec
+                            if (!request.getParameter("cpu").isEmpty()) {
+                                listSpec.add(new ProSpec(1, request.getParameter("cpu")));
+                            }
+                            request.setAttribute("cpu", request.getParameter("cpu"));
+
+                            if (!request.getParameter("ram").isEmpty()) {
+                                listSpec.add(new ProSpec(2, request.getParameter("ram")));
+                            }
+                            request.setAttribute("ram", request.getParameter("ram"));
+
+                            if (!request.getParameter("disk").isEmpty()) {
+                                listSpec.add(new ProSpec(3, request.getParameter("disk")));
+                            }
+                            request.setAttribute("disk", request.getParameter("disk"));
+
+                            if (!request.getParameter("card").isEmpty()) {
+                                listSpec.add(new ProSpec(4, request.getParameter("card")));
+                            }
+                            request.setAttribute("card", request.getParameter("card"));
+
+                            if (!request.getParameter("monitor").isEmpty()) {
+                                listSpec.add(new ProSpec(5, request.getParameter("monitor")));
+                            }
+                            request.setAttribute("monitor", request.getParameter("monitor"));
+
+                            if (!request.getParameter("webcam").isEmpty()) {
+                                listSpec.add(new ProSpec(6, request.getParameter("webcam")));
+                            }
+                            request.setAttribute("webcam", request.getParameter("webcam"));
+
+                            if (!request.getParameter("battery").isEmpty()) {
+                                listSpec.add(new ProSpec(7, request.getParameter("battery")));
+                            }
+                            request.setAttribute("battery", request.getParameter("battery"));
+
+                            if (!request.getParameter("weight").isEmpty()) {
+                                listSpec.add(new ProSpec(17, request.getParameter("weight")));
+                            }
+                            request.setAttribute("weight", request.getParameter("weight"));
+
+                            //insert mouse
+                            if (!request.getParameter("dpi").isEmpty()) {
+                                listSpec.add(new ProSpec(8, request.getParameter("dpi")));
+                            }
+                            request.setAttribute("dpi", request.getParameter("dpi"));
+
+                            if (!request.getParameter("number").isEmpty()) {
+                                listSpec.add(new ProSpec(9, request.getParameter("number")));
+                            }
+                            request.setAttribute("number", request.getParameter("number"));
+
+                            if (!request.getParameter("longevity").isEmpty()) {
+                                listSpec.add(new ProSpec(10, request.getParameter("longevity")));
+                            }
+                            request.setAttribute("longevity", request.getParameter("longevity"));
+
+                            if (!request.getParameter("shell").isEmpty()) {
+                                listSpec.add(new ProSpec(12, request.getParameter("shell")));
+                            }
+                            request.setAttribute("shell", request.getParameter("shell"));
+
+                            if (!request.getParameter("frequency").isEmpty()) {
+                                listSpec.add(new ProSpec(14, request.getParameter("frequency")));
+                            }
+                            request.setAttribute("frequency", request.getParameter("frequency"));
+
+                            //insert headphone
+                            if (!request.getParameter("soundproofing").isEmpty()) {
+                                listSpec.add(new ProSpec(15, request.getParameter("soundproofing")));
+                            }
+                            request.setAttribute("soundproofing", request.getParameter("soundproofing"));
+
+                            if (!request.getParameter("style").isEmpty()) {
+                                listSpec.add(new ProSpec(16, request.getParameter("style")));
+                            }
+                            request.setAttribute("style", request.getParameter("style"));
+
+                            //insert chung của 4 cate
+                            if (!request.getParameter("compatible").isEmpty()) {
+                                listSpec.add(new ProSpec(13, request.getParameter("compatible")));
+                            }
+                            request.setAttribute("compatible", request.getParameter("compatible"));
+
+                            if (!request.getParameter("connect").isEmpty()) {
+                                listSpec.add(new ProSpec(11, request.getParameter("connect")));
+                            }
+                            request.setAttribute("connect", request.getParameter("connect"));
+
+                            if (!request.getParameter("color").isEmpty()) {
+                                listSpec.add(new ProSpec(18, request.getParameter("color")));
+                            }
+                            request.setAttribute("color", request.getParameter("color"));
+
+                            if (!am.createProduct(p, listImage, listSpec)) {
+                                request.setAttribute("result", "Insert failed.");
+                            } else {
+                                request.setAttribute("product", p = null);
+                                request.setAttribute("cpu", "");
+                                request.setAttribute("ram", "");
+                                request.setAttribute("disk", "");
+                                request.setAttribute("card", "");
+                                request.setAttribute("monitor", "");
+                                request.setAttribute("webcam", "");
+                                request.setAttribute("battery", "");
+                                request.setAttribute("weight", "");
+                                request.setAttribute("dpi", "");
+                                request.setAttribute("number", "");
+                                request.setAttribute("longevity", "");
+                                request.setAttribute("shell", "");
+                                request.setAttribute("frequency", "");
+                                request.setAttribute("soundproofing", "");
+                                request.setAttribute("style", "");
+                                request.setAttribute("compatible", "");
+                                request.setAttribute("connect", "");
+                                request.setAttribute("color", "");                     
+                                request.setAttribute("result", "Insert success.");
+                            }
+
+                        } catch (Exception e) {
+                            //request.setAttribute("result", "Exception: " + e.getMessage());
+                            request.setAttribute("result", "Insert failed.");
+                            e.printStackTrace();
+                        }
+                        break;
+                    } else {
+                        request.setAttribute("result", "Duplicate product name.");
+                    }
             }
         }
-        listOfProduct = pm.getAllOfProduct();
+        listOfProduct = pm.getAllOfProductAfterSort("ProID_DESC");
         request.setAttribute("listOfProduct", listOfProduct);
         request.getRequestDispatcher("/views/Admin_Product_Management.jsp").forward(request, response);
     }

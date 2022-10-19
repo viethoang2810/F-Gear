@@ -245,7 +245,7 @@ and open the template in the editor.
 .add-modal-form-wrapper{
     width: 500px;
     background-color:#fff;
-    height: 400px;
+    height: 800px;
     padding: 20px;
     border-radius:15px;
     transform: scale(1);
@@ -273,7 +273,7 @@ input[type="file"] {
 .custom-file-upload {
     border: 1px solid #ccc;
     display: inline-block;
-    padding: 12px 24px;
+    //padding: -1px 24px;
     cursor: pointer;
     background-color:rgba(23, 184, 235, 1);
     border-radius: 15px;

@@ -59,4 +59,27 @@ public class User_Management {
         }
         return false;
     }
+    
+    public static boolean updateUserPassword(String password, String username) {
+        Connection conn = DBUtils.getConnection();
+        PreparedStatement stm = null;
+        int checkUpdate = 0;
+
+        String query = " UPDATE dbo.Users SET Password='"+password+"' WHERE UserName = '"+username+"'";
+
+        try {
+            conn = DBUtils.getConnection();
+            stm = conn.prepareStatement(query);
+            checkUpdate = stm.executeUpdate();
+
+            if (checkUpdate != 0) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            System.out.println("Can't update password");
+        }
+        return false;
+    }
+    
 }
