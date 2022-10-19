@@ -100,7 +100,6 @@ public class Cart_Controller extends HttpServlet {
                             cart.add(new Item(product, quantity));
                         }
                     }
-                    request.getRequestDispatcher("/views/Cart.jsp").forward(request, response);
                 }
                 break;
                 case "remove": {
@@ -124,6 +123,8 @@ public class Cart_Controller extends HttpServlet {
                 break;
             }
         }
+        request.getRequestDispatcher("/views/Cart.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
