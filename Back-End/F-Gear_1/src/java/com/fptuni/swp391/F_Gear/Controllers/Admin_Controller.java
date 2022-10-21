@@ -222,6 +222,7 @@ public class Admin_Controller extends HttpServlet {
                                 request.setAttribute("connect", "");
                                 request.setAttribute("color", "");                     
                                 request.setAttribute("result", "Insert success.");
+                                listOfProduct = pm.getAllOfProductAfterSort("ProID_DESC");
                             }
 
                         } catch (Exception e) {

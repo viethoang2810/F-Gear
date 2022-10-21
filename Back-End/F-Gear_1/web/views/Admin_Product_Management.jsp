@@ -23,6 +23,13 @@
     </head>
 
     <style>
+        .subtable {
+            display: none;
+        }
+
+        .subtable-active {
+            display: block;
+        }
         .priceInput {
             border: 1px solid #000;
         }
@@ -89,7 +96,7 @@
                                             <label for="proCategories" class="input-label">Category</label>
                                             <select name="category" id="proCategories" class="brands-list input-text">
                                                 <option value="1" ${"1" == product.cateID?"selected":""} class="brand-item">Laptop Gaming</option>
-                                                <option value="2" ${"2" == product.cateID?"selected":""} class="brand-item">Laptop Văn Phòng</option>
+                                                <option value="2" ${"2" == product.cateID?"selected":""} class="brand-item">Laptop Office</option>
                                                 <option value="3" ${"3" == product.cateID?"selected":""} class="brand-item">Mouse</option>
                                                 <option value="4" ${"4" == product.cateID?"selected":""} class="brand-item">Headphone</option>
                                                 <option value="5" ${"5" == product.cateID?"selected":""} class="brand-item">Others</option>    
@@ -97,23 +104,39 @@
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="proBrand" class="input-label">Brand</label>
-                                            <select name="brand" id="proBrand" class="brands-list input-text">
+                                            <select name="brand" id="proBrand" class="brands-list input-text subtable subtable-active">
                                                 <option value="1" ${"1" == product.brandID?"selected":""} class="brand-item">ACER</option>
                                                 <option value="2" ${"2" == product.brandID?"selected":""} class="brand-item">ASUS</option>
                                                 <option value="3" ${"3" == product.brandID?"selected":""} class="brand-item">MSI</option>
                                                 <option value="4" ${"4" == product.brandID?"selected":""} class="brand-item">LENOVO</option>
                                                 <option value="4" ${"5" == product.brandID?"selected":""} class="brand-item">DELL</option>
                                                 <option value="6" ${"6" == product.brandID?"selected":""} class="brand-item">HP</option>
+                                            </select>
+                                            <select name="brand" id="proBrand" class="brands-list input-text subtable">
+                                                <option value="1" ${"1" == product.brandID?"selected":""} class="brand-item">ACER</option>
+                                                <option value="2" ${"2" == product.brandID?"selected":""} class="brand-item">ASUS</option>
+                                                <option value="3" ${"3" == product.brandID?"selected":""} class="brand-item">MSI</option>
+                                                <option value="4" ${"4" == product.brandID?"selected":""} class="brand-item">LENOVO</option>
+                                                <option value="4" ${"5" == product.brandID?"selected":""} class="brand-item">DELL</option>
+                                                <option value="6" ${"6" == product.brandID?"selected":""} class="brand-item">HP</option>
+                                            </select>
+                                            <select name="brand" id="proBrand" class="brands-list input-text subtable">
+                                                <option value="2" ${"2" == product.brandID?"selected":""} class="brand-item">ASUS</option>
                                                 <option value="7" ${"7" == product.brandID?"selected":""} class="brand-item">Logitech</option>
                                                 <option value="8" ${"8" == product.brandID?"selected":""} class="brand-item">Razer</option>
+                                                <option value="10" ${"10" == product.brandID?"selected":""} class="brand-item">Orther</option>
+                                            </select>
+                                            <select name="brand" id="proBrand" class="brands-list input-text subtable">
+                                                <option value="8" ${"8" == product.brandID?"selected":""} class="brand-item">Razer</option>
                                                 <option value="9" ${"9" == product.brandID?"selected":""} class="brand-item">Sony</option>
+                                                <option>Corsari</option>
                                                 <option value="10" ${"10" == product.brandID?"selected":""} class="brand-item">Orther</option>
                                             </select>
                                         </div>
                                         <div class="add-input-wrapper">
                                             <label for="originPrice" class="input-label">Original price</label>
                                             <div style="display: flex; flex-direction: column; width: 100%">
-                                                <input class="priceInput"  required type="text" name="originPrice" id="originPrice" class="input-text" value="${product.proOriginalPrice}">
+                                                <input class="priceInput"  required type="number" name="originPrice" id="originPrice" class="input-text" value="${product.proOriginalPrice}">
                                                 <small id="error" class="hideSmall">Invalid price</small>
                                             </div>
                                         </div>
@@ -354,5 +377,43 @@
         file3.onchange = function () {
             document.querySelector('#img3').value = file3.value.replace(/^.*[\\\/]/, '')
         }
+
+        const selectTable = document.getElementById("proCategories");
+        const subtable = document.querySelectorAll('.subtable')
+          console.log(selectTable)
+        selectTable.onchange = function () {
+        let text = selectTable.options[selectTable.selectedIndex].text;
+      console.log(text)
+        switch (text) {
+            case 'Laptop Gaming':
+                console.log('gaming');
+                subtable[0].classList.add('subtable-active')
+                subtable[1].classList.remove('subtable-active')
+                subtable[2].classList.remove('subtable-active')
+                subtable[3].classList.remove('subtable-active')
+                break;
+            case 'Laptop Office':
+                console.log('van phong');
+                subtable[0].classList.remove('subtable-active')
+                subtable[1].classList.add('subtable-active')
+                subtable[2].classList.remove('subtable-active')
+                subtable[3].classList.remove('subtable-active')
+                break;
+            case 'Mouse':
+                console.log('Chuot');
+                subtable[0].classList.remove('subtable-active')
+                subtable[1].classList.remove('subtable-active')
+                subtable[2].classList.add('subtable-active')
+                subtable[3].classList.remove('subtable-active')
+                break;
+            case 'Headphone':
+                console.log('Tai nghe');
+                subtable[0].classList.remove('subtable-active')
+                subtable[1].classList.remove('subtable-active')
+                subtable[2].classList.remove('subtable-active')
+                subtable[3].classList.add('subtable-active')
+                break;
+        }
+    }
     </script>
 </html>
