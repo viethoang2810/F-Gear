@@ -200,7 +200,7 @@
                                       style="font-weight: 500; font-size:1.2rem ; color: rgb(237, 17, 17);">${productFound.proCurrentPrice}đ</span>
                             </div>
                         </div>
-                        <form action="../Cart">
+                        <form action="../Cart/YourCart">
                             <input type="hidden" name="proID" value="${productFound.proID}">
                             <input type="hidden" name="quantity" value="1">
                             <div class="btn-user-actions">

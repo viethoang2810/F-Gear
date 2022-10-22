@@ -111,7 +111,9 @@ public class Cart_Controller extends HttpServlet {
                             totalQuantity(request, response);
                         }
                     }
+
                     response.sendRedirect("./views/Cart.jsp");
+
                 }
                 break;
                 case "remove": {
@@ -188,6 +190,8 @@ public class Cart_Controller extends HttpServlet {
                 break;
             }
         }
+        request.getRequestDispatcher("/views/Cart.jsp").forward(request, response);
+
     }
 
     protected void totalPrice(HttpServletRequest request, HttpServletResponse response)

@@ -122,6 +122,8 @@
 
                                 </tr>
                             </thead>
+                           
+
                             <tbody style="vertical-align: middle;text-align:center;">
                                 <c:set var="o" value="${sessionScope.cart}"></c:set>
                                 <c:forEach items="${o}" var="i">
@@ -170,6 +172,44 @@
                                 </form>
                                 </tr>                                                                
                             </c:forEach>                              
+                                <c:forEach var="item" items="${cart}">
+                                    <tr class="table-row">
+                                    <th scope="row" class="cart-item_name">${cart.product.proName}</th>
+                                    <td class="cart-item_image">
+                                        <img src="../assets/Images/p-acer-aspire-3-a315-42-r8px-2_437eed7003ca40a2a05a60d2356089c6_grande_ec84095863e94a38a2aa943d27b28e49.webp"
+                                             alt="" class="product-image img-responsive" style="width:120px;">
+                                    </td>
+                                    <td class="cart-item_amount">
+                                        <div class="item-wrapper">
+                                            <div class="btn btn-decreasing">
+                                                <button class="descring_amount">
+                                                    <i class="fa-solid fa-minus"></i>
+                                                </button>
+                                            </div>
+                                            <div class="amount-wrapper">
+                                                <span class="amount-content" style="font-size:1.5rem;"></span>
+                                            </div>
+                                            <div class="btn btn-increasing">
+                                                <button class="descring_amount">
+                                                    <i class="fa-solid fa-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="cart-item_price">16.000.000 đ</td>
+
+                                    <td class="cart-item_warranty">2 years</td>
+                                    <td class="remove-cart" style="font-size: 1.6rem;cursor: pointer;">
+                                        <a href="?removeItem=true" class="remove-cart_link">
+                                            <!-- Put id of item in here,it will send to servlet-->
+                                            <i class="fa-solid fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </c:forEach>
+                                
+                               
+
                             </tbody>
                         </table>
                     </div>

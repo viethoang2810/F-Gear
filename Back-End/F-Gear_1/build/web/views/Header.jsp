@@ -60,7 +60,7 @@
 
                                 <div class="navigatior-user">
                                     <div class="user navigator-user-cart">
-                                        <a href="../views/Cart.jsp" class="user-cart_link" style="color: #333;font-size: 1.6rem;">
+                                        <a href="../Cart/YourCart" class="user-cart_link" style="color: #333;font-size: 1.6rem;">
                                             <i class="fa-solid fa-cart-shopping"></i>
                                         </a>
                                     </div>

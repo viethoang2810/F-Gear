@@ -51,7 +51,7 @@ public class Product_Management {
                 + "dbo.Category C ,"
                 + "dbo.Specification S,"
                 + "dbo.ProSpec PS "
-                + " WHERE P.BrandID = B.BrandID AND P.CateID = C.CateID AND I.ProID = P.ProID AND S.SpecID = PS.SpecID AND PS.ProID = P.ProID  ";
+                + " WHERE P.BrandID = B.BrandID AND P.CateID = C.CateID AND I.ProID = P.ProID AND S.SpecID = PS.SpecID AND PS.ProID = P.ProID ORDER BY B.BrandName ASC ";
         try {
             con = DBUtils.getConnection();
             stm = con.prepareStatement(sql);
