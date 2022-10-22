@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author duyng
  */
-public class Product {
+public class Product implements Comparable<Product>{
 
     private int proID;
     private String proName;
@@ -160,6 +160,15 @@ public class Product {
         this.brandID = brandID;
     }
 
+    @Override
+    public int compareTo(Product o) {
+        return this.brandName.compareTo(o.brandName);
+    }
+
   
+
+   
+
+   
 
 }

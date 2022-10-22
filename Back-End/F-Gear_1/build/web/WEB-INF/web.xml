@@ -24,6 +24,10 @@
         <servlet-name>Cart_Controller</servlet-name>
         <servlet-class>com.fptuni.swp391.F_Gear.Controllers.Cart_Controller</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Sale_Controller</servlet-name>
+        <servlet-class>com.fptuni.swp391.F_Gear.Controllers.Sale_Controller</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>User_Controller</servlet-name>
         <url-pattern>/Profile/*</url-pattern>
@@ -51,6 +55,10 @@
     <servlet-mapping>
         <servlet-name>Cart_Controller</servlet-name>
         <url-pattern>/Cart/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Sale_Controller</servlet-name>
+        <url-pattern>/Sale/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
