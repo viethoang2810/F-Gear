@@ -61,8 +61,8 @@
 
                                 <div class="navigatior-user">
                                     <div class="user navigator-user-cart">
-                                        <a href="../Cart/YourCart" class="user-cart_link" style="color: #333;font-size: 1.6rem;">
-                                            <i class="fa-solid fa-cart-shopping"></i>
+                                        <a href="../views/Cart.jsp" class="user-cart_link" style="color: #333;font-size: 1.6rem; display: flex;">
+                                            <i class="fa-solid fa-cart-shopping"></i> <span style="color: red">${size} </span> 
                                         </a>
                                     </div>
                                     <div class=" user navigator-user-account">

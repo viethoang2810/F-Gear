@@ -53,6 +53,7 @@ public class Cart_Controller extends HttpServlet {
                         List<Item> cart = new ArrayList<Item>();
                         cart.add(new Item(product, quantity, price));
                         session.setAttribute("cart", cart);
+                        session.setAttribute("size", cart.size());
                         totalPrice(request, response);
                         totalQuantity(request, response);
                     } else {
@@ -65,12 +66,16 @@ public class Cart_Controller extends HttpServlet {
                                 confirm = true;
                                 totalPrice(request, response);
                                 totalQuantity(request, response);
+                                session.setAttribute("cart", cart);
+                                session.setAttribute("size", cart.size());
                             }
                         }
                         if (confirm == false) {
                             cart.add(new Item(product, quantity, price));
                             totalPrice(request, response);
                             totalQuantity(request, response);
+                            session.setAttribute("cart", cart);
+                            session.setAttribute("size", cart.size());
                         }
                     }
                     response.sendRedirect("./Product/Store");
@@ -89,6 +94,7 @@ public class Cart_Controller extends HttpServlet {
                         List<Item> cart = new ArrayList<Item>();
                         cart.add(new Item(product, quantity, price));
                         session.setAttribute("cart", cart);
+                        session.setAttribute("size", cart.size());
                         totalPrice(request, response);
                         totalQuantity(request, response);
                     } else {
@@ -100,6 +106,7 @@ public class Cart_Controller extends HttpServlet {
                                 cart.add(new Item(product, quantityTmp, price));
                                 confirm = true;
                                 session.setAttribute("cart", cart);
+                                session.setAttribute("size", cart.size());
                                 totalPrice(request, response);
                                 totalQuantity(request, response);
                             }
@@ -109,11 +116,11 @@ public class Cart_Controller extends HttpServlet {
                             session.setAttribute("cart", cart);
                             totalPrice(request, response);
                             totalQuantity(request, response);
+                            session.setAttribute("cart", cart);
+                            session.setAttribute("size", cart.size());
                         }
                     }
-
                     response.sendRedirect("./views/Cart.jsp");
-
                 }
                 break;
                 case "remove": {
@@ -125,12 +132,14 @@ public class Cart_Controller extends HttpServlet {
                         }
                     }
                     session.setAttribute("cart", cart);
+                    session.setAttribute("size", cart.size());
                     totalPrice(request, response);
                     totalQuantity(request, response);
                     response.sendRedirect("./views/Cart.jsp");
                 }
                 break;
                 case "clearAll": {
+                    session.removeAttribute("size");
                     session.removeAttribute("cart");
                     session.removeAttribute("total");
                     session.removeAttribute("quantity");
@@ -188,10 +197,29 @@ public class Cart_Controller extends HttpServlet {
                     response.sendRedirect("./views/Cart.jsp");
                 }
                 break;
+                case "inputQuantity": {
+                    int proID = Integer.parseInt(request.getParameter("proID"));
+                    int quantity = Integer.parseInt(request.getParameter("quantity"));
+                    ArrayList<Product> listProduct = pm.getAllOfProduct();
+                    Product product = pm.getProductById(listProduct, proID);
+                    String proCurrentPrice = product.getProCurrentPrice().replaceAll(",", "").trim();
+                    long price = Long.parseLong(proCurrentPrice);
+                    List<Item> cart = (List<Item>) session.getAttribute("cart");
+                    for (int l = 0; l < cart.size(); l++) {
+                        if (proID == (cart.get(l).getProduct().getProID())) {
+                            cart.add(new Item(product, quantity, price));
+                            cart.remove(l);
+                            session.setAttribute("cart", cart);
+                            session.setAttribute("size", cart.size());
+                            totalPrice(request, response);
+                            totalQuantity(request, response);
+                        }
+                    }                   
+                }
+                response.sendRedirect("./views/Cart.jsp");
+                break;
             }
         }
-        request.getRequestDispatcher("/views/Cart.jsp").forward(request, response);
-
     }
 
     protected void totalPrice(HttpServletRequest request, HttpServletResponse response)
