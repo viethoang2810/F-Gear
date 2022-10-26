@@ -8,6 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Header</title>
+        <link rel="icon" href="../assets/Images/pinterest_board_photo.png">
         <link rel="stylesheet" href="../assets/CSS/GlobalStyles.css"> <!-- This file contains all of common styles of pages-->
         <link rel="stylesheet" href="../assets/CSS/Responive.css">
         <link rel="stylesheet" href="../assets/CSS/Detail_Product.css">
