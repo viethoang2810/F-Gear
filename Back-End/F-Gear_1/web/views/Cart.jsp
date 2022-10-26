@@ -21,7 +21,19 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     </head>
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+    </style>
     <body>
         <div class="container-fluid">
             <!-- Header -->
@@ -122,8 +134,6 @@
 
                                 </tr>
                             </thead>
-                           
-
                             <tbody style="vertical-align: middle;text-align:center;">
                                 <c:set var="o" value="${sessionScope.cart}"></c:set>
                                 <c:forEach items="${o}" var="i">
@@ -146,7 +156,11 @@
                                                     </form>
                                                 </div>
                                                 <div>
-                                                    <span style="font-size:1.5rem;">${i.quantity}</span>
+                                                    <form action="../Cart">
+                                                        <input type="hidden" name="proID" value="${i.product.proID}">
+                                                        <input style="width: 40px;" type="number" min="1" name="quantity" value="${i.quantity}" required="">
+                                                        <input type="submit" name="orderOp" value="inputQuantity" style="display: none">
+                                                    </form>                                      
                                                 </div>
                                                 <div >
                                                     <form action="../Cart">
@@ -172,44 +186,6 @@
                                 </form>
                                 </tr>                                                                
                             </c:forEach>                              
-                                <c:forEach var="item" items="${cart}">
-                                    <tr class="table-row">
-                                    <th scope="row" class="cart-item_name">${cart.product.proName}</th>
-                                    <td class="cart-item_image">
-                                        <img src="../assets/Images/p-acer-aspire-3-a315-42-r8px-2_437eed7003ca40a2a05a60d2356089c6_grande_ec84095863e94a38a2aa943d27b28e49.webp"
-                                             alt="" class="product-image img-responsive" style="width:120px;">
-                                    </td>
-                                    <td class="cart-item_amount">
-                                        <div class="item-wrapper">
-                                            <div class="btn btn-decreasing">
-                                                <button class="descring_amount">
-                                                    <i class="fa-solid fa-minus"></i>
-                                                </button>
-                                            </div>
-                                            <div class="amount-wrapper">
-                                                <span class="amount-content" style="font-size:1.5rem;"></span>
-                                            </div>
-                                            <div class="btn btn-increasing">
-                                                <button class="descring_amount">
-                                                    <i class="fa-solid fa-plus"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="cart-item_price">16.000.000 đ</td>
-
-                                    <td class="cart-item_warranty">2 years</td>
-                                    <td class="remove-cart" style="font-size: 1.6rem;cursor: pointer;">
-                                        <a href="?removeItem=true" class="remove-cart_link">
-                                            <!-- Put id of item in here,it will send to servlet-->
-                                            <i class="fa-solid fa-trash"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                </c:forEach>
-                                
-                               
-
                             </tbody>
                         </table>
                     </div>
