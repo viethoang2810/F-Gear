@@ -90,9 +90,9 @@ public class Access_Controller extends HttpServlet {
                     case "logout": {
                         session.invalidate();
                         response.sendRedirect("./");
-                        return;
                     }
-                    
+                    break;
+
                     case "register": {
                         String userName = request.getParameter("userName");
                         String password = request.getParameter("password");
@@ -150,7 +150,7 @@ public class Access_Controller extends HttpServlet {
                         System.out.println(code);
                         System.out.println(Access_Management.getUserInfo(accessToken));
 
-                        StringTokenizer st = new StringTokenizer(Access_Management.getUserInfo(accessToken), "{,\"\n}");
+                        StringTokenizer st = new StringTokenizer(Access_Management.getUserInfo(accessToken), "{ ,\"\n}");
                         ArrayList<String> list = new ArrayList<>();
                         while (st.hasMoreTokens()) {
                             list.add(st.nextToken());
@@ -180,10 +180,9 @@ public class Access_Controller extends HttpServlet {
                         }
 
                         session.setAttribute("user", user);
-                        response.sendRedirect("./Home/HomePage");
-                        return;
-//                        url = "/views/Homepage.jsp";
-//                        break;
+//                        response.sendRedirect("./Home/HomePage");
+                        url = "/views/Homepage.jsp";
+                        break;
                     }
                     case "chartadminpage": {
                         Access_Management am = new Access_Management();
