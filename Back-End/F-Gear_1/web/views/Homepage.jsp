@@ -16,7 +16,66 @@
         <title>F-Gear</title>
     </head>
 
+    <style>
+        h3 {
+            font-weight: 500;
+        }
 
+        label {
+            cursor: pointer;
+        }
+
+        #place,
+        #brand {
+            user-select: none;
+            cursor: pointer;
+            margin: 0;
+            padding: 0;
+        }
+
+        .brand {
+            display: none;
+
+        }
+
+        .brand-active {
+            display: block;
+            overflow: hidden;
+            animation: show ease-in .3s;
+        }
+
+        .place {
+            display: none;
+
+        }
+
+        .place-active {
+            display: block;
+            overflow: hidden;
+            animation: show ease-in .3s;
+        }
+
+        .checkboxBtn {
+            width:80%; padding: 5px 7px; border: none; border-radius: 10px;
+            cursor: pointer;
+            background-color: #83aae3;
+            margin-top: 20px;
+        }
+        .checkboxBtn:hover {
+            background-color: #0d6efd;
+            color: white;
+        }
+
+        @keyframes show {
+            0% {
+                height: 0px;
+            }
+
+            100% {
+                height: 100px;
+            }
+        }
+    </style>
 
     <body>
 
@@ -41,13 +100,60 @@
             <h1 class="body-title">
                 Featurerd Product
             </h1>
-            <div class="body-list-product">
-                <c:forEach var="list" items="${listHomepage}" varStatus="status">
-                    <a href="<c:url value="../Detail/DetailPro?proID=${list.proID}"/>">
-                        <img
-                            src="${list.listImage[status.index].url}" />
-                    </a>
-                </c:forEach>
+            <div style="display: flex; justify-content: space-between;">
+                <form action="" style="background-color: #00000017; width: 15%; padding-left: 20px; border-radius: 10px;">
+                    <div>
+                        <h3 id="brand">Brand 
+                            <img src="https://www.freeiconspng.com/uploads/arrow-down-icon-png-1.png" style="width:30px;"/>
+                        </h3>
+                        <div class="brand">
+                            <ul style="list-style: none; padding: 0;">
+                                <li>
+                                    <input type="checkbox" id="logitech" value="logitech" name=""/>
+                                    <label for="logitech">Logitech</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="razer" value="razer" name=""/>
+                                    <label for="razer">Razer</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="edra" value="edra" name=""/>
+                                    <label for="edra">Edra</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="asus" value="asus" name=""/>
+                                    <label for="asus">Asus</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 id="place">Place  
+                            <img src="https://www.freeiconspng.com/uploads/arrow-down-icon-png-1.png" style="width:30px;"/>
+                        </h3>
+                        <div class="place">
+                            <ul style="list-style: none; padding: 0;">
+                                <li>
+                                    <input type="checkbox" id="hcm" value="hcm" name=""/>
+                                    <label for="hcm">Ho Chi Minh City</label>
+                                </li>
+                                <li>
+                                    <input type="checkbox" id="hn" value="hn" name=""/>
+                                    <label for="hn">Ha Noi</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="checkboxBtn">Search</button>
+                </form>
+                <div class="body-list-product" style="width: 84%;">
+                    <c:forEach var="list" items="${listHomepage}" varStatus="status">
+                        <a href="<c:url value="../Detail/DetailPro?proID=${list.proID}"/>">
+                            <img
+                                src="${list.listImage[status.index].url}" />
+                        </a>
+                    </c:forEach>
+                </div>
             </div>
         </div>
 
@@ -55,7 +161,17 @@
         <%@include file="./Footer.jsp" %>
 
     </body>
+    <script>
+        const place = document.getElementById('place')
+        const brand = document.getElementById('brand')
 
+        place.onclick = function () {
+            document.querySelector('.place').classList.toggle('place-active')
+        }
+        brand.onclick = function () {
+            document.querySelector('.brand').classList.toggle('brand-active')
+        }
+    </script>
 
 
 </html>

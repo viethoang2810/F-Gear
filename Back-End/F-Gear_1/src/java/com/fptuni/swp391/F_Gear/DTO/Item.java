@@ -47,4 +47,15 @@ public class Item {
     public void setPrice(long price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "Item{" + "product=" + product + ", quantity=" + quantity + ", price=" + price + '}';
+    }
+
+    public Object setCurrency(String usd) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 }

@@ -97,6 +97,11 @@ public class Users {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    @Override
+    public String toString() {
+        return "Users{" + "userName=" + userName + ", password=" + password + ", fullName=" + fullName + ", phoneNumber=" + phoneNumber + ", roleName=" + roleName + ", avatar=" + avatar + ", gender=" + gender + ", gmail=" + gmail + '}';
+    }
     
     
     
