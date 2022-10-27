@@ -23,16 +23,16 @@
     </head>
     <style>
         /* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
 
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
     </style>
     <body>
         <div class="container-fluid">
@@ -104,14 +104,14 @@ input[type=number] {
                 </form>
             </div>
             <div style="margin-left: 110px">
-            <br/>
-            <span>
-                <h5 style="color: red;">Total Price: <fmt:formatNumber type = "number" maxFractionDigits = "3" value="${sessionScope.total}"/> vnd</h5>                
-            </span>
-            <br/>
-            <span>
-                <h5 style="color: red;">Total Quantity: <fmt:formatNumber type = "number" maxFractionDigits = "3" value="${sessionScope.quantity}"/></h5>                
-            </span> 
+                <br/>
+                <span>
+                    <h5 style="color: red;">Total Price: <fmt:formatNumber type = "number" maxFractionDigits = "3" value="${sessionScope.total}"/> vnd</h5>                
+                </span>
+                <br/>
+                <span>
+                    <h5 style="color: red;">Total Quantity: <fmt:formatNumber type = "number" maxFractionDigits = "3" value="${sessionScope.quantity}"/></h5>                
+                </span> 
             </div>        
             <div class="row">
                 <div class="logo-wrapper">
@@ -143,86 +143,88 @@ input[type=number] {
                                             <img src="${i.product.listImage.get(0).url}"
                                                  alt="" class="product-image img-responsive" style="width:120px;">
                                         </td>
-                                        <form action="../Cart">
-                                        <td class="cart-item_amount">
-                                            <div class="item-wrapper">
-                                                <div >
-                                                    <form action="../Cart">
+                                <form action="../Cart">
+                                    <td class="cart-item_amount">
+                                        <div class="item-wrapper">
+                                            <div >
+                                                <form action="../Cart">
                                                     <button type="submit" name="orderOp" value="decreasing">
                                                         <input type="hidden" name="proID" value="${i.product.proID}">
                                                         <input type="hidden" name="quantity" value="${i.quantity}">
                                                         <i class="fa-solid fa-minus"></i>
                                                     </button>
-                                                    </form>
-                                                </div>
-                                                <div>
-                                                    <form action="../Cart">
-                                                        <input type="hidden" name="proID" value="${i.product.proID}">
-                                                        <input style="width: 40px;" type="number" min="1" name="quantity" value="${i.quantity}" required="">
-                                                        <input type="submit" name="orderOp" value="inputQuantity" style="display: none">
-                                                    </form>                                      
-                                                </div>
-                                                <div >
-                                                    <form action="../Cart">
+                                                </form>
+                                            </div>
+                                            <div>
+                                                <form action="../Cart">
+                                                    <input type="hidden" name="proID" value="${i.product.proID}">
+                                                    <input style="width: 40px;" type="number" min="1" name="quantity" value="${i.quantity}" required="">
+                                                    <input type="submit" name="orderOp" value="inputQuantity" style="display: none">
+                                                </form>                                      
+                                            </div>
+                                            <div >
+                                                <form action="../Cart">
                                                     <button type="submit" name="orderOp" value="increasing" >
                                                         <input type="hidden" name="proID" value="${i.product.proID}">
                                                         <input type="hidden" name="quantity" value="${i.quantity}">
                                                         <i class="fa-solid fa-plus"></i>
                                                     </button>
-                                                    </form>
-                                                </div>
+                                                </form>
                                             </div>
-                                        </td>
-                                        </form>
-                                        <td class="cart-item_price"><fmt:formatNumber type = "number" maxFractionDigits = "3" value="${i.quantity*i.price}" /> vnd</td>
+                                        </div>
+                                    </td>
+                                </form>
+                                <td class="cart-item_price"><fmt:formatNumber type = "number" maxFractionDigits = "3" value="${i.quantity*i.price}" /> vnd</td>
 
-                                        <td class="cart-item_warranty">2 years</td>
+                                <td class="cart-item_warranty">2 years</td>
                                 <form action="../Cart">
                                     <td class="remove-cart" style="font-size: 1.6rem;cursor: pointer;">
                                         <button name="orderOp" value="remove" class="fa-solid fa-trash" style="border: none">
-                                        <!-- Put id of item in here,it will send to servlet-->
-                                        <input type="hidden" name="proID" value="${i.product.proID}">
-                                    </td>
-                                </form>
-                                </tr>                                                                
-                            </c:forEach>                              
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="checkout-wrapper" style="margin-top: 30px;">
-                        <button class="checkout-btn">Choose your payment method</button>
-                        <div class="modal-wrapper">
-                            <div class="modal-content">
-                                <div class="modal-form-wrapper">
-                                    <div class="modal-title">
-                                        <span class="modal-title" style="margin-bottom:30px;font-size: 1.4rem;">Choose your payment method</span>
-                                        <i class="fa-solid fa-xmark close-icon" style="font-size:2rem;margin-left: 70px; margin-bottom:30px;cursor: pointer;"></i>
-                                    </div>
-                                    <form action="" class="modal-form">
-                                        <div class="input-wrapper">
-                                            <input type="radio" name="payment" id="store" class="input-select"
-                                                   value="store">
-                                            <label for="store" class="input-label">Pay at store</label>
+                                            <!-- Put id of item in here,it will send to servlet-->
+                                            <input type="hidden" name="proID" value="${i.product.proID}">
+                                            </td>
+                                            </form>
+                                            </tr>                                                                
+                                        </c:forEach>                              
+                                        </tbody>
+                                        </table>
                                         </div>
-                                        <div class="input-wrapper">
-                                            <input type="radio" name="payment" id="e-wallet" class="input-select"
-                                                   value="e-wallet">
-                                            <label for="e-wallet" class="input-label">Pay with VN-Pay </label>
+                                        <div class="checkout-wrapper" style="margin-top: 30px;">
+                                            <button style="display: ${sessionScope.cart ==null?"none":"block"}" class="checkout-btn">Choose your payment method</button>
+                                            <input type="submit" disabled="" style="display: ${sessionScope.cart ==null?"block":"none"}; padding:15px 10px; border-radius: 10px" value="Choose your payment method"/>
+
+                                            <div class="modal-wrapper">
+                                                <div class="modal-content">
+                                                    <div class="modal-form-wrapper">
+                                                        <div class="modal-title">
+                                                            <span class="modal-title" style="margin-bottom:30px;font-size: 1.4rem;">Choose your payment method</span>
+                                                            <i class="fa-solid fa-xmark close-icon" style="font-size:2rem;margin-left: 70px; margin-bottom:30px;cursor: pointer;"></i>
+                                                        </div>
+                                                        <form  action="../PaymentController" class="modal-form">
+                                                            <div class="input-wrapper">
+                                                                <input type="radio" name="payment" id="store" class="input-select"
+                                                                       value="store">
+                                                                <label for="store" class="input-label">Pay at store</label>
+                                                            </div>
+                                                            <div  style="display: ${sessionScope.size >1?"none":"block"}" class="input-wrapper">
+                                                                <input type="radio" name="payment" id="e-wallet" class="input-select"
+                                                                       value="e-wallet">
+                                                                <label for="e-wallet" class="input-label">Pay with Paypal </label>
+                                                            </div>
+                                                            <span style="color:red; width:90%; display:${sessionScope.size >1?"block":"none"} ">According to the new policy, you can only pay for 1 product with PayPal e-wallet</span>
+                                                            <button class="checkout-btn">Check-out</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <button class="checkout-btn">Check-out</button>
+                                        </div>
+                                        </div>
+                                        <%@include file="./Footer.jsp" %>
 
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <%@include file="./Footer.jsp" %>
+                                        </div>
+                                        </body>
+                                        <script src="../assets/JavaScript/CommonFeatures.js"></script>
+                                        <script src="../assets/JavaScript/Cart.js"></script>
 
-        </div>
-    </body>
-    <script src="../assets/JavaScript/CommonFeatures.js"></script>
-    <script src="../assets/JavaScript/Cart.js"></script>
-
-</html>
+                                        </html>

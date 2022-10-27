@@ -66,10 +66,10 @@
                                         </a>
                                     </div>
                                     <div class=" user navigator-user-account">
-                                        <div class="user-account-avatar">
+<!--                                        <div class="user-account-avatar">
                                             <img src="../avatar/${user.avatar}"
                                                  alt="VietHoang" class="user-account-image">
-                                        </div>
+                                        </div>-->
                                         <div class="user-welcome">
                                             <div class="user-welcome">
                                                 <span class="welcome-content">Welcome ${user.fullName}</span>

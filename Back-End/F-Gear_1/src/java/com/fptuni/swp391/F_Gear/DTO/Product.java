@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author duyng
  */
-public class Product implements Comparable<Product>{
+public class Product implements Comparable<Product> {
 
     private int proID;
     private String proName;
@@ -25,7 +25,7 @@ public class Product implements Comparable<Product>{
     private int status;
     private int cateID;
     private int brandID;
-    
+
     public Product() {
     }
 
@@ -61,8 +61,6 @@ public class Product implements Comparable<Product>{
         this.cateID = cateID;
         this.brandID = brandID;
     }
-    
-    
 
     public int getProID() {
         return proID;
@@ -165,10 +163,9 @@ public class Product implements Comparable<Product>{
         return this.brandName.compareTo(o.brandName);
     }
 
-  
-
-   
-
-   
-
+    @Override
+    public String toString() {
+        return "Product{" + "proID=" + proID + ", proName=" + proName + ", proOriginalPrice=" + proOriginalPrice + ", discount=" + discount + ", proCurrentPrice=" + proCurrentPrice + ", brandName=" + brandName + ", listImage=" + listImage + ", listSpecification=" + listSpecification + ", proType=" + proType + ", status=" + status + ", cateID=" + cateID + ", brandID=" + brandID + '}';
+    }
+    
 }
