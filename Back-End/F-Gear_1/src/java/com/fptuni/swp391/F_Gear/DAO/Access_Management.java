@@ -48,7 +48,7 @@ public class Access_Management {
             user.setUserName(rs.getString("UserName"));
             user.setPassword(rs.getString("Password"));
             user.setFullName(rs.getString("FullName"));
-            user.setPhoneNumber(rs.getInt("PhoneNumber"));
+            user.setPhoneNumber(rs.getString("PhoneNumber"));
             user.setAvatar(rs.getString("Avatar"));
             user.setGender(rs.getString("Gender"));
             user.setRoleName(rs.getString("RoleName"));
@@ -78,7 +78,7 @@ public class Access_Management {
         PreparedStatement stm = con.prepareStatement("insert into Users (UserName, Password, PhoneNumber) values(?,?,?)");
         stm.setString(1, u.getUserName());
         stm.setString(2, u.getPassword());
-        stm.setInt(3, u.getPhoneNumber());
+        stm.setString(3, u.getPhoneNumber());
         int count = stm.executeUpdate();
         if (count == 0) {
             result = false;
@@ -607,6 +607,24 @@ public class Access_Management {
             Logger.getLogger(Access_Management.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
+    }
+    
+    public Users findByUsernameAndGmail(String userName, String gmail) throws SQLException {
+        Users user = null;
+        Connection con = DBUtils.getConnection();
+        String sql = "select UserName, Password, Gmail from dbo.Users where UserName=? and Gmail=?";
+        PreparedStatement stm = con.prepareStatement(sql);
+        stm.setString(1, userName);
+        stm.setString(2, gmail);
+        ResultSet rs = stm.executeQuery();
+        if (rs.next()) {
+            user = new Users();
+            user.setUserName(rs.getString("UserName"));
+            user.setPassword(rs.getString("Password"));
+            user.setGmail(rs.getString("Gmail"));
+        }
+        con.close();
+        return user;
     }
 
 }

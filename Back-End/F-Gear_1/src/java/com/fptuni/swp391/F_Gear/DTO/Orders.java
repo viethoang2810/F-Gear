@@ -29,6 +29,13 @@ public class Orders {
         this.quantity = quantity;
         this.total = total;
     }
+    
+    public Orders(int orderId, String userName, String orderDate, long total) {
+        this.orderId = orderId;
+        this.userName = userName;
+        this.orderDate = orderDate;
+        this.total = total;
+    }
 
     public int getOrderId() {
         return orderId;

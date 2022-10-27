@@ -6,8 +6,11 @@
 package com.fptuni.swp391.F_Gear.Controllers;
 
 import com.fptuni.swp391.F_Gear.DAO.Access_Management;
+import com.fptuni.swp391.F_Gear.DAO.User_Management;
 import com.fptuni.swp391.F_Gear.DTO.Chart;
+import com.fptuni.swp391.F_Gear.DTO.Email;
 import com.fptuni.swp391.F_Gear.DTO.Users;
+import com.fptuni.swp391.F_Gear.Utils.EmailUtils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +74,7 @@ public class Access_Controller extends HttpServlet {
                             }
                             if (user.getRoleName().equals("user")) {
                                 session.setAttribute("user", user);
-                                response.sendRedirect("./Home/HomePage");
+                                response.sendRedirect("./Home/Homepage");
                             } else if (user.getRoleName().equals("admin")) {
                                 response.sendRedirect("./Admin/Dashboard");
 
@@ -87,16 +90,16 @@ public class Access_Controller extends HttpServlet {
                     case "logout": {
                         session.invalidate();
                         response.sendRedirect("./");
+                        return;
                     }
-                    break;
-
+                    
                     case "register": {
-
                         String userName = request.getParameter("userName");
                         String password = request.getParameter("password");
                         String cofirm = request.getParameter("cofirm");
-                        int phone = Integer.parseInt(request.getParameter("phone"));
-                        if (password.equals(cofirm)) {
+                        String phone = request.getParameter("phone");
+                        String regex = "(84|0[3|5|7|8|9])+([0-9]{8})\\b";
+                        if (password.equals(cofirm) && phone.matches(regex)) {
                             if (a.checkUserName(userName)) {
                                 Users user = new Users();
                                 user.setUserName(userName);
@@ -117,11 +120,20 @@ public class Access_Controller extends HttpServlet {
                             }
 
                         } else {
-                            url = "/views/register.jsp";
-                            request.setAttribute("userName", userName);
-                            request.setAttribute("password", password);
-                            request.setAttribute("phone", phone);
-                            request.setAttribute("message", "Passwords do not match!");
+                            if (!password.equals(cofirm)) {
+                                url = "/views/register.jsp";
+                                request.setAttribute("userName", userName);
+                                request.setAttribute("password", password);
+                                request.setAttribute("phone", phone);
+                                request.setAttribute("message", "Passwords do not match!");
+                            }
+                            if (!phone.matches(regex)) {
+                                url = "/views/register.jsp";
+                                request.setAttribute("userName", userName);
+                                request.setAttribute("password", password);
+                                request.setAttribute("cofirm", cofirm);
+                                request.setAttribute("message", "Phone number is not correct!");
+                            }
                         }
 
                     }
@@ -138,7 +150,7 @@ public class Access_Controller extends HttpServlet {
                         System.out.println(code);
                         System.out.println(Access_Management.getUserInfo(accessToken));
 
-                        StringTokenizer st = new StringTokenizer(Access_Management.getUserInfo(accessToken), "{ ,\"\n}");
+                        StringTokenizer st = new StringTokenizer(Access_Management.getUserInfo(accessToken), "{,\"\n}");
                         ArrayList<String> list = new ArrayList<>();
                         while (st.hasMoreTokens()) {
                             list.add(st.nextToken());
@@ -168,9 +180,10 @@ public class Access_Controller extends HttpServlet {
                         }
 
                         session.setAttribute("user", user);
-//                        response.sendRedirect("./Home/HomePage");
-                        url = "/views/Homepage.jsp";
-                        break;
+                        response.sendRedirect("./Home/HomePage");
+                        return;
+//                        url = "/views/Homepage.jsp";
+//                        break;
                     }
                     case "chartadminpage": {
                         Access_Management am = new Access_Management();
@@ -278,7 +291,42 @@ public class Access_Controller extends HttpServlet {
 
                         url = "/views/Adminpage.jsp";
                         break;
+                    }
+                    case "forgotpassword": {
+                        String userName = request.getParameter("userName");
+                        String emailAddress = request.getParameter("gmail");
 
+                        Users user = a.findByUsernameAndGmail(userName, emailAddress);
+                        
+                        if (user == null) {
+                            request.setAttribute("message", "Username or gmail are incorrect");
+                        } else {
+                            String newPass = EmailUtils.randomAlphaNumeric(8);
+                            if (User_Management.updateUserPassword(a.getMD5(newPass), userName)) {
+                               
+                                Email email = new Email();
+                                email.setFrom("dien gmail fpt vo day");
+                                email.setFromPassword("dien pass vo day");
+                                email.setTo(emailAddress);
+                                email.setSubject("Forgot Password Function");
+                                StringBuilder sb = new StringBuilder();
+                                sb.append("Dear").append(userName).append("<br/>");
+                                sb.append("You are used the forgot password function. <br> ");
+                                sb.append("Your password is: <br>").append(newPass).append("<br/>");
+                                sb.append("Regard<br/>");
+                                sb.append("Administrator");
+
+                                email.setContent(sb.toString());
+                             
+                                EmailUtils.sendEmail(email);
+                                
+                                request.setAttribute("message", "Email sent to the email Address."
+                                        + " Please check and get your password");
+                                url = "/views/ForgotPassword_Page.jsp";
+                            } else {
+                                System.out.println("k update dc");
+                            }
+                        }
                     }
 
                 }

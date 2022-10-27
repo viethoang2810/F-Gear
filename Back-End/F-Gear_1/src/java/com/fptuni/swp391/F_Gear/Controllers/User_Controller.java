@@ -87,7 +87,7 @@ public class User_Controller extends HttpServlet {
             String gender = request.getParameter("gender");
             um.updateUserInfor(fullName, phoneNumber, gender,us.getUserName());
             us.setFullName(fullName);
-            us.setPhoneNumber(Integer.parseInt(phoneNumber));
+            us.setPhoneNumber(phoneNumber);
             us.setGender(gender);
 
         }

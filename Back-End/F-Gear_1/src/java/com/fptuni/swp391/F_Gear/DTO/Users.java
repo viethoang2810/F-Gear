@@ -14,15 +14,16 @@ public class Users {
     private String userName;
     private String password;
     private String fullName;
-    private int phoneNumber;
+    private String phoneNumber;
     private String roleName;
     private String avatar ;
     private String gender;
+    private String gmail;
 
     public Users() {
     }
 
-    public Users(String userName, String password, String fullName, int phoneNumber, String roleName, String avatar, String gender) {
+    public Users(String userName, String password, String fullName, String phoneNumber, String roleName, String avatar, String gender, String gmail) {
         this.userName = userName;
         this.password = password;
         this.fullName = fullName;
@@ -30,6 +31,15 @@ public class Users {
         this.roleName = roleName;
         this.avatar = avatar;
         this.gender = gender;
+        this.gmail = gmail;
+    }
+
+    public String getGmail() {
+        return gmail;
+    }
+
+    public void setGmail(String gmail) {
+        this.gmail = gmail;
     }
 
     public String getUserName() {
@@ -56,11 +66,11 @@ public class Users {
         this.fullName = fullName;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

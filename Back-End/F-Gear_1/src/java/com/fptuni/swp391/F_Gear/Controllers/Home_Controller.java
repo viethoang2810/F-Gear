@@ -33,26 +33,55 @@ public class Home_Controller extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Product_Management pm = new Product_Management();
         String action = request.getParameter("action");
+        String brand = request.getParameter("brand");
+        String price = request.getParameter("price");
+        String series = request.getParameter("series");
+        String type = request.getParameter("type");
+        String cate = request.getParameter("cate");
         System.out.println(action);
         if (action != null) {
             switch (action) {
-                case "homepage":
-                    Product_Management pm = new Product_Management();
-                    List<Product> listTop8Pro = pm.selectTop8InHomepage();
-                    System.out.println(pm.selectTop8InHomepage());
-
-                    request.setAttribute("listHomepage", listTop8Pro);
-                    break;
                 case "search":
                     request.getRequestDispatcher("/views/Product_Page.jsp").forward(request, response);
                     break;
+                case "Brand": {
+                    List<Product> list = pm.filterByBrands(brand, cate);
+                    request.setAttribute("listHomepage", list);
+                    request.getRequestDispatcher("/views/Homepage.jsp").forward(request, response);
+                }
+                break;
+                case "Price": {
+                    List<Product> list = pm.filterByPrice(price, cate);
+                    request.setAttribute("listHomepage", list);
+                    request.getRequestDispatcher("/views/Homepage.jsp").forward(request, response);
+                }
+                break;
+                case "Series": {
+                    List<Product> list = pm.filterMachineSeries(series, cate);
+                    request.setAttribute("listHomepage", list);
+                    request.getRequestDispatcher("/views/Homepage.jsp").forward(request, response);
+                }
+                break;
+                case "Type": {
+                    List<Product> list = pm.filterType(type, cate);
+                    request.setAttribute("listHomepage", list);
+                    request.getRequestDispatcher("/views/Homepage.jsp").forward(request, response);
+                }
+                case "TypeCore": {
+                    List<Product> list = pm.filterTypeCore(type, cate);
+                    request.setAttribute("listHomepage", list);
+                    request.getRequestDispatcher("/views/Homepage.jsp").forward(request, response);
+                }
+                break;
                 default:
                     break;
             }
         }
+       List<Product> listTop8Pro = pm.selectTop8InHomepage();
+        request.setAttribute("listHomepage", listTop8Pro);
         request.getRequestDispatcher("/views/Homepage.jsp").forward(request, response);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -39,7 +39,7 @@
                         <input type="checkbox" class="login-form-radio" name="remember_password" <% if(cookies != null)out.print("checked") ; %>/>
                         <label>Remember password</label>
                     </div>
-                    <a href="./index.jsp">Forgot password ?</a>
+                    <a href="./views/ForgotPassword_Page.jsp">Forgot password ?</a>
                 </div>
                 <button class="login-form-submit" name="op" value="login" >Go to store</button>
             </form>

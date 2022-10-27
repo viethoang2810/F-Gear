@@ -99,9 +99,9 @@ storePage.onclick = () =>{
 }
 salePage.onclick = () =>{
   console.log(123);
- window.location.replace('http://localhost:8080/F-Gear_1/Sale');
+ window.location.replace('http://localhost:8080/F-Gear_1/Sale/SaleProducts');
 }
 userRedirect.onclick = () =>{
   console.log(123);
-  window.location.replace('http://localhost:8080/F-Gear_1/Profile/');
+  window.location.replace('http://localhost:8080/F-Gear_1/Profile/UserProfile');
 }

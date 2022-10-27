@@ -9,6 +9,17 @@
 
 const listOfRow = document.querySelectorAll(".table-row");
 
+const checkoutMethodBtn = document.querySelector('.checkout-btn');
+const closeIcon = document.querySelector('.close-icon');
+
+checkoutMethodBtn.addEventListener('click',()=> {
+    console.log(123);
+   document.querySelector('.modal-wrapper').style.display = 'flex';
+});
+closeIcon.addEventListener('click', ()=>{
+  document.querySelector('.modal-wrapper').style.display = 'none';
+
+})
 listOfRow.forEach((row, index) => {
   var price = row.querySelector(".cart-item_price").innerHTML;
   const descreaseBtn = row.querySelector(".btn-decreasing");
@@ -65,13 +76,3 @@ function calculatePrice(price, amount, scope, className) {
   return amount * price + ".000.000đ";
 }
 // Handle display choose payment method modal
-const checkoutMethodBtn = document.querySelector('.checkout-btn');
-const closeIcon = document.querySelector('.close-icon');
-
-checkoutMethodBtn.onclick = () => {
-   document.querySelector('.modal-wrapper').style.display = 'flex';
-}
-closeIcon.addEventListener('click', ()=>{
-  document.querySelector('.modal-wrapper').style.display = 'none';
-
-})
