@@ -44,8 +44,8 @@ public class User_Controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        doPost(request, response);
 
-        request.getRequestDispatcher("/views/User_Profile.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -74,44 +74,50 @@ public class User_Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        User_Management um = new User_Management();
-        boolean flagCheckUpdate = false;
-        String usernameKey = request.getParameter("username");
-        HttpSession userSession = request.getSession();
 
-        Users us = (Users) userSession.getAttribute("user");
-        String submitForm = request.getParameter("action");
-        if (submitForm != null) {
-            String fullName = request.getParameter("fullname");
-            String phoneNumber = request.getParameter("phonenumber");
-            String gender = request.getParameter("gender");
-            um.updateUserInfor(fullName, phoneNumber, gender,us.getUserName());
-            us.setFullName(fullName);
-            us.setPhoneNumber(phoneNumber);
-            us.setGender(gender);
+        String path = request.getPathInfo();
+        if (path.equals("/UserProfile")) {
+            User_Management um = new User_Management();
+            boolean flagCheckUpdate = false;
+            String usernameKey = request.getParameter("username");
+            HttpSession userSession = request.getSession();
 
-        }
-        try {
+            Users us = (Users) userSession.getAttribute("user");
+            String submitForm = request.getParameter("action");
+            if (submitForm != null) {
+                String fullName = request.getParameter("fullname");
+                String phoneNumber = request.getParameter("phonenumber");
+                String gender = request.getParameter("gender");
+                um.updateUserInfor(fullName, phoneNumber, gender, us.getUserName());
+                us.setFullName(fullName);
+                us.setPhoneNumber(phoneNumber);
+                us.setGender(gender);
 
-            Part filepart = request.getPart("file-upload");
-            String realPath = request.getServletContext().getRealPath("/avatar");
-            String fileName = Paths.get(filepart.getSubmittedFileName()).getFileName().toString();
-            flagCheckUpdate = um.updateUserAvatar(fileName, us.getUserName());
-
-            if (!Files.exists(Paths.get(realPath))) {
-                Files.createDirectory(Paths.get(realPath));
             }
-            filepart.write(realPath + "/" + fileName);
-            File sourceImage = new File(realPath + "/" + fileName);
+            try {
 
-            us.setAvatar(fileName);
+                Part filepart = request.getPart("file-upload");
+                String realPath = request.getServletContext().getRealPath("/avatar");
+                String fileName = Paths.get(filepart.getSubmittedFileName()).getFileName().toString();
+                flagCheckUpdate = um.updateUserAvatar(fileName, us.getUserName());
 
-        } catch (Exception e) {
-            //Handle exception in here
+                if (!Files.exists(Paths.get(realPath))) {
+                    Files.createDirectory(Paths.get(realPath));
+                }
+                filepart.write(realPath + "/" + fileName);
+                File sourceImage = new File(realPath + "/" + fileName);
+
+                us.setAvatar(fileName);
+
+            } catch (Exception e) {
+                //Handle exception in here
+            }
+            request.setAttribute("gender", us.getGender());
+            request.getRequestDispatcher("/views/User_Profile.jsp").forward(request, response);
+        } else if (path.equals("/Buying_History")) {
+            request.getRequestDispatcher("/views/Buying_History.jsp").forward(request, response);
+
         }
-        request.setAttribute("gender",us.getGender());
-        request.getRequestDispatcher("/views/User_Profile.jsp").forward(request, response);
-
     }
 
     /**

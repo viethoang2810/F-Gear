@@ -62,13 +62,13 @@
                                 <div class="navigatior-user">
                                     <div class="user navigator-user-cart">
                                         <a href="../views/Cart.jsp" class="user-cart_link" style="color: #333;font-size: 1.6rem; display: flex;">
-                                            <i class="fa-solid fa-cart-shopping"></i> <span style="color: red">${size} </span> 
+                                            <i class="fa-solid fa-cart-shopping"></i> <span style="color: red" class="cart-size">${size == null ? "0" : size} </span> 
                                         </a>
                                     </div>
                                     <div class=" user navigator-user-account">
                                         <div class="user-account-avatar">
                                             <img src="../avatar/${user.avatar}"
-                                                 alt="VietHoang" class="user-account-image">
+                                                 alt="${user.fullName}" class="user-account-image">
                                         </div>
                                         <div class="user-welcome">
                                             <div class="user-welcome">

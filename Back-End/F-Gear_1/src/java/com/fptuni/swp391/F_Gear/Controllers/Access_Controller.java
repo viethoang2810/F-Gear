@@ -90,8 +90,9 @@ public class Access_Controller extends HttpServlet {
                     case "logout": {
                         session.invalidate();
                         response.sendRedirect("./");
+                        return;
+
                     }
-                    break;
 
                     case "register": {
                         String userName = request.getParameter("userName");
@@ -155,7 +156,7 @@ public class Access_Controller extends HttpServlet {
                         while (st.hasMoreTokens()) {
                             list.add(st.nextToken());
                         }
-                        
+
 //                        for (String string : list) {
 //                            System.out.println(string);
 //                        }
@@ -163,7 +164,6 @@ public class Access_Controller extends HttpServlet {
 //                        System.out.println("email: " + list.get(7));
 //                        System.out.println("fullname: " + list.get(14));
 //                        System.out.println("avatar: " + list.get(26));
-                        
                         Users user = new Users();
                         user.setUserName(list.get(7));
                         user.setAvatar(list.get(26));
@@ -296,13 +296,13 @@ public class Access_Controller extends HttpServlet {
                         String emailAddress = request.getParameter("gmail");
 
                         Users user = a.findByUsernameAndGmail(userName, emailAddress);
-                        
+
                         if (user == null) {
                             request.setAttribute("message", "Username or gmail are incorrect");
                         } else {
                             String newPass = EmailUtils.randomAlphaNumeric(8);
                             if (User_Management.updateUserPassword(a.getMD5(newPass), userName)) {
-                               
+
                                 Email email = new Email();
                                 email.setFrom("dien gmail fpt vo day");
                                 email.setFromPassword("dien pass vo day");
@@ -316,9 +316,9 @@ public class Access_Controller extends HttpServlet {
                                 sb.append("Administrator");
 
                                 email.setContent(sb.toString());
-                             
+
                                 EmailUtils.sendEmail(email);
-                                
+
                                 request.setAttribute("message", "Email sent to the email Address."
                                         + " Please check and get your password");
                                 url = "/views/ForgotPassword_Page.jsp";

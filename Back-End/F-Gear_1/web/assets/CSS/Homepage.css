@@ -391,3 +391,20 @@ a {
 .footer-left h3 {
     margin: 15px 0;
 }
+.user-cart_link{
+    position:relative;
+}
+.cart-size{
+    position: absolute;
+    background-color: yellow;
+    border-radius: 25px;
+    width: 30px;
+    height: 20px;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    top:-10px;
+    left: 20px;
+}

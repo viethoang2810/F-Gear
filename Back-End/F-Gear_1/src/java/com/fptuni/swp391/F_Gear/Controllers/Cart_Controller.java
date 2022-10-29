@@ -5,6 +5,7 @@
  */
 package com.fptuni.swp391.F_Gear.Controllers;
 
+import com.fptuni.swp391.F_Gear.DAO.Cart_Management;
 import com.fptuni.swp391.F_Gear.DAO.Product_Management;
 import com.fptuni.swp391.F_Gear.DTO.Item;
 import com.fptuni.swp391.F_Gear.DTO.Product;
@@ -38,9 +39,13 @@ public class Cart_Controller extends HttpServlet {
         Product_Management pm = new Product_Management();
         HttpSession session = request.getSession();
         String orderAction = request.getParameter("orderOp");
+
         if (orderAction != null) {
             switch (orderAction) {
                 case "addToCart": {
+                    List<Item> cart = (List<Item>) session.getAttribute("cart");
+
+                    Cart_Management cm = new Cart_Management();
                     int proID = Integer.parseInt(request.getParameter("proID"));
                     int quantity = Integer.parseInt(request.getParameter("quantity"));
                     ArrayList<Product> listProduct = pm.getAllOfProduct();
@@ -49,15 +54,15 @@ public class Cart_Controller extends HttpServlet {
                     long price = Long.parseLong(proCurrentPrice);
                     int quantityTmp = 0;
                     boolean confirm = false;
-                    if (session.getAttribute("cart") == null) {
-                        List<Item> cart = new ArrayList<Item>();
+                    if (cart == null) {
+                        cart = new ArrayList<Item>();
                         cart.add(new Item(product, quantity, price));
                         session.setAttribute("cart", cart);
                         session.setAttribute("size", cart.size());
                         totalPrice(request, response);
                         totalQuantity(request, response);
                     } else {
-                        List<Item> cart = (List<Item>) session.getAttribute("cart");
+                        cart = (List<Item>) session.getAttribute("cart");
                         for (int l = 0; l < cart.size(); l++) {
                             if (proID == (cart.get(l).getProduct().getProID())) {
                                 quantityTmp = cart.get(l).getQuantity() + quantity;
@@ -78,7 +83,11 @@ public class Cart_Controller extends HttpServlet {
                             session.setAttribute("size", cart.size());
                         }
                     }
-                    response.sendRedirect("./Product/Store");
+                    if (cm.findItemInCart(proID, cart)) {
+                          session.setAttribute("checkAdded", cm.findItemInCart(proID, cart));
+                    }
+
+                    response.sendRedirect("./Detail/DetailPro?proID=" + proID);
                 }
                 break;
                 case "buyNow": {
@@ -214,7 +223,7 @@ public class Cart_Controller extends HttpServlet {
                             totalPrice(request, response);
                             totalQuantity(request, response);
                         }
-                    }                   
+                    }
                 }
                 response.sendRedirect("./views/Cart.jsp");
                 break;

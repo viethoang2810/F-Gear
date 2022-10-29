@@ -43,10 +43,10 @@
                                                 <a href="../Home/HomePage" class="navigator-item_link ">Home</a>
                                             </li>
                                             <li class="navigator-item">
-                                                <a href="../Profile/" class="navigator-item_link active">Profile</a>
+                                                <a href="../Profile/YourProfile" class="navigator-item_link active">Profile</a>
                                             </li>
                                             <li class="navigator-item">
-                                                <a href="./views/Buying_History.jsp" class="navigator-item_link">History</a>
+                                                <a href="../Profile/Buying_History" class="navigator-item_link">History</a>
                                             </li>
                                         </ul>
                                     </nav>
@@ -55,7 +55,7 @@
 
                                 <div class="navigatior-user">
                                     <div class="user navigator-user-cart">
-                                        <a href="" class="user-cart_link" style="color: #333;font-size: 1.6rem;">
+                                        <a href="../views/Cart.jsp" class="user-cart_link" style="color: #333;font-size: 1.6rem;">
                                             <i class="fa-solid fa-cart-shopping"></i>
                                         </a>
                                     </div>

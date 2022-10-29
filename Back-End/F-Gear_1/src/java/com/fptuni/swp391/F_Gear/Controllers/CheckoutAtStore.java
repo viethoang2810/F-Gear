@@ -5,21 +5,29 @@
  */
 package com.fptuni.swp391.F_Gear.Controllers;
 
-import com.fptuni.swp391.F_Gear.DAO.Product_Management;
+import com.fptuni.swp391.F_Gear.DAO.Cart_Management;
+import com.fptuni.swp391.F_Gear.DTO.Item;
+import com.fptuni.swp391.F_Gear.DTO.Orders;
 import com.fptuni.swp391.F_Gear.DTO.Product;
+import com.fptuni.swp391.F_Gear.DTO.Users;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author dell
  */
-public class Product_Controller extends HttpServlet {
+@WebServlet(name = "CheckoutAtStore", urlPatterns = {"/CheckoutAtStore"})
+public class CheckoutAtStore extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,23 +40,22 @@ public class Product_Controller extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        ArrayList<Product> listOfProduct = new ArrayList<>();
-        Product_Management pm = new Product_Management();
-        String sortProduct = request.getParameter("sort_by");
-        String keySearch = request.getParameter("keySearch");
+        HttpSession session = request.getSession();
+        Cart_Management cm = new Cart_Management();
+        Users u = (Users) session.getAttribute("user");
+        List<Item> cart = (List<Item>) session.getAttribute("cart");
 
-        if (sortProduct != null) {
-            listOfProduct = pm.getAllOfProductAfterSort(sortProduct);
-        } else if (keySearch != null) {
-            listOfProduct = pm.getListFilteredFromHomePage(keySearch);
-        } else {
-            listOfProduct = pm.getAllOfProduct();
+        cm.createOrder(u);
+        List<Orders> listOrders = cm.listOrder();
+        Orders o = listOrders.get(listOrders.size() - 1);
 
+        for (int i = 0; i < cart.size(); i++) {
+            cm.createOrderDetail(o, cart.get(i).getProduct(), cart.get(i).getQuantity(), cart.get(i).getPrice());
         }
+        session.removeAttribute("cart");
+        session.removeAttribute("total");
+        response.sendRedirect("./views/Contact.jsp");
 
-        request.setAttribute("listOfProduct", listOfProduct);
-        request.getRequestDispatcher("/views/Product_Page.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

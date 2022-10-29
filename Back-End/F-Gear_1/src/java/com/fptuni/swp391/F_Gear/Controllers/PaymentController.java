@@ -5,21 +5,23 @@
  */
 package com.fptuni.swp391.F_Gear.Controllers;
 
-import com.fptuni.swp391.F_Gear.DAO.Product_Management;
-import com.fptuni.swp391.F_Gear.DTO.Product;
+import com.fptuni.swp391.F_Gear.DTO.Item;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Admin
+ * @author dell
  */
-public class Product_Controller extends HttpServlet {
+@WebServlet(name = "PaymentController", urlPatterns = {"/PaymentController"})
+public class PaymentController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,23 +34,34 @@ public class Product_Controller extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        ArrayList<Product> listOfProduct = new ArrayList<>();
-        Product_Management pm = new Product_Management();
-        String sortProduct = request.getParameter("sort_by");
-        String keySearch = request.getParameter("keySearch");
+        HttpSession session = request.getSession();
+        String paymentType = request.getParameter("payment");
 
-        if (sortProduct != null) {
-            listOfProduct = pm.getAllOfProductAfterSort(sortProduct);
-        } else if (keySearch != null) {
-            listOfProduct = pm.getListFilteredFromHomePage(keySearch);
-        } else {
-            listOfProduct = pm.getAllOfProduct();
+        if (paymentType == null) {
+            response.sendRedirect("./views/Cart.jsp");
+            return;
+        }
+        switch (paymentType) {
+            case "store": {
+                List<Item> cart = (List<Item>) session.getAttribute("cart");
 
+                request.setAttribute("cart", cart);
+                request.getRequestDispatcher("./views/ReviewPayment.jsp").forward(request, response);
+                break;
+            }
+            case "e-wallet": {
+                List<Item> cart = (List<Item>) session.getAttribute("cart");
+
+                float TAX = (float) (cart.get(0).getPrice() / 23000 * 2.99 / 100 + 0.49);
+                float shipping = 20;
+                request.setAttribute("TAX", TAX);
+                request.setAttribute("shipping", shipping);
+                request.getRequestDispatcher("./views/ReviewPaypal.jsp").forward(request, response);
+
+                break;
+            }
         }
 
-        request.setAttribute("listOfProduct", listOfProduct);
-        request.getRequestDispatcher("/views/Product_Page.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

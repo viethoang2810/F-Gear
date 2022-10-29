@@ -25,7 +25,7 @@
               integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     </head>
 
-    <body>
+    <body style="position: relative;">
         <%@include file="Header.jsp" %>
 
         <div class="container-fluid">
@@ -36,6 +36,22 @@
 
                 </div>
             </div>
+            <%
+                HttpSession sesstion = request.getSession();
+                if (session.getAttribute("checkAdded") != null) {
+                    if ((boolean) session.getAttribute("checkAdded")) {
+                        out.println(" <div class=' pop-up-wrapper'>");
+                        out.println("<div class='pop-up-content'>");
+                        //out.println("<i class='fa-solid fa-circle-xmark reject-icon'></i>");
+                        out.println("<i class='fa-solid fa-circle-check accept-icon'></i>");
+                        out.println(" <span class='content_text'>Add product to cart successful</span>");
+                        out.println("</div>");
+                        out.println("</div>");
+                        session.setAttribute("checkAdded", false);
+                    } 
+                }
+            %>
+
             <!-- Categories sidebar -->
             <!--            <div class="row sidebar-wrapper " style="background-color:#fff;">
                             <div class=" btn-nav">
@@ -235,7 +251,7 @@
 
         </div>
     </body>
-    <script src="./assets/JavaScript/Detail_Product.js"></script>
+    <script src="../assets/JavaScript/Detail_Product.js"></script>
     <script src="./assets/JavaScript/CommonFeatures.js"></script>
 
 </html>

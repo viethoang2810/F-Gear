@@ -5,10 +5,11 @@
  */
 package com.fptuni.swp391.F_Gear.Controllers;
 
-import com.fptuni.swp391.F_Gear.DAO.Product_Management;
-import com.fptuni.swp391.F_Gear.DTO.Product;
+import com.fptuni.swp391.F_Gear.DAO.Payment_Services;
+import com.fptuni.swp391.F_Gear.DTO.Orders;
+import com.paypal.base.rest.PayPalRESTException;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,9 +18,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Admin
+ * @author dell
  */
-public class Product_Controller extends HttpServlet {
+@WebServlet(name = "CheckoutPaypal_Controller", urlPatterns = {"/CheckoutPaypal_Controller"})
+public class CheckoutPaypal_Controller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,23 +34,25 @@ public class Product_Controller extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        ArrayList<Product> listOfProduct = new ArrayList<>();
-        Product_Management pm = new Product_Management();
-        String sortProduct = request.getParameter("sort_by");
-        String keySearch = request.getParameter("keySearch");
+        String proId = request.getParameter("productId");
+        String product = request.getParameter("productName");
+        String subtotal = request.getParameter("subtotal");
+        String shipping = request.getParameter("shipping");
+        String tax = request.getParameter("tax");
+        String total = request.getParameter("total");
+        String quantity = request.getParameter("quantity");
+        Orders o = new Orders(product, proId, subtotal, tax, shipping, quantity, total);
 
-        if (sortProduct != null) {
-            listOfProduct = pm.getAllOfProductAfterSort(sortProduct);
-        } else if (keySearch != null) {
-            listOfProduct = pm.getListFilteredFromHomePage(keySearch);
-        } else {
-            listOfProduct = pm.getAllOfProduct();
-
+        try {
+            Payment_Services paymentServices = new Payment_Services();
+            String approvalLink = paymentServices.authorizePayment(o);
+//            System.out.println("day la dong in ra o servlet:" + approvalLink);
+            response.sendRedirect(approvalLink);
+        } catch (PayPalRESTException e) {
+            e.printStackTrace();
+            request.setAttribute("error", "Please try again!!!");
+            request.getRequestDispatcher("./views/paymentError.jsp").forward(request, response);
         }
-
-        request.setAttribute("listOfProduct", listOfProduct);
-        request.getRequestDispatcher("/views/Product_Page.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

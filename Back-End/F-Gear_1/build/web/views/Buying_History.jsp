@@ -42,13 +42,13 @@
                                     <nav class="navigator">
                                         <ul class="navigator-list">
                                             <li class="navigator-item">
-                                                <a href="../views/Homepage.jsp" class="navigator-item_link ">Home</a>
+                                                <a href="../Home/Homepage" class="navigator-item_link ">Home</a>
                                             </li>
                                             <li class="navigator-item">
-                                                <a href="../views/User_Profile.jsp" class="navigator-item_link ">Profile</a>
+                                                <a href="../Profile/UserProfile" class="navigator-item_link ">Profile</a>
                                             </li>
                                             <li class="navigator-item">
-                                                <a href="../views/Buying_History.jsp" class="navigator-item_link active">History</a>
+                                                <a href="../Profile/Buying_History.jsp" class="navigator-item_link active">History</a>
                                             </li>
                                         </ul>
                                     </nav>
@@ -112,186 +112,7 @@
                                         <th class="cart-info">16.000.000Ä</th>
                                         <th class="cart-info">2 years</th>
                                     </tr>
-                                    <tr class="table-row">
-                                        <th scope="row" class="cart-info">1</th>
-                                        <th class="cart-info">23-9-2022</th>
-                                        <th class="cart-info">
-                                            <a href="" class="product-name_link">Laptop MSI Gaming</a>
-                                        </th>
-                                        <th class="cart-info">1</th>
-                                        <th class="cart-info">16.000.000Ä</th>
-                                        <th class="cart-info">2 years</th>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <th scope="row" class="cart-info">1</th>
-                                        <th class="cart-info">23-9-2022</th>
-                                        <th class="cart-info">
-                                            <a href="" class="product-name_link">Laptop MSI Gaming</a>
-                                        </th>
-                                        <th class="cart-info">1</th>
-                                        <th class="cart-info">16.000.000Ä</th>
-                                        <th class="cart-info">2 years</th>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <th scope="row" class="cart-info">1</th>
-                                        <th class="cart-info">23-9-2022</th>
-                                        <th class="cart-info">
-                                            <a href="" class="product-name_link">Laptop MSI Gaming</a>
-                                        </th>
-                                        <th class="cart-info">1</th>
-                                        <th class="cart-info">16.000.000Ä</th>
-                                        <th class="cart-info">2 years</th>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <th scope="row" class="cart-info">1</th>
-                                        <th class="cart-info">23-9-2022</th>
-                                        <th class="cart-info">
-                                            <a href="" class="product-name_link">Laptop MSI Gaming</a>
-                                        </th>
-                                        <th class="cart-info">1</th>
-                                        <th class="cart-info">16.000.000Ä</th>
-                                        <th class="cart-info">2 years</th>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <th scope="row" class="cart-info">1</th>
-                                        <th class="cart-info">23-9-2022</th>
-                                        <th class="cart-info">
-                                            <a href="" class="product-name_link">Laptop MSI Gaming</a>
-                                        </th>
-                                        <th class="cart-info">1</th>
-                                        <th class="cart-info">16.000.000Ä</th>
-                                        <th class="cart-info">2 years</th>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <th scope="row" class="cart-info">1</th>
-                                        <th class="cart-info">23-9-2022</th>
-                                        <th class="cart-info">
-                                            <a href="" class="product-name_link">Laptop MSI Gaming</a>
-                                        </th>
-                                        <th class="cart-info">1</th>
-                                        <th class="cart-info">16.000.000Ä</th>
-                                        <th class="cart-info">2 years</th>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <th scope="row" class="cart-info">1</th>
-                                        <th class="cart-info">23-9-2022</th>
-                                        <th class="cart-info">
-                                            <a href="" class="product-name_link">Laptop MSI Gaming</a>
-                                        </th>
-                                        <th class="cart-info">1</th>
-                                        <th class="cart-info">16.000.000Ä</th>
-                                        <th class="cart-info">2 years</th>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <th scope="row" class="cart-info">1</th>
-                                        <th class="cart-info">23-9-2022</th>
-                                        <th class="cart-info">
-                                            <a href="" class="product-name_link">Laptop MSI Gaming</a>
-                                        </th>
-                                        <th class="cart-info">1</th>
-                                        <th class="cart-info">16.000.000Ä</th>
-                                        <th class="cart-info">2 years</th>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <th scope="row" class="cart-info">1</th>
-                                        <th class="cart-info">23-9-2022</th>
-                                        <th class="cart-info">
-                                            <a href="" class="product-name_link">Laptop MSI Gaming</a>
-                                        </th>
-                                        <th class="cart-info">1</th>
-                                        <th class="cart-info">16.000.000Ä</th>
-                                        <th class="cart-info">2 years</th>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <th scope="row" class="cart-info">1</th>
-                                        <th class="cart-info">23-9-2022</th>
-                                        <th class="cart-info">
-                                            <a href="" class="product-name_link">Laptop MSI Gaming</a>
-                                        </th>
-                                        <th class="cart-info">1</th>
-                                        <th class="cart-info">16.000.000Ä</th>
-                                        <th class="cart-info">2 years</th>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <th scope="row" class="cart-info">1</th>
-                                        <th class="cart-info">23-9-2022</th>
-                                        <th class="cart-info">
-                                            <a href="" class="product-name_link">Laptop MSI Gaming</a>
-                                        </th>
-                                        <th class="cart-info">1</th>
-                                        <th class="cart-info">16.000.000Ä</th>
-                                        <th class="cart-info">2 years</th>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <th scope="row" class="cart-info">1</th>
-                                        <th class="cart-info">23-9-2022</th>
-                                        <th class="cart-info">
-                                            <a href="" class="product-name_link">Laptop MSI Gaming</a>
-                                        </th>
-                                        <th class="cart-info">1</th>
-                                        <th class="cart-info">16.000.000Ä</th>
-                                        <th class="cart-info">2 years</th>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <th scope="row" class="cart-info">1</th>
-                                        <th class="cart-info">23-9-2022</th>
-                                        <th class="cart-info">
-                                            <a href="" class="product-name_link">Laptop MSI Gaming</a>
-                                        </th>
-                                        <th class="cart-info">1</th>
-                                        <th class="cart-info">16.000.000Ä</th>
-                                        <th class="cart-info">2 years</th>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <th scope="row" class="cart-info">1</th>
-                                        <th class="cart-info">23-9-2022</th>
-                                        <th class="cart-info">
-                                            <a href="" class="product-name_link">Laptop MSI Gaming</a>
-                                        </th>
-                                        <th class="cart-info">1</th>
-                                        <th class="cart-info">16.000.000Ä</th>
-                                        <th class="cart-info">2 years</th>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <th scope="row" class="cart-info">1</th>
-                                        <th class="cart-info">23-9-2022</th>
-                                        <th class="cart-info">
-                                            <a href="" class="product-name_link">Laptop MSI Gaming</a>
-                                        </th>
-                                        <th class="cart-info">1</th>
-                                        <th class="cart-info">16.000.000Ä</th>
-                                        <th class="cart-info">2 years</th>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <th scope="row" class="cart-info">1</th>
-                                        <th class="cart-info">23-9-2022</th>
-                                        <th class="cart-info">
-                                            <a href="" class="product-name_link">Laptop MSI Gaming</a>
-                                        </th>
-                                        <th class="cart-info">1</th>
-                                        <th class="cart-info">16.000.000Ä</th>
-                                        <th class="cart-info">2 years</th>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <th scope="row" class="cart-info">1</th>
-                                        <th class="cart-info">23-9-2022</th>
-                                        <th class="cart-info">
-                                            <a href="" class="product-name_link">Laptop MSI Gaming</a>
-                                        </th>
-                                        <th class="cart-info">1</th>
-                                        <th class="cart-info">16.000.000Ä</th>
-                                        <th class="cart-info">2 years</th>
-                                    </tr>
-                                    <tr class="table-row">
-                                        <th scope="row" class="cart-info">1</th>
-                                        <th class="cart-info">23-9-2022</th>
-                                        <th class="cart-info">
-                                            <a href="" class="product-name_link">Laptop MSI Gaming</a>
-                                        </th>
-                                        <th class="cart-info">1</th>
-                                        <th class="cart-info">16.000.000Ä</th>
-                                        <th class="cart-info">2 years</th>
-                                    </tr>
+                                   
 
                                 </tbody>
                             </table>

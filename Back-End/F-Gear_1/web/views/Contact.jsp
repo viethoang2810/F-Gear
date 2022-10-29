@@ -20,13 +20,35 @@
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
     </head>
 
+    <style>
+        .body-testimonials-item {
+            margin: 0 auto;
+            width: 1000px;
+            height: 4px;
+            background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet, red);
+            animation: go 3s linear infinite;
+        }
 
+        @keyframes go {
+            0% {
+                background-position: 0;
+            }
+
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+    </style>
 
     <body>
         <%--<%@include file="./Header.jsp" %>--%>
-        <a href="" style="font-size: 40px; padding: 20px 0 0 0px;"> ⬅ Back to home</a>
+        <a href="" style="font-size: 40px; padding: 20px 0 0 0px; text-decoration: none; "> ⬅ Back to home</a>
+        <div class="body-testimonials-item"></div>
+        <div style="width:1000px; margin: 0 auto;">
+            <h1 style="text-align: center;" >Thank you for purchasing our product. Please leave your comments to help us improve.</h1>
 
-
+        </div>
+        <div class="body-testimonials-item"></div>
         <div class="container-fluid px-5 my-5">
             <div class="row justify-content-center">
                 <div class="col-xl-10">
@@ -39,12 +61,12 @@
                                 <div class="col-sm-6 p-4" style="background-color: white;">
                                     <div class="text-center">
                                         <div class="h3 fw-light">Contact Form</div>
-                                        <p class="mb-4 text-muted">Split layout contact form</p>
+                                        <p class="mb-4 text-muted">24/7 Customer Care</p>
                                     </div>
 
 
 
-                                    <form id="contactForm" action="MailController" method="post">
+                                    <form id="contactForm" action="../MailController" method="post">
 
                                         <!-- Name Input -->
                                         <div class="form-floating mb-3">

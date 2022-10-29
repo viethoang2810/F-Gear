@@ -23,12 +23,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 /**
  *
  * @author dell
  */
 @WebServlet(name = "MailController", urlPatterns = {"/MailController"})
-public class MailController extends HttpServlet  {
+public class MailController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,7 +42,7 @@ public class MailController extends HttpServlet  {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+
         String name, subject, email, msg;
         name = request.getParameter("name");
         email = request.getParameter("email");
@@ -49,36 +50,36 @@ public class MailController extends HttpServlet  {
         msg = request.getParameter("message");
 
         final String username = "dunghqse151397@fpt.edu.vn";// tài khoản admin
-        final String password = "lienminhhuyenthoai";// mật khẩu admin
+        final String password = "dung21102001;";// mật khẩu admin
         Properties props = new Properties();
         props.put("mail.smtp.auth", true);
         props.put("mail.smtp.starttls.enable", true);
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
-        
         Session session = Session.getInstance(props,
                 new javax.mail.Authenticator() {
-             @Override
+            @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, password);
             }
         });
+
         try {
-            Message message = new MimeMessage(session);
+            MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(email));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(username));
             MimeBodyPart textPart = new MimeBodyPart();
             Multipart multipart = new MimeMultipart();
             String final_Text = "Name: " + name + "    " + "Email: " + email + "    " + "Subject: " + subject + "    " + "Mesaage: " + msg;
-            textPart.setText(final_Text);
-            message.setSubject(subject);
+            textPart.setText(final_Text, "UTF-8");
+            message.setSubject(subject, "UTF-8");
             multipart.addBodyPart(textPart);
-            message.setContent(multipart);
+            message.setContent(multipart, "text/html; charset=UTF-8");
             message.setSubject("Contact Details");
             Transport.send(message);
 //            out.println("<center><h2 style='color:green;'>Email Sent Successfully.</h2>");
 //            out.println("Thank you " + name + ", your message has been submitted to us.</center>");
-            request.getRequestDispatcher("/views/Homepage.jsp").forward(request, response);
+            request.getRequestDispatcher("./views/Thanks.jsp").forward(request, response);
         } catch (Exception e) {
             out.println(e);
         }
