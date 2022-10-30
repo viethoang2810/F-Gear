@@ -88,7 +88,7 @@
                             <img src="../avatar/${user.avatar}" alt="" class="user-avatar-image">
                         </div>
                         <div class="change-image" >
-                            <form class="form-file" action="./Profile" method="POST" enctype="multipart/form-data">
+                            <form class="form-file" action="./UserProfile" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="username" value="${user.userName}"/>
                                 <label for="file-upload" class="custom-file-upload" >
                                     <i class="fa fa-cloud-upload"></i> Choose from your device

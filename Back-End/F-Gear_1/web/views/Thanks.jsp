@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <a href="Home/HomePage">Back to Home</a>
+        <a href="../Home/Homepage">Back to Home</a>
         <h1>Thanks so much</h1>
     </body>
 </html>

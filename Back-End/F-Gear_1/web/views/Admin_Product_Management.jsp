@@ -76,6 +76,9 @@
                                 <li class="navigation-item active">
                                     <a href="../Admin/Management" class="navigation-item_link ">Product Management</a>
                                 </li>
+                                <li class="navigation-item ">
+                                    <a href="../Admin/AccountManagement" class="navigation-item_link ">Account Management</a>
+                                </li>
                             </ul>
                         </div>
                         <button class="modal-btn">Add new</button>

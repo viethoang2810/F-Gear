@@ -14,97 +14,96 @@
         <title>Review</title>
     </head>
     <style>
-        body {
-            user-select: none;
-        }
-        .body {
-            display: flex;
-
-        }
-        td , th{
-            text-align: center;
-        }
-
-        .checkout__container {
-            width: 40%;
-            margin: 20px auto;
-            background: #f7e9ef;
-            padding: 20px 20px;
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            height: 360px;
-        }
         .product {
-            width: 50%;
+            width: 80%;
             position: relative;
+            left: 50%;
+            /*top: 50%;*/
             margin: 20px;
-            background: #f1ecec;
             padding: 10px 10px 40px 10px;
             border-radius: 10px;
+            transform: translateX(-50%);
         }
-        fieldset {
-            border-radius: 10px;
-
-        }
-        input {
-            border: none;
-            background: #f7e9ef;
+        table {
             width: 100%;
-        }
-
-        input:focus {
-            outline: none;
-            padding: 0;
-            font-size: 20px;
-            background: #f7e9ef;
-        }
-        button {
-            width: 40%;
-            padding: 10px 0;
-            margin: 30px 0 30px 160px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            color: #fff;
-            background-color: #cc2dee;
-            position: absolute;
-            bottom: 0;
-            right: 20px;
-            font-size: 28px;
-        }
-        button:hover {
-            opacity: 0.7;
-        }
-
-        .total {
-            width: 200px;
-            height: 20px;
-            background: #f760a1;
-            padding: 20px;
-            border-radius: 10px;
-            color: white;
-            font-size: 20px;
-            float: right;
             text-align: center;
+            font-size: 20px;
+        }
+        td {
+            border-bottom: 1px solid #000;  
+            padding: 20px 0;
+        }
+        .button-52 {
+            font-size: 16px;
+            font-weight: 200;
+            letter-spacing: 1px;
+            padding: 13px 20px 13px;
+            outline: 0;
+            border: 1px solid black;
+            cursor: pointer;
+            position: relative;
+            background-color: rgba(0, 0, 0, 0);
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .button-52:after {
+            content: "";
+            background-color: #ffe54c;
+            width: 100%;
+            z-index: -1;
+            position: absolute;
+            height: 100%;
+            top: 7px;
+            left: 7px;
+            transition: 0.2s;
+        }
+
+        .button-52:hover:after {
+            top: 0px;
+            left: 0px;
+        }
+
+        @media (min-width: 768px) {
+            .button-52 {
+                padding: 13px 50px 13px;
+            }
         }
     </style>
     <body>
-        <div>
-            <a href="./views/Cart.jsp">Back To Cart</a>
+        <a href="" style="text-decoration: none;">
+            <button style="padding:15px 20px; border-radius: 24px; font-size: 24px; cursor: pointer;">
+                👈 Back to Home    
+            </button> 
+        </a>
+
+        <div style="width: 100%; text-align: center;">
+            <h1 style="font-size: 42px;">F-Gear Shop</h1>
+            <p style="font-size: 24px;">Always bring the best customer service and experience.</p>
         </div>
-        <div class="body">
-            <form class="checkout__container" action="CheckoutPaypal_Controller">
-                <h3>Billing Address</h3>
-                <fieldset>
-                    <legend><i class="fa-solid fa-location-crosshairs"></i> Full Name</legend>
-                    <div>${sessionScope.user.fullName}</div>
-                </fieldset>
-                <fieldset>
-                    <legend><i class="fa-solid fa-phone"></i> Phone</legend>
-                    <div>${sessionScope.user.phoneNumber}</div>
-                </fieldset>
+        <hr/>
+        <div style="width:100%; text-align: center;">
+            <form action="CheckoutPaypal_Controller" style="display: flex; justify-content: space-around; width:100%; text-align: center;">
+                <div style="width: 33%;">
+                    <h1>BILL TO</h1>
+                    <h3>Customer name: ${sessionScope.user.fullName}</h3>
+                    <h3>Phone number: ${sessionScope.user.phoneNumber}</h3>
+                </div>
+                <div style="width: 33%;">
+                    <h1>DETAILS</h1>
+                    <h3>Genuine products with great deals.</h3>
+                </div>
+                <div style="width: 33%;">
+                    <h1>PAYMENT</h1>
+                    <h3>
+                        Total:
+                        <fmt:setLocale value="en_US"/>
+                        <fmt:formatNumber value="${sessionScope.total/23000+TAX+shipping}" type="currency"/>
+                    </h3>
+                </div>
                 <c:forEach var="item" items="${sessionScope.cart}">
                     <input type="hidden" name="productId" value="${item.product.proID}"/>
                     <input type="hidden" name="productName" value="${item.product.proName}"/>
@@ -114,53 +113,61 @@
                     <input type="hidden" name="shipping" value="${shipping}"/>
                     <input type="hidden" name="total" value="${sessionScope.total/23000+TAX+shipping}"/>
                 </c:forEach>
-                <button>Checkout</button>
             </form>
-            <div class="product">
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="text-align: left; width: 60%;">Product</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach var="item" items="${sessionScope.cart}">
-                            <tr>
-                                <td style="text-align: left;">
-                                    <div>
-                                        <h4>${item.product.proName}</h4>
-                                    </div>
-                                </td>
-                                <td>
-                                    <fmt:setLocale value="en_US"/>
-                                    <fmt:formatNumber value="${item.price/23000}" type="currency"/>
-                                </td>
-                                <td>
-                                    <span>
-                                        ${item.quantity}
-                                    </span>
-                                </td>
-
-                            </tr>
-
-
-                        </c:forEach>
-                    </tbody>
-                </table>
-                <span>Shipping: 
-                    <fmt:setLocale value="en_US"/>
-                    <fmt:formatNumber value="${shipping}" type="currency"/>
-                </span>
-                <span>TAX: 
-                    <fmt:setLocale value="en_US"/>
-                    <fmt:formatNumber value="${TAX}" type="currency"/>
-                </span>
-                <span class="total">Total: <fmt:setLocale value="en_US"/>
-                    <fmt:formatNumber value="${sessionScope.total/23000+TAX+shipping}" type="currency"/>
-                </span>
-            </div>
         </div>
+        <hr/>
+        <div class="product">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="text-align: left; width: 60%;">Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach var="item" items="${cart}">
+                        <tr>
+                            <td style="text-align: left;">
+                                <div>
+                                    ${item.product.proName}
+                                </div>
+                            </td>
+                            <td>
+                                <fmt:setLocale value="en_US"/>
+                                <fmt:formatNumber value="${item.price/23000}" type="currency"/>
+                            </td>
+
+                            <td>
+                                <span>
+                                    ${item.quantity}
+                                </span>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+            <div style="display: flex; justify-content: space-around; width: 100%; margin: 40px 0">
+                <div style="font-size: 20px;">
+                    <p>Shipping:  <fmt:setLocale value="en_US"/>
+                        <fmt:formatNumber value="${shipping}" type="currency"/></p>
+                    <p>TAX:   <fmt:setLocale value="en_US"/>
+                        <fmt:formatNumber value="${TAX}" type="currency"/></p>
+                </div>
+                <div>
+                    <form action="CheckoutPaypal_Controller">
+                        <button class="button-52" role="button">Check out</button>
+                        <c:forEach var="item" items="${sessionScope.cart}">
+                            <input type="hidden" name="productId" value="${item.product.proID}"/>
+                            <input type="hidden" name="productName" value="${item.product.proName}"/>
+                            <input type="hidden" name="subtotal" value="${item.price/23000}"/>
+                            <input type="hidden" name="quantity" value="${item.quantity}"/>
+                            <input type="hidden" name="tax" value="${TAX}"/>
+                            <input type="hidden" name="shipping" value="${shipping}"/>
+                            <input type="hidden" name="total" value="${sessionScope.total/23000+TAX+shipping}"/>
+                        </c:forEach>
+                    </form>
+                </div>
+            </div>
     </body>
 </html>
