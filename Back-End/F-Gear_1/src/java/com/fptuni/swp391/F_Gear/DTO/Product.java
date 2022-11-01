@@ -25,6 +25,7 @@ public class Product implements Comparable<Product> {
     private int status;
     private int cateID;
     private int brandID;
+    private String guaDetail;
 
     public Product() {
     }
@@ -60,6 +61,22 @@ public class Product implements Comparable<Product> {
         this.status = status;
         this.cateID = cateID;
         this.brandID = brandID;
+    }
+    
+    public Product(int proID, String proName, String proOriginalPrice, int discount, String proCurrentPrice, String brandName, ArrayList<Images> listImage, ArrayList<Specification> listSpecification, String proType, int status, int cateID, int brandID, String guaDetail) {
+        this.proID = proID;
+        this.proName = proName;
+        this.proOriginalPrice = proOriginalPrice;
+        this.discount = discount;
+        this.proCurrentPrice = proCurrentPrice;
+        this.brandName = brandName;
+        this.listImage = listImage;
+        this.listSpecification = listSpecification;
+        this.proType = proType;
+        this.status = status;
+        this.cateID = cateID;
+        this.brandID = brandID;
+        this.guaDetail = guaDetail;
     }
 
     public int getProID() {
@@ -157,6 +174,14 @@ public class Product implements Comparable<Product> {
     public void setBrandID(int brandID) {
         this.brandID = brandID;
     }
+    
+    public String getGuaDetail() {
+        return guaDetail;
+    }
+
+    public void setGuaDetail(String guaDetail) {
+        this.guaDetail = guaDetail;
+    }    
 
     @Override
     public int compareTo(Product o) {

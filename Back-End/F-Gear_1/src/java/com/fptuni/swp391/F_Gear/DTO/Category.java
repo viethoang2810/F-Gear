@@ -9,14 +9,14 @@ package com.fptuni.swp391.F_Gear.DTO;
  *
  * @author duyng
  */
-public class Categoty {
+public class Category {
     private int cateID;
     private String cateName;
 
-    public Categoty() {
+    public Category() {
     }
 
-    public Categoty(int cateID, String cateName) {
+    public Category(int cateID, String cateName) {
         this.cateID = cateID;
         this.cateName = cateName;
     }

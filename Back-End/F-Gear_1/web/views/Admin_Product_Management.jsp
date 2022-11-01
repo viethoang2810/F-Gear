@@ -79,6 +79,15 @@
                                 <li class="navigation-item ">
                                     <a href="../Admin/AccountManagement" class="navigation-item_link ">Account Management</a>
                                 </li>
+                                <li class="navigation-item ">
+                                    <a href="../Brand/*" class="navigation-item_link">Brand Management</a>
+                                </li>
+                                <li class="navigation-item ">
+                                    <a href="../Guarantee/*" class="navigation-item_link">Category Management</a>
+                                </li>
+                                <li class="navigation-item ">
+                                    <a href="../Guarantee/*" class="navigation-item_link">Guarantee Management</a>
+                                </li>                              
                             </ul>
                         </div>
                         <button class="modal-btn">Add new</button>

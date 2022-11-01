@@ -43,15 +43,17 @@ public class Product_Management {
                 + "I.Url,"
                 + "B.BrandName,"
                 + "C.CateName,"
+                + "G.Detail,"
                 + "S.SpecName,"
                 + "PS.Detail"
                 + " FROM dbo.Product P ,"
                 + "dbo.Images I , "
                 + "dbo.Brand B ,"
                 + "dbo.Category C ,"
+                + "dbo.Guarantee G , "
                 + "dbo.Specification S,"
                 + "dbo.ProSpec PS "
-                + " WHERE P.BrandID = B.BrandID AND P.CateID = C.CateID AND I.ProID = P.ProID AND S.SpecID = PS.SpecID AND PS.ProID = P.ProID ORDER BY B.BrandName ASC ";
+                + " WHERE P.BrandID = B.BrandID AND P.CateID = C.CateID AND I.ProID = P.ProID AND S.SpecID = PS.SpecID AND PS.ProID = P.ProID AND G.GuaranteeID = P.GuaranteeID ORDER BY B.BrandName ASC ";
         try {
             con = DBUtils.getConnection();
             stm = con.prepareStatement(sql);
@@ -87,7 +89,7 @@ public class Product_Management {
                             product.setListImage(listOfImages);
                             listOfSpecification.add(new Specification(rs.getString("SpecName"), rs.getString("Detail")));
                             product.setListSpecification(listOfSpecification);
-
+                            product.setGuaDetail(rs.getString("Detail")); 
                             listOfProduct.add(product);
 
                         }
@@ -107,7 +109,7 @@ public class Product_Management {
                     product.setListImage(listOfImages);
                     listOfSpecification.add(new Specification(rs.getString("SpecName"), rs.getString("Detail")));
                     product.setListSpecification(listOfSpecification);
-
+                    product.setGuaDetail(rs.getString("Detail")); 
                     listOfProduct.add(product);
                 }
 

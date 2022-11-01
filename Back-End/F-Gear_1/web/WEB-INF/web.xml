@@ -28,6 +28,18 @@
         <servlet-name>Sale_Controller</servlet-name>
         <servlet-class>com.fptuni.swp391.F_Gear.Controllers.Sale_Controller</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Category_Controller</servlet-name>
+        <servlet-class>com.fptuni.swp391.F_Gear.Controllers.Category_Controller</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Brand_Controller</servlet-name>
+        <servlet-class>com.fptuni.swp391.F_Gear.Controllers.Brand_Controller</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Guarantee_Controller</servlet-name>
+        <servlet-class>com.fptuni.swp391.F_Gear.Controllers.Guarantee_Controller</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>User_Controller</servlet-name>
         <url-pattern>/Profile/*</url-pattern>
@@ -59,6 +71,18 @@
     <servlet-mapping>
         <servlet-name>Sale_Controller</servlet-name>
         <url-pattern>/Sale/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Category_Controller</servlet-name>
+        <url-pattern>/Category/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Brand_Controller</servlet-name>
+        <url-pattern>/Brand/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Guarantee_Controller</servlet-name>
+        <url-pattern>/Guarantee/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

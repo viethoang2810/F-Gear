@@ -125,7 +125,7 @@
                                 </form>
                                 <td class="cart-item_price"><fmt:formatNumber type = "number" maxFractionDigits = "3" value="${i.quantity*i.price}" /> vnd</td>
 
-                                <td class="cart-item_warranty">2 years</td>
+                                <td class="cart-item_warranty">${i.product.guaDetail}</td>
                                 <form action="../Cart">
                                     <td class="remove-cart" style="font-size: 1.6rem;cursor: pointer;">
                                         <button name="orderOp" value="remove" class="fa-solid fa-trash" style="border: none">
