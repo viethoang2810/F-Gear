@@ -1,4 +1,4 @@
-﻿<%@page contentType="text/html" pageEncoding="UTF-8"%>
+﻿﻿<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -59,11 +59,11 @@
                 <div class="white-space">
 
                 </div>
-                <form action="./Brand" style="width: 70%; margin-left: 20%;">
+                <form action="./Admin" style="width: 70%; margin-left: 20%;">
                     <input type="text" placeholder="Search . . ."
                            style="width: 60%; height: 40px; padding: 5px 0 5px 10px;" name="name" />
                     <button style="padding: 8px 15px; border: none; background-color: gray; color: white; border-radius: 10px;" name="adminOp" value="search">Search</button>
-                </form>               
+                </form>
             </div>
             <div class="row sidebar-row" >
                 <div class="sidebar-wrapper">
@@ -76,7 +76,10 @@
                                 <li class="navigation-item">
                                     <a href="../Admin/Management" class="navigation-item_link ">Product Management</a>
                                 </li>
-                                <li class="navigation-item active ">
+                                <li class="navigation-item ">
+                                    <a href="../Admin/AccountManagement" class="navigation-item_link ">Account Management</a>
+                                </li>
+                                <li class="navigation-item ">
                                     <a href="../Brand/*" class="navigation-item_link">Brand Management</a>
                                 </li>
                                 <li class="navigation-item ">
@@ -84,8 +87,8 @@
                                 </li>
                                 <li class="navigation-item ">
                                     <a href="../Guarantee/*" class="navigation-item_link">Guarantee Management</a>
-                                </li>
-                                <li class="navigation-item">
+                                </li>     
+                                <li class="navigation-item active">
                                     <a href="../WarrantyPolicy/*" class="navigation-item_link ">Warranty Policy</a>
                                 </li>
                             </ul>
@@ -96,16 +99,32 @@
                             <div class="add-modal-content">
                                 <div class="add-modal-form-wrapper">
                                     <div class="add-modal-title">
-                                        <span class="modal-title" style="margin-bottom:30px;">Add new Brand</span>
+                                        <span class="modal-title" style="margin-bottom:30px;">Add new product</span>
                                         <span> <i class="fa-solid fa-xmark close-icon" style="font-size:2rem;margin-left: 70px; margin-bottom:30px;cursor: pointer;"></i></span>
                                     </div>
-                                    <form action="./Brand" class="add-form">
+                                    <form action="./WarrantyPolicy" class="add-form">
+                                        <div class="add-input-wrapper">
+                                            <label for="cateName" class="input-label">Category Name</label>
+                                            <input required type="text" name="cateName" id="proName"  class="input-text" value="${policy.cateName}">
+                                        </div>
                                         <div class="add-input-wrapper">
                                             <label for="brandName" class="input-label">Brand Name</label>
-                                            <input required type="text" name="brandName" id="proName"  class="input-text" value="${brand.brandName}">
+                                            <input required type="text" name="brandName" id="proName"  class="input-text" value="${policy.brandName}">
                                         </div>
-                                        
-                                        <div class="submit-wrapper"> <button id="addBtn" class="addBtn" type="submit" class="submit-btn" name="adminOp" value="create">Save</button></div>
+                                        <div class="add-input-wrapper">
+                                            <label for="typeWarranty" class="input-label">Type Warranty</label>
+                                            <input required type="text" name="typeWarranty" id="proName"  class="input-text" value="${policy.typeWarranty}">
+                                        </div>
+                                        <div class="add-input-wrapper">
+                                            <label for="intendTime" class="input-label">Intend Time</label>
+                                            <input required type="text" name="intendTime" id="proName"  class="input-text" value="${policy.intendTime}">
+                                        </div>
+                                        <div class="add-input-wrapper">
+                                            <label for="note" class="input-label">Note</label>
+                                            <input required type="text" name="note" id="proName"  class="input-text" value="${policy.note}">
+                                        </div>                                
+                                        <div class="submit-wrapper"> <button id="addBtn" class="addBtn" type="submit" class="submit-btn" name="adminOp" value="create">Add Policy
+                                               </button></div>
                                     </form>
                                 </div>
                             </div>
@@ -115,42 +134,64 @@
                         <table class="table">
                             <thead class="table-head">
                                 <tr>
-                                    <th scope="col" style="text-align: center" >Brand ID</th>
-                                    <th scope="col" style="text-align: center">Brand Name</th>
-                                    <th scope="col" style="text-align: center"></th>
+                                    <th scope="col">Policy ID</th>
+                                    <th scope="col">Category Name</th>
+                                    <th scope="col">Brand Name</th>
+                                    <th scope="col">Type Warranty</th>
+                                    <th scope="col">Intend Time</th>
+                                    <th scope="col">Note</th>
+                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <c:forEach var="brand" items="${listOfBrand}">
+                                <c:forEach var="policy" items="${listOfPolicy}">
                                     <tr style="vertical-align: middle;" class="table-row">
-                                        <td scope="row" style="text-align: center">${brand.brandID}</td>
-                                        <td class="table-product_name" style="text-align: center">${brand.brandName}</td>
+                                        <td scope="row">${policy.waID}</td>
+                                        <td class="table-product_name">${policy.cateName}</td>
+                                        <td class="table-product_original">${policy.brandName}</td>
+                                        <td class="table-product_discount">${policy.typeWarranty}</td>
+                                        <td >${policy.intendTime}</td>
+                                        <td >${policy.note}</td>
                                         <td class="table-btns">
                                             <button class="btn-action btn-edit">
                                                 <i class="fa-solid fa-pen-to-square"></i>
                                             </button>
-<%--
+
                                             <button class="btn-action btn-remove">
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>
---%>
                                             <div class="edit-modal-wrapper" style="padding-bottom:20px;">
                                                 <div class="edit-modal-content">
                                                     <div class="edit-modal-form-wrapper">
                                                         <div class="edit-modal-title">
-                                                            <span class="modal-title" style="margin-bottom:30px;">Update Brand</span>
+                                                            <span class="modal-title" style="margin-bottom:30px;">Update product </span>
                                                             <span> <i class="fa-solid fa-xmark exit-icon" style="font-size:2rem;margin-left: 70px; margin-bottom:30px;cursor: pointer;"></i></span>
                                                         </div>
-                                                        <form action="./Brand" class="edit-modal-form"  method="POST">
-                                                            <input type="hidden" name="brand_ID" class="product-id" value="${brand.brandID}">
+                                                        <form action="./WarrantyPolicy" class="edit-modal-form"  method="POST">
+                                                            <input type="hidden" name="policy_id" class="product-id" value="${policy.waID}">
                                                             <div class="edit-input-wrapper">
-                                                                <label for="brandName" class="input-label">Name Brand</label>
-                                                                <input type="text" name="brandName" value="${brand.brandName}" id="proName" class="input-text productName" required="" >
+                                                                <label for="cateName" class="input-label">Category Name</label>
+                                                                <input type="text" name="cateName" value="${policy.cateName}" id="proName" class="input-text productName" required="" >
                                                             </div>
-                                                            
+                                                            <div class="edit-input-wrapper">
+                                                                <label for="brandName" class="input-label">Brand Name</label>
+                                                                <input type="text" name="brandName" value="${policy.brandName}" id="proName" class="input-text productName" required="" >
+                                                            </div>
+                                                            <div class="edit-input-wrapper">
+                                                                <label for="typeWarranty" class="input-label">Type Warranty</label>
+                                                                <input type="text" name="typeWarranty" value="${policy.typeWarranty}" id="proName" class="input-text productName" required="" >
+                                                            </div>
+                                                            <div class="edit-input-wrapper">
+                                                                <label for="intendTime" class="input-label">Intend Time</label>
+                                                                <input type="text" name="intendTime" value="${policy.intendTime}" id="proName" class="input-text productName" required="" >
+                                                            </div>
+                                                            <div class="edit-input-wrapper">
+                                                                <label for="note" class="input-label">Note</label>
+                                                                <input type="text" name="note" value="${policy.note}" id="proName" class="input-text productName" required="" >
+                                                            </div>
                                                             <!-- Put id of product here-->
                                                             <button type="submit" class="edit-modal-btn-action" name="adminOp"
-                                                                    value="updated">Update Brand</button>
+                                                                    value="updated">Update warranty policy</button>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -159,9 +200,9 @@
                                                 <div class="modal-content">
                                                     <div class="modal-form-wrapper">
                                                         <span class="confirm-annotation" style="margin-bottom:30px;">You really
-                                                            want remove product ${product.proID}</span>
-                                                        <form action="../Admin/Management" class="modal-form" method="POST">
-                                                            <input type="hidden" name="product_id" class="product-id" value="${product.proID}">
+                                                            want remove Warranty Policy ${policy.waID}</span>
+                                                        <form action="./WarrantyPolicy" class="modal-form" method="POST">
+                                                            <input type="hidden" name="policy_id" class="product-id" value="${policy.waID}">
                                                             <!-- Put id of product here-->
                                                             <button type="submit" class="modal-btn-action" name="adminOp"
                                                                     value="remove">Confirm</button>
@@ -184,28 +225,6 @@
 
         </div>
     </body>
-    <script type="module" src="../assets/JavaScript/Guarantee_Brand_Category_Management.js"></script>
+    <script type="module" src="../assets/JavaScript/Product_Management.js"></script>
 </html>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                       
+

@@ -394,6 +394,14 @@
                         <span class="btn-content ">Maintenance policy</span>
                     </button>
                 </div>
+                <div class="btn-navigator-item col-lg-1 col-md-1 col-xl-1 ">
+                    <form action="../WarrantyPolicyShow/">
+                    <button class="item-btn" type="submit">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                        <span class="btn-content ">Warranty Policy</span>                       
+                    </button>
+                    </form>
+                </div>                        
             </div>
         </div>
     </div>

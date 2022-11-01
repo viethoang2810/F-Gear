@@ -87,7 +87,10 @@
                                 </li>
                                 <li class="navigation-item ">
                                     <a href="../Guarantee/*" class="navigation-item_link">Guarantee Management</a>
-                                </li>                              
+                                </li>   
+                                <li class="navigation-item">
+                                    <a href="../WarrantyPolicy/*" class="navigation-item_link ">Warranty Policy</a>
+                                </li>
                             </ul>
                         </div>
                         <button class="modal-btn">Add new</button>

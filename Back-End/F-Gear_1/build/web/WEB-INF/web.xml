@@ -40,6 +40,14 @@
         <servlet-name>Guarantee_Controller</servlet-name>
         <servlet-class>com.fptuni.swp391.F_Gear.Controllers.Guarantee_Controller</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>WarrantyPolicy_Controller</servlet-name>
+        <servlet-class>com.fptuni.swp391.F_Gear.Controllers.WarrantyPolicy_Controller</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>WarrantyPolicyShow_Controller</servlet-name>
+        <servlet-class>com.fptuni.swp391.F_Gear.Controllers.WarrantyPolicyShow_Controller</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>User_Controller</servlet-name>
         <url-pattern>/Profile/*</url-pattern>
@@ -83,6 +91,14 @@
     <servlet-mapping>
         <servlet-name>Guarantee_Controller</servlet-name>
         <url-pattern>/Guarantee/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WarrantyPolicy_Controller</servlet-name>
+        <url-pattern>/WarrantyPolicy/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>WarrantyPolicyShow_Controller</servlet-name>
+        <url-pattern>/WarrantyPolicyShow/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
