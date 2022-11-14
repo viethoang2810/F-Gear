@@ -201,11 +201,19 @@
                             <div class="product-item col-lg-2 col-xl-2 col-md-4 col-sm-6 col-12">
                                 <img src="${product.listImage.get(0).url}"
                                      alt="" class="product-item_image">
-                                
+
                                 <div class="image-redirect">
                                     <span class="product-name text-center" style="color:#0033ff;">${product.proName}</span>
                                     <a href="../Detail/DetailPro?proID=${product.proID}" class="image-redirect_link">View detail</a>
                                 </div>
+                                <c:set var = "discount" value = "${product.discount}"/>
+                                <c:if test = "${discount != 0}">
+                                    <div class="discount-wrapper">
+                                        <span class="discount-context">Saling</span>
+                                    </div>
+                                </c:if>
+                                
+
                             </div>
                         </c:forEach>
                     </div>

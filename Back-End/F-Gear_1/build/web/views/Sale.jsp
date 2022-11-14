@@ -40,6 +40,7 @@
                                 <img
                                     src="${item.listImage.get(0).url}" />
                             </a>
+                            
                         </c:forEach>
                     </div>
                     <button type="button" class="slide">
@@ -48,6 +49,7 @@
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
                     </button>
+
                 </div>
 
             </c:forEach>

@@ -8,7 +8,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="<c:url value="/assets/CSS/login.css"/>">
         <link rel="stylesheet" href="<c:url value="/assets/CSS/responsive.css"/>">
-        <title>Login</title>
+        <title>F-Gear</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+              integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+              crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
 
     <body>
@@ -27,9 +30,9 @@
                 }
             }
         %>
+        <h2 class="welcome-title">WELCOME TO F-GEAR</h2>
         <div class="login">
-            <img class="login-logo"
-                 src="../assets/Images/Logo_After_Login.png">
+
             <form class="login-form" action="./Access" method="POST">
                 <input class="login-form-text" type="text" placeholder="Username" name="userName" value="<%=username%>" />
                 <input class="login-form-text" type="password" placeholder="Password" name="password" value="<%=passwWord%>"/>
@@ -44,7 +47,7 @@
                 <button class="login-form-submit" name="op" value="login" >Go to store</button>
             </form>
             <button class="login-google">
-                <img src="../assets/Images/R.png" />
+                <i class="fa-brands fa-google-plus-g" style="font-size: 1.7rem; color: 	rgb(66 133 244 ); margin-right: 10px;"></i>
                 <a href="https://accounts.google.com/o/oauth2/auth?scope=openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email&redirect_uri=http://localhost:8080/F-Gear_1/./Access?op=loginwithgoogle&response_type=code
 		   &client_id=981197715312-butc49a1aut585l2hhqsf1s4it4etihq.apps.googleusercontent.com&approval_prompt=force"> Login with Google</a>
             </button>
