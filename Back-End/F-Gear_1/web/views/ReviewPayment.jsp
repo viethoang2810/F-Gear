@@ -74,7 +74,7 @@
         }
     </style>
     <body>
-        <a href="../Home/Homepage" style="text-decoration: none;">
+        <a href="./Home/Homepage" style="text-decoration: none;">
             <button style="padding:15px 20px; border-radius: 24px; font-size: 24px; cursor: pointer;">
                 👈 Back to Home    
             </button> 

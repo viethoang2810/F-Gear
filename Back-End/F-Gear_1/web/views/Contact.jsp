@@ -42,7 +42,7 @@
 
     <body>
         <%--<%@include file="./Header.jsp" %>--%>
-        <a href="" style="font-size: 40px; padding: 20px 0 0 0px; text-decoration: none; "> ⬅ Back to home</a>
+        <a href="http://localhost:8080/F-Gear_1/Home/HomePage" style="font-size: 40px; padding: 20px 0 0 0px; text-decoration: none; "> ⬅ Back to home</a>
         <div class="body-testimonials-item"></div>
         <div style="width:1000px; margin: 0 auto;">
             <h1 style="text-align: center;" >Thank you for purchasing our product. Please leave your comments to help us improve.</h1>

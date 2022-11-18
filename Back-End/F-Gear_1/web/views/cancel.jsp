@@ -13,6 +13,6 @@
     </head>
     <body>
         <h1>Cancel Payment successful</h1>
-        <a href="./Home/HomePage">Back to home</a>
+        <a href="./Home/Homepage">Back to home</a>
     </body>
 </html>

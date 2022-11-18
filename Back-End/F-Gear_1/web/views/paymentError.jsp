@@ -14,6 +14,6 @@
     <body>
         <h1>Something Error when payment with paypal</h1>
         <h1>${error}</h1>
-        <a href="./index.html">Back to home</a>
+        <a href="./Home/Homepage">Back to home</a>
     </body>
 </html>
