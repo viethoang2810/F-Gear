@@ -95,7 +95,7 @@
         }
     </style>
     <body>
-        <a href="./index.html" style="font-size: 32px;text-decoration: none ;cursor: pointer;">👈 Back to Home</a>
+        <a href="./Home/HomePage" style="font-size: 32px;text-decoration: none ;cursor: pointer;">👈 Back to Home</a>
         <link href="https://fonts.googleapis.com/css?family=Mr+Dafoe" rel="stylesheet">
         <div class="shadow">RECEIPT</div>
         <h1 style="text-align: center;">Thanks for your purchasing our products</h1>

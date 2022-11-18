@@ -59,7 +59,7 @@
                 <div class="white-space">
 
                 </div>
-                <form action="./Admin" style="width: 70%; margin-left: 20%;">
+                <form action="../Admin/Management" style="width: 70%; margin-left: 20%;">
                     <input type="text" placeholder="Search . . ."
                            style="width: 60%; height: 40px; padding: 5px 0 5px 10px;" name="name" />
                     <button style="padding: 8px 15px; border: none; background-color: gray; color: white; border-radius: 10px;" name="adminOp" value="search">Search</button>
@@ -71,7 +71,7 @@
                         <div class="navigation-wrapper">
                             <ul class="navigation-list">
                                 <li class="navigation-item ">
-                                    <a href="../Admin/Dashboard" class="navigation-item_link">Dashbroad</a>
+                                    <a href="../Access/Dashboard?op=chartadminpage" class="navigation-item_link">Dashbroad</a>
                                 </li>
                                 <li class="navigation-item active">
                                     <a href="../Admin/Management" class="navigation-item_link ">Product Management</a>
@@ -93,16 +93,16 @@
                                 </li>
                             </ul>
                         </div>
-                        <button class="modal-btn">Add new</button>
+                        <button class="modal-btn" style="margin-top: 15px">Add new</button>
                         <p style="color: red">${result}<p>
                         <div class="add-modal-wrapper">
                             <div class="add-modal-content">
-                                <div class="add-modal-form-wrapper">
+                                <div class="add-modal-form-wrapper" style="height: 500px;">
                                     <div class="add-modal-title">
                                         <span class="modal-title" style="margin-bottom:30px;">Add new product</span>
                                         <span> <i class="fa-solid fa-xmark close-icon" style="font-size:2rem;margin-left: 70px; margin-bottom:30px;cursor: pointer;"></i></span>
                                     </div>
-                                    <form action="./Admin" class="add-form">
+                                    <form action="../Admin/Management" class="add-form">
                                         <div class="add-input-wrapper">
                                             <label for="proName" class="input-label">Name product</label>
                                             <input required type="text" name="proName" id="proName"  class="input-text" value="${product.proName}">
@@ -146,6 +146,17 @@
                                                 <option value="9" ${"9" == product.brandID?"selected":""} class="brand-item">Sony</option>
                                                 <option>Corsari</option>
                                                 <option value="10" ${"10" == product.brandID?"selected":""} class="brand-item">Orther</option>
+                                            </select>
+                                        </div>
+                                        <div class="add-input-wrapper">
+                                            <label for="proCategories" class="input-label">Guarantee</label>
+                                            <select name="guarantee" id="proGuarantee" class="brands-list input-text">
+                                                <option value="1" ${"1" == product.guaID?"selected":""} class="brand-item">6 months</option>
+                                                <option value="2" ${"2" == product.guaID?"selected":""} class="brand-item">12 months</option>
+                                                <option value="3" ${"3" == product.guaID?"selected":""} class="brand-item">18 months</option>
+                                                <option value="4" ${"4" == product.guaID?"selected":""} class="brand-item">24 months</option>
+                                                <option value="5" ${"5" == product.guaID?"selected":""} class="brand-item">30 months</option>    
+                                                <option value="6" ${"6" == product.guaID?"selected":""} class="brand-item">36 months</option>    
                                             </select>
                                         </div>
                                         <div class="add-input-wrapper">
@@ -307,7 +318,7 @@
                                                             <span class="modal-title" style="margin-bottom:30px;">Update product </span>
                                                             <span> <i class="fa-solid fa-xmark exit-icon" style="font-size:2rem;margin-left: 70px; margin-bottom:30px;cursor: pointer;"></i></span>
                                                         </div>
-                                                        <form action="./Admin" class="edit-modal-form"  method="POST">
+                                                        <form action="../Admin/Management" class="edit-modal-form"  method="POST">
                                                             <input type="hidden" name="product_id" class="product-id" value="${product.proID}">
                                                             <div class="edit-input-wrapper">
                                                                 <label for="proName" class="input-label">Name product</label>

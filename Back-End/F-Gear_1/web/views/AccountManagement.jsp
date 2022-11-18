@@ -47,7 +47,7 @@
                         <div class="navigation-wrapper">
                             <ul class="navigation-list">
                                 <li class="navigation-item ">
-                                    <a href="../Admin/Dashboard" class="navigation-item_link">Dashbroad</a>
+                                    <a href="../Access/Dashboard?op=chartadminpage" class="navigation-item_link">Dashbroad</a>
                                 </li>
                                 <li class="navigation-item ">
                                     <a href="../Admin/Management" class="navigation-item_link ">Product Management</a>

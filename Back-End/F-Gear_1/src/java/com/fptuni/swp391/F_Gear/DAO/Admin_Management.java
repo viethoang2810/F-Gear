@@ -125,11 +125,12 @@ public class Admin_Management {
         try {
             //insert product
             Connection con = DBUtils.getConnection();
-            PreparedStatement stm = con.prepareStatement("INSERT INTO [dbo].[Product]([ProName],[OriginalPrice],[BrandID],[CateID]) VALUES (?, ?, ?, ?)");
+            PreparedStatement stm = con.prepareStatement("INSERT INTO [dbo].[Product]([ProName],[OriginalPrice],[BrandID],[CateID],[GuaranteeID]) VALUES (?, ?, ?, ?,?)");
             stm.setString(1, p.getProName());
             stm.setInt(2, Integer.parseInt(p.getProOriginalPrice()));
             stm.setInt(3, p.getBrandID());
             stm.setInt(4, p.getCateID());
+            stm.setInt(5, p.getGuaID());
             int count = stm.executeUpdate();
             if (count == 0) {
                 result = false;

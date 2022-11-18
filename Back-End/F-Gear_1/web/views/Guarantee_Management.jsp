@@ -71,10 +71,13 @@
                         <div class="navigation-wrapper">
                             <ul class="navigation-list">
                                 <li class="navigation-item ">
-                                    <a href="../Admin/Dashboard" class="navigation-item_link">Dashbroad</a>
+                                    <a href="../Access/Dashboard?op=chartadminpage" class="navigation-item_link">Dashbroad</a>
                                 </li>
                                 <li class="navigation-item">
                                     <a href="../Admin/Management" class="navigation-item_link ">Product Management</a>
+                                </li>
+                                <li class="navigation-item ">
+                                    <a href="../Admin/AccountManagement" class="navigation-item_link ">Account Management</a>
                                 </li>
                                 <li class="navigation-item ">
                                     <a href="../Brand/*" class="navigation-item_link">Brand Management</a>
@@ -90,11 +93,11 @@
                                 </li>                               
                             </ul>
                         </div>
-                        <button class="modal-btn">Add new</button>
+                        <button class="modal-btn" style="margin-top: 15px">Add new</button>
                         <p style="color: red">${result}<p>
                         <div class="add-modal-wrapper">
                             <div class="add-modal-content">
-                                <div class="add-modal-form-wrapper">
+                                <div class="add-modal-form-wrapper" style="height: 500px;">
                                     <div class="add-modal-title">
                                         <span class="modal-title" style="margin-bottom:30px;">Add new Guarantee</span>
                                         <span> <i class="fa-solid fa-xmark close-icon" style="font-size:2rem;margin-left: 70px; margin-bottom:30px;cursor: pointer;"></i></span>

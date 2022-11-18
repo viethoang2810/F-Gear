@@ -5,8 +5,8 @@
  */
 package com.fptuni.swp391.F_Gear.Controllers;
 
-import com.fptuni.swp391.F_Gear.DAO.WarrantyPolicy_Management;
-import com.fptuni.swp391.F_Gear.DTO.WarrantyPolicy;
+import com.fptuni.swp391.F_Gear.DAO.CateBrand_Management;
+import com.fptuni.swp391.F_Gear.DTO.CateBrand;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -35,64 +35,59 @@ public class WarrantyPolicy_Controller extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String adminAction = request.getParameter("adminOp");
-        List<WarrantyPolicy> listOfPolicy = new ArrayList<>();
-        WarrantyPolicy_Management bm = new WarrantyPolicy_Management();
+        CateBrand_Management cm = new CateBrand_Management();
         if (adminAction != null) {
             switch (adminAction) {
+                case "create": {
+                    if (cm.searchCateBrand(Integer.parseInt(request.getParameter("category")), Integer.parseInt(request.getParameter("brand")))) {
+                        int cateName = Integer.parseInt(request.getParameter("category"));
+                        int brandName = Integer.parseInt(request.getParameter("brand"));
+                        String typeWarranty = request.getParameter("typeWarranty");
+                        String intendTime = request.getParameter("intendTime");
+                        String note = request.getParameter("note");
+                        CateBrand policy = new CateBrand();
+                        policy.setCateID(cateName);
+                        policy.setBrandID(brandName);
+                        policy.setTypePolicy(typeWarranty);
+                        policy.setIntendTime(intendTime);
+                        policy.setNote(note);
+                        cm.create(policy);
+                    } else {
+                        request.setAttribute("result", "Duplicate CateID and BrandID");
+                    }
+                }
+                break;
+                case "updated": {
+                    int cateID = Integer.parseInt(request.getParameter("cateID"));
+                    int brandID = Integer.parseInt(request.getParameter("brandID"));
+                    String typePolicy = request.getParameter("typePolicy");
+                    String intendTime = request.getParameter("intendTime");
+                    String note = request.getParameter("note");
+                    System.out.println(typePolicy);
+                    CateBrand cateBrand = new CateBrand();
+                    cateBrand.setCateID(cateID);
+                    cateBrand.setBrandID(brandID);
+                    cateBrand.setTypePolicy(typePolicy);
+                    cateBrand.setIntendTime(intendTime);
+                    cateBrand.setNote(note);
+                    cm.updateCateBrand(cateBrand);
+                }
+                break;
                 case "search": {
                     String name = request.getParameter("name").toLowerCase();
                     if (name != null) {
-                        List<WarrantyPolicy> list = bm.searchPolicy(name);
+                        List<CateBrand> list = cm.search(name);
                         request.setAttribute("listOfPolicy", list);
                         request.getRequestDispatcher("/views/WarrantyPolicy_Management.jsp").forward(request, response);
                     }
                 }
                 break;
-                case "create": {
-                    String cateName = request.getParameter("cateName");
-                    String brandName = request.getParameter("brandName");
-                    String typeWarranty = request.getParameter("typeWarranty");
-                    String intendTime = request.getParameter("intendTime");
-                    String note = request.getParameter("note");
-                    WarrantyPolicy policy = new WarrantyPolicy();
-                    policy.setCateName(cateName);
-                    policy.setBrandName(brandName);
-                    policy.setTypeWarranty(typeWarranty);
-                    policy.setIntendTime(intendTime);
-                    policy.setNote(note);
-                    bm.create(policy);
-                }
-                break;
-                case "remove": {
-                    int id = Integer.parseInt(request.getParameter("policy_id"));
-                    bm.remove(id);
-                }
-                break;
-                case "cancel":
-                    break;
-                case "updated": {
-                    int policy_id = Integer.parseInt(request.getParameter("policy_id"));
-                    String cateName = request.getParameter("cateName");
-                    String brandName = request.getParameter("brandName");
-                    String typeWarranty = request.getParameter("typeWarranty");
-                    String intendTime = request.getParameter("intendTime");
-                    String note = request.getParameter("note");
-                    WarrantyPolicy policy = new WarrantyPolicy();
-                    policy.setWaID(policy_id);
-                    policy.setCateName(cateName);
-                    policy.setBrandName(brandName);
-                    policy.setTypeWarranty(typeWarranty);
-                    policy.setIntendTime(intendTime);
-                    policy.setNote(note);
-                    bm.update(policy);
-                }
-                break;
-
             }
         }
-        listOfPolicy = bm.selectAll();
+        List<CateBrand> listOfPolicy = new ArrayList<>();
+        listOfPolicy = cm.getAllCateBrand();
         request.setAttribute("listOfPolicy", listOfPolicy);
-        request.getRequestDispatcher("/views/WarrantyPolicy_Management.jsp").forward(request, response);       
+        request.getRequestDispatcher("/views/WarrantyPolicy_Management.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -5,8 +5,8 @@
  */
 package com.fptuni.swp391.F_Gear.Controllers;
 
-import com.fptuni.swp391.F_Gear.DAO.WarrantyPolicy_Management;
-import com.fptuni.swp391.F_Gear.DTO.WarrantyPolicy;
+import com.fptuni.swp391.F_Gear.DAO.CateBrand_Management;
+import com.fptuni.swp391.F_Gear.DTO.CateBrand;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -34,9 +34,9 @@ public class WarrantyPolicyShow_Controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        List<WarrantyPolicy> listOfPolicy = new ArrayList<>();
-        WarrantyPolicy_Management bm = new WarrantyPolicy_Management();
-        listOfPolicy = bm.selectAll();
+        List<CateBrand> listOfPolicy = new ArrayList<>();
+        CateBrand_Management cm = new CateBrand_Management();
+        listOfPolicy = cm.getAllCateBrand();
         request.setAttribute("listOfPolicy", listOfPolicy);
         request.getRequestDispatcher("/views/Warranty_Policy.jsp").forward(request, response);
     }

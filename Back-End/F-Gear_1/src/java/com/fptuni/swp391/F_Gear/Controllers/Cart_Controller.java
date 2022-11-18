@@ -48,7 +48,7 @@ public class Cart_Controller extends HttpServlet {
                     Cart_Management cm = new Cart_Management();
                     int proID = Integer.parseInt(request.getParameter("proID"));
                     int quantity = Integer.parseInt(request.getParameter("quantity"));
-                    ArrayList<Product> listProduct = pm.getAllOfProduct();
+                    ArrayList<Product> listProduct = pm.getAllOfProduct2();
                     Product product = pm.getProductById(listProduct, proID);
                     String proCurrentPrice = product.getProCurrentPrice().replaceAll(",", "").trim();
                     long price = Long.parseLong(proCurrentPrice);
@@ -93,7 +93,7 @@ public class Cart_Controller extends HttpServlet {
                 case "buyNow": {
                     int proID = Integer.parseInt(request.getParameter("proID"));
                     int quantity = Integer.parseInt(request.getParameter("quantity"));
-                    ArrayList<Product> listProduct = pm.getAllOfProduct();
+                    ArrayList<Product> listProduct = pm.getAllOfProduct2();
                     Product product = pm.getProductById(listProduct, proID);
                     String proCurrentPrice = product.getProCurrentPrice().replaceAll(",", "").trim();
                     long price = Long.parseLong(proCurrentPrice);
@@ -158,7 +158,7 @@ public class Cart_Controller extends HttpServlet {
                 case "decreasing": {
                     int proID = Integer.parseInt(request.getParameter("proID"));
                     int quantity = Integer.parseInt(request.getParameter("quantity"));
-                    ArrayList<Product> listProduct = pm.getAllOfProduct();
+                    ArrayList<Product> listProduct = pm.getAllOfProduct2();
                     Product product = pm.getProductById(listProduct, proID);
                     String proCurrentPrice = product.getProCurrentPrice().replaceAll(",", "").trim();
                     long price = Long.parseLong(proCurrentPrice);
@@ -187,7 +187,7 @@ public class Cart_Controller extends HttpServlet {
                 case "increasing": {
                     int proID = Integer.parseInt(request.getParameter("proID"));
                     int quantity = Integer.parseInt(request.getParameter("quantity"));
-                    ArrayList<Product> listProduct = pm.getAllOfProduct();
+                    ArrayList<Product> listProduct = pm.getAllOfProduct2();
                     Product product = pm.getProductById(listProduct, proID);
                     String proCurrentPrice = product.getProCurrentPrice().replaceAll(",", "").trim();
                     long price = Long.parseLong(proCurrentPrice);
@@ -209,7 +209,7 @@ public class Cart_Controller extends HttpServlet {
                 case "inputQuantity": {
                     int proID = Integer.parseInt(request.getParameter("proID"));
                     int quantity = Integer.parseInt(request.getParameter("quantity"));
-                    ArrayList<Product> listProduct = pm.getAllOfProduct();
+                    ArrayList<Product> listProduct = pm.getAllOfProduct2();
                     Product product = pm.getProductById(listProduct, proID);
                     String proCurrentPrice = product.getProCurrentPrice().replaceAll(",", "").trim();
                     long price = Long.parseLong(proCurrentPrice);

@@ -53,7 +53,9 @@ public class Admin_Controller extends HttpServlet {
                         case "updated": {
                             int proId = Integer.parseInt(request.getParameter("product_id"));
                             String name = request.getParameter("proName");
-                            int proPrice = Integer.parseInt(request.getParameter("originPrice"));
+                            String price = request.getParameter("originPrice").replaceAll(",", "").trim();
+                            //int proPrice = Integer.parseInt(request.getParameter("originPrice"));
+                            int proPrice = Integer.parseInt(price);
                             int discount = Integer.parseInt(request.getParameter("discount"));
                             int finalPrice = proPrice - (proPrice / 100 * discount);
                             Product product = new Product();
@@ -93,13 +95,14 @@ public class Admin_Controller extends HttpServlet {
                                     String price = request.getParameter("originPrice");
                                     String brandID = request.getParameter("brand");
                                     String categoryID = request.getParameter("category");
-
+                                    String guaID = request.getParameter("guarantee");
                                     //insert product
                                     Product p = new Product();
                                     p.setProName(nameProduct);
                                     p.setProOriginalPrice(price);
                                     p.setBrandID(Integer.parseInt(brandID));
                                     p.setCateID(Integer.parseInt(categoryID));
+                                    p.setGuaID(Integer.parseInt(guaID));
                                     request.setAttribute("product", p);
 
                                     //insert image
